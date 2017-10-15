@@ -1,14 +1,14 @@
 package Clases;
 
 public class Empleado {
-	private int codigo,telefono,dni;
-	private String Apellido_Paterno,Apellido_Materno,Nombres;
+	private int codigo;
+	private String Apellido_Paterno,Apellido_Materno,Nombres,tipo_Empleado,turno;
 
 	
-	public Empleado(int codigo,int telefono,int dni,String Apellido_Paterno,String Apellido_Materno,String Nombres){
+	public Empleado(int codigo,String Nombres,String Apellido_Paterno,String Apellido_Materno,String tipo_Empleado,String turno){
 		this.codigo=codigo;
-		this.telefono=telefono;
-		this.dni=dni;
+		this.tipo_Empleado=tipo_Empleado;
+		this.turno=turno;
 		this.Apellido_Paterno=Apellido_Paterno;
 		this.Apellido_Materno=Apellido_Materno;
 		this.Nombres=Nombres;
@@ -21,20 +21,21 @@ public class Empleado {
 		 this.codigo=codigo;
 	}
 
-	public int getTelefono() {
-		return telefono;
+
+	public String getTipo_Empleado() {
+		return tipo_Empleado;
 	}
 
-	public void setTelefono(int telefono) {
-		this.telefono = telefono;
+	public void setTipo_Empleado(String tipo_Empleado) {
+		this.tipo_Empleado = tipo_Empleado;
 	}
 
-	public int getDni() {
-		return dni;
+	public String getTurno() {
+		return turno;
 	}
 
-	public void setDni(int dni) {
-		this.dni = dni;
+	public void setTurno(String turno) {
+		this.turno = turno;
 	}
 
 	public String getApellido_Paterno() {
