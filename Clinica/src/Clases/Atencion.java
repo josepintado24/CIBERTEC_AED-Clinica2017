@@ -2,47 +2,58 @@ package Clases;
 
 public class Atencion {
 	
-	private int codigo,tipo;
-	private String descripcion;
-	private double precio;
+	private int codigo_atencion,codigo_paciente;
+	private int fecha_atencion,estado;
+	private double totalPagar;
 	
-	public Atencion(int codigo,int tipo,String descripcion,double precio){
-		this.codigo=codigo;
-		this.tipo=tipo;
-		this.descripcion=descripcion;
-		this.precio=precio;
+	
+	public Atencion(int codigo_atencion,int codigo_paciente,int fecha_atencion,int estado, double totalPagar){
+	this.codigo_atencion=codigo_atencion;
+	this.codigo_paciente=codigo_paciente;
+	this.fecha_atencion=fecha_atencion;
+	this.estado=estado;
+	this.totalPagar=totalPagar;
 	}
 	
-	public int getCodigo(){
-		return codigo;
-		}
-	public void setCodigo(int codigo){
-		this.codigo=codigo;
+	public int getcodigo_atencion(){
+		return codigo_atencion;
+	}
+	public void setcodigo_atencion(int codigo_atencion){
+		this.codigo_atencion=codigo_atencion;
 	}
 
-	public int getTipo() {
-		return tipo;
+	public int getCodigo_paciente() {
+		return codigo_paciente;
 	}
 
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
+	public void setCodigo_paciente(int codigo_paciente) {
+		this.codigo_paciente = codigo_paciente;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public int getFecha_atencion() {
+		return fecha_atencion;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setFecha_atencion(int fecha_atencion) {
+		this.fecha_atencion = fecha_atencion;
 	}
 
-	public double getPrecio() {
-		return precio;
+	public int getEstado() {
+		return estado;
 	}
 
-	public void setPrecio(double precio) {
-		this.precio = precio;
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
+
+	public double getTotalPagar() {
+		return totalPagar;
+	}
+
+	public void setTotalPagar(double totalPagar) {
+		this.totalPagar = totalPagar;
+	}
+	
 	
 	
 }

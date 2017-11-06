@@ -2,10 +2,12 @@ package Clases;
 
 public class Pacientes {
 	
-	private int codigo,telefono,dni;
+	private int codigo;
+	private String telefono,dni;
 	private String nombres,apellido_paterno,apellido_materno;
 	
-	public Pacientes(int codigo,int telefono,int dni,String nombres,String apellido_paterno,String apellido_materno){
+	
+	public Pacientes(int codigo,String telefono,String dni,String nombres,String apellido_paterno,String apellido_materno){
 		this.codigo=codigo;
 		this.telefono=telefono;
 		this.dni=dni;
@@ -23,19 +25,19 @@ public class Pacientes {
 		this.codigo=codigo;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
