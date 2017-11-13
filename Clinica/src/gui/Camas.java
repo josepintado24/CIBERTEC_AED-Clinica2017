@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Clases.Cama;
+import Clases.Pacientes;
 import controlador.ArregloCama;
 
 import javax.swing.JButton;
@@ -24,7 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("unused")
-public class Cama extends JFrame implements ActionListener {
+public class Camas extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -58,7 +60,7 @@ public class Cama extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cama frame = new Cama();
+					Camas frame = new Camas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,9 +72,9 @@ public class Cama extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public Cama() {
+	public Camas() {
 		setForeground(Color.LIGHT_GRAY);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Cama.class.getResource("/com/sun/java/swing/plaf/windows/icons/Warn.gif")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Camas.class.getResource("/com/sun/java/swing/plaf/windows/icons/Warn.gif")));
 		setTitle("Mantenimiento | Cama");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 769, 447);
@@ -286,11 +288,10 @@ public class Cama extends JFrame implements ActionListener {
 				
 				for(int i=0;i<ac.tamano();i++){
 					Object[]fila={
-							ac.obtener(i).getEstado(),
 							ac.obtener(i).getnumero_Cama(),
-							ac.obtener(i).getNombres(),
-							ac.obtener(i).getTelefono(),
-							ac.obtener(i).getDni()
+							ac.obtener(i).getCategoria(),
+							ac.obtener(i).getPrecioDia(),
+							ac.obtener(i).getEstado()
 					};
 					modelo.addRow(fila);
 				}
@@ -314,5 +315,13 @@ public class Cama extends JFrame implements ActionListener {
 		editableFalse();
 	}
 	protected void actionPerformedBtnGrabar(ActionEvent arg0) {
+
+		int nroCama=Integer.parseInt(txtNroCama.getText());
+		String precio=txtPrecio.getText();
+		double estado=Double.parseDouble(precio);
+		
+		Cama objetocama=new Cama(nroCama,precio,estado,categoria);
+		ac.adicionar(objetocama);
+		listar();
 	}
 }
