@@ -13,14 +13,14 @@ public class ArregloCama {
 private ArrayList <Cama>ca;
 private String archivo;
 
-public ArregloCama(String archivo){
+public ArregloCama(){
 	ca=new ArrayList<Cama>();
 	this.archivo=archivo;
 	cargarCama();	
 }
 
 
-public int tamaño(){
+public int tamano(){
 	return ca.size();
 }
 
@@ -38,7 +38,7 @@ public void eliminar(Cama x){
 
 public Cama buscar(int numero){
 	Cama s;
-	for(int i=0;i<tamaño();i++){
+	for(int i=0;i<tamano();i++){
 		s=obtener(i);
 		if(s.getnumero_Cama()==numero){
 			return s;
@@ -53,7 +53,7 @@ public void grabarCama(){
 		String linea;
 		Cama cama=null;
 		pw=new PrintWriter(new FileWriter(archivo));
-		for(int i=0;i<tamaño();i++){
+		for(int i=0;i<tamano();i++){
 			cama=ca.get(i);
 			linea=cama.getnumero_Cama()+"-"+
 			cama.getEstado()+"-"+
@@ -75,6 +75,7 @@ public void grabarCama(){
 			int numero_cama;
 			int estado;
 			double precioDia;
+			String Categoria;
 			
 			br=new BufferedReader(new FileReader(archivo));
 			while((linea= br.readLine())!=null){
@@ -82,8 +83,9 @@ public void grabarCama(){
 				numero_cama = Integer.parseInt(st.nextToken());
 				precioDia= Integer.parseInt(st.nextToken());
 				estado = Integer.parseInt(st.nextToken());
+				Categoria=st.nextToken();
 				
-				Cama f=new Cama(numero_cama, estado, precioDia);
+				Cama f=new Cama(numero_cama, estado, precioDia,Categoria);
 				adicionar(f);
 			}
 			br.close();

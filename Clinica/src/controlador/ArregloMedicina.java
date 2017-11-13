@@ -13,7 +13,7 @@ private String archivo;
 public ArregloMedicina(String archivo){
 	med= new ArrayList<Medicina>();
 	this.archivo=archivo;
-	cargarMedicina();
+	//cargarMedicina();
 }
 
 

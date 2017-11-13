@@ -3,12 +3,21 @@ package Clases;
 public class Cama {
 private int numero_Cama,estado;
 private double precioDia;
+private String Categoria;
 
-public Cama(int numero_Cama,int estado,Double precioDia){
+public Cama(int numero_Cama,int estado,Double precioDia ,String  Categoria){
 	this.numero_Cama=numero_Cama;
-	
+	this.Categoria=Categoria;	
 	this.estado=estado;
 	this.precioDia=precioDia;
+}
+
+public String getCategoria() {
+	return Categoria;
+}
+
+public void setCategoria(String categoria) {
+	Categoria = categoria;
 }
 
 public int getnumero_Cama(){
