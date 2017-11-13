@@ -33,7 +33,6 @@ public class Camas extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnCama;
 	private JScrollPane scrollPane;
 	private JTable tabla;
 	private JLabel lblNCama;
@@ -49,7 +48,6 @@ public class Camas extends JFrame implements ActionListener {
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnGrabar;
-	private JButton btnAceptar;
 	private JButton btnCancelar;
 	private DefaultTableModel modelo;
 
@@ -84,10 +82,6 @@ public class Camas extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		btnCama = new JButton("Cama");
-		btnCama.setBounds(24, 26, 89, 23);
-		contentPane.add(btnCama);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(145, 118, 598, 223);
@@ -146,57 +140,48 @@ public class Camas extends JFrame implements ActionListener {
 		
 		btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(this);
-		btnAdicionar.setBounds(24, 187, 89, 23);
+		btnAdicionar.setBounds(26, 118, 89, 23);
 		contentPane.add(btnAdicionar);
 		
 		btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(this);
-		btnConsultar.setBounds(24, 236, 89, 23);
+		btnConsultar.setBounds(26, 167, 89, 23);
 		contentPane.add(btnConsultar);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(this);
-		btnModificar.setBounds(24, 286, 89, 23);
+		btnModificar.setBounds(26, 217, 89, 23);
 		contentPane.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setEnabled(false);
 		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(24, 332, 89, 23);
+		btnEliminar.setBounds(26, 263, 89, 23);
 		contentPane.add(btnEliminar);
 		
 		btnGrabar = new JButton("Grabar");
 		btnGrabar.setEnabled(false);
 		btnGrabar.addActionListener(this);
-		btnGrabar.setBounds(606, 44, 89, 23);
+		btnGrabar.setBounds(606, 23, 89, 23);
 		contentPane.add(btnGrabar);
-		
-		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setEnabled(false);
-		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(280, 352, 89, 23);
-		contentPane.add(btnAceptar);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setEnabled(false);
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(429, 352, 89, 23);
+		btnCancelar.setBounds(606, 68, 89, 23);
 		contentPane.add(btnCancelar);
 	}
 	
 	private void editableTrue(){
 		txtNroCama.setEditable(true);
 		txtPrecio.setEditable(true);
+		cboCategoria.setEnabled(true);
+		cboEstado.setEnabled(true);
 	}
 	private void editableFalse(){
 		txtNroCama.setEditable(false);
 		txtPrecio.setEditable(false);
 		btnGrabar.setEnabled(false);
 		btnCancelar.setEnabled(false);
-		btnAceptar.setEnabled(false);
-		btnConsultar.setEnabled(true);
-		btnModificar.setEnabled(true);
-		btnAdicionar.setEnabled(true);
 		cboCategoria.setEnabled(false);
 		cboEstado.setEnabled(false);
 		
@@ -209,9 +194,10 @@ public class Camas extends JFrame implements ActionListener {
 		}
 		if (arg0.getSource() == btnCancelar) {
 			actionPerformedBtnCancelar(arg0);
-		}
-		if (arg0.getSource() == btnAceptar) {
-			actionPerformedBtnAceptar(arg0);
+			btnConsultar.setEnabled(true);
+			btnModificar.setEnabled(true);
+			btnAdicionar.setEnabled(true);
+			btnEliminar.setEnabled(true);
 		}
 		if (arg0.getSource() == btnEliminar) {
 			actionPerformedBtnEliminar(arg0);
@@ -222,8 +208,8 @@ public class Camas extends JFrame implements ActionListener {
 			btnAdicionar.setEnabled(false);
 			btnGrabar.setEnabled(true);
 			btnCancelar.setEnabled(true);
-			btnAceptar.setEnabled(true);
-			cboCategoria.setEnabled(true);			
+			cboCategoria.setEnabled(true);	
+			btnEliminar.setEnabled(true);
 			editableTrue();
 		}
 		if (arg0.getSource() == btnConsultar) {
@@ -231,7 +217,6 @@ public class Camas extends JFrame implements ActionListener {
 			btnModificar.setEnabled(false);
 			btnAdicionar.setEnabled(false);
 			btnCancelar.setEnabled(true);
-			btnAceptar.setEnabled(true);
 		    txtNroCama.setEditable(true);
 		    txtPrecio.setEditable(true);
 			
@@ -241,47 +226,19 @@ public class Camas extends JFrame implements ActionListener {
 			btnConsultar.setEnabled(false);
 			btnModificar.setEnabled(false);
 			btnGrabar.setEnabled(true);
-			btnAceptar.setEnabled(true);
 			btnCancelar.setEnabled(true);
-			txtNroCama.setEditable(true);
-			txtPrecio.setEditable(true);
-			cboCategoria.setEnabled(true);
-			cboEstado.setEnabled(false);
+			btnEliminar.setEnabled(false);
+			editableTrue();
+			
 			
 		}
 	}
-	/*private void BuscarTipo( int i){
-		switch (i){
-		case 0:
-			txtCodigo.setEditable(true);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(false);
-			
-			break;
-		case 1:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(true);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(false);
-			break;
-		case 2:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(true);
-			txtDNI.setEditable(false);
-			break;
-		case 3:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(true);
-			break;
-		}
-		
-		
-		
-	}*/
+	
+	
+	
+	
+	
+	
 	ArregloCama ac=new ArregloCama();
 	private void listar(){
 		modelo.setRowCount(0);
@@ -309,19 +266,53 @@ public class Camas extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
 	}
-	protected void actionPerformedBtnAceptar(ActionEvent arg0) {
-	}
 	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
 		editableFalse();
 	}
+	private int obtenerCategoria(){
+		return cboCategoria.getSelectedIndex();
+	}
+	private String categoria(int i){
+		String cate="";
+		switch (i){
+		case 0:
+			cate="Economico";
+					
+			
+			break;
+		case 1:
+			cate="Ejecutivo";
+			break;
+		}
+		return cate;
+	}
+	
+	private int obtenerEstado(){
+		return cboCategoria.getSelectedIndex();
+	}
+	private String estado(int i){
+		String stad="";
+		switch (i){
+		case 0:
+			stad="Libre";
+					
+			
+			break;
+		case 1:
+			stad="Ocupado";
+			break;
+		}
+		return stad;
+	}
+	
 	protected void actionPerformedBtnGrabar(ActionEvent arg0) {
 
 		int nroCama=Integer.parseInt(txtNroCama.getText());
-		String precio=txtPrecio.getText();
-		double estado=Double.parseDouble(precio);
-		
-		Cama objetocama=new Cama(nroCama,precio,estado,categoria);
-		ac.adicionar(objetocama);
+		double precio=Double.parseDouble(txtPrecio.getText());
+		String categoria=categoria(obtenerCategoria());
+		String estado=estado(obtenerEstado());
+		Cama objap=new Cama(nroCama,estado,precio,categoria);
+		ac.adicionar(objap);
 		listar();
 	}
 }

@@ -1,11 +1,11 @@
 package Clases;
 
 public class Cama {
-private int numero_Cama,estado;
+private int numero_Cama;
 private double precioDia;
-private String Categoria;
+private String Categoria,estado;
 
-public Cama(int numero_Cama,int estado,Double precioDia ,String  Categoria){
+public Cama(int numero_Cama,String estado,Double precioDia ,String  Categoria){
 	this.numero_Cama=numero_Cama;
 	this.Categoria=Categoria;	
 	this.estado=estado;
@@ -27,11 +27,11 @@ public void setnumero_Cama(int numero_Cama){
 	this.numero_Cama=numero_Cama;
 }
 
-public int getEstado() {
+public String getEstado() {
 	return estado;
 }
 
-public void setEstado(int estado) {
+public void setEstado(String estado) {
 	this.estado = estado;
 }
 
