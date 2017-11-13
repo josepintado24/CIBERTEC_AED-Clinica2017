@@ -28,19 +28,21 @@ public class Medicina extends JFrame {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private JLabel lblNCama;
-	private JTextField textField;
+	private JTextField txtCodigo;
 	private JLabel lblCategoria;
-	private JComboBox comboBox;
 	private JLabel lblPrecioS;
-	private JTextField textField_1;
+	private JTextField txtNombre;
 	private JLabel lblEstado;
-	private JComboBox comboBox_1;
 	private JButton btnAdicionar;
 	private JButton btnConsultar;
 	private JButton btnModificar;
 	private JButton btnEliminar;
 	private JButton btnGrabar;
 	private JButton btnCancelar;
+	private JLabel lblStock;
+	private JTextField txtStock;
+	private JTextField txtLaboratorio;
+	private JTextField txtPrecio;
 
 	/**
 	 * Launch the application.
@@ -82,40 +84,30 @@ public class Medicina extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		lblNCama = new JLabel("Codigo");
-		lblNCama.setBounds(193, 27, 89, 14);
+		lblNCama.setBounds(208, 30, 62, 14);
 		contentPane.add(lblNCama);
 		
-		textField = new JTextField();
-		textField.setBounds(280, 27, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(280, 27, 86, 20);
+		contentPane.add(txtCodigo);
+		txtCodigo.setColumns(10);
 		
 		lblCategoria = new JLabel("Laboratorio");
-		lblCategoria.setBounds(376, 30, 69, 14);
+		lblCategoria.setBounds(383, 30, 69, 14);
 		contentPane.add(lblCategoria);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Economico", "Ejecutivo"}));
-		comboBox.setBounds(462, 26, 104, 20);
-		contentPane.add(comboBox);
-		
 		lblPrecioS = new JLabel("Nombre");
-		lblPrecioS.setBounds(213, 72, 62, 14);
+		lblPrecioS.setBounds(208, 61, 62, 14);
 		contentPane.add(lblPrecioS);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(280, 69, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setBounds(280, 58, 86, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
 		
 		lblEstado = new JLabel("Precio");
-		lblEstado.setBounds(393, 72, 46, 14);
+		lblEstado.setBounds(386, 55, 46, 14);
 		contentPane.add(lblEstado);
-		
-		comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Libre", "Ocupado", ""}));
-		comboBox_1.setBounds(462, 71, 102, 20);
-		contentPane.add(comboBox_1);
 		
 		btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.setBounds(32, 115, 89, 23);
@@ -140,5 +132,24 @@ public class Medicina extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(613, 67, 89, 23);
 		contentPane.add(btnCancelar);
+		
+		lblStock = new JLabel("Stock");
+		lblStock.setBounds(208, 93, 62, 14);
+		contentPane.add(lblStock);
+		
+		txtStock = new JTextField();
+		txtStock.setBounds(280, 90, 86, 20);
+		contentPane.add(txtStock);
+		txtStock.setColumns(10);
+		
+		txtLaboratorio = new JTextField();
+		txtLaboratorio.setBounds(456, 27, 86, 20);
+		contentPane.add(txtLaboratorio);
+		txtLaboratorio.setColumns(10);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setBounds(456, 58, 86, 20);
+		contentPane.add(txtPrecio);
+		txtPrecio.setColumns(10);
 	}
 }
