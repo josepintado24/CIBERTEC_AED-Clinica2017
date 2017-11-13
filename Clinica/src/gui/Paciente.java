@@ -24,7 +24,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 
-public class Mantenimiento extends JFrame implements ActionListener, KeyListener {
+public class Paciente extends JFrame implements ActionListener, KeyListener {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -56,7 +56,7 @@ public class Mantenimiento extends JFrame implements ActionListener, KeyListener
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Mantenimiento frame = new Mantenimiento();
+					Paciente frame = new Paciente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,7 +68,7 @@ public class Mantenimiento extends JFrame implements ActionListener, KeyListener
 	/**
 	 * Create the frame.
 	 */
-	public Mantenimiento() {
+	public Paciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 812, 454);
 		contentPane = new JPanel();
