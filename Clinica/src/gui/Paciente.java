@@ -23,14 +23,17 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JTable;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
-public class Paciente extends JFrame implements ActionListener, KeyListener {
+public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener {
 
 	private JPanel contentPane;
-	private JPanel panel;
-	private JLabel lblCama;
-	private JLabel lblPaciente;
-	private JLabel lblMedicina;
 	private JLabel lblCodigo;
 	private JTextField txtCodigo;
 	private JLabel lblApellido;
@@ -69,138 +72,259 @@ public class Paciente extends JFrame implements ActionListener, KeyListener {
 	 * Create the frame.
 	 */
 	public Paciente() {
+		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 812, 454);
+		setBounds(100, 100, 738, 563);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(7, 38, 58));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		panel = new JPanel();
-		panel.setBounds(192, 35, 604, 380);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		lblCodigo = new JLabel("codigo");
-		lblCodigo.setBounds(32, 26, 46, 14);
-		panel.add(lblCodigo);
-		
-		txtCodigo = new JTextField();
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setEditable(false);
-		txtCodigo.setBounds(88, 23, 86, 20);
-		panel.add(txtCodigo);
-		txtCodigo.setColumns(10);
-		
-		lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(184, 29, 46, 14);
-		panel.add(lblApellido);
-		
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(336, 26, 46, 14);
-		panel.add(lblNombre);
-		
-		lblTelefono = new JLabel("Telefono");
-		lblTelefono.setBounds(32, 70, 46, 14);
-		panel.add(lblTelefono);
-		
-		lblDni = new JLabel("DNI");
-		lblDni.setBounds(184, 70, 46, 14);
-		panel.add(lblDni);
-		
-		txtApellido = new JTextField();
-		txtApellido.addKeyListener(this);
-		txtApellido.setEditable(false);
-		txtApellido.setBounds(240, 26, 86, 20);
-		panel.add(txtApellido);
-		txtApellido.setColumns(10);
-		
-		txtNombre = new JTextField();
-		txtNombre.addKeyListener(this);
-		txtNombre.setEditable(false);
-		txtNombre.setBounds(380, 23, 86, 20);
-		panel.add(txtNombre);
-		txtNombre.setColumns(10);
-		
-		txtTelefono = new JTextField();
-		txtTelefono.addKeyListener(this);
-		txtTelefono.setEditable(false);
-		txtTelefono.setBounds(88, 67, 86, 20);
-		panel.add(txtTelefono);
-		txtTelefono.setColumns(10);
-		
-		txtDNI = new JTextField();
-		txtDNI.addKeyListener(this);
-		txtDNI.setEditable(false);
-		txtDNI.setBounds(240, 70, 86, 20);
-		panel.add(txtDNI);
-		txtDNI.setColumns(10);
-		
-		
-		
-		btnIngresar = new JButton("Ingresar");
-		btnIngresar.addActionListener(this);
-		btnIngresar.setBounds(111, 333, 89, 23);
-		panel.add(btnIngresar);
-		
-		btnConsultar = new JButton("Consultar");
-		btnConsultar.addActionListener(this);
-		btnConsultar.setBounds(309, 333, 89, 23);
-		panel.add(btnConsultar);
-		
-		btnModificar = new JButton("Modificar");
-		btnModificar.addActionListener(this);
-		btnModificar.setBounds(409, 333, 89, 23);
-		panel.add(btnModificar);
-		
-		btnGrabar = new JButton("Grabar");
-		btnGrabar.addActionListener(this);
-		btnGrabar.setEnabled(false);
-		btnGrabar.setBounds(505, 22, 89, 23);
-		panel.add(btnGrabar);
-		
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setEnabled(false);
-		btnCancelar.setBounds(505, 66, 89, 23);
-		panel.add(btnCancelar);
-		
-		cboBuscar = new JComboBox();
-		cboBuscar.addActionListener(this);
-		cboBuscar.setEnabled(false);
-		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Apellido", "Nombre", "DNI"}));
-		cboBuscar.setBounds(380, 67, 86, 20);
-		panel.add(cboBuscar);
-		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 120, 543, 166);
-		panel.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
 		modelo=new DefaultTableModel();
 		modelo.addColumn("CODIGO");
 		modelo.addColumn("NOMBRE");
 		modelo.addColumn("APELLIDO");
 		modelo.addColumn("TELEFONO");
 		modelo.addColumn("DNI");
+		
+		btnGrabar = new JButton("Aceptar");
+		btnGrabar.setBounds(517, 379, 160, 23);
+		contentPane.add(btnGrabar);
+		btnGrabar.addActionListener(this);
+		btnGrabar.setEnabled(false);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(517, 413, 160, 23);
+		contentPane.add(btnCancelar);
+		btnCancelar.addActionListener(this);
+		btnCancelar.setEnabled(false);
+		
+		btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(36, 64, 89, 23);
+		contentPane.add(btnModificar);
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(142, 64, 89, 23);
+		contentPane.add(btnConsultar);
+		
+		
+		
+		btnIngresar = new JButton("Ingresar");
+		btnIngresar.setBounds(241, 64, 89, 23);
+		contentPane.add(btnIngresar);
+		
+		cboBuscar = new JComboBox();
+		cboBuscar.setBounds(517, 11, 86, 20);
+		contentPane.add(cboBuscar);
+		cboBuscar.addActionListener(this);
+		cboBuscar.setEnabled(false);
+		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Apellido", "Nombre", "DNI"}));
+		
+		txtNombre = new JTextField();
+		txtNombre.setForeground(new Color(255, 255, 255));
+		txtNombre.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtNombre.setBounds(554, 145, 117, 23);
+		contentPane.add(txtNombre);
+		txtNombre.addKeyListener(this);
+		txtNombre.setEditable(false);
+		txtNombre.setColumns(10);
+		txtNombre.setBorder(null);
+		txtNombre.setOpaque(false);
+		
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setForeground(new Color(255, 255, 255));
+		lblNombre.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		lblNombre.setBounds(554, 123, 117, 23);
+		contentPane.add(lblNombre);
+		
+		txtApellido = new JTextField();
+		txtApellido.setForeground(new Color(255, 255, 255));
+		txtApellido.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtApellido.setBounds(554, 213, 117, 20);
+		contentPane.add(txtApellido);
+		txtApellido.addKeyListener(this);
+		txtApellido.setEditable(false);
+		txtApellido.setColumns(10);
+		txtApellido.setBorder(null);
+		txtApellido.setOpaque(false);
+		
+		lblApellido = new JLabel("Apellido");
+		lblApellido.setForeground(new Color(255, 255, 255));
+		lblApellido.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		lblApellido.setBounds(554, 189, 117, 23);
+		contentPane.add(lblApellido);
+		
+		txtDNI = new JTextField();
+		txtDNI.setForeground(new Color(255, 255, 255));
+		txtDNI.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtDNI.setBounds(554, 278, 117, 20);
+		contentPane.add(txtDNI);
+		txtDNI.addKeyListener(this);
+		txtDNI.setEditable(false);
+		txtDNI.setColumns(10);
+		txtDNI.setBorder(null);
+		txtDNI.setOpaque(false);
+		
+		
+		lblDni = new JLabel("DNI");
+		lblDni.setForeground(new Color(255, 255, 255));
+		lblDni.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		lblDni.setBounds(554, 244, 117, 23);
+		contentPane.add(lblDni);
+		
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setForeground(new Color(255, 255, 255));
+		txtCodigo.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtCodigo.setBounds(554, 64, 117, 23);
+		contentPane.add(txtCodigo);
+		txtCodigo.addKeyListener(this);
+		txtCodigo.setEditable(false);
+		txtCodigo.setColumns(10);
+		txtCodigo.setBorder(null);
+		txtCodigo.setOpaque(false);
+		
+		lblCodigo = new JLabel("codigo");
+		lblCodigo.setForeground(new Color(255, 255, 255));
+		lblCodigo.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		lblCodigo.setBounds(554, 42, 117, 23);
+		contentPane.add(lblCodigo);
+		
+		lblTelefono = new JLabel("Telefono");
+		lblTelefono.setForeground(new Color(255, 255, 255));
+		lblTelefono.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		lblTelefono.setBounds(554, 309, 117, 23);
+		contentPane.add(lblTelefono);
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setForeground(new Color(255, 255, 255));
+		txtTelefono.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtTelefono.setBounds(554, 331, 114, 23);
+		contentPane.add(txtTelefono);
+		txtTelefono.addKeyListener(this);
+		txtTelefono.setEditable(false);
+		txtTelefono.setColumns(10);
+		txtTelefono.setBorder(null);
+		txtTelefono.setOpaque(false);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 99, 444, 371);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
 		table.setModel(modelo);
 		
-		lblCama = new JLabel("Cama");
-		lblCama.setBounds(41, 80, 46, 14);
-		contentPane.add(lblCama);
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(Paciente.class.getResource("/img/key.png")));
+		label.setBounds(517, 49, 35, 50);
+		contentPane.add(label);
 		
-		lblPaciente = new JLabel("Paciente");
-		lblPaciente.setBounds(41, 123, 46, 14);
-		contentPane.add(lblPaciente);
+		LineCodigo = new JSeparator();
+		LineCodigo.setBounds(517, 94, 160, 2);
+		contentPane.add(LineCodigo);
 		
-		lblMedicina = new JLabel("Medicina");
-		lblMedicina.setBounds(41, 182, 46, 14);
-		contentPane.add(lblMedicina);
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Paciente.class.getResource("/img/name.png")));
+		label_1.setBounds(517, 128, 35, 50);
+		contentPane.add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(Paciente.class.getResource("/img/apellido.png")));
+		label_2.setBounds(517, 195, 35, 50);
+		contentPane.add(label_2);
+		
+		label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/img/dni.png")));
+		label_3.setBounds(517, 256, 35, 50);
+		contentPane.add(label_3);
+		
+		label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon(Paciente.class.getResource("/img/phpmp.png")));
+		label_4.setBounds(517, 318, 35, 50);
+		contentPane.add(label_4);
+		
+		separator = new JSeparator();
+		separator.setBounds(517, 176, 160, 2);
+		contentPane.add(separator);
+		
+		separator_1 = new JSeparator();
+		separator_1.setBounds(517, 243, 160, 2);
+		contentPane.add(separator_1);
+		
+		separator_2 = new JSeparator();
+		separator_2.setBounds(517, 298, 160, 2);
+		contentPane.add(separator_2);
+		
+		separator_3 = new JSeparator();
+		separator_3.setBounds(517, 362, 160, 2);
+		contentPane.add(separator_3);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(340, 42, 129, 46);
+		contentPane.add(btnEliminar);
+		
+		
+		lblGrabar = new JLabel("Grabar");
+		lblGrabar.addMouseListener(this);
+		lblGrabar.setIcon(new ImageIcon(Paciente.class.getResource("/img/save.png")));
+		lblGrabar.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+		lblGrabar.setForeground(new Color(255, 255, 255));
+		lblGrabar.setBackground(new Color(231, 96, 90));
+		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGrabar.setBounds(517, 456, 174, 41);
+		lblGrabar.setOpaque(true);
+		contentPane.add(lblGrabar);
+		
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(36, 26, 46, 14);
+		contentPane.add(lblNewLabel);
+		
+		label_5 = new JLabel("New label");
+		label_5.setBounds(126, 39, 46, 14);
+		contentPane.add(label_5);
+		
+		label_6 = new JLabel("New label");
+		label_6.setBounds(214, 39, 46, 14);
+		contentPane.add(label_6);
+		
+		label_7 = new JLabel("New label");
+		label_7.setBounds(335, 14, 46, 14);
+		contentPane.add(label_7);
+		
+		label_8 = new JLabel("New label");
+		label_8.setBounds(79, 456, 46, 14);
+		contentPane.add(label_8);
+		
+		label_9 = new JLabel("New label");
+		label_9.setBounds(167, 456, 46, 14);
+		contentPane.add(label_9);
+		btnIngresar.addActionListener(this);
+		btnConsultar.addActionListener(this);
+		btnModificar.addActionListener(this);
+		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
 	private JScrollPane scrollPane;
 	private JTable table;
+	private JLabel label;
+	private JSeparator LineCodigo;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JLabel label_4;
+	private JSeparator separator;
+	private JSeparator separator_1;
+	private JSeparator separator_2;
+	private JSeparator separator_3;
+	private JButton btnEliminar;
+	private JLabel lblGrabar;
+	private JLabel lblNewLabel;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JLabel label_7;
+	private JLabel label_8;
+	private JLabel label_9;
 	private void listar(){
 		modelo.setRowCount(0);
 				
@@ -314,7 +438,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener {
 		
 	}
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		
+		setBounds(100, 100, 779, 520);
 	}
 	
 	protected void actionPerformedBtnGrabar(ActionEvent arg0) {
@@ -371,5 +495,22 @@ public class Paciente extends JFrame implements ActionListener, KeyListener {
 	}
 	protected void keyTypedTxtNombre(KeyEvent arg0) {
 		Validaciones.soloLetras(arg0, txtNombre, 60);
+	}
+	public void mouseClicked(MouseEvent arg0) {
+	}
+	public void mouseEntered(MouseEvent arg0) {
+		if (arg0.getSource() == lblGrabar) {
+			mouseEnteredLblGrabar(arg0);
+		}
+	}
+	public void mouseExited(MouseEvent arg0) {
+		lblGrabar.setBackground(new Color(231, 96, 90));
+	}
+	public void mousePressed(MouseEvent arg0) {
+	}
+	public void mouseReleased(MouseEvent arg0) {
+	}
+	protected void mouseEnteredLblGrabar(MouseEvent arg0) {
+		lblGrabar.setBackground(new Color(154, 65, 60));
 	}
 }
