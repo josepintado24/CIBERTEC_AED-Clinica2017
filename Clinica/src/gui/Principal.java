@@ -78,7 +78,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 					
 					Principal frame = new Principal();
 					frame.setVisible(true);
-					frame.setVisible(true);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -207,7 +206,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		
 		btnNewButton = new JButton((String) null);
 		btnNewButton.setSelectedIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
-		btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
+		//btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
 		btnNewButton.setBorder(null);
 		btnNewButton.setIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
 		btnNewButton.setContentAreaFilled(false);
