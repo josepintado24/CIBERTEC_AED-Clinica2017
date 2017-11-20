@@ -261,7 +261,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		contentPane.add(separator_3);
 		
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(340, 42, 129, 46);
+		btnEliminar.setBounds(340, 61, 129, 27);
 		contentPane.add(btnEliminar);
 		
 		
@@ -276,21 +276,35 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblGrabar.setOpaque(true);
 		contentPane.add(lblGrabar);
 		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(36, 26, 46, 14);
-		contentPane.add(lblNewLabel);
+		lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setIcon(new ImageIcon(Paciente.class.getResource("/img/edit.png")));
+		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblModificar.setForeground(new Color(255, 255, 255));
+		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblModificar.setBounds(10, 26, 117, 27);
+		contentPane.add(lblModificar);
 		
-		label_5 = new JLabel("New label");
-		label_5.setBounds(126, 39, 46, 14);
-		contentPane.add(label_5);
+		lblConsultar = new JLabel("CONSULTAR");
+		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
+		lblConsultar.setForeground(new Color(255, 255, 255));
+		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblConsultar.setBounds(142, 26, 117, 27);
+		contentPane.add(lblConsultar);
 		
-		label_6 = new JLabel("New label");
-		label_6.setBounds(214, 39, 46, 14);
-		contentPane.add(label_6);
+		lblIngresar = new JLabel("INGRESAR");
+		lblIngresar.setIcon(new ImageIcon(Paciente.class.getResource("/img/ingresar.png")));
+		lblIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblIngresar.setForeground(new Color(255, 255, 255));
+		lblIngresar.setBackground(new Color(255, 255, 255));
+		lblIngresar.setBounds(279, 26, 117, 27);
+		contentPane.add(lblIngresar);
 		
-		label_7 = new JLabel("New label");
-		label_7.setBounds(335, 14, 46, 14);
-		contentPane.add(label_7);
+		lblEliminar = new JLabel("ELIMINAR");
+		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblEliminar.setForeground(new Color(255, 255, 255));
+		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
+		lblEliminar.setBounds(397, 26, 110, 24);
+		contentPane.add(lblEliminar);
 		
 		label_8 = new JLabel("New label");
 		label_8.setBounds(79, 456, 46, 14);
@@ -319,10 +333,10 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JSeparator separator_3;
 	private JButton btnEliminar;
 	private JLabel lblGrabar;
-	private JLabel lblNewLabel;
-	private JLabel label_5;
-	private JLabel label_6;
-	private JLabel label_7;
+	private JLabel lblModificar;
+	private JLabel lblConsultar;
+	private JLabel lblIngresar;
+	private JLabel lblEliminar;
 	private JLabel label_8;
 	private JLabel label_9;
 	private void listar(){
