@@ -44,11 +44,6 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JTextField txtNombre;
 	private JTextField txtTelefono;
 	private JTextField txtDNI;
-	private JButton btnIngresar;
-	private JButton btnConsultar;
-	private JButton btnModificar;
-	private JButton btnGrabar;
-	private JButton btnCancelar;
 	private JComboBox cboBuscar;
 	private DefaultTableModel modelo;
 
@@ -74,8 +69,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	public Paciente() {
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 823, 563);
+		setBounds(100, 100, 928, 699);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(0, 128, 128));
 		contentPane.setBackground(new Color(0, 66, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,194 +83,22 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		modelo.addColumn("TELEFONO");
 		modelo.addColumn("DNI");
 		
-		btnGrabar = new JButton("Aceptar");
-		btnGrabar.setBounds(321, 393, 160, 23);
-		contentPane.add(btnGrabar);
-		btnGrabar.addActionListener(this);
-		btnGrabar.setEnabled(false);
-		
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(321, 427, 160, 23);
-		contentPane.add(btnCancelar);
-		btnCancelar.addActionListener(this);
-		btnCancelar.setEnabled(false);
-		
-		btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(38, 393, 89, 23);
-		contentPane.add(btnModificar);
-		
-		btnConsultar = new JButton("Consultar");
-		btnConsultar.setBounds(137, 393, 89, 23);
-		contentPane.add(btnConsultar);
-		
-		
-		
-		btnIngresar = new JButton("Ingresar");
-		btnIngresar.setBounds(38, 427, 89, 23);
-		contentPane.add(btnIngresar);
-		
 		cboBuscar = new JComboBox();
-		cboBuscar.setBounds(137, 463, 86, 20);
+		cboBuscar.setForeground(new Color(0, 0, 128));
+		cboBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		cboBuscar.setBounds(544, 19, 142, 27);
 		contentPane.add(cboBuscar);
 		cboBuscar.addActionListener(this);
 		cboBuscar.setEnabled(false);
-		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Apellido", "Nombre", "DNI"}));
-		
-		txtNombre = new JTextField();
-		txtNombre.setForeground(new Color(255, 255, 255));
-		txtNombre.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
-		txtNombre.setBounds(583, 145, 169, 23);
-		contentPane.add(txtNombre);
-		txtNombre.addKeyListener(this);
-		txtNombre.setEditable(false);
-		txtNombre.setColumns(10);
-		txtNombre.setBorder(null);
-		txtNombre.setOpaque(false);
-		
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setForeground(new Color(255, 255, 255));
-		lblNombre.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
-		lblNombre.setBounds(583, 123, 117, 23);
-		contentPane.add(lblNombre);
-		
-		txtApellido = new JTextField();
-		txtApellido.setForeground(new Color(255, 255, 255));
-		txtApellido.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
-		txtApellido.setBounds(583, 213, 169, 20);
-		contentPane.add(txtApellido);
-		txtApellido.addKeyListener(this);
-		txtApellido.setEditable(false);
-		txtApellido.setColumns(10);
-		txtApellido.setBorder(null);
-		txtApellido.setOpaque(false);
-		
-		lblApellido = new JLabel("Apellido");
-		lblApellido.setForeground(new Color(255, 255, 255));
-		lblApellido.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
-		lblApellido.setBounds(583, 189, 117, 23);
-		contentPane.add(lblApellido);
-		
-		txtDNI = new JTextField();
-		txtDNI.setForeground(new Color(255, 255, 255));
-		txtDNI.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
-		txtDNI.setBounds(583, 278, 169, 20);
-		contentPane.add(txtDNI);
-		txtDNI.addKeyListener(this);
-		txtDNI.setEditable(false);
-		txtDNI.setColumns(10);
-		txtDNI.setBorder(null);
-		txtDNI.setOpaque(false);
-		
-		
-		lblDni = new JLabel("DNI");
-		lblDni.setForeground(new Color(255, 255, 255));
-		lblDni.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
-		lblDni.setBounds(583, 244, 117, 23);
-		contentPane.add(lblDni);
-		
-		
-		txtCodigo = new JTextField();
-		txtCodigo.setForeground(new Color(255, 255, 255));
-		txtCodigo.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
-		txtCodigo.setBounds(583, 64, 169, 23);
-		contentPane.add(txtCodigo);
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setEditable(false);
-		txtCodigo.setColumns(10);
-		txtCodigo.setBorder(null);
-		txtCodigo.setOpaque(false);
-		
-		lblCodigo = new JLabel("codigo");
-		lblCodigo.setForeground(new Color(255, 255, 255));
-		lblCodigo.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
-		lblCodigo.setBounds(583, 42, 117, 23);
-		contentPane.add(lblCodigo);
-		
-		lblTelefono = new JLabel("Telefono");
-		lblTelefono.setForeground(new Color(255, 255, 255));
-		lblTelefono.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
-		lblTelefono.setBounds(583, 309, 117, 23);
-		contentPane.add(lblTelefono);
-		
-		txtTelefono = new JTextField();
-		txtTelefono.setForeground(new Color(255, 255, 255));
-		txtTelefono.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
-		txtTelefono.setBounds(583, 331, 169, 23);
-		contentPane.add(txtTelefono);
-		txtTelefono.addKeyListener(this);
-		txtTelefono.setEditable(false);
-		txtTelefono.setColumns(10);
-		txtTelefono.setBorder(null);
-		txtTelefono.setOpaque(false);
+		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido", "DNI"}));
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 99, 497, 283);
+		scrollPane.setBounds(10, 99, 515, 482);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(modelo);
-		
-		label = new JLabel("");
-		label.setIcon(new ImageIcon(Paciente.class.getResource("/img/key.png")));
-		label.setBounds(546, 49, 35, 50);
-		contentPane.add(label);
-		
-		LineCodigo = new JSeparator();
-		LineCodigo.setBounds(546, 94, 206, 2);
-		contentPane.add(LineCodigo);
-		
-		label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Paciente.class.getResource("/img/name.png")));
-		label_1.setBounds(546, 128, 35, 50);
-		contentPane.add(label_1);
-		
-		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(Paciente.class.getResource("/img/apellido.png")));
-		label_2.setBounds(546, 195, 35, 50);
-		contentPane.add(label_2);
-		
-		label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/img/dni.png")));
-		label_3.setBounds(546, 256, 35, 50);
-		contentPane.add(label_3);
-		
-		label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon(Paciente.class.getResource("/img/phpmp.png")));
-		label_4.setBounds(546, 318, 35, 50);
-		contentPane.add(label_4);
-		
-		separator = new JSeparator();
-		separator.setBounds(546, 176, 206, 2);
-		contentPane.add(separator);
-		
-		separator_1 = new JSeparator();
-		separator_1.setBounds(546, 243, 206, 2);
-		contentPane.add(separator_1);
-		
-		separator_2 = new JSeparator();
-		separator_2.setBounds(546, 298, 206, 2);
-		contentPane.add(separator_2);
-		
-		separator_3 = new JSeparator();
-		separator_3.setBounds(546, 362, 206, 2);
-		contentPane.add(separator_3);
-		
-		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(147, 425, 129, 27);
-		contentPane.add(btnEliminar);
-		
-		
-		lblGrabar = new JLabel("Grabar");
-		lblGrabar.addMouseListener(this);
-		lblGrabar.setIcon(new ImageIcon(Paciente.class.getResource("/img/save.png")));
-		lblGrabar.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
-		lblGrabar.setForeground(new Color(255, 255, 255));
-		lblGrabar.setBackground(new Color(231, 96, 90));
-		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGrabar.setBounds(546, 456, 206, 41);
-		lblGrabar.setOpaque(true);
-		contentPane.add(lblGrabar);
 		
 		lblModificar = new JLabel("MODIFICAR");
 		lblModificar.addMouseListener(this);
@@ -282,7 +106,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModificar.setBounds(269, 26, 117, 27);
+		lblModificar.setBounds(269, 11, 117, 42);
 		contentPane.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
@@ -290,7 +114,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblConsultar.setBounds(137, 26, 117, 27);
+		lblConsultar.setBounds(137, 11, 117, 42);
 		contentPane.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
@@ -299,7 +123,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setBackground(new Color(255, 255, 255));
-		lblIngresar.setBounds(10, 26, 117, 27);
+		lblIngresar.setBounds(10, 11, 117, 42);
 		contentPane.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
@@ -307,43 +131,200 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
-		lblEliminar.setBounds(397, 27, 110, 24);
+		lblEliminar.setBounds(397, 11, 110, 40);
 		contentPane.add(lblEliminar);
 		
+		panel = new JPanel();
+		panel.setBackground(new Color(0, 66, 102));
+		panel.setBounds(550, 57, 304, 524);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(86, 125, 169, 23);
+		panel.add(txtNombre);
+		txtNombre.setForeground(new Color(255, 255, 255));
+		txtNombre.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtNombre.addKeyListener(this);
+		txtNombre.setEditable(false);
+		txtNombre.setColumns(10);
+		txtNombre.setBorder(null);
+		txtNombre.setOpaque(false);
+		
+		lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(49, 91, 117, 23);
+		panel.add(lblNombre);
+		lblNombre.setForeground(new Color(255, 255, 255));
+		lblNombre.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		
+		txtApellido = new JTextField();
+		txtApellido.setBounds(86, 193, 169, 20);
+		panel.add(txtApellido);
+		txtApellido.setForeground(new Color(255, 255, 255));
+		txtApellido.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtApellido.addKeyListener(this);
+		txtApellido.setEditable(false);
+		txtApellido.setColumns(10);
+		txtApellido.setBorder(null);
+		txtApellido.setOpaque(false);
+		
+		lblApellido = new JLabel("Apellido");
+		lblApellido.setBounds(49, 159, 117, 23);
+		panel.add(lblApellido);
+		lblApellido.setForeground(new Color(255, 255, 255));
+		lblApellido.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		
+		txtDNI = new JTextField();
+		txtDNI.setBounds(86, 247, 169, 20);
+		panel.add(txtDNI);
+		txtDNI.setForeground(new Color(255, 255, 255));
+		txtDNI.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtDNI.addKeyListener(this);
+		txtDNI.setEditable(false);
+		txtDNI.setColumns(10);
+		txtDNI.setBorder(null);
+		txtDNI.setOpaque(false);
+		
+		
+		lblDni = new JLabel("DNI");
+		lblDni.setBounds(49, 224, 117, 23);
+		panel.add(lblDni);
+		lblDni.setForeground(new Color(255, 255, 255));
+		lblDni.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		
+		
+		txtCodigo = new JTextField();
+		txtCodigo.setEditable(false);
+		txtCodigo.setBounds(86, 49, 169, 23);
+		panel.add(txtCodigo);
+		txtCodigo.setForeground(new Color(255, 255, 255));
+		txtCodigo.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtCodigo.addKeyListener(this);
+		txtCodigo.setColumns(10);
+		txtCodigo.setBorder(null);
+		txtCodigo.setOpaque(false);
+		
+		lblCodigo = new JLabel("codigo");
+		lblCodigo.setBounds(49, 15, 117, 23);
+		panel.add(lblCodigo);
+		lblCodigo.setForeground(new Color(255, 255, 255));
+		lblCodigo.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		
+		
+		lblTelefono = new JLabel("Telefono");
+		lblTelefono.setBounds(49, 278, 117, 23);
+		panel.add(lblTelefono);
+		lblTelefono.setForeground(new Color(255, 255, 255));
+		lblTelefono.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(86, 311, 169, 23);
+		panel.add(txtTelefono);
+		txtTelefono.setForeground(new Color(255, 255, 255));
+		txtTelefono.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 18));
+		txtTelefono.addKeyListener(this);
+		txtTelefono.setEditable(false);
+		txtTelefono.setColumns(10);
+		txtTelefono.setBorder(null);
+		txtTelefono.setOpaque(false);
+		
+		iconCodigo = new JLabel("");
+		iconCodigo.setBounds(49, 34, 35, 50);
+		panel.add(iconCodigo);
+		iconCodigo.setIcon(new ImageIcon(Paciente.class.getResource("/img/key.png")));
+		
+		LineCodigo = new JSeparator();
+		LineCodigo.setBounds(49, 79, 206, 2);
+		panel.add(LineCodigo);
+		
+		iconNombre = new JLabel("");
+		iconNombre.setBounds(49, 108, 35, 50);
+		panel.add(iconNombre);
+		iconNombre.setIcon(new ImageIcon(Paciente.class.getResource("/img/name.png")));
+		
+		iconApellido = new JLabel("");
+		iconApellido.setBounds(49, 175, 35, 50);
+		panel.add(iconApellido);
+		iconApellido.setIcon(new ImageIcon(Paciente.class.getResource("/img/apellido.png")));
+		
+		iconDni = new JLabel("");
+		iconDni.setBounds(49, 237, 35, 50);
+		panel.add(iconDni);
+		iconDni.setIcon(new ImageIcon(Paciente.class.getResource("/img/dni.png")));
+		
+		iconTelefono = new JLabel("");
+		iconTelefono.setBounds(49, 298, 35, 50);
+		panel.add(iconTelefono);
+		iconTelefono.setIcon(new ImageIcon(Paciente.class.getResource("/img/phpmp.png")));
+		
+		lineNombre = new JSeparator();
+		lineNombre.setBounds(49, 156, 206, 2);
+		panel.add(lineNombre);
+		
+		lineApellido = new JSeparator();
+		lineApellido.setBounds(49, 223, 206, 2);
+		panel.add(lineApellido);
+		
+		lineDni = new JSeparator();
+		lineDni.setBounds(49, 278, 206, 2);
+		panel.add(lineDni);
+		
+		lineTelefono = new JSeparator();
+		lineTelefono.setBounds(49, 342, 206, 2);
+		panel.add(lineTelefono);
+		
 		lblAgregar = new JLabel("Agregar");
+		lblAgregar.setBounds(49, 355, 206, 39);
+		panel.add(lblAgregar);
+		lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAgregar.addMouseListener(this);
 		lblAgregar.setIcon(new ImageIcon(Paciente.class.getResource("/img/adelante.png")));
 		lblAgregar.setForeground(new Color(255, 255, 255));
 		lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblAgregar.setBounds(599, 375, 101, 23);
-		contentPane.add(lblAgregar);
 		
 		lblCancelar = new JLabel("Cancelar");
+		lblCancelar.setBounds(49, 405, 206, 39);
+		panel.add(lblCancelar);
+		lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCancelar.addMouseListener(this);
 		lblCancelar.setIcon(new ImageIcon(Paciente.class.getResource("/img/atras.png")));
 		lblCancelar.setForeground(new Color(255, 255, 255));
 		lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCancelar.setBounds(599, 425, 101, 23);
-		contentPane.add(lblCancelar);
-		btnIngresar.addActionListener(this);
-		btnConsultar.addActionListener(this);
-		btnModificar.addActionListener(this);
+		
+		
+		lblGrabar = new JLabel("Grabar");
+		lblGrabar.setBounds(49, 472, 206, 41);
+		panel.add(lblGrabar);
+		lblGrabar.addMouseListener(this);
+		lblGrabar.setIcon(new ImageIcon(Paciente.class.getResource("/img/save.png")));
+		lblGrabar.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+		lblGrabar.setForeground(new Color(255, 255, 255));
+		lblGrabar.setBackground(new Color(231, 96, 90));
+		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGrabar.setOpaque(true);
+		
+		lblBuscar = new JLabel("BUSCAR");
+		lblBuscar.setIcon(new ImageIcon(Paciente.class.getResource("/img/Lupa.png")));
+		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBuscar.setForeground(Color.WHITE);
+		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblBuscar.setBounds(696, 13, 206, 39);
+		contentPane.add(lblBuscar);
 		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
 	private JScrollPane scrollPane;
 	private JTable table;
-	private JLabel label;
+	private JLabel iconCodigo;
 	private JSeparator LineCodigo;
-	private JLabel label_1;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel label_4;
-	private JSeparator separator;
-	private JSeparator separator_1;
-	private JSeparator separator_2;
-	private JSeparator separator_3;
-	private JButton btnEliminar;
+	private JLabel iconNombre;
+	private JLabel iconApellido;
+	private JLabel iconDni;
+	private JLabel iconTelefono;
+	private JSeparator lineNombre;
+	private JSeparator lineApellido;
+	private JSeparator lineDni;
+	private JSeparator lineTelefono;
 	private JLabel lblGrabar;
 	private JLabel lblModificar;
 	private JLabel lblConsultar;
@@ -351,6 +332,8 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JLabel lblEliminar;
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
+	private JPanel panel;
+	private JLabel lblBuscar;
 	private void listar(){
 		modelo.setRowCount(0);
 				
@@ -369,34 +352,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		if (arg0.getSource() == cboBuscar) {
 			actionPerformedCboBuscar(arg0);
 		}
-		if (arg0.getSource() == btnCancelar) {
-			actionPerformedBtnCancelar(arg0);
-		}
-		if (arg0.getSource() == btnGrabar) {
-			actionPerformedBtnGrabar(arg0);
-		}
-		if (arg0.getSource() == btnModificar) {
-			actionPerformedBtnModificar(arg0);
-			btnConsultar.setEnabled(false);
-			btnIngresar.setEnabled(false);
-			btnGrabar.setEnabled(true);
-			btnCancelar.setEnabled(true);
-			editableTrue();
 		
-		}
-		if (arg0.getSource() == btnConsultar) {
-			actionPerformedBtnConsultar(arg0);
-			btnModificar.setEnabled(false);
-			btnIngresar.setEnabled(false);
-			btnCancelar.setEnabled(true);
-		}
-		if (arg0.getSource() == btnIngresar) {
-			actionPerformedBtnIngresar(arg0);
-			btnConsultar.setEnabled(false);
-			btnModificar.setEnabled(false);
-			btnGrabar.setEnabled(true);
-			btnCancelar.setEnabled(true);
-		}
 	}
 	private int comboBuscar(){
 		return cboBuscar.getSelectedIndex();
@@ -404,29 +360,36 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private void BuscarTipo( int i){
 		switch (i){
 		case 0:
-			txtCodigo.setEditable(true);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(false);
 			
+			noVisibleCodigo();
+			visibleNombre();
+			visibleApellido();
+			visibleDni();
+			visibleTelefono();
 			break;
 		case 1:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(true);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(false);
+			
+			visibleCodigo();
+			noVisibleNombre();
+			visibleApellido();
+			visibleDni();
+			visibleTelefono();
 			break;
 		case 2:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(true);
-			txtDNI.setEditable(false);
+			
+			visibleCodigo();
+			visibleNombre();
+			noVisibleApellido();
+			visibleDni();
+			visibleTelefono();
 			break;
 		case 3:
-			txtCodigo.setEditable(false);
-			txtApellido.setEditable(false);
-			txtNombre.setEditable(false);
-			txtDNI.setEditable(true);
+			
+			visibleCodigo();
+			visibleNombre();
+			visibleApellido();
+			noVisibleDni();
+			visibleTelefono();
 			break;
 		}
 		
@@ -434,7 +397,8 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 	}
 	
-	private void editableTrue(){
+	/*private void editableTrue(){
+		
 		txtCodigo.setEditable(true);
 		txtDNI.setEditable(true);
 		txtApellido.setEditable(true);
@@ -447,39 +411,79 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		txtApellido.setEditable(false);
 		txtNombre.setEditable(false);
 		txtTelefono.setEditable(false);
-		btnGrabar.setEnabled(false);
-		btnCancelar.setEnabled(false);
-		btnConsultar.setEnabled(true);
-		btnModificar.setEnabled(true);
-		btnIngresar.setEnabled(true);
+		
 		cboBuscar.setEnabled(false);
+	}*/
+	private void visibleCodigo(){
+		txtCodigo.setVisible(false);
+		lblCodigo.setVisible(false);
+		LineCodigo.setVisible(false);
+		iconCodigo.setVisible(false);
+	}
+	private void visibleNombre(){
+		txtNombre.setVisible(false);
+		lblNombre.setVisible(false);
+		lineNombre.setVisible(false);
+		iconNombre.setVisible(false);
+	}
+	private void visibleApellido(){
+		txtApellido.setVisible(false);
+		lblApellido.setVisible(false);
+		lineApellido.setVisible(false);
+		iconApellido.setVisible(false);
+	}
+	private void visibleDni(){
+		txtDNI.setVisible(false);
+		lblDni.setVisible(false);
+		lineDni.setVisible(false);
+		iconDni.setVisible(false);
+	}
+	private void visibleTelefono(){
+		txtTelefono.setVisible(false);
+		lblTelefono.setVisible(false);
+		lineTelefono.setVisible(false);
+		iconTelefono.setVisible(false);
 	}
 	
-	protected void actionPerformedBtnIngresar(ActionEvent arg0) {
-		editableTrue();
-		
+	////////
+	private void noVisibleCodigo(){
+		txtCodigo.setVisible(true);
+		txtCodigo.setEditable(true);
+		lblCodigo.setVisible(true);
+		LineCodigo.setVisible(true);
+		iconCodigo.setVisible(true);
+	}
+	private void noVisibleNombre(){
+		txtNombre.setVisible(true);
+		txtNombre.setEditable(true);
+		lblNombre.setVisible(true);
+		lineNombre.setVisible(true);
+		iconNombre.setVisible(true);
+	}
+	private void noVisibleApellido(){
+		txtApellido.setVisible(true);
+		txtApellido.setEditable(true);
+		lblApellido.setVisible(true);
+		lineApellido.setVisible(true);
+		iconApellido.setVisible(true);
+	}
+	private void noVisibleDni(){
+		txtDNI.setVisible(true);
+		txtDNI.setEditable(true);
+		lblDni.setVisible(true);
+		lineDni.setVisible(true);
+		iconDni.setVisible(true);
+	}
+	private void noVisibleTelefono(){
+		txtTelefono.setVisible(true);
+		txtTelefono.setEditable(true);
+		lblTelefono.setVisible(true);
+		lineTelefono.setVisible(true);
+		iconTelefono.setVisible(true);
 	}
 	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
-		cboBuscar.setEnabled(true);
 		
-	}
-	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		setBounds(100, 100, 779, 520);
-	}
-	
-	protected void actionPerformedBtnGrabar(ActionEvent arg0) {
-		int codigo=Integer.parseInt(txtCodigo.getText());
-		String apellido=txtApellido.getText();
-		String nombre=txtNombre.getText();
-		String telefono=txtTelefono.getText();
-		String dni=txtDNI.getText();
-		Pacientes objap=new Pacientes(codigo,apellido,nombre,telefono,dni);
-		ap.adicionar(objap);
-		listar();
 		
-	}
-	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
-		editableFalse();
 	}
 	protected void actionPerformedCboBuscar(ActionEvent arg0) {
 		BuscarTipo( comboBuscar());
@@ -526,11 +530,46 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	
 	
 	
-	
+	//Click en Objeto
 	public void mouseClicked(MouseEvent arg0) {
 		if (arg0.getSource() == lblModificar) {
 			mouseClickedLblModificar(arg0);
 		}
+		if (arg0.getSource() == lblIngresar) {
+			mouseClickedLblIngresar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			mouseClickedLblConsultar(arg0);
+		}
+		if (arg0.getSource() == lblAgregar) {
+			mouseClickedLblAgregar(arg0);
+		}
+	}
+	
+	protected void mouseClickedLblAgregar(MouseEvent arg0) {
+		int codigo=Integer.parseInt(txtCodigo.getText());
+		String apellido=txtApellido.getText();
+		String nombre=txtNombre.getText();
+		String telefono=txtTelefono.getText();
+		String dni=txtDNI.getText();
+		Pacientes objap=new Pacientes(codigo,apellido,nombre,telefono,dni);
+		ap.adicionar(objap);
+		listar();
+	}
+	protected void mouseClickedLblCancelar(MouseEvent arg0) {
+		
+	}
+	protected void mouseClickedLblModificar(MouseEvent arg0) {
+		
+	}
+	
+	protected void mouseClickedLblIngresar(MouseEvent arg0) {
+		setBounds(100, 100, 928, 699);
+		
+		
+	}
+	protected void mouseClickedLblConsultar(MouseEvent arg0) {
+		cboBuscar.setEnabled(true);
 	}
 	//Sobre el Objeto
 	public void mouseEntered(MouseEvent arg0) {
@@ -575,6 +614,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		if (e.getSource() == lblEliminar) {
 			mouseExitedLblEliminar(e);
 		}
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
 		
 		
 	}
@@ -607,36 +652,42 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblEliminar.setBackground(new Color(255,255,255));
 	}
 	
+	protected void mouseExitedLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(false);
+		lblAgregar.setBackground(new Color(255,255,255));
+	}
+	protected void mouseExitedLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(false);
+		lblCancelar.setBackground(new Color(255,255,255));
+	}
+	
 	//METODOS ENTRAR
 	protected void mouseEnteredLblGrabar(MouseEvent arg0) {
 		lblGrabar.setBackground(new Color(168, 1, 25));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(true);
-		lblModificar.setBackground(new Color(154, 65, 60));
+		lblModificar.setBackground(new Color(1, 168, 25));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent arg0) {
 		lblConsultar.setOpaque(true);
-		lblConsultar.setBackground(new Color(154, 65, 60));
+		lblConsultar.setBackground(new Color(1, 168, 25));
 	}
 	
 	protected void mouseEnteredLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(true);
-		lblIngresar.setBackground(new Color(154, 65, 60));
+		lblIngresar.setBackground(new Color(1, 168, 25));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent arg0) {
 		lblEliminar.setOpaque(true);
-		lblEliminar.setBackground(new Color(154, 65, 60));
+		lblEliminar.setBackground(new Color(1, 168, 25));
 	}
 	protected void mouseEnteredLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(true);
+		lblAgregar.setBackground(new Color(0, 171, 152));
 	}
 	protected void mouseEnteredLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(true);
+		lblCancelar.setBackground(new Color(0, 171, 152));
 	}
-	
-	
-	protected void mouseClickedLblModificar(MouseEvent arg0) {
-		
-	}
-	
-	
 }
