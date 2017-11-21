@@ -139,6 +139,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		panel.setBounds(550, 57, 304, 524);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		panel.setVisible(false);
 		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(86, 125, 169, 23);
@@ -397,7 +398,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 	}
 	
-	/*private void editableTrue(){
+	private void editableTrue(){
 		
 		txtCodigo.setEditable(true);
 		txtDNI.setEditable(true);
@@ -413,7 +414,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		txtTelefono.setEditable(false);
 		
 		cboBuscar.setEnabled(false);
-	}*/
+	}
 	private void visibleCodigo(){
 		txtCodigo.setVisible(false);
 		lblCodigo.setVisible(false);
@@ -544,7 +545,11 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		if (arg0.getSource() == lblAgregar) {
 			mouseClickedLblAgregar(arg0);
 		}
+		if (arg0.getSource() == lblCancelar) {
+			mouseClickedLblCancelar(arg0);
+		}
 	}
+	
 	
 	protected void mouseClickedLblAgregar(MouseEvent arg0) {
 		int codigo=Integer.parseInt(txtCodigo.getText());
@@ -557,7 +562,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		listar();
 	}
 	protected void mouseClickedLblCancelar(MouseEvent arg0) {
-		
+		panel.setVisible(false);
 	}
 	protected void mouseClickedLblModificar(MouseEvent arg0) {
 		
@@ -565,6 +570,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
 		setBounds(100, 100, 928, 699);
+		panel.setVisible(true);
+		editableTrue();
+		
 		
 		
 	}
@@ -593,6 +601,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		}
 		if (arg0.getSource()==lblModificar){
 			mouseEnteredLblModificar(arg0);
+		}
+		if (arg0.getSource()==lblBuscar){
+			mouseEnteredLblBuscar(arg0);
 		}
 		
 	}
@@ -689,5 +700,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	protected void mouseEnteredLblCancelar(MouseEvent arg0) {
 		lblCancelar.setOpaque(true);
 		lblCancelar.setBackground(new Color(0, 171, 152));
+	}
+	protected void mouseEnteredLblBuscar(MouseEvent arg0) {
+		lblBuscar.setOpaque(true);
+		lblBuscar.setBackground(new Color(0, 171, 152));
 	}
 }
