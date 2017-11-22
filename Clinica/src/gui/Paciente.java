@@ -69,7 +69,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	public Paciente() {
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 928, 699);
+		setBounds(100, 100, 1085, 699);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 128, 128));
 		contentPane.setBackground(new Color(0, 66, 102));
@@ -86,17 +86,18 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		cboBuscar = new JComboBox();
 		cboBuscar.setForeground(new Color(0, 0, 128));
 		cboBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		cboBuscar.setBounds(544, 19, 142, 27);
+		cboBuscar.setBounds(727, 19, 142, 27);
 		contentPane.add(cboBuscar);
 		cboBuscar.addActionListener(this);
 		cboBuscar.setEnabled(false);
 		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido", "DNI"}));
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 99, 515, 482);
+		scrollPane.setBounds(10, 99, 707, 482);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 		scrollPane.setViewportView(table);
 		table.setModel(modelo);
 		
@@ -106,37 +107,40 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModificar.setBounds(269, 11, 117, 42);
+		lblModificar.setBounds(355, 11, 148, 42);
 		contentPane.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
+		lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultar.addMouseListener(this);
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblConsultar.setBounds(137, 11, 117, 42);
+		lblConsultar.setBounds(182, 11, 148, 42);
 		contentPane.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
+		lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngresar.addMouseListener(this);
 		lblIngresar.setIcon(new ImageIcon(Paciente.class.getResource("/img/ingresar.png")));
 		lblIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setBackground(new Color(255, 255, 255));
-		lblIngresar.setBounds(10, 11, 117, 42);
+		lblIngresar.setBounds(10, 11, 142, 42);
 		contentPane.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
+		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminar.addMouseListener(this);
 		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
-		lblEliminar.setBounds(397, 11, 110, 40);
+		lblEliminar.setBounds(545, 12, 148, 40);
 		contentPane.add(lblEliminar);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 66, 102));
-		panel.setBounds(550, 57, 304, 524);
+		panel.setBounds(743, 99, 304, 524);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -309,7 +313,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBuscar.setForeground(Color.WHITE);
 		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblBuscar.setBounds(696, 13, 206, 39);
+		lblBuscar.setBounds(825, 13, 206, 39);
 		contentPane.add(lblBuscar);
 		
 	}
@@ -405,6 +409,11 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		txtApellido.setEditable(true);
 		txtNombre.setEditable(true);
 		txtTelefono.setEditable(true);
+		noVisibleCodigo();
+		noVisibleNombre();
+		noVisibleApellido();
+		noVisibleDni();
+		noVisibleTelefono();
 	}
 	private void editableFalse(){
 		txtCodigo.setEditable(false);
@@ -488,6 +497,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	protected void actionPerformedCboBuscar(ActionEvent arg0) {
 		BuscarTipo( comboBuscar());
+		panel.setVisible(true);
 	}
 	public void keyPressed(KeyEvent arg0) {
 	}
@@ -569,7 +579,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
-		setBounds(100, 100, 928, 699);
+		//setBounds(100, 100, 928, 699);
 		panel.setVisible(true);
 		editableTrue();
 		
@@ -578,6 +588,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
 		cboBuscar.setEnabled(true);
+		
 	}
 	//Sobre el Objeto
 	public void mouseEntered(MouseEvent arg0) {
