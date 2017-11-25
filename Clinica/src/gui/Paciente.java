@@ -204,6 +204,8 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setText(""+ap.codigoCorrelativo());
+		
 		txtCodigo.setEditable(false);
 		txtCodigo.setBounds(86, 49, 169, 23);
 		panel.add(txtCodigo);
@@ -585,6 +587,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		Pacientes objap=new Pacientes(codigo,apellido,nombre,telefono,dni);
 		ap.adicionar(objap);
 		listar();
+		txtCodigo.setText(""+ap.codigoCorrelativo());
 	}
 	protected void mouseClickedLblCancelar(MouseEvent arg0) {
 		panel.setVisible(false);
@@ -597,7 +600,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		//setBounds(100, 100, 928, 699);
 		panel.setVisible(true);
 		editableTrue();
-		txtCodigo.setText(""+ap.codigoCorrelativo());
+		
 		
 		
 		
