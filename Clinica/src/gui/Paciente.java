@@ -30,8 +30,13 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
-public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener {
+public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener {
+	
+	
+	
 
 	private JPanel contentPane;
 	private JLabel lblCodigo;
@@ -279,6 +284,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		panel.add(lineTelefono);
 		
 		lblAgregar = new JLabel("Agregar");
+		lblAgregar.addAncestorListener(this);
 		lblAgregar.setBounds(49, 355, 206, 39);
 		panel.add(lblAgregar);
 		lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -352,6 +358,13 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 					};
 					modelo.addRow(fila);
 				}
+	}
+	
+	void limpiar(){
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtDNI.setText("");
+		txtTelefono.setText("");
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == cboBuscar) {
@@ -554,6 +567,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		}
 		if (arg0.getSource() == lblAgregar) {
 			mouseClickedLblAgregar(arg0);
+		
 		}
 		if (arg0.getSource() == lblCancelar) {
 			mouseClickedLblCancelar(arg0);
@@ -562,6 +576,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	
 	
 	protected void mouseClickedLblAgregar(MouseEvent arg0) {
+		
 		int codigo=Integer.parseInt(txtCodigo.getText());
 		String apellido=txtApellido.getText();
 		String nombre=txtNombre.getText();
@@ -582,6 +597,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		//setBounds(100, 100, 928, 699);
 		panel.setVisible(true);
 		editableTrue();
+		txtCodigo.setText(""+ap.codigoCorrelativo());
 		
 		
 		
@@ -638,6 +654,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		}
 		if (e.getSource() == lblAgregar) {
 			mouseExitedLblAgregar(e);
+			limpiar();
 		}
 		if (e.getSource() == lblCancelar) {
 			mouseExitedLblCancelar(e);
@@ -715,5 +732,17 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	protected void mouseEnteredLblBuscar(MouseEvent arg0) {
 		lblBuscar.setOpaque(true);
 		lblBuscar.setBackground(new Color(0, 171, 152));
+	}
+	public void ancestorAdded(AncestorEvent arg0) {
+		if (arg0.getSource() == lblAgregar) {
+			ancestorAddedLblAgregar(arg0);
+		}
+	}
+	public void ancestorMoved(AncestorEvent arg0) {
+	}
+	public void ancestorRemoved(AncestorEvent arg0) {
+	}
+	protected void ancestorAddedLblAgregar(AncestorEvent arg0) {
+
 	}
 }
