@@ -623,6 +623,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblAgregar.setVisible(true);
 		BuscarTipo(0);
 		panel.setVisible(true);
+		lblConsultar.setVisible(false);
+		lblEliminar.setVisible(false);
+		lblIngresar.setVisible(false);
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
