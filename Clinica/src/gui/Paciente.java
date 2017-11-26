@@ -32,6 +32,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
+import java.awt.Cursor;
 
 public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener {
 	
@@ -72,6 +73,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	 * Create the frame.
 	 */
 	public Paciente() {
+		setBackground(Color.DARK_GRAY);
+		setResizable(false);
+		setForeground(Color.WHITE);
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1085, 699);
@@ -107,6 +111,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		table.setModel(modelo);
 		
 		lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblModificar.addMouseListener(this);
 		lblModificar.setIcon(new ImageIcon(Paciente.class.getResource("/img/edit.png")));
 		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -116,6 +121,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		contentPane.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
+		lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultar.addMouseListener(this);
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
@@ -125,6 +131,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		contentPane.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
+		lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngresar.addMouseListener(this);
 		lblIngresar.setIcon(new ImageIcon(Paciente.class.getResource("/img/ingresar.png")));
@@ -135,6 +142,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		contentPane.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
+		lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminar.addMouseListener(this);
 		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -151,6 +159,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		panel.setVisible(false);
 		
 		txtNombre = new JTextField();
+		txtNombre.setCaretColor(Color.WHITE);
 		txtNombre.setBounds(86, 125, 169, 23);
 		panel.add(txtNombre);
 		txtNombre.setForeground(new Color(255, 255, 255));
@@ -168,6 +177,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblNombre.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
 		
 		txtApellido = new JTextField();
+		txtApellido.setCaretColor(Color.WHITE);
 		txtApellido.setBounds(86, 193, 169, 20);
 		panel.add(txtApellido);
 		txtApellido.setForeground(new Color(255, 255, 255));
@@ -185,6 +195,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblApellido.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
 		
 		txtDNI = new JTextField();
+		txtDNI.setCaretColor(Color.WHITE);
 		txtDNI.setBounds(86, 247, 169, 20);
 		panel.add(txtDNI);
 		txtDNI.setForeground(new Color(255, 255, 255));
@@ -204,6 +215,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 		
 		txtCodigo = new JTextField();
+		txtCodigo.setCaretColor(Color.WHITE);
 		txtCodigo.setText(""+ap.codigoCorrelativo());
 		
 		txtCodigo.setEditable(false);
@@ -230,6 +242,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblTelefono.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 18));
 		
 		txtTelefono = new JTextField();
+		txtTelefono.setCaretColor(Color.WHITE);
 		txtTelefono.setBounds(86, 311, 169, 23);
 		panel.add(txtTelefono);
 		txtTelefono.setForeground(new Color(255, 255, 255));
@@ -286,6 +299,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		panel.add(lineTelefono);
 		
 		lblAgregar = new JLabel("Agregar");
+		lblAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblAgregar.addAncestorListener(this);
 		lblAgregar.setBounds(49, 355, 206, 39);
 		panel.add(lblAgregar);
@@ -296,6 +310,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		lblCancelar = new JLabel("Cancelar");
+		lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblCancelar.setBounds(49, 405, 206, 39);
 		panel.add(lblCancelar);
 		lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -306,6 +321,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 		
 		lblGrabar = new JLabel("Grabar");
+		lblGrabar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblGrabar.setBounds(49, 472, 206, 41);
 		panel.add(lblGrabar);
 		lblGrabar.addMouseListener(this);
@@ -317,6 +333,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblGrabar.setOpaque(true);
 		
 		lblBuscar = new JLabel("BUSCAR");
+		lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblBuscar.setIcon(new ImageIcon(Paciente.class.getResource("/img/Lupa.png")));
 		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBuscar.setForeground(Color.WHITE);
