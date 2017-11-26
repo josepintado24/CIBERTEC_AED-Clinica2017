@@ -33,13 +33,15 @@ import java.awt.event.MouseEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.event.AncestorEvent;
 import java.awt.Cursor;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
 
 public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener {
 	
 	
 	
 
-	private JPanel contentPane;
+	private JPanel JPanel;
 	private JLabel lblCodigo;
 	private JTextField txtCodigo;
 	private JLabel lblApellido;
@@ -73,18 +75,20 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	 * Create the frame.
 	 */
 	public Paciente() {
+		
+		setFocusTraversalPolicyProvider(true);
 		setBackground(Color.DARK_GRAY);
 		setResizable(false);
 		setForeground(Color.WHITE);
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1085, 699);
-		contentPane = new JPanel();
-		contentPane.setForeground(new Color(0, 128, 128));
-		contentPane.setBackground(new Color(0, 66, 102));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		JPanel = new JPanel();
+		JPanel.setForeground(new Color(0, 128, 128));
+		JPanel.setBackground(new Color(0, 66, 102));
+		JPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(JPanel);
+		JPanel.setLayout(null);
 		modelo=new DefaultTableModel();
 		modelo.addColumn("CODIGO");
 		modelo.addColumn("NOMBRE");
@@ -93,17 +97,26 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		modelo.addColumn("DNI");
 		
 		cboBuscar = new JComboBox();
-		cboBuscar.setForeground(new Color(0, 0, 128));
+		cboBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		cboBuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+		cboBuscar.setBorder(null);
+		cboBuscar.setBackground(Color.WHITE);
+		cboBuscar.setForeground(SystemColor.desktop);
 		cboBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cboBuscar.setBounds(727, 19, 142, 27);
-		contentPane.add(cboBuscar);
+		JPanel.add(cboBuscar);
 		cboBuscar.addActionListener(this);
 		cboBuscar.setEnabled(false);
 		cboBuscar.setModel(new DefaultComboBoxModel(new String[] {"Codigo", "Nombre", "Apellido", "DNI"}));
+		cboBuscar.setVisible(false);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 99, 707, 482);
-		contentPane.add(scrollPane);
+		JPanel.add(scrollPane);
 		
 		table = new JTable();
 		table.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
@@ -118,7 +131,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblModificar.setBounds(355, 11, 148, 42);
-		contentPane.add(lblModificar);
+		JPanel.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
 		lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -127,8 +140,8 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblConsultar.setBounds(182, 11, 148, 42);
-		contentPane.add(lblConsultar);
+		lblConsultar.setBounds(188, 11, 148, 42);
+		JPanel.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
 		lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -139,7 +152,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setBackground(new Color(255, 255, 255));
 		lblIngresar.setBounds(10, 11, 142, 42);
-		contentPane.add(lblIngresar);
+		JPanel.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
 		lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -149,12 +162,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
 		lblEliminar.setBounds(545, 12, 148, 40);
-		contentPane.add(lblEliminar);
+		JPanel.add(lblEliminar);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 66, 102));
 		panel.setBounds(743, 99, 304, 524);
-		contentPane.add(panel);
+		JPanel.add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
 		
@@ -332,15 +345,6 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrabar.setOpaque(true);
 		
-		lblBuscar = new JLabel("BUSCAR");
-		lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblBuscar.setIcon(new ImageIcon(Paciente.class.getResource("/img/Lupa.png")));
-		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBuscar.setForeground(Color.WHITE);
-		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblBuscar.setBounds(825, 13, 206, 39);
-		contentPane.add(lblBuscar);
-		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
 	private JScrollPane scrollPane;
@@ -363,7 +367,6 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
 	private JPanel panel;
-	private JLabel lblBuscar;
 	private void listar(){
 		modelo.setRowCount(0);
 				
@@ -530,6 +533,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	protected void actionPerformedCboBuscar(ActionEvent arg0) {
 		BuscarTipo( comboBuscar());
 		panel.setVisible(true);
+		 
 	}
 	public void keyPressed(KeyEvent arg0) {
 	}
@@ -608,22 +612,41 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	protected void mouseClickedLblCancelar(MouseEvent arg0) {
 		panel.setVisible(false);
+		lblModificar.setVisible(true);
+		lblConsultar.setVisible(true);
+		lblEliminar.setVisible(true);
+		lblIngresar.setVisible(true);
 	}
 	protected void mouseClickedLblModificar(MouseEvent arg0) {
-		
+		lblAgregar.setText("Buscar");
+		lblAgregar.setIcon(new ImageIcon(Paciente.class.getResource("/img/Lupa.png")));
+		lblAgregar.setVisible(true);
+		BuscarTipo(0);
+		panel.setVisible(true);
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
-		//setBounds(100, 100, 928, 699);
+		lblAgregar.setText("Agregar");
+		lblAgregar.setIcon(new ImageIcon(Paciente.class.getResource("/img/adelante.png")));
 		panel.setVisible(true);
 		editableTrue();
-		
-		
-		
-		
+		lblModificar.setVisible(false);
+		lblConsultar.setVisible(false);
+		lblEliminar.setVisible(false);
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
+		cboBuscar.setVisible(true);
+		lblAgregar.setText("Buscar");
+		lblAgregar.setIcon(new ImageIcon(Paciente.class.getResource("/img/Lupa.png")));
+		lblAgregar.setVisible(true);
 		cboBuscar.setEnabled(true);
+		lblIngresar.setVisible(false);
+		lblModificar.setVisible(false);
+		lblEliminar.setVisible(false);
+		lblGrabar.setVisible(false);
+		BuscarTipo(0);
+		panel.setVisible(true);
+		
 		
 	}
 	//Sobre el Objeto
@@ -649,9 +672,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		if (arg0.getSource()==lblModificar){
 			mouseEnteredLblModificar(arg0);
 		}
-		if (arg0.getSource()==lblBuscar){
-			mouseEnteredLblBuscar(arg0);
-		}
+		
 		
 	}
 	
@@ -749,10 +770,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblCancelar.setOpaque(true);
 		lblCancelar.setBackground(new Color(0, 171, 152));
 	}
-	protected void mouseEnteredLblBuscar(MouseEvent arg0) {
-		lblBuscar.setOpaque(true);
-		lblBuscar.setBackground(new Color(0, 171, 152));
-	}
+	
 	public void ancestorAdded(AncestorEvent arg0) {
 		if (arg0.getSource() == lblAgregar) {
 			ancestorAddedLblAgregar(arg0);
