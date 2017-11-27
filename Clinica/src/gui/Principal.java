@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
@@ -30,6 +33,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseMotionListener;
 import java.net.URI;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseAdapter;
 
 public class Principal extends JFrame implements MouseListener, ActionListener, MouseMotionListener {
 
@@ -123,7 +128,8 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		}
 	}
 	
-
+	 private int x;
+	 private int y;
 	public Principal() {
 		
 
@@ -139,7 +145,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		jpnlIngreso = new JPanel();
 		jpnlIngreso.setForeground(Color.WHITE);
 		jpnlIngreso.setBackground(Color.WHITE);
-		jpnlIngreso.setBounds(0, 0, 290, 546);
+		jpnlIngreso.setBounds(0, 41, 290, 505);
 		contentPane.add(jpnlIngreso);
 		jpnlIngreso.setLayout(null);
 		
@@ -326,9 +332,25 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(label_8);
 		
 		panel_2 = new JPanel();
+		panel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				x = arg0.getX();
+			    y = arg0.getY();
+			}
+		});
+		panel_2.addMouseMotionListener(new MouseMotionAdapter() {	
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				  Point ubicacion = MouseInfo.getPointerInfo().getLocation();//1
+				    System.out.println("Coordenadas: ("+ubicacion.x+","+ubicacion.y+")");//2
+				    setLocation(ubicacion.x - x, ubicacion.y - y);//3
+				
+			}
+		});
 		panel_2.setForeground(Color.WHITE);
 		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(291, 0, 753, 43);
+		panel_2.setBounds(0, 0, 1044, 43);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -336,15 +358,25 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_9.addMouseListener(this);
 		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_9.setIcon(new ImageIcon(Principal.class.getResource("/image/Minimize_Window_32px.png")));
-		label_9.setBounds(678, 11, 32, 21);
+		label_9.setBounds(969, 11, 32, 21);
 		panel_2.add(label_9);
 		
 		label_10 = new JLabel("");
 		label_10.addMouseListener(this);
 		label_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_10.setIcon(new ImageIcon(Principal.class.getResource("/image/X_32px.png")));
-		label_10.setBounds(711, 11, 32, 21);
+		label_10.setBounds(1002, 11, 32, 21);
 		panel_2.add(label_10);
+		
+		JLabel lblPrincipal = new JLabel("Principal");
+		lblPrincipal.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblPrincipal.setBounds(36, 11, 94, 21);
+		panel_2.add(lblPrincipal);
+		
+		JLabel label_11 = new JLabel("");
+		label_11.setIcon(new ImageIcon(Principal.class.getResource("/image/hospital.png")));
+		label_11.setBounds(10, 11, 16, 21);
+		panel_2.add(label_11);
 		this.setLocationRelativeTo(null);
 	}
 
