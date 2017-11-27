@@ -375,7 +375,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		
 		JLabel label_11 = new JLabel("");
 		label_11.setIcon(new ImageIcon(Principal.class.getResource("/image/hospital.png")));
-		label_11.setBounds(10, 11, 16, 21);
+		label_11.setBounds(10, 11, 21, 21);
 		panel_2.add(label_11);
 		this.setLocationRelativeTo(null);
 	}
