@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.MouseInfo;
 import java.awt.Point;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
@@ -127,10 +128,9 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	
 	 private int x;
 	 private int y;
+	 
 	public Principal() {
 		setResizable(false);
-		
-
 		this.setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1045, 550);
@@ -208,6 +208,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		jpnlIngreso.add(label_2);
 		
 		btnNewButton = new JButton((String) null);
+		btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
 		btnNewButton.setSelectedIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
 		//btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
 		btnNewButton.setBorder(null);
@@ -473,9 +474,12 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		if(e.getSource()== label_5){
 			Paciente inter1= new Paciente();
 			inter1.setVisible(true);
+			inter1.setLocationRelativeTo(null);
+			this.setVisible(false);
+			
 		}
+		
 	}
-
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -492,8 +496,9 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		this.setState(Principal.ICONIFIED);
 	}
 	protected void mouseClickedLabel_10(MouseEvent e) {
+		Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
 		int dialog = JOptionPane.YES_NO_OPTION;
-		int result =JOptionPane.showConfirmDialog(null, "Desea Salir de la ventana Principal","Exit",dialog);
+		int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana Principal?","Exit",dialog,dialog,m);
 		
 		if(result ==0){
 			System.exit(0);

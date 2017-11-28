@@ -18,9 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import javax.swing.border.LineBorder;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JTable;
@@ -41,6 +44,8 @@ import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.ComponentOrientation;
 import java.awt.event.MouseMotionListener;
+import java.awt.Component;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener, MouseMotionListener {
 	
@@ -70,6 +75,8 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 				try {
 					Paciente frame = new Paciente();
 					frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -82,13 +89,10 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	 */
 	 private int x;
 	 private int y;
+	 
 	public Paciente() {
 		setUndecorated(true);
-		
-		setFocusTraversalPolicyProvider(true);
-		setBackground(Color.DARK_GRAY);
 		setResizable(false);
-		setForeground(Color.WHITE);
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1057, 662);
@@ -97,7 +101,6 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		JPanel.setBackground(new Color(0, 66, 102));
 		JPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(JPanel);
-		JPanel.setLayout(null);
 		modelo=new DefaultTableModel();
 		modelo.addColumn("CODIGO");
 		modelo.addColumn("NOMBRE");
@@ -106,17 +109,18 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		modelo.addColumn("DNI");
 		
 		cboBuscar = new JComboBox();
+		cboBuscar.setBounds(737, 71, 142, 27);
 		cboBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			}
 		});
+		JPanel.setLayout(null);
 		cboBuscar.setBorder(null);
 		cboBuscar.setBackground(Color.WHITE);
 		cboBuscar.setForeground(SystemColor.desktop);
 		cboBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		cboBuscar.setBounds(737, 71, 142, 27);
 		JPanel.add(cboBuscar);
 		cboBuscar.addActionListener(this);
 		cboBuscar.setEnabled(false);
@@ -133,26 +137,27 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		table.setModel(modelo);
 		
 		lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setBounds(356, 63, 148, 42);
 		lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblModificar.addMouseListener(this);
 		lblModificar.setIcon(new ImageIcon(Paciente.class.getResource("/img/edit.png")));
 		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModificar.setBounds(356, 63, 148, 42);
 		JPanel.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
+		lblConsultar.setBounds(191, 63, 148, 42);
 		lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConsultar.addMouseListener(this);
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblConsultar.setBounds(191, 63, 148, 42);
 		JPanel.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
+		lblIngresar.setBounds(10, 63, 142, 42);
 		lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngresar.addMouseListener(this);
@@ -160,22 +165,21 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setBackground(new Color(255, 255, 255));
-		lblIngresar.setBounds(10, 63, 142, 42);
 		JPanel.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
+		lblEliminar.setBounds(547, 64, 148, 40);
 		lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminar.addMouseListener(this);
 		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
-		lblEliminar.setBounds(547, 64, 148, 40);
 		JPanel.add(lblEliminar);
 		
 		panel = new JPanel();
+		panel.setBounds(737, 125, 304, 524);
 		panel.setBackground(new Color(0, 66, 102));
-		panel.setBounds(737, 124, 304, 524);
 		JPanel.add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -355,13 +359,14 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblGrabar.setOpaque(true);
 		
 		panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 1057, 42);
+		panel_1.setBackground(Color.WHITE);
 		panel_1.setBorder(null);
 		panel_1.addMouseMotionListener(this);
 		panel_1.addMouseListener(this);
 		JPanel.setForeground(new Color(0, 128, 128));
 		JPanel.setBackground(new Color(0, 66, 102));
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panel_1.setBounds(0, 0, 1061, 42);
 		JPanel.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -377,7 +382,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 		label_1 = new JLabel("");
 		label_1.addMouseListener(this);
-		label_1.setIcon(new ImageIcon(Paciente.class.getResource("/image/x 1.png")));
+		label_1.setIcon(new ImageIcon(Paciente.class.getResource("/image/icons8_Return_32px.png")));
 		label_1.setBounds(1019, 0, 32, 42);
 		panel_1.add(label_1);
 		
@@ -387,9 +392,10 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		
 		label_3 = new JLabel("");
 		label_3.addMouseListener(this);
-		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/image/- 1.png")));
+		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/image/Minimize_Window_32px.png")));
 		label_3.setBounds(977, 0, 32, 42);
 		panel_1.add(label_3);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{JPanel, cboBuscar, scrollPane, table, lblModificar, lblConsultar, lblIngresar, lblEliminar, panel, txtNombre, lblNombre, txtApellido, lblApellido, txtDNI, lblDni, txtCodigo, lblCodigo, lblTelefono, txtTelefono, iconCodigo, LineCodigo, iconNombre, iconApellido, iconDni, iconTelefono, lineNombre, lineApellido, lineDni, lineTelefono, lblAgregar, lblCancelar, lblGrabar, panel_1, lblPaciente, label, label_1, label_2, label_3}));
 		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
@@ -768,7 +774,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	public void mousePressed(MouseEvent arg0) {
 		if (arg0.getSource() == panel_1) {
 			mousePressedPanel_1(arg0);
+			
 		}
+		
 	}
 	public void mouseReleased(MouseEvent arg0) {
 	}
@@ -862,13 +870,20 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		 Point ubicacion = MouseInfo.getPointerInfo().getLocation();
 		    setLocation(ubicacion.x - x, ubicacion.y - y);
 	}
+
 	protected void mouseClickedLabel_1(MouseEvent arg0) {
+		Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
 		int dialog = JOptionPane.YES_NO_OPTION;
-		int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana?","ADVERTENCIA",dialog);
+		int result =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+	
 		
 		if(result ==0){
 			dispose();
+			Principal frame = new Principal();
+			frame.setVisible(true);
 		}
+		
+		
 	}
 	protected void mouseClickedLabel_3(MouseEvent arg0) {
 		this.setState(Principal.ICONIFIED);

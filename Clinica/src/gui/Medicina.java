@@ -64,6 +64,7 @@ public class Medicina extends JFrame {
 	 * Create the frame.
 	 */
 	public Medicina() {
+		setResizable(false);
 		setForeground(Color.LIGHT_GRAY);
 		
 		setTitle("Mantenimiento | Medicina");
@@ -77,7 +78,7 @@ public class Medicina extends JFrame {
 		contentPane.setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(145, 118, 598, 223);
+		scrollPane.setBounds(155, 89, 598, 223);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
