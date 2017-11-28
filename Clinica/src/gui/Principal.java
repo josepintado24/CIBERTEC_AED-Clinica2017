@@ -244,7 +244,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1 = new JPanel();
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(291, 41, 753, 505);
+		panel_1.setBounds(378, 45, 753, 505);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		

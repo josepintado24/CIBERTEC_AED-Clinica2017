@@ -386,16 +386,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		label_1.setBounds(1019, 0, 32, 42);
 		panel_1.add(label_1);
 		
-		label_2 = new JLabel("");
-		label_2.setBounds(1000, 0, 32, 42);
-		panel_1.add(label_2);
-		
 		label_3 = new JLabel("");
 		label_3.addMouseListener(this);
 		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/image/Minimize_Window_32px.png")));
 		label_3.setBounds(977, 0, 32, 42);
 		panel_1.add(label_3);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{JPanel, cboBuscar, scrollPane, table, lblModificar, lblConsultar, lblIngresar, lblEliminar, panel, txtNombre, lblNombre, txtApellido, lblApellido, txtDNI, lblDni, txtCodigo, lblCodigo, lblTelefono, txtTelefono, iconCodigo, LineCodigo, iconNombre, iconApellido, iconDni, iconTelefono, lineNombre, lineApellido, lineDni, lineTelefono, lblAgregar, lblCancelar, lblGrabar, panel_1, lblPaciente, label, label_1, label_2, label_3}));
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{JPanel, cboBuscar, scrollPane, table, lblModificar, lblConsultar, lblIngresar, lblEliminar, panel, txtNombre, lblNombre, txtApellido, lblApellido, txtDNI, lblDni, txtCodigo, lblCodigo, lblTelefono, txtTelefono, iconCodigo, LineCodigo, iconNombre, iconApellido, iconDni, iconTelefono, lineNombre, lineApellido, lineDni, lineTelefono, lblAgregar, lblCancelar, lblGrabar, panel_1, lblPaciente, label, label_1, label_3}));
 		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
@@ -423,7 +419,6 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JLabel lblPaciente;
 	private JLabel label;
 	private JLabel label_1;
-	private JLabel label_2;
 	private JLabel label_3;
 	private void listar(){
 		modelo.setRowCount(0);
@@ -874,7 +869,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	protected void mouseClickedLabel_1(MouseEvent arg0) {
 		Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
 		int dialog = JOptionPane.YES_NO_OPTION;
-		int result =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		int result =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Advertencia",dialog,dialog,m);
 	
 		
 		if(result ==0){
