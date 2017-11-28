@@ -342,9 +342,8 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_2.addMouseMotionListener(new MouseMotionAdapter() {	
 			@Override
 			public void mouseDragged(MouseEvent arg0) {
-				  Point ubicacion = MouseInfo.getPointerInfo().getLocation();//1
-				    System.out.println("Coordenadas: ("+ubicacion.x+","+ubicacion.y+")");//2
-				    setLocation(ubicacion.x - x, ubicacion.y - y);//3
+				  Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+				    setLocation(ubicacion.x - x, ubicacion.y - y);
 				
 			}
 		});
