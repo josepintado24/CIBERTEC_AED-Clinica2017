@@ -13,6 +13,7 @@ import Clases.Pacientes;
 import controlador.ArregloPacientes;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -25,6 +26,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.JTable;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -35,8 +39,10 @@ import javax.swing.event.AncestorEvent;
 import java.awt.Cursor;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
+import java.awt.ComponentOrientation;
+import java.awt.event.MouseMotionListener;
 
-public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener {
+public class Paciente extends JFrame implements ActionListener, KeyListener, MouseListener, AncestorListener, MouseMotionListener {
 	
 	
 	
@@ -74,7 +80,10 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	/**
 	 * Create the frame.
 	 */
+	 private int x;
+	 private int y;
 	public Paciente() {
+		setUndecorated(true);
 		
 		setFocusTraversalPolicyProvider(true);
 		setBackground(Color.DARK_GRAY);
@@ -82,7 +91,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		setForeground(Color.WHITE);
 		setTitle("PACIENTE-MANTENIMIENTO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1085, 699);
+		setBounds(100, 100, 1057, 662);
 		JPanel = new JPanel();
 		JPanel.setForeground(new Color(0, 128, 128));
 		JPanel.setBackground(new Color(0, 66, 102));
@@ -107,7 +116,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		cboBuscar.setBackground(Color.WHITE);
 		cboBuscar.setForeground(SystemColor.desktop);
 		cboBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		cboBuscar.setBounds(727, 19, 142, 27);
+		cboBuscar.setBounds(737, 71, 142, 27);
 		JPanel.add(cboBuscar);
 		cboBuscar.addActionListener(this);
 		cboBuscar.setEnabled(false);
@@ -115,7 +124,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		cboBuscar.setVisible(false);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 99, 707, 482);
+		scrollPane.setBounds(10, 125, 707, 482);
 		JPanel.add(scrollPane);
 		
 		table = new JTable();
@@ -130,7 +139,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModificar.setBounds(355, 11, 148, 42);
+		lblModificar.setBounds(356, 63, 148, 42);
 		JPanel.add(lblModificar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
@@ -140,7 +149,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblConsultar.setIcon(new ImageIcon(Paciente.class.getResource("/img/buscar.png")));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblConsultar.setBounds(188, 11, 148, 42);
+		lblConsultar.setBounds(191, 63, 148, 42);
 		JPanel.add(lblConsultar);
 		
 		lblIngresar = new JLabel("INGRESAR");
@@ -151,7 +160,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblIngresar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setBackground(new Color(255, 255, 255));
-		lblIngresar.setBounds(10, 11, 142, 42);
+		lblIngresar.setBounds(10, 63, 142, 42);
 		JPanel.add(lblIngresar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
@@ -161,12 +170,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblEliminar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(Paciente.class.getResource("/img/tacho.png")));
-		lblEliminar.setBounds(545, 12, 148, 40);
+		lblEliminar.setBounds(547, 64, 148, 40);
 		JPanel.add(lblEliminar);
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(0, 66, 102));
-		panel.setBounds(743, 99, 304, 524);
+		panel.setBounds(737, 124, 304, 524);
 		JPanel.add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -345,6 +354,43 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrabar.setOpaque(true);
 		
+		panel_1 = new JPanel();
+		panel_1.setBorder(null);
+		panel_1.addMouseMotionListener(this);
+		panel_1.addMouseListener(this);
+		JPanel.setForeground(new Color(0, 128, 128));
+		JPanel.setBackground(new Color(0, 66, 102));
+		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel_1.setBounds(0, 0, 1061, 42);
+		JPanel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		lblPaciente = new JLabel("Paciente");
+		lblPaciente.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblPaciente.setBounds(36, 11, 96, 20);
+		panel_1.add(lblPaciente);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(Paciente.class.getResource("/image/paciente2.png")));
+		label.setBounds(10, 11, 16, 20);
+		panel_1.add(label);
+		
+		label_1 = new JLabel("");
+		label_1.addMouseListener(this);
+		label_1.setIcon(new ImageIcon(Paciente.class.getResource("/image/x 1.png")));
+		label_1.setBounds(1019, 0, 32, 42);
+		panel_1.add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setBounds(1000, 0, 32, 42);
+		panel_1.add(label_2);
+		
+		label_3 = new JLabel("");
+		label_3.addMouseListener(this);
+		label_3.setIcon(new ImageIcon(Paciente.class.getResource("/image/- 1.png")));
+		label_3.setBounds(977, 0, 32, 42);
+		panel_1.add(label_3);
+		
 	}
 	ArregloPacientes ap= new ArregloPacientes();
 	private JScrollPane scrollPane;
@@ -367,6 +413,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
 	private JPanel panel;
+	private JPanel panel_1;
+	private JLabel lblPaciente;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
 	private void listar(){
 		modelo.setRowCount(0);
 				
@@ -579,6 +631,12 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	
 	//Click en Objeto
 	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == label_3) {
+			mouseClickedLabel_3(arg0);
+		}
+		if (arg0.getSource() == label_1) {
+			mouseClickedLabel_1(arg0);
+		}
 		if (arg0.getSource() == lblModificar) {
 			mouseClickedLblModificar(arg0);
 		}
@@ -708,6 +766,9 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	
 	public void mousePressed(MouseEvent arg0) {
+		if (arg0.getSource() == panel_1) {
+			mousePressedPanel_1(arg0);
+		}
 	}
 	public void mouseReleased(MouseEvent arg0) {
 	}
@@ -785,5 +846,31 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 	}
 	protected void ancestorAddedLblAgregar(AncestorEvent arg0) {
 
+	}
+	protected void mousePressedPanel_1(MouseEvent arg0) {
+		x = arg0.getX();
+	    y = arg0.getY();
+	}
+	public void mouseDragged(MouseEvent arg0) {
+		if (arg0.getSource() == panel_1) {
+			mouseDraggedPanel_1(arg0);
+		}
+	}
+	public void mouseMoved(MouseEvent arg0) {
+	}
+	protected void mouseDraggedPanel_1(MouseEvent arg0) {
+		 Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+		    setLocation(ubicacion.x - x, ubicacion.y - y);
+	}
+	protected void mouseClickedLabel_1(MouseEvent arg0) {
+		int dialog = JOptionPane.YES_NO_OPTION;
+		int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana?","ADVERTENCIA",dialog);
+		
+		if(result ==0){
+			System.exit(0);
+		}
+	}
+	protected void mouseClickedLabel_3(MouseEvent arg0) {
+		this.setState(Principal.ICONIFIED);
 	}
 }

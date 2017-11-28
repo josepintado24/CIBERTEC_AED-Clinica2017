@@ -332,6 +332,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(label_8);
 		
 		panel_2 = new JPanel();
+		panel_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
