@@ -208,6 +208,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		jpnlIngreso.add(label_2);
 		
 		btnNewButton = new JButton((String) null);
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
 		btnNewButton.setSelectedIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
 		//btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
@@ -244,7 +245,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1 = new JPanel();
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(378, 45, 753, 505);
+		panel_1.setBounds(292, 41, 826, 505);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
