@@ -49,7 +49,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	private JSeparator separator;
 	private JPasswordField passwordField;
 	private JSeparator separator_1;
-	private JLabel label;
+	private JLabel burge;
 	private JLabel label_1;
 	private JLabel label_2;
 	private JButton btnNewButton;
@@ -58,14 +58,11 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	private JLabel label_4;
 	private JLabel label_5;
 	private JLabel label_6;
-	private JLabel label_7;
 	private JLabel lblMantenimiento;
 	private JLabel lblInternamiento;
 	private JLabel lblAtencin;
 	private JLabel lblPago;
 	private JLabel lblReporte;
-	private JTextField textField;
-	private JLabel label_8;
 	private JLabel lblInternet;
 	private JLabel lblCalculadora;
 	private JLabel lblMusica;
@@ -131,12 +128,12 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	 private int x;
 	 private int y;
 	public Principal() {
+		setResizable(false);
 		
 
 		this.setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		setBounds(100, 100, 1050, 575);
+		setBounds(100, 100, 1045, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -188,12 +185,12 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		separator_1.setBounds(48, 410, 206, 17);
 		jpnlIngreso.add(separator_1);
 		
-		label = new JLabel("");
-		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label.addMouseListener(this);
-		label.setIcon(new ImageIcon(Principal.class.getResource("/image/Menu_32px.png")));
-		label.setBounds(10, 11, 30, 28);
-		jpnlIngreso.add(label);
+		burge = new JLabel("");
+		burge.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		burge.addMouseListener(this);
+		burge.setIcon(new ImageIcon(Principal.class.getResource("/image/Menu_32px.png")));
+		burge.setBounds(10, 11, 30, 28);
+		jpnlIngreso.add(burge);
 		
 		
 		
@@ -223,18 +220,21 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		jpnlIngreso.add(btnNewButton);
 		
 		lblInternet = new JLabel("");
+		lblInternet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblInternet.addMouseListener(this);
 		lblInternet.setIcon(new ImageIcon(Principal.class.getResource("/image/Globe_32px.png")));
 		lblInternet.setBounds(-30, 65, 30, 28);
 		jpnlIngreso.add(lblInternet);
 		
 		lblCalculadora = new JLabel("");
+		lblCalculadora.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblCalculadora.addMouseListener(this);
 		lblCalculadora.setIcon(new ImageIcon(Principal.class.getResource("/image/Calculator_32px.png")));
 		lblCalculadora.setBounds(-30, 104, 30, 28);
 		jpnlIngreso.add(lblCalculadora);
 		
 		lblMusica = new JLabel("");
+		lblMusica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblMusica.addMouseListener(this);
 		lblMusica.setIcon(new ImageIcon(Principal.class.getResource("/image/icons8_Music_32px.png")));
 		lblMusica.setBounds(-30, 143, 30, 28);
@@ -252,7 +252,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		lblNewLabel_1.addMouseMotionListener(this);
 		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/image/configuracion.png")));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(49, 83, 132, 149);
+		lblNewLabel_1.setBounds(57, 57, 132, 149);
 		panel_1.add(lblNewLabel_1);
 		
 		label_3 = new JLabel("");
@@ -260,7 +260,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_3.addMouseMotionListener(this);
 		label_3.setIcon(new ImageIcon(Principal.class.getResource("/image/pagar.png")));
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setBounds(49, 276, 132, 136);
+		label_3.setBounds(57, 257, 132, 136);
 		panel_1.add(label_3);
 		
 		label_4 = new JLabel("");
@@ -268,7 +268,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_4.addMouseMotionListener(this);
 		label_4.setIcon(new ImageIcon(Principal.class.getResource("/image/reportar.png")));
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setBounds(310, 276, 132, 136);
+		label_4.setBounds(318, 257, 132, 136);
 		panel_1.add(label_4);
 		
 		label_5 = new JLabel("");
@@ -276,7 +276,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_5.addMouseMotionListener(this);
 		label_5.setIcon(new ImageIcon(Principal.class.getResource("/image/paciente.png")));
 		label_5.setHorizontalAlignment(SwingConstants.CENTER);
-		label_5.setBounds(310, 83, 132, 149);
+		label_5.setBounds(318, 57, 132, 149);
 		panel_1.add(label_5);
 		
 		label_6 = new JLabel("");
@@ -284,52 +284,33 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_6.addMouseMotionListener(this);
 		label_6.setIcon(new ImageIcon(Principal.class.getResource("/image/atencion.png")));
 		label_6.setHorizontalAlignment(SwingConstants.CENTER);
-		label_6.setBounds(559, 83, 132, 149);
+		label_6.setBounds(567, 57, 132, 149);
 		panel_1.add(label_6);
-		
-		label_7 = new JLabel("");
-		label_7.setHorizontalAlignment(SwingConstants.CENTER);
-		label_7.setBounds(559, 276, 132, 118);
-		panel_1.add(label_7);
 		
 		lblMantenimiento = new JLabel("Mantenimiento");
 		lblMantenimiento.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblMantenimiento.setBounds(55, 201, 122, 26);
+		lblMantenimiento.setBounds(63, 175, 122, 26);
 		panel_1.add(lblMantenimiento);
 		
 		lblInternamiento = new JLabel("Internamiento");
 		lblInternamiento.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblInternamiento.setBounds(320, 201, 115, 26);
+		lblInternamiento.setBounds(328, 175, 115, 26);
 		panel_1.add(lblInternamiento);
 		
 		lblAtencin = new JLabel("Atenci\u00F3n");
 		lblAtencin.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblAtencin.setBounds(590, 201, 81, 26);
+		lblAtencin.setBounds(598, 175, 81, 26);
 		panel_1.add(lblAtencin);
 		
 		lblPago = new JLabel("Pago");
 		lblPago.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblPago.setBounds(99, 386, 51, 26);
+		lblPago.setBounds(107, 367, 51, 26);
 		panel_1.add(lblPago);
 		
 		lblReporte = new JLabel("Reporte");
 		lblReporte.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblReporte.setBounds(349, 386, 70, 26);
+		lblReporte.setBounds(357, 367, 70, 26);
 		panel_1.add(lblReporte);
-		
-		textField = new JTextField();
-		textField.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		textField.setDisabledTextColor(Color.WHITE);
-		textField.setCaretColor(Color.WHITE);
-		textField.setBounds(262, 25, 189, 26);
-		panel_1.add(textField);
-		textField.setColumns(10);
-		
-		label_8 = new JLabel("");
-		label_8.setIcon(new ImageIcon(Principal.class.getResource("/image/icons8_Google_Web_Search_32px.png")));
-		label_8.setBackground(Color.WHITE);
-		label_8.setBounds(455, 25, 32, 26);
-		panel_1.add(label_8);
 		
 		panel_2 = new JPanel();
 		panel_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -384,13 +365,32 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == lblMusica) {
 			mouseClickedLblMusica(e);
+			lblMusica.setVisible(true);
+			
+			if (e.getSource() != lblMusica) {
+			mouseClickedLblMusica(e);
+			lblMusica.setVisible(false);
 		}
-		if (e.getSource() == lblCalculadora) {
+		}
+		
+		else if (e.getSource() == lblCalculadora) {
 			mouseClickedLblCalculadora(e);
+			lblCalculadora.setVisible(true);
+			if (e.getSource() != lblCalculadora) {
+				mouseClickedLblCalculadora(e);
+				lblCalculadora.setVisible(false);
+			}
 		}
-		if (e.getSource() == lblInternet) {
+		
+		else if (e.getSource() == lblInternet) {
 			mouseClickedLblInternet(e);
+			lblInternet.setVisible(true);
+			 if (e.getSource() != lblInternet) {
+			mouseClickedLblInternet(e);
+			lblInternet.setVisible(false);
 		}
+		}
+		
 		if (e.getSource() == label_10) {
 			mouseClickedLabel_10(e);
 		}
@@ -399,6 +399,9 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		}
 		
 /*--------------------------------------------------------------------*/		
+		
+		if(e.getSource()== burge){
+			
 		AnimationClass internet= new AnimationClass();
 		/*start, stop, delay, increment, lblInternet*/
 		internet.jLabelXRight(-30, 10, 10, 5, lblInternet);
@@ -407,7 +410,11 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		/*start, stop, delay, increment, lblInternet*/
 		internett.jLabelXLeft(10, -30, 10, 5, lblInternet);
 		
+		}
+		
+		
 /*--------------------------------------------------------------------*/
+		if(e.getSource()== burge){
 		AnimationClass calculadora= new AnimationClass();
 		/*start, stop, delay, increment, lblInternet*/
 		calculadora.jLabelXRight(-30, 10, 10, 5, lblCalculadora);
@@ -415,9 +422,12 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		AnimationClass calculadoraa= new AnimationClass();
 		/*start, stop, delay, increment, lblInternet*/
 		calculadoraa.jLabelXLeft(10, -30, 10, 5, lblCalculadora);
+		}
+		
+		
 		
 /*--------------------------------------------------------------------*/		
-		
+		if(e.getSource()== burge){
 		AnimationClass musica= new AnimationClass();
 		/*start, stop, delay, increment, lblInternet*/
 		musica.jLabelXRight(-30, 10, 10, 5, lblMusica);
@@ -425,7 +435,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		AnimationClass musicaa= new AnimationClass();
 		/*start, stop, delay, increment, lblInternet*/
 		musicaa.jLabelXLeft(10, -30, 10, 5, lblMusica);
-		
+		}
 		/*------------------------------------------------------------*/
 		
 	}
@@ -459,8 +469,11 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
+		if(e.getSource()== label_5){
+			Paciente inter1= new Paciente();
+			inter1.setVisible(true);
+		}
 	}
 
 	@Override

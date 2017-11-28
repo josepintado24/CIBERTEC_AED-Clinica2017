@@ -867,7 +867,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana?","ADVERTENCIA",dialog);
 		
 		if(result ==0){
-			System.exit(0);
+			dispose();
 		}
 	}
 	protected void mouseClickedLabel_3(MouseEvent arg0) {
