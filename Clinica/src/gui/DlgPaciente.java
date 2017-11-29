@@ -507,7 +507,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblIngresar.setBounds(21, 71, 181, 53);
 																														getContentPane().add(lblIngresar);
-																														//lblIngresar.setOpaque(true);
 																														
 																														lblConsultar = new JLabel("CONSULTAR");
 																														lblConsultar.addMouseListener(this);
@@ -1053,19 +1052,19 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	
 	protected void mouseEnteredLblIngresar(MouseEvent e) {
 		lblIngresar.setOpaque(true);
-		lblIngresar.setBackground(new Color(1, 168, 25));
+		lblIngresar.setBackground(new Color(0, 112, 16));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setOpaque(true);
-		lblConsultar.setBackground(new Color(1, 168, 25));
+		lblConsultar.setBackground(new Color(0, 112, 16));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		lblModificar.setOpaque(true);
-		lblModificar.setBackground(new Color(1, 168, 25));
+		lblModificar.setBackground(new Color(0, 112, 16));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent e) {
 		lblEliminar.setOpaque(true);
-		lblEliminar.setBackground(new Color(1, 168, 25));
+		lblEliminar.setBackground(new Color(0, 112, 16));
 	}
 	protected void mouseEnteredLblBuscar(MouseEvent e) {
 	}
