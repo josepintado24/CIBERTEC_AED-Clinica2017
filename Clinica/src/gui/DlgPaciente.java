@@ -35,6 +35,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.JRadioButton;
 import java.awt.Component;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class DlgPaciente extends JDialog implements ActionListener, KeyListener {
 
@@ -91,6 +93,14 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 	Validaciones v = new Validaciones();
 	// Declaración global de libreria DiseñoObjetos
 	DiseñoObjetos ds = new DiseñoObjetos();
+	private JPanel panel;
+	private JLabel lblIngresar;
+	private JLabel lblConsultar;
+	private JLabel lblModificar;
+	private JLabel lblEliminar;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 
 	public static void main(String[] args) {
 		try {
@@ -114,70 +124,8 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		setModal(true);
 		setResizable(false);
 		setTitle("MANTENIMIENTO | PACIENTE");
-		setBounds(100, 100, 1013, 494);
+		setBounds(100, 100, 1269, 883);
 		getContentPane().setLayout(null);
-
-		lblCdigo = new JLabel("C\u00D3DIGO");
-		lblCdigo.setForeground(Color.BLACK);
-		lblCdigo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCdigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblCdigo.setBounds(15, 64, 75, 14);
-		getContentPane().add(lblCdigo);
-
-		txtCodigo = new JTextField();
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setEditable(false);
-		txtCodigo.setForeground(Color.BLACK);
-		txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtCodigo.setBounds(100, 57, 137, 29);
-		getContentPane().add(txtCodigo);
-		txtCodigo.setColumns(10);
-
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setEnabled(false);
-		btnBuscar.addActionListener(this);
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnBuscar.setBounds(247, 57, 110, 29);
-		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
-		getContentPane().add(btnBuscar);
-
-		txtNombres = new JTextField();
-		txtNombres.addKeyListener(this);
-		txtNombres.setEditable(false);
-		txtNombres.setForeground(Color.BLACK);
-		txtNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtNombres.setColumns(10);
-		txtNombres.setBounds(100, 97, 257, 29);
-		getContentPane().add(txtNombres);
-
-		txtApellidos = new JTextField();
-		txtApellidos.addKeyListener(this);
-		txtApellidos.setEditable(false);
-		txtApellidos.setForeground(Color.BLACK);
-		txtApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtApellidos.setColumns(10);
-		txtApellidos.setBounds(100, 137, 257, 29);
-		getContentPane().add(txtApellidos);
-
-		txtTelefono = new JTextField();
-		txtTelefono.addKeyListener(this);
-		txtTelefono.setEditable(false);
-		txtTelefono.setForeground(Color.BLACK);
-		txtTelefono.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(100, 177, 137, 29);
-		getContentPane().add(txtTelefono);
-
-		txtDni = new JTextField();
-		txtDni.addKeyListener(this);
-		txtDni.setEditable(false);
-		txtDni.setForeground(Color.BLACK);
-		txtDni.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtDni.setColumns(10);
-		txtDni.setBounds(100, 217, 137, 29);
-		getContentPane().add(txtDni);
 
 		// ASIGNANDO MODELO DE TABLA
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -200,7 +148,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		;
 
 		scrollPane = new JScrollPane(tblPacientes);
-		scrollPane.setBounds(367, 97, 630, 360);
+		scrollPane.setBounds(29, 278, 630, 360);
 		getContentPane().add(scrollPane);
 
 		tblPacientes.addMouseListener(new MouseAdapter() {
@@ -229,7 +177,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		btnAdicionar.addActionListener(this);
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAdicionar.setBounds(39, 268, 137, 39);
+		btnAdicionar.setBounds(24, 11, 137, 39);
 		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
 		getContentPane().add(btnAdicionar);
 
@@ -238,7 +186,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		btnConsultar.addActionListener(this);
 		btnConsultar.setForeground(Color.BLACK);
 		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnConsultar.setBounds(196, 268, 145, 39);
+		btnConsultar.setBounds(181, 11, 145, 39);
 		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
 		getContentPane().add(btnConsultar);
 
@@ -247,7 +195,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		btnModificar.addActionListener(this);
 		btnModificar.setForeground(Color.BLACK);
 		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnModificar.setBounds(196, 318, 145, 39);
+		btnModificar.setBounds(350, 11, 145, 39);
 		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
 		getContentPane().add(btnModificar);
 
@@ -256,57 +204,9 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		btnEliminar.addActionListener(this);
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBounds(39, 318, 137, 39);
+		btnEliminar.setBounds(522, 11, 137, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		getContentPane().add(btnEliminar);
-
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setEnabled(false);
-		btnAceptar.addActionListener(this);
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAceptar.setBounds(39, 368, 137, 39);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		getContentPane().add(btnAceptar);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setEnabled(false);
-		btnCancelar.addActionListener(this);
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnCancelar.setBounds(196, 368, 145, 39);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		getContentPane().add(btnCancelar);
-
-		lblNombres = new JLabel("NOMBRES");
-		lblNombres.setForeground(Color.BLACK);
-		lblNombres.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblNombres.setBounds(15, 104, 75, 14);
-		getContentPane().add(lblNombres);
-
-		lblApellidos = new JLabel("APELLIDOS");
-		lblApellidos.setForeground(Color.BLACK);
-		lblApellidos.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblApellidos.setBounds(15, 144, 75, 14);
-		getContentPane().add(lblApellidos);
-
-		lblTelfono = new JLabel("TEL\u00C9FONO");
-		lblTelfono.setForeground(Color.BLACK);
-		lblTelfono.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelfono.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblTelfono.setBounds(15, 184, 75, 14);
-		getContentPane().add(lblTelfono);
-
-		lblDni = new JLabel("DNI");
-		lblDni.setForeground(Color.BLACK);
-		lblDni.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDni.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblDni.setBounds(15, 224, 75, 14);
-		getContentPane().add(lblDni);
 
 		lblMensaje = new JLabel("");
 		lblMensaje.setForeground(Color.WHITE);
@@ -314,17 +214,8 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setOpaque(true);
-		lblMensaje.setBounds(15, 11, 342, 29);
+		lblMensaje.setBounds(754, 11, 342, 29);
 		getContentPane().add(lblMensaje);
-
-		btnGuardarPacientes = new JButton("GUARDAR PACIENTES");
-		btnGuardarPacientes.addActionListener(this);
-		btnGuardarPacientes.setForeground(Color.BLACK);
-		btnGuardarPacientes.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnGuardarPacientes.setBackground(new Color(0, 250, 154));
-		btnGuardarPacientes.setBounds(39, 418, 302, 39);
-		ds.setCurvasButton(btnGuardarPacientes, "imagenes/grabar.png");
-		getContentPane().add(btnGuardarPacientes);
 
 		filtro = new JTextField();
 		filtro.addKeyListener(this);
@@ -332,18 +223,18 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		filtro.setForeground(Color.BLACK);
 		filtro.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		filtro.setColumns(10);
-		filtro.setBounds(556, 57, 257, 29);
+		filtro.setBounds(190, 238, 257, 29);
 		getContentPane().add(filtro);
 
 		rdbtnApellidos = new JRadioButton("APELLIDOS");
 		rdbtnApellidos.addActionListener(this);
 		rdbtnApellidos.setSelected(true);
-		rdbtnApellidos.setBounds(606, 32, 97, 23);
+		rdbtnApellidos.setBounds(240, 213, 97, 23);
 		getContentPane().add(rdbtnApellidos);
 
 		rdbtnDni = new JRadioButton("DNI");
 		rdbtnDni.addActionListener(this);
-		rdbtnDni.setBounds(715, 32, 60, 23);
+		rdbtnDni.setBounds(349, 213, 60, 23);
 		getContentPane().add(rdbtnDni);
 
 		bp = new ButtonGroup();
@@ -354,14 +245,196 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener 
 		lblBuscarPor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBuscarPor.setForeground(Color.BLACK);
 		lblBuscarPor.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblBuscarPor.setBounds(637, 11, 97, 14);
+		lblBuscarPor.setBounds(271, 192, 97, 14);
 		getContentPane().add(lblBuscarPor);
+		
+		panel = new JPanel();
+		panel.setBounds(692, 71, 546, 582);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+				lblCdigo = new JLabel("C\u00D3DIGO");
+				lblCdigo.setBounds(93, 36, 75, 14);
+				panel.add(lblCdigo);
+				lblCdigo.setForeground(Color.BLACK);
+				lblCdigo.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblCdigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+				
+						txtCodigo = new JTextField();
+						txtCodigo.setBounds(162, 36, 137, 29);
+						panel.add(txtCodigo);
+						txtCodigo.addKeyListener(this);
+						txtCodigo.setEditable(false);
+						txtCodigo.setForeground(Color.BLACK);
+						txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+						txtCodigo.setColumns(10);
+						
+								btnBuscar = new JButton("BUSCAR");
+								btnBuscar.setBounds(309, 36, 110, 29);
+								panel.add(btnBuscar);
+								btnBuscar.setBackground(new Color(102, 205, 170));
+								btnBuscar.setEnabled(false);
+								btnBuscar.addActionListener(this);
+								btnBuscar.setForeground(Color.BLACK);
+								btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+								ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
+								
+										txtNombres = new JTextField();
+										txtNombres.setBounds(162, 76, 257, 29);
+										panel.add(txtNombres);
+										txtNombres.addKeyListener(this);
+										txtNombres.setEditable(false);
+										txtNombres.setForeground(Color.BLACK);
+										txtNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+										txtNombres.setColumns(10);
+										
+												txtApellidos = new JTextField();
+												txtApellidos.setBounds(162, 116, 257, 29);
+												panel.add(txtApellidos);
+												txtApellidos.addKeyListener(this);
+												txtApellidos.setEditable(false);
+												txtApellidos.setForeground(Color.BLACK);
+												txtApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+												txtApellidos.setColumns(10);
+												
+														txtTelefono = new JTextField();
+														txtTelefono.setBounds(162, 156, 137, 29);
+														panel.add(txtTelefono);
+														txtTelefono.addKeyListener(this);
+														txtTelefono.setEditable(false);
+														txtTelefono.setForeground(Color.BLACK);
+														txtTelefono.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+														txtTelefono.setColumns(10);
+														
+																txtDni = new JTextField();
+																txtDni.setBounds(162, 196, 137, 29);
+																panel.add(txtDni);
+																txtDni.addKeyListener(this);
+																txtDni.setEditable(false);
+																txtDni.setForeground(Color.BLACK);
+																txtDni.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																txtDni.setColumns(10);
+																
+																		lblNombres = new JLabel("NOMBRES");
+																		lblNombres.setBounds(93, 76, 75, 14);
+																		panel.add(lblNombres);
+																		lblNombres.setForeground(Color.BLACK);
+																		lblNombres.setHorizontalAlignment(SwingConstants.RIGHT);
+																		lblNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																		
+																				lblApellidos = new JLabel("APELLIDOS");
+																				lblApellidos.setBounds(93, 116, 75, 14);
+																				panel.add(lblApellidos);
+																				lblApellidos.setForeground(Color.BLACK);
+																				lblApellidos.setHorizontalAlignment(SwingConstants.RIGHT);
+																				lblApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																				
+																						lblTelfono = new JLabel("TEL\u00C9FONO");
+																						lblTelfono.setBounds(93, 156, 75, 14);
+																						panel.add(lblTelfono);
+																						lblTelfono.setForeground(Color.BLACK);
+																						lblTelfono.setHorizontalAlignment(SwingConstants.RIGHT);
+																						lblTelfono.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																						
+																								lblDni = new JLabel("DNI");
+																								lblDni.setBounds(93, 196, 75, 14);
+																								panel.add(lblDni);
+																								lblDni.setForeground(Color.BLACK);
+																								lblDni.setHorizontalAlignment(SwingConstants.RIGHT);
+																								lblDni.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																								
+																										btnAceptar = new JButton("ACEPTAR");
+																										btnAceptar.setBounds(69, 437, 137, 39);
+																										panel.add(btnAceptar);
+																										btnAceptar.setBackground(new Color(30, 144, 255));
+																										btnAceptar.setEnabled(false);
+																										btnAceptar.addActionListener(this);
+																										btnAceptar.setForeground(Color.BLACK);
+																										btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																										ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
+																										
+																												btnCancelar = new JButton("CANCELAR");
+																												btnCancelar.setBounds(264, 462, 145, 39);
+																												panel.add(btnCancelar);
+																												btnCancelar.setBackground(new Color(0, 255, 255));
+																												btnCancelar.setEnabled(false);
+																												btnCancelar.addActionListener(this);
+																												btnCancelar.setForeground(Color.BLACK);
+																												btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																												ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
+																												
+																														btnGuardarPacientes = new JButton("GUARDAR PACIENTES");
+																														btnGuardarPacientes.setBounds(117, 512, 302, 39);
+																														panel.add(btnGuardarPacientes);
+																														btnGuardarPacientes.addActionListener(this);
+																														btnGuardarPacientes.setForeground(Color.BLACK);
+																														btnGuardarPacientes.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																														btnGuardarPacientes.setBackground(new Color(0, 250, 154));
+																														ds.setCurvasButton(btnGuardarPacientes, "imagenes/grabar.png");
+																														
+																														label = new JLabel("Agregar");
+																														label.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
+																														label.setBackground(new Color(0, 0, 0));
+																														label.setHorizontalAlignment(SwingConstants.CENTER);
+																														label.setForeground(new Color(0, 0, 0));
+																														label.setFont(new Font("Tahoma", Font.BOLD, 14));
+																														label.setBounds(139, 257, 206, 39);
+																														panel.add(label);
+																														
+																														label_1 = new JLabel("Cancelar");
+																														label_1.setHorizontalAlignment(SwingConstants.CENTER);
+																														label_1.setForeground(new Color(0, 0, 0));
+																														label_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+																														label_1.setBounds(139, 307, 206, 39);
+																														panel.add(label_1);
+																														
+																														label_2 = new JLabel("Grabar");
+																														label_2.setOpaque(true);
+																														label_2.setHorizontalAlignment(SwingConstants.CENTER);
+																														label_2.setForeground(Color.WHITE);
+																														label_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+																														label_2.setBackground(new Color(231, 96, 90));
+																														label_2.setBounds(139, 357, 206, 41);
+																														panel.add(label_2);
+																														
+																														lblIngresar = new JLabel("INGRESAR");
+																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Ingresar.png")));
+																														lblIngresar.setBackground(new Color(1, 168, 25));
+																														lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																														lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
+																														lblIngresar.setBounds(24, 71, 151, 53);
+																														getContentPane().add(lblIngresar);
+																														
+																														lblConsultar = new JLabel("CONSULTAR");
+																														lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultar.png")));
+																														lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
+																														lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 14));
+																														lblConsultar.setBackground(new Color(1, 168, 25));
+																														lblConsultar.setBounds(190, 72, 151, 53);
+																														getContentPane().add(lblConsultar);
+																														
+																														lblModificar = new JLabel("MODIFICAR");
+																														lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificar.png")));
+																														lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
+																														lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 14));
+																														lblModificar.setBackground(new Color(1, 168, 25));
+																														lblModificar.setBounds(357, 72, 151, 53);
+																														getContentPane().add(lblModificar);
+																														
+																														lblEliminar = new JLabel("Eliminar");
+																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminar.png")));
+																														lblEliminar.setOpaque(true);
+																														lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
+																														lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 14));
+																														lblEliminar.setBackground(new Color(1, 168, 25));
+																														lblEliminar.setBounds(532, 71, 151, 53);
+																														getContentPane().add(lblEliminar);
+						setFocusTraversalPolicy(new FocusTraversalOnArray(
+								new Component[] { txtCodigo, txtNombres, txtApellidos, txtTelefono, txtDni }));
 
 		listado();
 		modeloTabla();
 		setLocationRelativeTo(this);
-		setFocusTraversalPolicy(new FocusTraversalOnArray(
-				new Component[] { txtCodigo, txtNombres, txtApellidos, txtTelefono, txtDni }));
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
