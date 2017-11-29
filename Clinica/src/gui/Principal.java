@@ -45,17 +45,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	private JPanel jpnlIngreso;
 	private JPanel panel_1;
 	private JPanel panel_2;
-	private JLabel lblUser;
-	private JLabel lblPasw;
-	private JLabel lblNewLabel;
-	private JTextField txtIngreseSuUsuario;
-	private JSeparator separator;
-	private JPasswordField passwordField;
-	private JSeparator separator_1;
 	private JLabel burge;
-	private JLabel label_1;
-	private JLabel label_2;
-	private JButton btnNewButton;
 	private JLabel lblNewLabel_1;
 	private JLabel label_3;
 	private JLabel label_4;
@@ -148,7 +138,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		setResizable(false);
 		this.setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1045, 550);
+		setBounds(100, 100, 779, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -157,48 +147,9 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		jpnlIngreso = new JPanel();
 		jpnlIngreso.setForeground(Color.WHITE);
 		jpnlIngreso.setBackground(Color.WHITE);
-		jpnlIngreso.setBounds(0, 41, 290, 505);
+		jpnlIngreso.setBounds(0, 41, 46, 505);
 		contentPane.add(jpnlIngreso);
 		jpnlIngreso.setLayout(null);
-		
-		lblUser = new JLabel("User:");
-		lblUser.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblUser.setBounds(26, 225, 46, 14);
-		jpnlIngreso.add(lblUser);
-		
-		lblPasw = new JLabel("Password:");
-		lblPasw.setFont(new Font("Decker", Font.PLAIN, 18));
-		lblPasw.setBounds(26, 348, 78, 14);
-		jpnlIngreso.add(lblPasw);
-		
-		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/image/user.png")));
-		lblNewLabel.setBounds(83, 43, 134, 128);
-		jpnlIngreso.add(lblNewLabel);
-		
-		txtIngreseSuUsuario = new JTextField();
-		txtIngreseSuUsuario.setText("  Ingrese su usuario");
-		txtIngreseSuUsuario.setFont(new Font("Decker", Font.PLAIN, 14));
-		txtIngreseSuUsuario.setForeground(Color.GRAY);
-		txtIngreseSuUsuario.setBounds(83, 258, 171, 28);
-		jpnlIngreso.add(txtIngreseSuUsuario);
-		txtIngreseSuUsuario.setColumns(10);
-		txtIngreseSuUsuario.setBorder(null);
-		
-		
-		separator = new JSeparator();
-		separator.setBounds(48, 287, 206, 17);
-		jpnlIngreso.add(separator);
-		
-		passwordField = new JPasswordField();
-		passwordField.setForeground(Color.GRAY);
-		passwordField.setBounds(83, 382, 171, 28);
-		jpnlIngreso.add(passwordField);
-		passwordField.setBorder(null);
-		
-		separator_1 = new JSeparator();
-		separator_1.setBounds(48, 410, 206, 17);
-		jpnlIngreso.add(separator_1);
 		
 		burge = new JLabel("");
 		burge.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -206,35 +157,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		burge.setIcon(new ImageIcon(Principal.class.getResource("/image/Menu_32px.png")));
 		burge.setBounds(10, 11, 30, 28);
 		jpnlIngreso.add(burge);
-		
-		
-		
-		
-		
-		
-		label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Principal.class.getResource("/image/User_32px.png")));
-		label_1.setBounds(42, 258, 30, 28);
-		jpnlIngreso.add(label_1);
-		
-		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(Principal.class.getResource("/image/Key_32px.png")));
-		label_2.setBounds(42, 382, 30, 28);
-		jpnlIngreso.add(label_2);
-		
-		btnNewButton = new JButton((String) null);
-		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
-		btnNewButton.setSelectedIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
-		//btnNewButton.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/ingresar2.png")));
-		btnNewButton.setBorder(null);
-		btnNewButton.setIcon(new ImageIcon(Principal.class.getResource("/image/ingresar1.png")));
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.addActionListener(this);
-		btnNewButton.setBounds(66, 450, 134, 41);
-		jpnlIngreso.add(btnNewButton);
 		
 		lblInternet = new JLabel("");
 		lblInternet.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -260,7 +182,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1 = new JPanel();
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(292, 41, 826, 505);
+		panel_1.setBounds(44, 41, 734, 505);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -656,7 +578,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		});
 		panel_2.setForeground(Color.WHITE);
 		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(0, 0, 1044, 43);
+		panel_2.setBounds(0, 0, 778, 43);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -664,14 +586,14 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_9.addMouseListener(this);
 		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_9.setIcon(new ImageIcon(Principal.class.getResource("/image/Minimize_Window_32px.png")));
-		label_9.setBounds(969, 11, 32, 21);
+		label_9.setBounds(706, 11, 32, 21);
 		panel_2.add(label_9);
 		
 		label_10 = new JLabel("");
 		label_10.addMouseListener(this);
 		label_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_10.setIcon(new ImageIcon(Principal.class.getResource("/image/X_32px.png")));
-		label_10.setBounds(1002, 11, 32, 21);
+		label_10.setBounds(739, 11, 32, 21);
 		panel_2.add(label_10);
 		
 		JLabel lblPrincipal = new JLabel("Principal");
@@ -843,11 +765,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		
 	}
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnNewButton) {
-			actionPerformedBtnNewButton(arg0);
-		}
-	}
-	protected void actionPerformedBtnNewButton(ActionEvent arg0) {
 	}
 	protected void mouseClickedLabel_9(MouseEvent e) {
 		this.setState(Principal.ICONIFIED);
