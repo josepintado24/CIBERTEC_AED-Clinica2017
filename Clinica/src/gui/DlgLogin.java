@@ -3,12 +3,17 @@ package gui;
 import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -22,18 +27,21 @@ import libreria.Libreria;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.ComponentOrientation;
+import java.awt.Cursor;
+import javax.swing.JSeparator;
+import javax.swing.border.LineBorder;
 
 public class DlgLogin extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtUsuario;
-	private JLabel lblUsuario;
-	private JLabel lblPassword;
-	private JPanel panelLogin;
 	private JButton btnIngresar;
 	private JPasswordField passwordField;
 	private JButton btnCancelar;
-	private JLabel lblImagen;
 
 	// Declaración global libreria Diseño Objetos
 	DiseñoObjetos ds = new DiseñoObjetos();
@@ -58,74 +66,136 @@ public class DlgLogin extends JDialog implements ActionListener {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}	
+	 private int x;
+	 private int y;
+	 private JLabel lblLogin;
+	 private JLabel label;
 
 	public DlgLogin() {
+		setUndecorated(true);
 		setForeground(new Color(0, 0, 0));
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Robert\\Desktop\\ProyectoClinica\\Clinica\\src\\imagenes\\login.jpg"));
-		getContentPane().setBackground(new Color(102, 204, 153));
+		getContentPane().setBackground(Color.WHITE);
 		setModal(true);
 		setResizable(false);
 		setTitle("---=Bienvenido=---");
-		setBounds(100, 100, 500, 300);
+		setBounds(100, 100, 308, 568);
 		getContentPane().setLayout(null);
-
-		panelLogin = new JPanel();
-		panelLogin.setBackground(new Color(102, 153, 102));
-		panelLogin.setBorder(UIManager.getBorder("ProgressBar.border"));
-		panelLogin.setBounds(21, 34, 463, 226);
-		getContentPane().add(panelLogin);
-		panelLogin.setLayout(null);
-		panelLogin.setBorder(BorderFactory.createLineBorder(Color.RED, 2, true));
-
-		lblUsuario = new JLabel("USUARIO");
-		lblUsuario.setForeground(Color.BLACK);
-		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUsuario.setBounds(12, 51, 80, 14);
-		panelLogin.add(lblUsuario);
-		lblUsuario.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-
-		lblPassword = new JLabel("PASSWORD");
-		lblPassword.setForeground(Color.BLACK);
-		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPassword.setBounds(12, 103, 78, 14);
-		panelLogin.add(lblPassword);
-		lblPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-
-		txtUsuario = new JTextField();
-		txtUsuario.setForeground(Color.BLACK);
-		txtUsuario.setBounds(100, 38, 211, 41);
-		panelLogin.add(txtUsuario);
-		txtUsuario.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtUsuario.setColumns(10);
-
-		btnIngresar = new JButton("INGRESAR");
-		btnIngresar.addActionListener(this);
-		btnIngresar.setForeground(Color.BLACK);
-		btnIngresar.setBackground(new Color(152, 251, 152));
-		btnIngresar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnIngresar.setBounds(39, 146, 122, 41);
-		panelLogin.add(btnIngresar);
-		ds.setCurvasButton(btnIngresar, "imagenes/aceptar.png");
-
-		passwordField = new JPasswordField();
-		passwordField.setForeground(Color.BLACK);
-		passwordField.setBounds(100, 89, 211, 41);
-		panelLogin.add(passwordField);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnCancelar.setBounds(178, 146, 122, 41);
-		panelLogin.add(btnCancelar);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-
-		lblImagen = new JLabel("");
-		lblImagen.setBounds(321, 11, 132, 202);
-		lblImagen.setIcon(new ImageIcon("imagenes/login.jpg"));
-		panelLogin.add(lblImagen);
+		
+		JPanel panel = new JPanel();
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		
+				txtUsuario = new JTextField();
+				txtUsuario.setBorder(null);
+				txtUsuario.setCaretColor(Color.BLACK);
+				txtUsuario.setBounds(83, 279, 181, 25);
+				getContentPane().add(txtUsuario);
+				txtUsuario.setForeground(Color.BLACK);
+				txtUsuario.setFont(new Font("Decker", Font.PLAIN, 14));
+				txtUsuario.setColumns(10);
+		
+				btnIngresar = new JButton("INGRESAR");
+				btnIngresar.setBorderPainted(false);
+				btnIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				btnIngresar.setBorder(new LineBorder(Color.BLACK, 1, true));
+				btnIngresar.setBounds(102, 417, 122, 41);
+				getContentPane().add(btnIngresar);
+				btnIngresar.addActionListener(this);
+				btnIngresar.setForeground(Color.BLACK);
+				btnIngresar.setBackground(Color.WHITE);
+				btnIngresar.setFont(new Font("Decker", Font.PLAIN, 16));
+				ds.setCurvasButton(btnIngresar, "imagenes/aceptar.png");
+		
+				passwordField = new JPasswordField();
+				passwordField.setFont(new Font("Decker", Font.PLAIN, 14));
+				passwordField.setDisabledTextColor(Color.WHITE);
+				passwordField.setBorder(null);
+				passwordField.setBounds(83, 355, 181, 25);
+				getContentPane().add(passwordField);
+				passwordField.setForeground(Color.BLACK);
+		
+				btnCancelar = new JButton("CANCELAR");
+				btnCancelar.setBorderPainted(false);
+				btnCancelar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+				btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				btnCancelar.setBounds(102, 489, 122, 41);
+				getContentPane().add(btnCancelar);
+				btnCancelar.addActionListener(this);
+				btnCancelar.setForeground(Color.BLACK);
+				btnCancelar.setBackground(Color.WHITE);
+				btnCancelar.setFont(new Font("Decker", Font.PLAIN, 16));
+				ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(0, 0, 308, 39);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+				int dialog = JOptionPane.YES_NO_OPTION;
+				int result =JOptionPane.showConfirmDialog(null, "¿Seguro que Quiere Salir?","Alert!",dialog,dialog,m);
+				
+				if(result ==0){
+					System.exit(0);
+				}
+			}
+		});
+		lblNewLabel.setIcon(new ImageIcon(DlgLogin.class.getResource("/image/X_32px.png")));
+		lblNewLabel.setBounds(269, 0, 32, 40);
+		panel.add(lblNewLabel);
+		
+		lblLogin = new JLabel("Login");
+		lblLogin.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblLogin.setBounds(39, 0, 90, 40);
+		panel.add(lblLogin);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(DlgLogin.class.getResource("/image/seguridad.png")));
+		label.setBounds(10, 0, 19, 40);
+		panel.add(label);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(51, 305, 213, 9);
+		getContentPane().add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(51, 381, 213, 9);
+		getContentPane().add(separator_1);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgLogin.class.getResource("/image/user.png")));
+		label_1.setBounds(92, 65, 140, 159);
+		getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(DlgLogin.class.getResource("/image/User_32px.png")));
+		label_2.setBounds(49, 276, 33, 26);
+		getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(DlgLogin.class.getResource("/image/Key_32px.png")));
+		label_3.setBounds(49, 352, 33, 26);
+		getContentPane().add(label_3);
 
 		setLocationRelativeTo(this);
 	}
@@ -141,6 +211,7 @@ public class DlgLogin extends JDialog implements ActionListener {
 
 	protected void actionPerformedBtnIngresar(ActionEvent e) {
 		if (leerUsuario().equals("")) {
+			
 			Libreria.mensajeAdvertencia(this, "Debe ingresar su USUARIO");
 			txtUsuario.requestFocus();
 		}
@@ -155,6 +226,8 @@ public class DlgLogin extends JDialog implements ActionListener {
 				ae.grabarEmpleados();
 				validarLogin();
 			}
+			
+			
 			else {
 				validarLogin();
 			}
@@ -180,6 +253,10 @@ public class DlgLogin extends JDialog implements ActionListener {
 				c++;
 				codigoEmpleado = e.getCodEmpleado();
 				tipoEmpleado = e.getTipoEmpleado();
+				Principal jFrame= new Principal();
+				this.setVisible(false);
+				jFrame.setVisible(true);
+				jFrame.setLocationRelativeTo(null);
 				dispose();
 				break;
 			}

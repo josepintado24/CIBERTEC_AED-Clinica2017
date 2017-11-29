@@ -1,9 +1,14 @@
 package libreria;
 
 import java.text.DecimalFormat;
+
+
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.lang.*;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,7 +27,7 @@ public class Libreria {
 		}
 	}
 
-	public static void mensajeAdvertenciaFrame(JFrame jf, String s) {
+	public  static void mensajeAdvertenciaFrame(JFrame jf, String s) {
 		JOptionPane.showMessageDialog(jf, s, "Advertencia", JOptionPane.WARNING_MESSAGE);
 	}
 
