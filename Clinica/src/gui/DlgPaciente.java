@@ -133,6 +133,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	}
 
 	public DlgPaciente() {
+		getContentPane().addMouseListener(this);
 		getContentPane().setBackground(Color.WHITE);
 		setModal(true);
 		setResizable(false);
@@ -238,18 +239,18 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		filtro.setForeground(Color.BLACK);
 		filtro.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		filtro.setColumns(10);
-		filtro.setBounds(190, 238, 257, 29);
+		filtro.setBounds(181, 221, 257, 29);
 		getContentPane().add(filtro);
 
 		rdbtnApellidos = new JRadioButton("APELLIDOS");
 		rdbtnApellidos.addActionListener(this);
 		rdbtnApellidos.setSelected(true);
-		rdbtnApellidos.setBounds(240, 213, 97, 23);
+		rdbtnApellidos.setBounds(231, 196, 97, 23);
 		getContentPane().add(rdbtnApellidos);
 
 		rdbtnDni = new JRadioButton("DNI");
 		rdbtnDni.addActionListener(this);
-		rdbtnDni.setBounds(349, 213, 60, 23);
+		rdbtnDni.setBounds(340, 196, 60, 23);
 		getContentPane().add(rdbtnDni);
 
 		bp = new ButtonGroup();
@@ -260,7 +261,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		lblBuscarPor.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBuscarPor.setForeground(Color.BLACK);
 		lblBuscarPor.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblBuscarPor.setBounds(271, 192, 97, 14);
+		lblBuscarPor.setBounds(262, 175, 97, 14);
 		getContentPane().add(lblBuscarPor);
 		
 		panel = new JPanel();
@@ -523,8 +524,9 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 																														
 																														lblModificar = new JLabel("MODIFICAR");
+																														lblModificar.setForeground(new Color(243, 124, 47));
 																														lblModificar.addMouseListener(this);
-																														lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificar.png")));
+																														lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
 																														lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblModificar.setBackground(new Color(1, 168, 25));
@@ -533,8 +535,9 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 																														
 																														lblEliminar = new JLabel("ELIMINAR");
+																														lblEliminar.setForeground(new Color(243, 124, 47));
 																														lblEliminar.addMouseListener(this);
-																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminar.png")));
+																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNaranja.png")));
 																														lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblEliminar.setBackground(new Color(1, 168, 25));
@@ -989,6 +992,9 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		
 	}
 	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == getContentPane()) {
+			mouseEnteredThisContentPane(e);
+		}
 		if (e.getSource() == label_2) {
 			mouseEnteredLabel_2(e);
 		}
@@ -1034,12 +1040,16 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	///SALIR
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
-		lblModificar.setBackground(new Color(255,255,255));
+		lblModificar.setForeground(new Color(243, 124, 47));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 		
 	}
 	protected void mouseExitedLblConsultar(MouseEvent arg0) {
 		lblConsultar.setOpaque(false);
-		lblConsultar.setBackground(new Color(255,255,255));
+		lblConsultar.setForeground(new Color(243, 124, 47));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(false);
@@ -1049,7 +1059,9 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setOpaque(false);
-		lblEliminar.setBackground(new Color(255,255,255));
+		lblEliminar.setForeground(new Color(243, 124, 47));
+		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNaranja.png")));
+		lblEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	
 	
@@ -1068,15 +1080,21 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setOpaque(true);
 		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setForeground(new Color(255, 255, 255));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		
 		lblModificar.setOpaque(true);
 		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setForeground(new Color(255, 255, 255));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarBlanco.png")));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent e) {
 		lblEliminar.setOpaque(true);
 		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(255, 255, 255));
+		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarBlnco.png")));
 	}
 	protected void mouseEnteredLblBuscar(MouseEvent e) {
 	}
@@ -1085,5 +1103,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	protected void mouseEnteredLabel_1(MouseEvent e) {
 	}
 	protected void mouseEnteredLabel_2(MouseEvent e) {
+	}
+	protected void mouseEnteredThisContentPane(MouseEvent e) {
 	}
 }
