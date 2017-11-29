@@ -702,6 +702,7 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		habilitarOperaciones(false);
 		txtCodigo.setEditable(false);
 		txtNombres.requestFocus();
+		
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
 		cboBuscar.setVisible(true);
