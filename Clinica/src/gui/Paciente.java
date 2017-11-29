@@ -695,6 +695,13 @@ public class Paciente extends JFrame implements ActionListener, KeyListener, Mou
 		lblModificar.setVisible(false);
 		lblConsultar.setVisible(false);
 		lblEliminar.setVisible(false);
+		tipoOperacion = ADICIONAR;
+		lblMensaje.setText("Adicionando Paciente");
+		txtCodigo.setText("" + ap.codigoCorrelativo());
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		txtCodigo.setEditable(false);
+		txtNombres.requestFocus();
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
 		cboBuscar.setVisible(true);
