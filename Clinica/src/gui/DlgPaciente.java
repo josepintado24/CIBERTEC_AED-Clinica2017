@@ -991,6 +991,11 @@ private void editableTrue(){
 		habilitarEntradas(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
+		noVisibleCodigo();
+		visibleNombre();
+		visibleApellido();
+		visibleDni();
+		visibleTelefono();
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
@@ -1019,9 +1024,9 @@ private void editableTrue(){
 		visibleDni();
 		visibleTelefono();
 		habilitarBusqueda(true);
-		/*habilitarBusqueda(true);
 		habilitarOperaciones(false);
-		*/
+		lblAgregar.setVisible(false);
+		lblGrabar.setVisible(false);
 		
 	}
 	
@@ -1077,10 +1082,20 @@ private void editableTrue(){
 		if (e.getSource() == lblCancelar) {
 			mouseExitedLblCancelar(e);
 		}
+		if (e.getSource() == lblBuscar) {
+			mouseExitedLblBuscar(e);
+		}
 		
 		
 	}
 	///SALIR
+	protected void mouseExitedLblBuscar(MouseEvent arg0) {
+		lblBuscar.setOpaque(false);
+		lblBuscar.setForeground(new Color(10, 20, 26));
+		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscar.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
 	protected void mouseExitedLblCancelar(MouseEvent arg0) {
 		lblCancelar.setOpaque(false);
 		lblCancelar.setForeground(new Color(10, 20, 26));
@@ -1154,6 +1169,10 @@ private void editableTrue(){
 		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarBlnco.png")));
 	}
 	protected void mouseEnteredLblBuscar(MouseEvent e) {
+		lblBuscar.setOpaque(true);
+		lblBuscar.setBackground(new Color(30, 60, 79));
+		lblBuscar.setForeground(new Color(255, 255, 255));
+		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
 	}
 	protected void mouseEnteredlblAgregar(MouseEvent e) {
 		lblAgregar.setOpaque(true);
