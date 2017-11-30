@@ -1034,6 +1034,7 @@ private void editableTrue(){
 		txtCodigo.setEditable(false);
 		txtNombres.requestFocus();
 		lblBuscar.setVisible(false);
+		lblGrabar.setVisible(true);
 		
 		
 		
