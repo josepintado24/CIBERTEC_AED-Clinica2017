@@ -628,7 +628,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			ap.adicionar(nuevo);
 			listado();
 			habilitarEntradas(true);
-			//habilitarOperaciones(true);
 		}
 	}
 
@@ -702,9 +701,13 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 					x.setTelefono(leerTelefono());
 					x.setDNI(leerDni());
 					listado();
-					habilitarBusqueda(false);
-					habilitarEntradas(false);
-					habilitarOperaciones(true);
+					habilitarBusqueda(true);
+					habilitarEntradas(true);
+					limpieza();
+					visibleApellido();
+					visibleDni();
+					visibleNombre();
+					visibleTelefono();
 				}
 			else {
 				Libreria.mensajeAdvertencia(this, "El código " + leerCodigo() + " no existe");
@@ -727,8 +730,12 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 				ap.eliminar(x);
 				listado();
 				limpieza();
-				habilitarBusqueda(false);
-				habilitarOperaciones(true);
+				habilitarBusqueda(true);
+				visibleApellido();
+				visibleDni();
+				visibleNombre();
+				visibleTelefono();
+				//habilitarOperaciones(true);
 			}
 			else {
 				Libreria.mensajeAdvertencia(this, "El código " + leerCodigo() + " no existe");
@@ -742,6 +749,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	void habilitarBusqueda(boolean sino) {
 		lblBuscar.setVisible(sino);
 		txtCodigo.setVisible(sino);
+		txtCodigo.setEditable(sino);
 		if (sino)
 			txtCodigo.requestFocus();
 	}
@@ -932,8 +940,18 @@ private void editableTrue(){
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
+		visibleApellido();
+		visibleDni();
+		visibleNombre();
+		visibleTelefono();
+		lblAgregar.setText("Eliminar");
+	
 	}
 	private void mouseClickedLblBuscar(MouseEvent arg0){
+		if ((tipoOperacion != CONSULTAR)&&(tipoOperacion != ADICIONAR)){
+			lblAgregar.setVisible(true);
+			lblGrabar.setVisible(true);
+		}
 		consultarPaciente();
 	}
 	private void mouseClickedLblGrabar(MouseEvent arg0){
@@ -956,7 +974,7 @@ private void editableTrue(){
 		switch (tipoOperacion) {
 		case ADICIONAR:
 			adicionarPaciente();
-			lblMensaje.setText("");
+			limpieza();
 			txtCodigo.setText("" + ap.codigoCorrelativo());
 			break;
 		case CONSULTAR:
@@ -967,11 +985,11 @@ private void editableTrue(){
 			break;
 		case MODIFICAR:
 			modificarPaciente();
-			lblMensaje.setText("");
+			
 			break;
 		case ELIMINAR:
 			eliminarPaciente();
-			lblMensaje.setText("");
+			
 	}
 
 		
@@ -996,6 +1014,8 @@ private void editableTrue(){
 		visibleApellido();
 		visibleDni();
 		visibleTelefono();
+		lblGrabar.setVisible(true);
+		lblAgregar.setText("Modificar");
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
