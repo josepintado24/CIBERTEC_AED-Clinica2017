@@ -641,6 +641,11 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		else {
 			Paciente x = ap.buscar(leerCodigo());
 			if (x != null) {
+				
+				noVisibleNombre();
+				noVisibleApellido();
+				noVisibleDni();
+				noVisibleTelefono();
 				txtNombres.setText(x.getNombres().toUpperCase());
 				txtApellidos.setText(x.getApellidos().toUpperCase());
 				txtTelefono.setText(x.getTelefono());
@@ -1003,9 +1008,16 @@ private void editableTrue(){
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
 		tipoOperacion = CONSULTAR;
 		lblMensaje.setText("Consultando Paciente");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
 		panel.setVisible(true);
+		noVisibleCodigo();
+		visibleNombre();
+		visibleApellido();
+		visibleDni();
+		visibleTelefono();
+		habilitarBusqueda(true);
+		/*habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		*/
 		
 	}
 	
