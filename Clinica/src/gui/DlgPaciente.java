@@ -46,25 +46,17 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigo;
 	private JTextField txtCodigo;
-	private JButton btnBuscar;
 	private JTextField txtNombres;
 	private JTextField txtApellidos;
 	private JTextField txtTelefono;
 	private JTextField txtDni;
 	private JScrollPane scrollPane;
-	public JButton btnAdicionar;
-	public JButton btnConsultar;
-	public JButton btnModificar;
-	public JButton btnEliminar;
-	private JButton btnAceptar;
-	private JButton btnCancelar;
 	private JLabel lblNombres;
 	private JLabel lblApellidos;
 	private JLabel lblTelefono;
 	private JLabel lblDni;
 	private JLabel lblMensaje;
 	private JTable tblPacientes;
-	public JButton btnGuardarPacientes;
 	private JTextField filtro;
 	private JRadioButton rdbtnApellidos;
 	private JRadioButton rdbtnDni;
@@ -103,7 +95,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	private JLabel lblEliminar;
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
-	private JLabel label_2;
+	private JLabel lblGrabar;
 	private JLabel lblBuscar;
 	private JLabel iconCodigo;
 	private JLabel iconNombre;
@@ -189,42 +181,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		tblPacientes.setAutoCreateRowSorter(true);
 		tblPacientes.setRowSorter(sorter);
 
-		btnAdicionar = new JButton("ADICIONAR");
-		btnAdicionar.setBackground(new Color(124, 252, 0));
-		btnAdicionar.addActionListener(this);
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAdicionar.setBounds(24, 11, 137, 39);
-		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
-		getContentPane().add(btnAdicionar);
-
-		btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.setBackground(Color.CYAN);
-		btnConsultar.addActionListener(this);
-		btnConsultar.setForeground(Color.BLACK);
-		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnConsultar.setBounds(181, 11, 145, 39);
-		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
-		getContentPane().add(btnConsultar);
-
-		btnModificar = new JButton("MODIFICAR");
-		btnModificar.setBackground(new Color(0, 139, 139));
-		btnModificar.addActionListener(this);
-		btnModificar.setForeground(Color.BLACK);
-		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnModificar.setBounds(350, 11, 145, 39);
-		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
-		getContentPane().add(btnModificar);
-
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBackground(new Color(127, 255, 212));
-		btnEliminar.addActionListener(this);
-		btnEliminar.setForeground(Color.BLACK);
-		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBounds(522, 11, 137, 39);
-		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
-		getContentPane().add(btnEliminar);
-
 		lblMensaje = new JLabel("");
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setBackground(Color.DARK_GRAY);
@@ -267,7 +223,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(797, 71, 546, 758);
+		panel.setBounds(792, 71, 546, 758);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -296,16 +252,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 						txtCodigo.setColumns(10);
 						txtCodigo.setBorder(null);
 						txtCodigo.setOpaque(false);
-						
-								btnBuscar = new JButton("BUSCAR");
-								btnBuscar.setBounds(414, 600, 110, 29);
-								panel.add(btnBuscar);
-								btnBuscar.setBackground(new Color(102, 205, 170));
-								btnBuscar.setEnabled(false);
-								btnBuscar.addActionListener(this);
-								btnBuscar.setForeground(Color.BLACK);
-								btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-								ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
 								
 										txtNombres = new JTextField();
 										txtNombres.setHorizontalAlignment(SwingConstants.LEFT);
@@ -383,35 +329,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																								lblDni.setForeground(Color.BLACK);
 																								lblDni.setHorizontalAlignment(SwingConstants.LEFT);
 																								lblDni.setFont(new Font("Yu Gothic UI", Font.BOLD, 16));
-																								
-																										btnAceptar = new JButton("ACEPTAR");
-																										btnAceptar.setBounds(219, 708, 137, 39);
-																										panel.add(btnAceptar);
-																										btnAceptar.setBackground(new Color(30, 144, 255));
-																										btnAceptar.setEnabled(false);
-																										btnAceptar.addActionListener(this);
-																										btnAceptar.setForeground(Color.BLACK);
-																										btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																										ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-																										
-																												btnCancelar = new JButton("CANCELAR");
-																												btnCancelar.setBounds(64, 708, 145, 39);
-																												panel.add(btnCancelar);
-																												btnCancelar.setBackground(new Color(0, 255, 255));
-																												btnCancelar.setEnabled(false);
-																												btnCancelar.addActionListener(this);
-																												btnCancelar.setForeground(Color.BLACK);
-																												btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																												ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-																												
-																														btnGuardarPacientes = new JButton("GUARDAR PACIENTES");
-																														btnGuardarPacientes.setBounds(138, 645, 302, 39);
-																														panel.add(btnGuardarPacientes);
-																														btnGuardarPacientes.addActionListener(this);
-																														btnGuardarPacientes.setForeground(Color.BLACK);
-																														btnGuardarPacientes.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																														btnGuardarPacientes.setBackground(new Color(0, 250, 154));
-																														ds.setCurvasButton(btnGuardarPacientes, "imagenes/grabar.png");
 																														
 																														lblAgregar = new JLabel("Agregar");
 																														lblAgregar.addMouseListener(this);
@@ -432,16 +349,16 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblCancelar.setBounds(162, 505, 206, 39);
 																														panel.add(lblCancelar);
 																														
-																														label_2 = new JLabel("Grabar");
-																														label_2.addMouseListener(this);
-																														label_2.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/save.png")));
-																														label_2.setOpaque(true);
-																														label_2.setHorizontalAlignment(SwingConstants.CENTER);
-																														label_2.setForeground(Color.WHITE);
-																														label_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
-																														label_2.setBackground(new Color(231, 96, 90));
-																														label_2.setBounds(162, 555, 206, 41);
-																														panel.add(label_2);
+																														lblGrabar = new JLabel("Grabar");
+																														lblGrabar.addMouseListener(this);
+																														lblGrabar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/save.png")));
+																														lblGrabar.setOpaque(true);
+																														lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
+																														lblGrabar.setForeground(Color.WHITE);
+																														lblGrabar.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 18));
+																														lblGrabar.setBackground(new Color(231, 96, 90));
+																														lblGrabar.setBounds(162, 555, 206, 41);
+																														panel.add(lblGrabar);
 																														
 																														lblBuscar = new JLabel("Buscar");
 																														lblBuscar.addMouseListener(this);
@@ -560,112 +477,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		}
 		if (arg0.getSource() == rdbtnApellidos) {
 			actionPerformedRdbtnApellidos(arg0);
-		}
-		if (arg0.getSource() == btnGuardarPacientes) {
-			actionPerformedBtnGuardarPacientes(arg0);
-		}
-		if (arg0.getSource() == btnCancelar) {
-			actionPerformedBtnCancelar(arg0);
-		}
-		if (arg0.getSource() == btnAceptar) {
-			actionPerformedBtnAceptar(arg0);
-		}
-		if (arg0.getSource() == btnBuscar) {
-			actionPerformedBtnBuscar(arg0);
-		}
-		if (arg0.getSource() == btnEliminar) {
-			actionPerformedBtnEliminar(arg0);
-		}
-		if (arg0.getSource() == btnModificar) {
-			actionPerformedBtnModificar(arg0);
-		}
-		if (arg0.getSource() == btnConsultar) {
-			actionPerformedBtnConsultar(arg0);
-		}
-		if (arg0.getSource() == btnAdicionar) {
-			actionPerformedBtnAdicionar(arg0);
-		}
-	}
-
-	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-		tipoOperacion = ADICIONAR;
-		lblMensaje.setText("Adicionando Paciente");
-		txtCodigo.setText("" + ap.codigoCorrelativo());
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-		txtCodigo.setEditable(false);
-		txtNombres.requestFocus();
-	}
-
-	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
-		tipoOperacion = CONSULTAR;
-		lblMensaje.setText("Consultando Paciente");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		tipoOperacion = MODIFICAR;
-		lblMensaje.setText("Modificando Paciente");
-		habilitarBusqueda(true);
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
-		tipoOperacion = ELIMINAR;
-		lblMensaje.setText("Eliminando Paciente");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
-		consultarPaciente();
-	}
-
-	protected void actionPerformedBtnAceptar(ActionEvent arg0) {
-		switch (tipoOperacion) {
-			case ADICIONAR:
-				adicionarPaciente();
-				lblMensaje.setText("");
-				break;
-			case CONSULTAR:
-				limpieza();
-				habilitarBusqueda(false);
-				habilitarOperaciones(true);
-				lblMensaje.setText("");
-				break;
-			case MODIFICAR:
-				modificarPaciente();
-				lblMensaje.setText("");
-				break;
-			case ELIMINAR:
-				eliminarPaciente();
-				lblMensaje.setText("");
-		}
-	}
-
-	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
-		if (tipoOperacion != ADICIONAR)
-			habilitarBusqueda(false);
-		lblMensaje.setText("");
-		habilitarEntradas(false);
-		habilitarOperaciones(true);
-	}
-
-	protected void actionPerformedBtnGuardarPacientes(ActionEvent arg0) {
-		if (ap.existeArchivo()) {
-			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ap.getArchivo() + "\" ?");
-			if (ok == 0) {
-				ap.grabarPacientes();
-				Libreria.mensajeInformacion(this, "\"" + ap.getArchivo() + "\" ha sido actualizado");
-			}
-			else
-				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ap.getArchivo() + "\"");
-		}
-		else {
-			ap.grabarPacientes();
-			Libreria.mensajeInformacion(this, "\"" + ap.getArchivo() + "\" ha sido creado");
 		}
 	}
 
@@ -922,8 +733,8 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 
 	// Métodos tipo void con parámetros
 	void habilitarBusqueda(boolean sino) {
-		btnBuscar.setEnabled(sino);
-		txtCodigo.setEditable(sino);
+		lblBuscar.setVisible(sino);
+		txtCodigo.setVisible(sino);
 		if (sino)
 			txtCodigo.requestFocus();
 	}
@@ -939,12 +750,12 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	}
 
 	void habilitarOperaciones(boolean sino) {
-		btnAdicionar.setEnabled(sino);
-		btnConsultar.setEnabled(sino);
-		btnModificar.setEnabled(sino);
-		btnEliminar.setEnabled(sino);
-		btnAceptar.setEnabled(!sino);
-		btnCancelar.setEnabled(!sino);
+		lblIngresar.setVisible(sino);
+		lblConsultar.setVisible(sino);
+		lblModificar.setVisible(sino);
+		lblEliminar.setVisible(sino);
+		lblAgregar.setVisible(!sino);
+		lblCancelar.setVisible(!sino);
 	}
 
 	// Métodos que retornan valor sin parámetros
@@ -1097,16 +908,81 @@ private void editableTrue(){
 		if (arg0.getSource() == lblCancelar) {
 			mouseClickedLblCancelar(arg0);
 		}
+		if (arg0.getSource() == lblGrabar) {
+			mouseClickedLblGrabar(arg0);
+		}
+		if (arg0.getSource() == lblBuscar) {
+			mouseClickedLblBuscar(arg0);
+		}
+		if (arg0.getSource() == lblEliminar) {
+			mouseClickedLblEliminar(arg0);
+		}
 		
 	}
+	private void mouseClickedLblEliminar(MouseEvent arg0){
+		tipoOperacion = ELIMINAR;
+		lblMensaje.setText("Eliminando Paciente");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
+	}
+	private void mouseClickedLblBuscar(MouseEvent arg0){
+		consultarPaciente();
+	}
+	private void mouseClickedLblGrabar(MouseEvent arg0){
+		if (ap.existeArchivo()) {
+			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ap.getArchivo() + "\" ?");
+			if (ok == 0) {
+				ap.grabarPacientes();
+				Libreria.mensajeInformacion(this, "\"" + ap.getArchivo() + "\" ha sido actualizado");
+			}
+			else
+				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ap.getArchivo() + "\"");
+		}
+		else {
+			ap.grabarPacientes();
+			Libreria.mensajeInformacion(this, "\"" + ap.getArchivo() + "\" ha sido creado");
+		}
+
+	}
 	protected void mouseClickedLblAgregar(MouseEvent arg0) {
+		switch (tipoOperacion) {
+		case ADICIONAR:
+			adicionarPaciente();
+			lblMensaje.setText("");
+			break;
+		case CONSULTAR:
+			limpieza();
+			habilitarBusqueda(false);
+			habilitarOperaciones(true);
+			lblMensaje.setText("");
+			break;
+		case MODIFICAR:
+			modificarPaciente();
+			lblMensaje.setText("");
+			break;
+		case ELIMINAR:
+			eliminarPaciente();
+			lblMensaje.setText("");
+	}
+
 		
 	}
 	protected void mouseClickedLblCancelar(MouseEvent arg0) {
 		panel.setVisible(false);
+		if (tipoOperacion != ADICIONAR)
+			habilitarBusqueda(false);
+		lblMensaje.setText("");
+		habilitarEntradas(false);
+		habilitarOperaciones(true);
 	}
 	protected void mouseClickedLblModificar(MouseEvent arg0) {
-		
+		tipoOperacion = MODIFICAR;
+		lblMensaje.setText("Modificando Paciente");
+		habilitarBusqueda(true);
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
 	}
 	
 	protected void mouseClickedLblIngresar(MouseEvent arg0) {
@@ -1125,7 +1001,11 @@ private void editableTrue(){
 		
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
-		
+		tipoOperacion = CONSULTAR;
+		lblMensaje.setText("Consultando Paciente");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
 		
 	}
 	
@@ -1136,7 +1016,7 @@ private void editableTrue(){
 		if (e.getSource() == getContentPane()) {
 			mouseEnteredThisContentPane(e);
 		}
-		if (e.getSource() == label_2) {
+		if (e.getSource() == lblGrabar) {
 			mouseEnteredLabel_2(e);
 		}
 		if (e.getSource() == lblCancelar) {
