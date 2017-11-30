@@ -625,8 +625,8 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			Paciente nuevo = new Paciente(leerCodigo(), leerApellidos(), leerNombres(), leerTelefono(), leerDni());
 			ap.adicionar(nuevo);
 			listado();
-			habilitarEntradas(false);
-			habilitarOperaciones(true);
+			habilitarEntradas(true);
+			//habilitarOperaciones(true);
 		}
 	}
 
@@ -955,6 +955,7 @@ private void editableTrue(){
 		case ADICIONAR:
 			adicionarPaciente();
 			lblMensaje.setText("");
+			txtCodigo.setText("" + ap.codigoCorrelativo());
 			break;
 		case CONSULTAR:
 			limpieza();
@@ -1001,6 +1002,7 @@ private void editableTrue(){
 		habilitarOperaciones(false);
 		txtCodigo.setEditable(false);
 		txtNombres.requestFocus();
+		lblBuscar.setVisible(false);
 		
 		
 		
