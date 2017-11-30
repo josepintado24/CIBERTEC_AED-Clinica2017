@@ -131,7 +131,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		setModal(true);
 		setResizable(false);
 		setTitle("MANTENIMIENTO | PACIENTE");
-		setBounds(100, 100, 1384, 883);
+		setBounds(100, 100, 1384, 730);
 		getContentPane().setLayout(null);
 
 		// ASIGNANDO MODELO DE TABLA
@@ -182,12 +182,12 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		tblPacientes.setRowSorter(sorter);
 
 		lblMensaje = new JLabel("");
-		lblMensaje.setForeground(Color.WHITE);
-		lblMensaje.setBackground(Color.DARK_GRAY);
+		lblMensaje.setForeground(Color.BLACK);
+		lblMensaje.setBackground(Color.WHITE);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
+		lblMensaje.setFont(new Font("Yu Gothic UI", Font.BOLD, 20));
 		lblMensaje.setOpaque(true);
-		lblMensaje.setBounds(754, 11, 342, 29);
+		lblMensaje.setBounds(805, 31, 533, 29);
 		getContentPane().add(lblMensaje);
 
 		filtro = new JTextField();
@@ -223,7 +223,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(792, 71, 546, 758);
+		panel.setBounds(805, 71, 533, 610);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -333,12 +333,14 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblAgregar = new JLabel("Agregar");
 																														lblAgregar.addMouseListener(this);
 																														lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
-																														lblAgregar.setBackground(new Color(0, 0, 0));
+																														lblAgregar.setBackground(new Color(255, 255, 0));
 																														lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblAgregar.setForeground(new Color(0, 0, 0));
 																														lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																														lblAgregar.setBounds(162, 455, 206, 39);
 																														panel.add(lblAgregar);
+																														//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+																														
 																														
 																														lblCancelar = new JLabel("Cancelar");
 																														lblCancelar.addMouseListener(this);
@@ -1034,10 +1036,10 @@ private void editableTrue(){
 			mouseEnteredLabel_2(e);
 		}
 		if (e.getSource() == lblCancelar) {
-			mouseEnteredLabel_1(e);
+			mouseEnteredCancelar(e);
 		}
 		if (e.getSource() == lblAgregar) {
-			mouseEnteredLabel(e);
+			mouseEnteredlblAgregar(e);
 		}
 		if (e.getSource() == lblBuscar) {
 			mouseEnteredLblBuscar(e);
@@ -1069,10 +1071,30 @@ private void editableTrue(){
 		if (e.getSource() == lblEliminar) {
 			mouseExitedLblEliminar(e);
 		}
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
 		
 		
 	}
 	///SALIR
+	protected void mouseExitedLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(false);
+		lblCancelar.setForeground(new Color(10, 20, 26));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
+	protected void mouseExitedLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(false);
+		lblAgregar.setForeground(new Color(10, 20, 26));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
+		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
 		lblModificar.setForeground(new Color(243, 124, 47));
@@ -1133,9 +1155,17 @@ private void editableTrue(){
 	}
 	protected void mouseEnteredLblBuscar(MouseEvent e) {
 	}
-	protected void mouseEnteredLabel(MouseEvent e) {
+	protected void mouseEnteredlblAgregar(MouseEvent e) {
+		lblAgregar.setOpaque(true);
+		lblAgregar.setBackground(new Color(30, 60, 79));
+		lblAgregar.setForeground(new Color(255, 255, 255));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
 	}
-	protected void mouseEnteredLabel_1(MouseEvent e) {
+	protected void mouseEnteredCancelar(MouseEvent e) {
+		lblCancelar.setOpaque(true);
+		lblCancelar.setBackground(new Color(30, 60, 79));
+		lblCancelar.setForeground(new Color(255, 255, 255));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
 	}
 	protected void mouseEnteredLabel_2(MouseEvent e) {
 	}
