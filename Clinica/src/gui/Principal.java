@@ -187,6 +187,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.setLayout(null);
 		
 		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1.addMouseListener(this);
 		lblNewLabel_1.addMouseMotionListener(this);
 		lblNewLabel_1.setIcon(new ImageIcon(Principal.class.getResource("/image/configuracion.png")));
@@ -195,6 +196,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(lblNewLabel_1);
 		
 		label_3 = new JLabel("");
+		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_3.addMouseListener(this);
 		label_3.addMouseMotionListener(this);
 		label_3.setIcon(new ImageIcon(Principal.class.getResource("/image/pagar.png")));
@@ -203,6 +205,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(label_3);
 		
 		label_4 = new JLabel("");
+		label_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_4.addMouseListener(this);
 		label_4.addMouseMotionListener(this);
 		label_4.setIcon(new ImageIcon(Principal.class.getResource("/image/reportar.png")));
@@ -211,6 +214,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(label_4);
 		
 		label_5 = new JLabel("");
+		label_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_5.addMouseListener(this);
 		label_5.addMouseMotionListener(this);
 		label_5.setIcon(new ImageIcon(Principal.class.getResource("/image/paciente.png")));
@@ -219,6 +223,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		panel_1.add(label_5);
 		
 		label_6 = new JLabel("");
+		label_6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_6.addMouseListener(this);
 		label_6.addMouseMotionListener(this);
 		label_6.setIcon(new ImageIcon(Principal.class.getResource("/image/atencion.png")));
