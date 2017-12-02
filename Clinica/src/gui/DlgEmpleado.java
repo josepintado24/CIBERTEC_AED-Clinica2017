@@ -27,8 +27,14 @@ import javax.swing.JTable;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
 
-public class DlgEmpleado extends JDialog implements ActionListener, KeyListener {
+public class DlgEmpleado extends JDialog implements ActionListener, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigo;
@@ -76,6 +82,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 	Validaciones v = new Validaciones();
 	DiseñoObjetos ds = new DiseñoObjetos();
 	Libreria lb = new Libreria();
+	private JPanel panel;
+	private JLabel lblIngresar;
+	private JLabel lblConsultar;
+	private JLabel lblModificar;
+	private JLabel lblEliminar;
+	private JLabel lbliconCodigo;
+	private JSeparator sCodigo;
 
 	public static void main(String[] args) {
 		try {
@@ -100,128 +113,15 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | EMPLEADOS");
-		setBounds(100, 100, 1257, 571);
+		setBounds(100, 100, 1438, 914);
 		getContentPane().setLayout(null);
-
-		lblCodigo = new JLabel("CODIGO");
-		lblCodigo.setForeground(Color.BLACK);
-		lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCodigo.setBounds(14, 60, 71, 14);
-		getContentPane().add(lblCodigo);
-
-		lblApellidos = new JLabel("APELLIDOS");
-		lblApellidos.setForeground(Color.BLACK);
-		lblApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblApellidos.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblApellidos.setBounds(0, 101, 85, 14);
-		getContentPane().add(lblApellidos);
-
-		lblNombres = new JLabel("NOMBRES");
-		lblNombres.setForeground(Color.BLACK);
-		lblNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblNombres.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNombres.setBounds(0, 141, 85, 14);
-		getContentPane().add(lblNombres);
-
-		lblTipo = new JLabel("TIPO");
-		lblTipo.setForeground(Color.BLACK);
-		lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTipo.setBounds(0, 181, 85, 14);
-		getContentPane().add(lblTipo);
-
-		lblLogin = new JLabel("LOGIN");
-		lblLogin.setForeground(Color.BLACK);
-		lblLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLogin.setBounds(39, 221, 46, 14);
-		getContentPane().add(lblLogin);
-
-		lblPassword = new JLabel("PASSWORD");
-		lblPassword.setForeground(Color.BLACK);
-		lblPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPassword.setBounds(0, 261, 85, 14);
-		getContentPane().add(lblPassword);
-
-		lblTurno = new JLabel("TURNO");
-		lblTurno.setForeground(Color.BLACK);
-		lblTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblTurno.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTurno.setBounds(20, 301, 65, 14);
-		getContentPane().add(lblTurno);
-
-		txtApellidos = new JTextField();
-		txtApellidos.addKeyListener(this);
-		txtApellidos.setEditable(false);
-		txtApellidos.setForeground(Color.BLACK);
-		txtApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtApellidos.setBounds(96, 94, 227, 29);
-		getContentPane().add(txtApellidos);
-		txtApellidos.setColumns(10);
-
-		txtNombres = new JTextField();
-		txtNombres.addKeyListener(this);
-		txtNombres.setEditable(false);
-		txtNombres.setForeground(Color.BLACK);
-		txtNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtNombres.setBounds(95, 134, 228, 29);
-		getContentPane().add(txtNombres);
-		txtNombres.setColumns(10);
-
-		cboTipo = new JComboBox<String>();
-		cboTipo.setEnabled(false);
-		cboTipo.setForeground(Color.BLACK);
-		cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		cboTipo.setBounds(95, 174, 154, 29);
-		cboTipo.addItem("Administrador");
-		cboTipo.addItem("Cajero");
-		getContentPane().add(cboTipo);
-
-		txtLogin = new JTextField();
-		txtLogin.addKeyListener(this);
-		txtLogin.setEditable(false);
-		txtLogin.setForeground(Color.BLACK);
-		txtLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtLogin.setBounds(95, 214, 154, 29);
-		getContentPane().add(txtLogin);
-		txtLogin.setColumns(10);
-
-		txtPassword = new JTextField();
-		txtPassword.addKeyListener(this);
-		txtPassword.setEditable(false);
-		txtPassword.setForeground(Color.BLACK);
-		txtPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtPassword.setBounds(95, 254, 154, 29);
-		getContentPane().add(txtPassword);
-		txtPassword.setColumns(10);
-
-		cboTurno = new JComboBox<String>();
-		cboTurno.setEnabled(false);
-		cboTurno.setForeground(Color.BLACK);
-		cboTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		cboTurno.setBounds(95, 294, 154, 29);
-		cboTurno.addItem("Noche");
-		cboTurno.addItem("Día");
-		getContentPane().add(cboTurno);
-
-		txtCodigo = new JTextField();
-		txtCodigo.setBackground(new Color(255, 255, 255));
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setEditable(false);
-		txtCodigo.setForeground(Color.BLACK);
-		txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		txtCodigo.setColumns(10);
-		txtCodigo.setBounds(95, 53, 85, 29);
-		getContentPane().add(txtCodigo);
 
 		btnAdicionar = new JButton("ADICIONAR");
 		btnAdicionar.addActionListener(this);
 		btnAdicionar.setBackground(new Color(124, 252, 0));
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAdicionar.setBounds(20, 347, 137, 39);
+		btnAdicionar.setBounds(20, 70, 137, 39);
 		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
 		getContentPane().add(btnAdicionar);
 
@@ -230,7 +130,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		btnConsultar.setBackground(Color.CYAN);
 		btnConsultar.setForeground(Color.BLACK);
 		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnConsultar.setBounds(177, 347, 145, 39);
+		btnConsultar.setBounds(177, 70, 145, 39);
 		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
 		getContentPane().add(btnConsultar);
 
@@ -239,7 +139,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		btnModificar.setBackground(new Color(0, 139, 139));
 		btnModificar.setForeground(Color.BLACK);
 		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnModificar.setBounds(177, 397, 145, 39);
+		btnModificar.setBounds(511, 70, 145, 39);
 		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
 		getContentPane().add(btnModificar);
 
@@ -248,39 +148,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		btnEliminar.setBackground(new Color(127, 255, 212));
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBounds(20, 397, 137, 39);
+		btnEliminar.setBounds(355, 70, 137, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		getContentPane().add(btnEliminar);
-
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.addActionListener(this);
-		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setEnabled(false);
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAceptar.setBounds(20, 447, 137, 39);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		getContentPane().add(btnAceptar);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setEnabled(false);
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnCancelar.setBounds(177, 447, 145, 39);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		getContentPane().add(btnCancelar);
-
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.addActionListener(this);
-		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setEnabled(false);
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnBuscar.setBounds(213, 53, 110, 29);
-		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
-		getContentPane().add(btnBuscar);
 
 		lblMensaje = new JLabel("");
 		lblMensaje.setOpaque(true);
@@ -288,11 +158,11 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(10, 11, 313, 29);
+		lblMensaje.setBounds(1091, 11, 313, 29);
 		getContentPane().add(lblMensaje);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(333, 11, 908, 520);
+		scrollPane.setBounds(49, 248, 722, 278);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -309,15 +179,221 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		jtblEmpleados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		jtblEmpleados.setRowHeight(25);
 		scrollPane.setViewportView(jtblEmpleados);
-
-		btnGuardar = new JButton("GUARDAR EMPLEADOS");
-		btnGuardar.addActionListener(this);
-		btnGuardar.setForeground(Color.BLACK);
-		btnGuardar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnGuardar.setBackground(new Color(0, 250, 154));
-		btnGuardar.setBounds(20, 492, 303, 39);
-		ds.setCurvasButton(btnGuardar, "imagenes/grabar.png");
-		getContentPane().add(btnGuardar);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(792, 70, 630, 690);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		panel.setVisible(false);
+		
+				lblCodigo = new JLabel("CODIGO");
+				lblCodigo.setBounds(193, 18, 71, 14);
+				panel.add(lblCodigo);
+				lblCodigo.setForeground(Color.BLACK);
+				lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+				lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
+				
+						lblLogin = new JLabel("LOGIN");
+						lblLogin.setBounds(35, 179, 46, 14);
+						panel.add(lblLogin);
+						lblLogin.setForeground(Color.BLACK);
+						lblLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+						lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
+						
+								lblTurno = new JLabel("TURNO");
+								lblTurno.setBounds(16, 259, 65, 14);
+								panel.add(lblTurno);
+								lblTurno.setForeground(Color.BLACK);
+								lblTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+								lblTurno.setHorizontalAlignment(SwingConstants.RIGHT);
+								
+										txtApellidos = new JTextField();
+										txtApellidos.setBounds(220, 197, 227, 29);
+										panel.add(txtApellidos);
+										txtApellidos.addKeyListener(this);
+										txtApellidos.setEditable(false);
+										txtApellidos.setForeground(Color.BLACK);
+										txtApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+										txtApellidos.setColumns(10);
+										
+												txtNombres = new JTextField();
+												txtNombres.setBounds(219, 237, 228, 29);
+												panel.add(txtNombres);
+												txtNombres.addKeyListener(this);
+												txtNombres.setEditable(false);
+												txtNombres.setForeground(Color.BLACK);
+												txtNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+												txtNombres.setColumns(10);
+												
+														cboTipo = new JComboBox<String>();
+														cboTipo.setBounds(219, 277, 154, 29);
+														panel.add(cboTipo);
+														cboTipo.setEnabled(false);
+														cboTipo.setForeground(Color.BLACK);
+														cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+														
+																txtLogin = new JTextField();
+																txtLogin.setBounds(219, 317, 154, 29);
+																panel.add(txtLogin);
+																txtLogin.addKeyListener(this);
+																txtLogin.setEditable(false);
+																txtLogin.setForeground(Color.BLACK);
+																txtLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																txtLogin.setColumns(10);
+																
+																		txtPassword = new JTextField();
+																		txtPassword.setBounds(219, 357, 154, 29);
+																		panel.add(txtPassword);
+																		txtPassword.addKeyListener(this);
+																		txtPassword.setEditable(false);
+																		txtPassword.setForeground(Color.BLACK);
+																		txtPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																		txtPassword.setColumns(10);
+																		
+																				cboTurno = new JComboBox<String>();
+																				cboTurno.setBounds(219, 397, 154, 29);
+																				panel.add(cboTurno);
+																				cboTurno.setEnabled(false);
+																				cboTurno.setForeground(Color.BLACK);
+																				cboTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																				
+																						txtCodigo = new JTextField();
+																						txtCodigo.setBounds(220, 52, 85, 29);
+																						panel.add(txtCodigo);
+																						txtCodigo.setBackground(new Color(255, 255, 255));
+																						txtCodigo.addKeyListener(this);
+																						txtCodigo.setEditable(false);
+																						txtCodigo.setForeground(Color.BLACK);
+																						txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																						txtCodigo.setColumns(10);
+																						txtCodigo.setBorder(null);
+																						txtCodigo.setOpaque(false);
+																						
+																								btnBuscar = new JButton("BUSCAR");
+																								btnBuscar.setBounds(488, 11, 110, 29);
+																								panel.add(btnBuscar);
+																								btnBuscar.addActionListener(this);
+																								btnBuscar.setBackground(new Color(102, 205, 170));
+																								btnBuscar.setEnabled(false);
+																								btnBuscar.setForeground(Color.BLACK);
+																								btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																								ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
+																								
+																										lblApellidos = new JLabel("APELLIDOS");
+																										lblApellidos.setBounds(157, 164, 85, 14);
+																										panel.add(lblApellidos);
+																										lblApellidos.setForeground(Color.BLACK);
+																										lblApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																										lblApellidos.setHorizontalAlignment(SwingConstants.RIGHT);
+																										
+																												lblNombres = new JLabel("NOMBRES");
+																												lblNombres.setBounds(-4, 99, 85, 14);
+																												panel.add(lblNombres);
+																												lblNombres.setForeground(Color.BLACK);
+																												lblNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																												lblNombres.setHorizontalAlignment(SwingConstants.RIGHT);
+																												
+																														lblTipo = new JLabel("TIPO");
+																														lblTipo.setBounds(-4, 139, 85, 14);
+																														panel.add(lblTipo);
+																														lblTipo.setForeground(Color.BLACK);
+																														lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																														lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
+																														
+																																lblPassword = new JLabel("PASSWORD");
+																																lblPassword.setBounds(-4, 219, 85, 14);
+																																panel.add(lblPassword);
+																																lblPassword.setForeground(Color.BLACK);
+																																lblPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																																lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+																																
+																																		btnAceptar = new JButton("ACEPTAR");
+																																		btnAceptar.setBounds(36, 640, 137, 39);
+																																		panel.add(btnAceptar);
+																																		btnAceptar.addActionListener(this);
+																																		btnAceptar.setBackground(new Color(30, 144, 255));
+																																		btnAceptar.setEnabled(false);
+																																		btnAceptar.setForeground(Color.BLACK);
+																																		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																																		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
+																																		
+																																				btnCancelar = new JButton("CANCELAR");
+																																				btnCancelar.setBounds(475, 590, 145, 39);
+																																				panel.add(btnCancelar);
+																																				btnCancelar.addActionListener(this);
+																																				btnCancelar.setBackground(new Color(0, 255, 255));
+																																				btnCancelar.setEnabled(false);
+																																				btnCancelar.setForeground(Color.BLACK);
+																																				btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																																				ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
+																																				
+																																						btnGuardar = new JButton("GUARDAR EMPLEADOS");
+																																						btnGuardar.setBounds(214, 640, 303, 39);
+																																						panel.add(btnGuardar);
+																																						btnGuardar.addActionListener(this);
+																																						btnGuardar.setForeground(Color.BLACK);
+																																						btnGuardar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																																						btnGuardar.setBackground(new Color(0, 250, 154));
+																																						ds.setCurvasButton(btnGuardar, "imagenes/grabar.png");
+																																						
+																																						lbliconCodigo = new JLabel("");
+																																						lbliconCodigo.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/codigo.png")));
+																																						lbliconCodigo.setBounds(186, 52, 24, 22);
+																																						panel.add(lbliconCodigo);
+																																						
+																																						sCodigo = new JSeparator();
+																																						sCodigo.setForeground(Color.BLACK);
+																																						sCodigo.setBounds(193, 85, 115, 2);
+																																						panel.add(sCodigo);
+																																						
+																																						lblIngresar = new JLabel("INGRESAR");
+																																						lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
+																																						lblIngresar.addMouseListener(this);
+																																						lblIngresar.setInheritsPopupMenu(false);
+																																						lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
+																																						lblIngresar.setForeground(new Color(243, 124, 47));
+																																						lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																																						lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblIngresar.setBackground(new Color(1, 168, 25));
+																																						lblIngresar.setBounds(15, 134, 169, 37);
+																																						getContentPane().add(lblIngresar);
+																																						
+																																						lblConsultar = new JLabel("CONSULTAR");
+																																						lblConsultar.addMouseListener(this);
+																																						lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
+																																						lblConsultar.setForeground(new Color(243, 124, 47));
+																																						lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																																						lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblConsultar.setBackground(new Color(1, 168, 25));
+																																						lblConsultar.setBounds(203, 135, 169, 36);
+																																						getContentPane().add(lblConsultar);
+																																						
+																																						lblModificar = new JLabel("MODIFICAR");
+																																						lblModificar.addMouseListener(this);
+																																						lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
+																																						lblModificar.setForeground(new Color(243, 124, 47));
+																																						lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																																						lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblModificar.setBackground(new Color(1, 168, 25));
+																																						lblModificar.setBounds(393, 135, 175, 36);
+																																						getContentPane().add(lblModificar);
+																																						
+																																						lblEliminar = new JLabel("ELIMINAR");
+																																						lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
+																																						lblEliminar.addMouseListener(this);
+																																						lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
+																																						lblEliminar.setForeground(new Color(243, 124, 47));
+																																						lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																																						lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						
+																																						lblEliminar.setBounds(588, 135, 183, 36);
+																																						getContentPane().add(lblEliminar);
+																																						
+																				cboTurno.addItem("Noche");
+																				cboTurno.addItem("Día");
+														cboTipo.addItem("Administrador");
+														cboTipo.addItem("Cajero");
 
 		listado();
 		modeloTabla();
@@ -359,6 +435,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		habilitarOperaciones(false);
 		txtCodigo.setEditable(false);
 		txtApellidos.requestFocus();
+		panel.setVisible(true);
 	}
 
 	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
@@ -366,6 +443,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		lblMensaje.setText("Consultando Empleado");
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
+		panel.setVisible(true);
 	}
 
 	protected void actionPerformedBtnModificar(ActionEvent arg0) {
@@ -699,7 +777,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		btnAceptar.setEnabled(!sino);
 		btnCancelar.setEnabled(!sino);
 	}
-
+	
+	private void visibleCodigo(){
+		lblCodigo.setVisible(true);
+		lbliconCodigo.setVisible(true);
+		sCodigo.setVisible(true);
+		txtCodigo.setVisible(true);
+	}
 	// Métodos que retornan valor sin parámetros
 	String[] getColumnas() {
 		String columnas[] = new String[] { "CÓDIGO", "APELLIDOS", "NOMBRES", "TIPO", "LOGIN", "PASSWORD", "TURNO" };
@@ -769,5 +853,90 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener 
 		else {
 			return "DÍA";
 		}
+	}
+	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblEliminar) {
+			mouseClickedLblEliminar(arg0);
+		}
+		if (arg0.getSource() == lblModificar) {
+			
+		}
+		if (arg0.getSource() == lblConsultar) {
+			
+		}
+		if (arg0.getSource() == lblIngresar) {
+			
+		}
+		
+		
+		
+		
+		
+	}
+	public void mouseEntered(MouseEvent arg0) {
+		if (arg0.getSource() == lblEliminar) {
+			mouseEnteredLblEliminar(arg0);
+		}
+		if (arg0.getSource() == lblModificar) {
+			mouseEnteredLblModificar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			mouseEnteredLblConsultar(arg0);
+		}
+		if (arg0.getSource() == lblIngresar) {
+			mouseEnteredLblIngresar(arg0);
+		}
+	}
+	public void mouseExited(MouseEvent arg0) {
+		if (arg0.getSource() == lblEliminar) {
+			mouseExitedLblEliminar(arg0);
+		}
+		if (arg0.getSource() == lblModificar) {
+			//mouseExitedLblModificar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			//mouseExitedLblConsultar(arg0);
+		}
+		if (arg0.getSource() == lblIngresar) {
+			//mouseExitedLblIngresar(arg0);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	public void mousePressed(MouseEvent arg0) {
+	}
+	public void mouseReleased(MouseEvent arg0) {
+	}
+	
+	///SOBRE EL LABEL
+	protected void mouseEnteredLblIngresar(MouseEvent arg0) {
+	}
+	protected void mouseEnteredLblConsultar(MouseEvent arg0) {
+	}
+	protected void mouseEnteredLblModificar(MouseEvent arg0) {
+	}
+	protected void mouseEnteredLblEliminar(MouseEvent arg0) {
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarBlnco.png")));
+		lblEliminar.setOpaque(true);
+		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(255, 255, 255));
+	}
+	///SALIR DEL LABEL
+	protected void mouseExitedLblEliminar(MouseEvent arg0) {
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
+		lblEliminar.setOpaque(false);
+		lblEliminar.setForeground(new Color(243, 124, 47));
+	}
+	////CLICK
+	protected void mouseClickedLblEliminar(MouseEvent arg0) {
+		tipoOperacion = ELIMINAR;
+		lblMensaje.setText("Eliminando Empleado");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
 	}
 }

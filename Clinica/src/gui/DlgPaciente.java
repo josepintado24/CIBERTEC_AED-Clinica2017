@@ -495,7 +495,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNaranja.png")));
 																														lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																														lblEliminar.setBackground(new Color(1, 168, 25));
+																														lblEliminar.setBackground(Color.RED);
 																														lblEliminar.setBounds(585, 68, 183, 36);
 																														getContentPane().add(lblEliminar);
 																														lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
