@@ -404,8 +404,6 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														iconCodigo = new JLabel("");
 																														iconCodigo.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/codigo.png")));
 																														iconCodigo.setBounds(41, 44, 24, 22);
-																														panel.add(iconCodigo);
-																														
 																														iconNombre = new JLabel("");
 																														iconNombre.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/user30.png")));
 																														iconNombre.setBounds(41, 119, 35, 27);
@@ -1041,10 +1039,10 @@ private void editableTrue(){
 	
 	}
 	private void mouseClickedLblBuscar(MouseEvent arg0){
-		
 		consultarPaciente();
 	}
-	private void mouseClickedLblGrabar(MouseEvent arg0){
+		
+		private void mouseClickedLblGrabar(MouseEvent arg0){
 		if (ap.existeArchivo()) {
 			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ap.getArchivo() + "\" ?");
 			if (ok == 0) {
