@@ -471,17 +471,19 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																																						lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 																																						lblIngresar.setBackground(new Color(1, 168, 25));
-																																						lblIngresar.setBounds(15, 134, 169, 37);
+																																						lblIngresar.setBounds(35, 134, 169, 37);
 																																						getContentPane().add(lblIngresar);
 																																						
 																																						lblConsultar = new JLabel("CONSULTAR");
+																																						lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
 																																						lblConsultar.addMouseListener(this);
+																																						lblConsultar.setInheritsPopupMenu(false);
 																																						lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblConsultar.setForeground(new Color(243, 124, 47));
 																																						lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																																						lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 																																						lblConsultar.setBackground(new Color(1, 168, 25));
-																																						lblConsultar.setBounds(203, 135, 169, 36);
+																																						lblConsultar.setBounds(214, 134, 169, 37);
 																																						getContentPane().add(lblConsultar);
 																																						
 																																						lblModificar = new JLabel("MODIFICAR");
@@ -490,20 +492,19 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblModificar.setForeground(new Color(243, 124, 47));
 																																						lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																																						lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
-																																						lblModificar.setBackground(new Color(1, 168, 25));
+																																						lblModificar.setBackground(Color.WHITE);
 																																						lblModificar.setBounds(393, 135, 175, 36);
 																																						getContentPane().add(lblModificar);
 																																						
-																																						lblEliminar = new JLabel("ELIMINAR");
-																																						lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
-																																						lblEliminar.addMouseListener(this);
-																																						lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
-																																						lblEliminar.setForeground(new Color(243, 124, 47));
-																																						lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																																						lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
-																																						
-																																						lblEliminar.setBounds(588, 135, 183, 36);
-																																						getContentPane().add(lblEliminar);
+																																	lblEliminar = new JLabel("ELIMINAR");
+																																	lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
+																																	lblEliminar.addMouseListener(this);
+																																	lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
+																																	lblEliminar.setForeground(new Color(243, 124, 47));
+																																	lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																																	lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																	lblEliminar.setBounds(588, 135, 183, 36);
+																																	getContentPane().add(lblEliminar);
 																																						
 																																						panel_1 = new JPanel();
 																																						panel_1.addMouseMotionListener(new MouseMotionAdapter() {
@@ -819,13 +820,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 				if ((tipoOperacion != CONSULTAR)&&(tipoOperacion != ADICIONAR)){
 					lblAgregar.setVisible(true);
 					lblGrabar.setVisible(true);
+					
 				}
-				novisibleNombre();
-				novisibleApellido();
-				novisibleTurno();
-				novisibleTipo();
-				novisibleLogin();
-				novisiblePassword();
+				visibleNombre(true);
+				visibleApellido(true);
+				visibleLogin(true);
+				visiblePassword(true);
+				visibleTipo(true);
+				visibleTurno(true);
 				
 				txtNombres.setText(x.getNombres());
 				txtApellidos.setText(x.getApellidos());
@@ -954,7 +956,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	
 	//
 	
-private void editableTrue(){
+/*private void editableTrue(){
 		
 		txtCodigo.setEditable(true);
 		txtApellidos.setEditable(true);
@@ -980,92 +982,51 @@ private void editableTrue(){
 		txtPassword.setEditable(false);
 		cboTipo.setEditable(false);
 		cboTurno.setEditable(false);
-		}
+		}*/
 	
-	//metodos privados visible 
+	//metodos privados NO VISIBLEs 
 	
 		
-	private void visibleCodigo(){
-		txtCodigo.setVisible(false);
-		lblCodigo.setVisible(false);
-		sCodigo.setVisible(false);
-		lbliconCodigo.setVisible(false);
+	private void visibleCodigo(boolean sino){
+		txtCodigo.setVisible(sino);
+		lblCodigo.setVisible(sino);
+		sCodigo.setVisible(sino);
+		lbliconCodigo.setVisible(sino);
 	}
-	private void visibleNombre(){
-		txtNombres.setVisible(false);
-		lblNombres.setVisible(false);
-		sNombres.setVisible(false);
-		lbliconNombres.setVisible(false);
+	private void visibleNombre(boolean sino){
+		txtNombres.setVisible(sino);
+		lblNombres.setVisible(sino);
+		sNombres.setVisible(sino);
+		lbliconNombres.setVisible(sino);
 	}
-	private void visibleApellido(){
-		txtApellidos.setVisible(false);
-		lblApellidos.setVisible(false);
-		sApellidos.setVisible(false);
-		lbliconApellidos.setVisible(false);
+	private void visibleApellido(boolean sino){
+		txtApellidos.setVisible(sino);
+		lblApellidos.setVisible(sino);
+		sApellidos.setVisible(sino);
+		lbliconApellidos.setVisible(sino);
 	}
-	private void visibleTipo(){
-		cboTipo.setVisible(false);
-		lblTipo.setVisible(false);
+	private void visibleTipo(boolean sino){
+		cboTipo.setVisible(sino);
+		lblTipo.setVisible(sino);
 		}
-	private void visibleTurno(){
-		cboTurno.setVisible(false);
-		lblTurno.setVisible(false);
+	private void visibleTurno(boolean sino){
+		cboTurno.setVisible(sino);
+		lblTurno.setVisible(sino);
 		}
-	private void visibleLogin(){
-		txtLogin.setVisible(false);
-		lblLogin.setVisible(false);
-		sLogin.setVisible(false);
-		lbliconLogin.setVisible(false);
+	private void visibleLogin(boolean sino){
+		txtLogin.setVisible(sino);
+		lblLogin.setVisible(sino);
+		sLogin.setVisible(sino);
+		lbliconLogin.setVisible(sino);
 	}
 	
-	private void visiblePassword(){
-		txtPassword.setVisible(false);
-		lblPassword.setVisible(false);
-		sPassword.setVisible(false);
-		lbliconPassword.setVisible(false);
+	private void visiblePassword(boolean sino){
+		txtPassword.setVisible(sino);
+		lblPassword.setVisible(sino);
+		sPassword.setVisible(sino);
+		lbliconPassword.setVisible(sino);
 	}
 	
-	//metodos privados  no visible
-	
-	private void novisibleCodigo(){
-		txtCodigo.setVisible(false);
-		lblCodigo.setVisible(false);
-		sCodigo.setVisible(false);
-		lbliconCodigo.setVisible(false);
-	}
-	private void novisibleNombre(){
-		txtNombres.setVisible(false);
-		lblNombres.setVisible(false);
-		sNombres.setVisible(false);
-		lbliconNombres.setVisible(false);
-	}
-	private void novisibleApellido(){
-		txtApellidos.setVisible(false);
-		lblApellidos.setVisible(false);
-		sApellidos.setVisible(false);
-		lbliconApellidos.setVisible(false);
-	}
-	private void novisibleTipo(){
-		cboTipo.setVisible(false);
-		lblTipo.setVisible(false);
-		}
-	private void novisibleTurno(){
-		cboTurno.setVisible(false);
-		lblTurno.setVisible(false);
-		}
-	private void novisibleLogin(){
-		txtLogin.setVisible(false);
-		lblLogin.setVisible(false);
-		sLogin.setVisible(false);
-		lbliconLogin.setVisible(false);
-	}
-	
-	private void novisiblePassword(){
-		txtPassword.setVisible(false);
-		lblPassword.setVisible(false);
-		sPassword.setVisible(false);
-		lbliconPassword.setVisible(false);
-	}
 	
 	
 	
@@ -1169,9 +1130,6 @@ private void editableTrue(){
 		if (arg0.getSource() == lblCancelar) {
 			mouseClickedLblCancelar(arg0);
 		}
-		if (arg0.getSource() == lblGrabar) {
-			mouseClickedLblGrabar(arg0);
-		}
 		if (arg0.getSource() == lblBuscar) {
 			mouseClickedLblBuscar(arg0);
 		}
@@ -1245,8 +1203,17 @@ private void editableTrue(){
 		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent arg0) {
+		lblConsultar.setOpaque(true);
+		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setForeground(new Color(255, 255, 255));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent arg0) {
+
+		lblModificar.setOpaque(true);
+		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setForeground(new Color(255, 255, 255));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarBlanco.png")));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent arg0) {
 		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarBlnco.png")));
@@ -1327,26 +1294,28 @@ private void editableTrue(){
 	
 	
 	////CLICKed
+	private void mouseClickedLblEliminar(MouseEvent arg0){
+		tipoOperacion = ELIMINAR;
+		lblMensaje.setText("Eliminando Empleado");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
+	
+	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
 		tipoOperacion = CONSULTAR;
 		lblMensaje.setText("Consultando Empleado");
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
-		visibleCodigo();
-		visibleNombre();
-		visibleApellido();
-		visibleTipo();
-		visibleTurno();
-		visibleLogin();
-		
-	}
-	protected void mouseClickedLblEliminar(MouseEvent arg0) {
-		tipoOperacion = ELIMINAR;
-		lblMensaje.setText("Eliminando Empleado");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-		panel.setVisible(true);
+		visibleNombre(false);
+		visibleApellido(false);
+		visibleLogin(false);
+		visibleTipo(false);
+		visiblePassword(false);
+		visibleTurno(false);
+		lblAgregar.setVisible(false);
+		lblGrabar.setVisible(false);
 	}
 	protected void mouseClickedLblModificar(MouseEvent arg0) {
 		tipoOperacion = MODIFICAR;
@@ -1368,6 +1337,7 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 	txtApellidos.requestFocus();
 	panel.setVisible(true);
 	lblBuscar.setVisible(false);
+	
 }
 		
 		
