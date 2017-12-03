@@ -32,8 +32,12 @@ import java.awt.event.KeyEvent;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.border.LineBorder;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import javax.swing.JSeparator;
 
-public class DlgCamas extends JDialog implements ActionListener, KeyListener {
+public class DlgCamas extends JDialog implements ActionListener, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -82,6 +86,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener {
 	private JRadioButton rdbtnLibre;
 	private JRadioButton rdbtnOcupado;
 	private JRadioButton rdbtnTodo;
+	private JLabel lblIngresar;
+	private JLabel lblIconCodigoCama;
+	private JSeparator separator;
+	private JLabel lblIconPrecioCama;
+	private JSeparator separator_1;
+	private JLabel lblConsultar;
+	private JLabel lblModificar;
+	private JLabel lblEliminar;
 
 	public static void main(String[] args) {
 		try {
@@ -105,150 +117,56 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener {
 		setResizable(false);
 		setTitle("MANTENIMIENTO | CAMAS");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 783, 455);
+		setBounds(100, 100, 1332, 788);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lblNroCama = new JLabel("NRO CAMA");
-		lblNroCama.setForeground(Color.BLACK);
-		lblNroCama.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNroCama.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblNroCama.setBounds(10, 59, 110, 14);
-		contentPane.add(lblNroCama);
-
-		lblCategoria = new JLabel("CATEGORIA");
-		lblCategoria.setForeground(Color.BLACK);
-		lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCategoria.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCategoria.setBounds(10, 99, 110, 14);
-		contentPane.add(lblCategoria);
-
-		lblPrecioPorDia = new JLabel("PRECIO POR D\u00CDA");
-		lblPrecioPorDia.setForeground(Color.BLACK);
-		lblPrecioPorDia.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPrecioPorDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblPrecioPorDia.setBounds(10, 137, 110, 14);
-		contentPane.add(lblPrecioPorDia);
-
-		lblEstado = new JLabel("ESTADO");
-		lblEstado.setForeground(Color.BLACK);
-		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblEstado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblEstado.setBounds(25, 181, 95, 14);
-		contentPane.add(lblEstado);
-
-		txtPrecioxDia = new JTextField();
-		txtPrecioxDia.addKeyListener(this);
-		txtPrecioxDia.setForeground(Color.BLACK);
-		txtPrecioxDia.setFont(new Font("Arial", Font.BOLD, 12));
-		txtPrecioxDia.setEditable(false);
-		txtPrecioxDia.setBounds(130, 130, 86, 29);
-		contentPane.add(txtPrecioxDia);
-		txtPrecioxDia.setColumns(10);
-
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(413, 219, -394, -54);
 		contentPane.add(scrollPane);
 
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setIcon(new ImageIcon(DlgCamas.class.getResource("/imagenes/buscar.png")));
-		btnBuscar.addActionListener(this);
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnBuscar.setEnabled(false);
-		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setBounds(217, 52, 110, 29);
-		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
-		contentPane.add(btnBuscar);
-
 		btnAdicionar = new JButton("ADICIONAR");
+		btnAdicionar.addMouseListener(this);
+		btnAdicionar.setBounds(10, 29, 137, 39);
 		btnAdicionar.addActionListener(this);
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnAdicionar.setBackground(new Color(124, 252, 0));
-		btnAdicionar.setBounds(23, 227, 137, 39);
 		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
 		contentPane.add(btnAdicionar);
 
 		btnConsultar = new JButton("CONSULTAR");
+		btnConsultar.setBounds(170, 29, 145, 39);
 		btnConsultar.addActionListener(this);
 		btnConsultar.setForeground(Color.BLACK);
 		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnConsultar.setBackground(Color.CYAN);
-		btnConsultar.setBounds(170, 227, 145, 39);
 		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
 		contentPane.add(btnConsultar);
 
 		btnModificar = new JButton("MODIFICAR");
+		btnModificar.setBounds(353, 29, 145, 39);
 		btnModificar.addActionListener(this);
 		btnModificar.setForeground(Color.BLACK);
 		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnModificar.setBackground(new Color(0, 139, 139));
-		btnModificar.setBounds(170, 277, 145, 39);
 		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
 		contentPane.add(btnModificar);
 
 		btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setBounds(522, 29, 137, 39);
 		btnEliminar.addActionListener(this);
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnEliminar.setBackground(new Color(127, 255, 212));
-		btnEliminar.setBounds(23, 277, 137, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		contentPane.add(btnEliminar);
 
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.addActionListener(this);
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAceptar.setEnabled(false);
-		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setBounds(23, 327, 137, 39);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		contentPane.add(btnAceptar);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnCancelar.setEnabled(false);
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setBounds(170, 327, 145, 39);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		contentPane.add(btnCancelar);
-
-		txtNroCama = new JTextField();
-		txtNroCama.addKeyListener(this);
-		txtNroCama.setForeground(Color.BLACK);
-		txtNroCama.setFont(new Font("Arial", Font.BOLD, 12));
-		txtNroCama.setEditable(false);
-		txtNroCama.setColumns(10);
-		txtNroCama.setBounds(130, 52, 70, 29);
-		contentPane.add(txtNroCama);
-
-		cboCategoria = new JComboBox<String>();
-		cboCategoria.setEnabled(false);
-		cboCategoria.setForeground(Color.BLACK);
-		cboCategoria.setFont(new Font("Arial", Font.BOLD, 12));
-		cboCategoria.setBounds(130, 92, 161, 29);
-		cboCategoria.addItem("ECONÓMICO");
-		cboCategoria.addItem("EJECUTIVO");
-		contentPane.add(cboCategoria);
-
-		cboEstado = new JComboBox<String>();
-		cboEstado.setEnabled(false);
-		cboEstado.setForeground(Color.BLACK);
-		cboEstado.setFont(new Font("Arial", Font.BOLD, 12));
-		cboEstado.setBounds(130, 174, 161, 29);
-		cboEstado.addItem("LIBRE");
-		cboEstado.addItem("OCUPADO");
-		contentPane.add(cboEstado);
-
 		scpMedicamentos = new JScrollPane();
-		scpMedicamentos.setBounds(336, 43, 430, 373);
+		scpMedicamentos.setBounds(42, 260, 722, 408);
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -266,52 +184,220 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener {
 		scpMedicamentos.setViewportView(jtblCamas);
 
 		lblMensaje = new JLabel("");
+		lblMensaje.setBounds(961, 29, 316, 29);
 		lblMensaje.setOpaque(true);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(10, 12, 316, 29);
 		contentPane.add(lblMensaje);
 
-		btnGrabarCamas = new JButton("GRABAR CAMAS");
-		btnGrabarCamas.addActionListener(this);
-		btnGrabarCamas.setBounds(25, 377, 290, 39);
-		btnGrabarCamas.setForeground(Color.BLACK);
-		btnGrabarCamas.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnGrabarCamas.setBackground(new Color(0, 250, 154));
-		ds.setCurvasButton(btnGrabarCamas, "imagenes/grabar.png");
-		contentPane.add(btnGrabarCamas);
-
 		rdbtnLibre = new JRadioButton("LIBRE");
+		rdbtnLibre.setBounds(676, 7, 70, 23);
 		rdbtnLibre.addActionListener(this);
 		rdbtnLibre.setSelected(true);
 		rdbtnLibre.setForeground(Color.BLACK);
 		rdbtnLibre.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		rdbtnLibre.setBackground(Color.WHITE);
-		rdbtnLibre.setBounds(427, 12, 70, 23);
 		contentPane.add(rdbtnLibre);
 
 		rdbtnOcupado = new JRadioButton("OCUPADO");
+		rdbtnOcupado.setBounds(748, 7, 103, 23);
 		rdbtnOcupado.addActionListener(this);
 		rdbtnOcupado.setForeground(Color.BLACK);
 		rdbtnOcupado.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		rdbtnOcupado.setBackground(Color.WHITE);
-		rdbtnOcupado.setBounds(499, 12, 103, 23);
 		contentPane.add(rdbtnOcupado);
 
 		rdbtnTodo = new JRadioButton("TODO");
+		rdbtnTodo.setBounds(853, 7, 70, 23);
 		rdbtnTodo.addActionListener(this);
 		rdbtnTodo.setForeground(Color.BLACK);
 		rdbtnTodo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		rdbtnTodo.setBackground(Color.WHITE);
-		rdbtnTodo.setBounds(604, 12, 70, 23);
 		contentPane.add(rdbtnTodo);
 
 		bp = new ButtonGroup();
 		bp.add(rdbtnLibre);
 		bp.add(rdbtnOcupado);
 		bp.add(rdbtnTodo);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(793, 86, 471, 569);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		panel.setVisible(false);
+		
+				lblNroCama = new JLabel("NRO CAMA");
+				lblNroCama.setBounds(-27, 25, 118, 14);
+				panel.add(lblNroCama);
+				lblNroCama.setForeground(Color.BLACK);
+				lblNroCama.setHorizontalAlignment(SwingConstants.RIGHT);
+				lblNroCama.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				
+						lblCategoria = new JLabel("CATEGORIA");
+						lblCategoria.setBounds(-10, 100, 110, 14);
+						panel.add(lblCategoria);
+						lblCategoria.setForeground(Color.BLACK);
+						lblCategoria.setHorizontalAlignment(SwingConstants.RIGHT);
+						lblCategoria.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+						
+								lblPrecioPorDia = new JLabel("PRECIO POR D\u00CDA");
+								lblPrecioPorDia.setBounds(30, 172, 110, 14);
+								panel.add(lblPrecioPorDia);
+								lblPrecioPorDia.setForeground(Color.BLACK);
+								lblPrecioPorDia.setHorizontalAlignment(SwingConstants.RIGHT);
+								lblPrecioPorDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+								
+										lblEstado = new JLabel("ESTADO");
+										lblEstado.setBounds(10, 255, 66, 14);
+										panel.add(lblEstado);
+										lblEstado.setForeground(Color.BLACK);
+										lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+										lblEstado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+										
+												txtPrecioxDia = new JTextField();
+												txtPrecioxDia.setBounds(54, 197, 118, 29);
+												panel.add(txtPrecioxDia);
+												txtPrecioxDia.addKeyListener(this);
+												txtPrecioxDia.setForeground(Color.BLACK);
+												txtPrecioxDia.setFont(new Font("Arial", Font.BOLD, 12));
+												txtPrecioxDia.setEditable(false);
+												txtPrecioxDia.setColumns(10);
+												txtPrecioxDia.setBorder(null);
+												txtPrecioxDia.setOpaque(false);
+												
+														btnBuscar = new JButton("BUSCAR");
+														btnBuscar.setBounds(351, 42, 110, 29);
+														panel.add(btnBuscar);
+														btnBuscar.setIcon(new ImageIcon(DlgCamas.class.getResource("/imagenes/buscar.png")));
+														btnBuscar.addActionListener(this);
+														btnBuscar.setForeground(Color.BLACK);
+														btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+														btnBuscar.setEnabled(false);
+														btnBuscar.setBackground(new Color(102, 205, 170));
+														ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
+														
+																txtNroCama = new JTextField();
+																txtNroCama.setBounds(55, 42, 86, 29);
+																panel.add(txtNroCama);
+																txtNroCama.addKeyListener(this);
+																txtNroCama.setForeground(Color.BLACK);
+																txtNroCama.setFont(new Font("Arial", Font.BOLD, 12));
+																txtNroCama.setEditable(false);
+																txtNroCama.setColumns(10);
+																txtNroCama.setBorder(null);
+																txtNroCama.setOpaque(false);
+																
+																		cboCategoria = new JComboBox<String>();
+																		cboCategoria.setBounds(68, 121, 161, 29);
+																		panel.add(cboCategoria);
+																		cboCategoria.setEnabled(false);
+																		cboCategoria.setForeground(Color.BLACK);
+																		cboCategoria.setFont(new Font("Arial", Font.BOLD, 12));
+																		
+																				cboEstado = new JComboBox<String>();
+																				cboEstado.setBounds(68, 280, 161, 29);
+																				panel.add(cboEstado);
+																				cboEstado.setEnabled(false);
+																				cboEstado.setForeground(Color.BLACK);
+																				cboEstado.setFont(new Font("Arial", Font.BOLD, 12));
+																				
+																						btnAceptar = new JButton("ACEPTAR");
+																						btnAceptar.setBounds(10, 469, 137, 39);
+																						panel.add(btnAceptar);
+																						btnAceptar.addActionListener(this);
+																						btnAceptar.setForeground(Color.BLACK);
+																						btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																						btnAceptar.setEnabled(false);
+																						btnAceptar.setBackground(new Color(30, 144, 255));
+																						ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
+																						
+																								btnCancelar = new JButton("CANCELAR");
+																								btnCancelar.setBounds(316, 469, 145, 39);
+																								panel.add(btnCancelar);
+																								btnCancelar.addActionListener(this);
+																								btnCancelar.setForeground(Color.BLACK);
+																								btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																								btnCancelar.setEnabled(false);
+																								btnCancelar.setBackground(new Color(0, 255, 255));
+																								ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
+																								
+																										btnGrabarCamas = new JButton("GRABAR CAMAS");
+																										btnGrabarCamas.setBounds(10, 519, 290, 39);
+																										panel.add(btnGrabarCamas);
+																										btnGrabarCamas.addActionListener(this);
+																										btnGrabarCamas.setForeground(Color.BLACK);
+																										btnGrabarCamas.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+																										btnGrabarCamas.setBackground(new Color(0, 250, 154));
+																										ds.setCurvasButton(btnGrabarCamas, "imagenes/grabar.png");
+																										
+																										lblIconCodigoCama = new JLabel("");
+																										lblIconCodigoCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/codigo.png")));
+																										lblIconCodigoCama.setBounds(27, 42, 30, 29);
+																										panel.add(lblIconCodigoCama);
+																										
+																										separator = new JSeparator();
+																										separator.setBounds(27, 69, 145, 2);
+																										panel.add(separator);
+																										
+																										lblIconPrecioCama = new JLabel("");
+																										lblIconPrecioCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/iconCama.png")));
+																										lblIconPrecioCama.setBounds(24, 205, 32, 21);
+																										panel.add(lblIconPrecioCama);
+																										
+																										separator_1 = new JSeparator();
+																										separator_1.setBounds(30, 224, 150, 2);
+																										panel.add(separator_1);
+																										
+																										lblIngresar = new JLabel("INGRESAR");
+																										lblIngresar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/ingresarNaranja.png")));
+																										lblIngresar.addMouseListener(this);
+																										lblIngresar.setInheritsPopupMenu(false);
+																										lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblIngresar.setForeground(new Color(243, 124, 47));
+																										lblIngresar.setFont(new Font("Dialog", Font.BOLD, 16));
+																										lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblIngresar.setBackground(new Color(1, 168, 25));
+																										lblIngresar.setBounds(10, 93, 169, 37);
+																										contentPane.add(lblIngresar);
+																										
+																										lblConsultar = new JLabel("CONSULTAR");
+																										lblConsultar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/consultarNaranja.png")));
+																										lblConsultar.addMouseListener(this);
+																										lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblConsultar.setForeground(new Color(243, 124, 47));
+																										lblConsultar.setFont(new Font("Dialog", Font.BOLD, 16));
+																										lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblConsultar.setBackground(new Color(1, 168, 25));
+																										lblConsultar.setBounds(198, 94, 169, 36);
+																										contentPane.add(lblConsultar);
+																										
+																										lblModificar = new JLabel("MODIFICAR");
+																										lblModificar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/modificarNaranja.png")));
+																										lblModificar.addMouseListener(this);
+																										lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblModificar.setForeground(new Color(243, 124, 47));
+																										lblModificar.setFont(new Font("Dialog", Font.BOLD, 16));
+																										lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblModificar.setBackground(new Color(1, 168, 25));
+																										lblModificar.setBounds(388, 94, 175, 36);
+																										contentPane.add(lblModificar);
+																										
+																										lblEliminar = new JLabel("ELIMINAR");
+																										lblEliminar.addMouseListener(this);
+																										lblEliminar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/eliminarNaranja.png")));
+																										lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblEliminar.setForeground(new Color(243, 124, 47));
+																										lblEliminar.setFont(new Font("Dialog", Font.BOLD, 16));
+																										lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblEliminar.setBounds(583, 94, 183, 36);
+																										contentPane.add(lblEliminar);
+																				cboEstado.addItem("LIBRE");
+																				cboEstado.addItem("OCUPADO");
+																		cboCategoria.addItem("ECONÓMICO");
+																		cboCategoria.addItem("EJECUTIVO");
 
 		modeloTabla();
 		listadoLibre();
@@ -727,4 +813,161 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener {
 			return "EJECUTIVO";
 		}
 	}
+	//*********************CLICKED***********************
+	public void mouseClicked(MouseEvent e) {
+		if (e.getSource() == lblEliminar) {
+			mouseClickedLblEliminar(e);
+		}
+		if (e.getSource() == lblModificar) {
+			mouseClickedLblModificar(e);
+		}
+		if (e.getSource() == lblConsultar) {
+			mouseClickedLblConsultar(e);
+		}
+		if (e.getSource() == lblIngresar) {
+			mouseClickedLblIngresar(e);
+		}
+	}
+	
+	//*****************ENTERED***************************
+	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == lblEliminar) {
+			mouseEnteredLblnEliminar(e);
+		}
+		if (e.getSource() == lblModificar) {
+			mouseEnteredLblModificar(e);
+		}
+		if (e.getSource() == lblConsultar) {
+			mouseEnteredLblConsultar(e);
+		}
+		if (e.getSource() == lblIngresar) {
+			mouseEnteredBtnIngresar(e);
+		}
+		
+	}
+
+	//*********************EXITED*************************** 
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblEliminar) {
+			mouseExitedLblEliminar(e);
+		}
+		if (e.getSource() == lblModificar) {
+			mouseExitedLblModificar(e);
+		}
+		if (e.getSource() == lblIngresar) {
+			mouseExitedLblIngresar(e);
+		}
+		if (e.getSource() == lblConsultar) {
+			mouseExitedLblConsultar(e);
+		}
+	}
+	//*******************************************************************
+	//*******************************************************
+	
+	public void mousePressed(MouseEvent e) {		
+	}
+	public void mouseReleased(MouseEvent e) {	
+	}
+	
+	
+	/*INGRESAR  MOUSE*/
+	protected void mouseEnteredBtnIngresar(MouseEvent e) {
+		lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarBlnco.png")));
+		lblIngresar.setOpaque(true);
+		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblIngresar(MouseEvent arg0) {
+		lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setOpaque(false);
+		lblIngresar.setForeground(new Color(243, 124, 47));	
+	}
+	
+	
+	protected void mouseClickedLblIngresar(MouseEvent arg0) {
+		tipoOperacion = ADICIONAR;
+		lblMensaje.setText("Adicionando camas");
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		txtNroCama.requestFocus();
+	}
+	
+	
+	
+	
+	//**************************************************************************
+	//CONSULTAR MOUSE
+	protected void mouseEnteredLblConsultar(MouseEvent e) {
+		lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarBlnaco.png")));
+		lblConsultar.setOpaque(true);
+		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblConsultar(MouseEvent arg0) {
+		lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setOpaque(false);
+		lblConsultar.setForeground(new Color(243, 124, 47));	
+	}
+	
+	protected void mouseClickedLblConsultar(MouseEvent e) {
+		tipoOperacion = CONSULTAR;
+		lblMensaje.setText("Consultando camas");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		cboEstado.setEnabled(false);
+	}
+	
+	
+	//***************************************************************************
+	//MODIFICAR MOUSE 
+
+	protected void mouseEnteredLblModificar(MouseEvent e) {
+		lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarBlanco.png")));
+		lblModificar.setOpaque(true);
+		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblModificar(MouseEvent arg0) {
+		lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setOpaque(false);
+		lblModificar.setForeground(new Color(243, 124, 47));	
+	}
+	
+	protected void mouseClickedLblModificar(MouseEvent e) {
+		tipoOperacion = MODIFICAR;
+		lblMensaje.setText("Modificando camas");
+		habilitarBusqueda(true);
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		
+	}
+	
+	//***************************************************************************
+	//MODIFICAR MOUSE 
+	protected void mouseEnteredLblnEliminar(MouseEvent e) {
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarBlnco.png")));
+		lblEliminar.setOpaque(true);
+		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblEliminar(MouseEvent arg0) {
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblEliminar.setOpaque(false);
+		lblEliminar.setForeground(new Color(243, 124, 47));	
+	}
+	
+	
+	protected void mouseClickedLblEliminar(MouseEvent e) {
+		tipoOperacion = ELIMINAR;
+		lblMensaje.setText("Eliminando camas");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		cboEstado.setEnabled(false);
+	}
+	
+	
 }
