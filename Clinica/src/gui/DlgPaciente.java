@@ -176,7 +176,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 		scrollPane.setBorder(new LineBorder(Color.GRAY, 2, true));
 		scrollPane.setAutoscrolls(true);
 		scrollPane.setBackground(Color.WHITE);
-		scrollPane.setBounds(10, 211, 758, 504);
+		scrollPane.setBounds(12, 211, 758, 504);
 		getContentPane().add(scrollPane);
 
 		tblPacientes.addMouseListener(new MouseAdapter() {
@@ -1041,7 +1041,8 @@ private void editableTrue(){
 	private void mouseClickedLblBuscar(MouseEvent arg0){
 		consultarPaciente();
 	}
-		
+	
+	
 		private void mouseClickedLblGrabar(MouseEvent arg0){
 		if (ap.existeArchivo()) {
 			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ap.getArchivo() + "\" ?");

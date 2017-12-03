@@ -1089,33 +1089,38 @@ private void editableTrue(){
 		}
 	}
 	public void mouseClicked(MouseEvent arg0) {
-		if (arg0.getSource() == lblBuscar) {
-			mouseClickedLblBuscar(arg0);
+		if (arg0.getSource() == lblModificar) {
+			mouseClickedLblModificar(arg0);
 		}
-		if (arg0.getSource() == lblCancelar) {
-			mouseClickedLblCancelar(arg0);
+		if (arg0.getSource() == lblIngresar) {
+			mouseClickedLblIngresar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			//mouseClickedLblConsultar(arg0);
 		}
 		if (arg0.getSource() == lblAgregar) {
 			mouseClickedLblAgregar(arg0);
 		}
+		if (arg0.getSource() == lblCancelar) {
+			mouseClickedLblCancelar(arg0);
+		}
+		if (arg0.getSource() == lblGrabar) {
+			//mouseClickedLblGrabar(arg0);
+		}
+		if (arg0.getSource() == lblBuscar) {
+			mouseClickedLblBuscar(arg0);
+		}
 		if (arg0.getSource() == lblEliminar) {
 			mouseClickedLblEliminar(arg0);
 		}
-		if (arg0.getSource() == lblModificar) {
-			
-		}
-		if (arg0.getSource() == lblConsultar) {
-			
-		}
-		if (arg0.getSource() == lblIngresar) {
-			
-		}
-		
-		
-		
-		
 		
 	}
+		
+		
+		
+		
+		
+	
 	public void mouseEntered(MouseEvent arg0) {
 		if (arg0.getSource() == lblEliminar) {
 			mouseEnteredLblEliminar(arg0);
@@ -1130,19 +1135,30 @@ private void editableTrue(){
 			mouseEnteredLblIngresar(arg0);
 		}
 	}
-	public void mouseExited(MouseEvent arg0) {
-		if (arg0.getSource() == lblEliminar) {
-			mouseExitedLblEliminar(arg0);
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblModificar) {
+			//mouseExitedLblModificar(e);
 		}
-		if (arg0.getSource() == lblModificar) {
-			//mouseExitedLblModificar(arg0);
+		
+		if (e.getSource() == lblConsultar) {
+			//mouseExitedLblConsultar(e);
 		}
-		if (arg0.getSource() == lblConsultar) {
-			//mouseExitedLblConsultar(arg0);
+		if (e.getSource() == lblIngresar) {
+			mouseExitedLblIngresar(e);
 		}
-		if (arg0.getSource() == lblIngresar) {
-			//mouseExitedLblIngresar(arg0);
+		if (e.getSource() == lblEliminar) {
+			mouseExitedLblEliminar(e);
 		}
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
+		if (e.getSource() == lblBuscar) {
+			mouseExitedLblBuscar(e);
+		}
+		
 		
 	}
 	
@@ -1156,8 +1172,12 @@ private void editableTrue(){
 	public void mouseReleased(MouseEvent arg0) {
 	}
 	
-	///SOBRE EL LABEL
-	protected void mouseEnteredLblIngresar(MouseEvent arg0) {
+	///Entered
+	protected void mouseEnteredLblIngresar(MouseEvent e) {
+		lblIngresar.setOpaque(true);
+		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setForeground(new Color(255, 255, 255));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent arg0) {
 	}
@@ -1190,7 +1210,7 @@ private void editableTrue(){
 	
 	
 	
-	///SALIR DEL LABEL
+	///Exited
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
 		lblEliminar.setOpaque(false);
@@ -1217,12 +1237,18 @@ private void editableTrue(){
 		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
 		
 	}
+	protected void mouseExitedLblIngresar(MouseEvent arg0) {
+		lblIngresar.setOpaque(false);
+		lblIngresar.setForeground(new Color(243, 124, 47));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
 	
 	
 	
 	
 	
-	////CLICK
+	////CLICKed
 	protected void mouseClickedLblEliminar(MouseEvent arg0) {
 		tipoOperacion = ELIMINAR;
 		lblMensaje.setText("Eliminando Paciente");
@@ -1238,7 +1264,38 @@ private void editableTrue(){
 		lblAgregar.setVisible(false);
 		lblGrabar.setVisible(false);
 		lblAgregar.setText("Eliminar");
-
+	}
+	protected void mouseClickedLblModificar(MouseEvent arg0) {
+		tipoOperacion = MODIFICAR;
+		lblMensaje.setText("Modificando Paciente");
+		habilitarBusqueda(true);
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
+		novisibleCodigo();
+		visibleNombre();
+		visibleApellido();
+		lblGrabar.setVisible(true);
+		lblAgregar.setVisible(false);
+		lblGrabar.setVisible(false);
+		lblAgregar.setText("Modificar");
+	}
+	
+protected void mouseClickedLblIngresar(MouseEvent arg0) {
+		
+		panel.setVisible(true);
+		editableTrue();
+		tipoOperacion = ADICIONAR;
+		lblMensaje.setText("Adicionando Paciente");///verificar
+		txtCodigo.setText("" + ae.codigoCorrelativo());
+		habilitarEntradas(true);
+		habilitarOperaciones(false);
+		txtCodigo.setEditable(false);
+		txtNombres.requestFocus();
+		lblBuscar.setVisible(false);
+		lblGrabar.setVisible(true);
+		
+		
 		
 	}
 	protected void mouseClickedLblAgregar(MouseEvent arg0) {
