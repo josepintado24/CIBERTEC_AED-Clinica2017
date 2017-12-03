@@ -45,8 +45,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.Cursor;
 import javax.swing.border.LineBorder;
+import javax.swing.JSeparator;
+import java.awt.event.MouseListener;
 
-public class DlgControlDePagos extends JDialog implements ActionListener {
+public class DlgControlDePagos extends JDialog implements ActionListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCdigoPaciente;
@@ -87,6 +89,8 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 	// DECLARACIÓN GLOBAL DE LIBRERIA
 	DiseñoObjetos ds = new DiseñoObjetos();
 	private JPanel panel;
+	private JLabel lbliconPaciente;
+	private JLabel lblVerFactura;
 
 	public static void main(String[] args) {
 		try {
@@ -111,7 +115,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		setModal(true);
 		setResizable(false);
 		setTitle("CONTROL DE PAGOS");
-		setBounds(100, 100, 601, 658);
+		setBounds(100, 100, 801, 756);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -131,16 +135,16 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(Color.WHITE, 0, true));
 
-		lblCdigoPaciente = new JLabel("C\u00D3DIGO PACIENTE ");
+		lblCdigoPaciente = new JLabel("CODIGO");
 		lblCdigoPaciente.setBackground(Color.BLACK);
-		lblCdigoPaciente.setBounds(0, 18, 129, 14);
+		lblCdigoPaciente.setBounds(57, 26, 59, 14);
 		panel.add(lblCdigoPaciente);
 		lblCdigoPaciente.setForeground(Color.BLACK);
 		lblCdigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		lblCdigoPaciente.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		txtCodigoPaciente = new JTextField();
-		txtCodigoPaciente.setBounds(130, 11, 105, 29);
+		txtCodigoPaciente.setBounds(126, 19, 105, 21);
 		panel.add(txtCodigoPaciente);
 		txtCodigoPaciente.setBackground(Color.WHITE);
 		txtCodigoPaciente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -148,6 +152,8 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		txtCodigoPaciente.setForeground(Color.BLACK);
 		txtCodigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		txtCodigoPaciente.setColumns(10);
+		txtCodigoPaciente.setBorder(null);
+		txtCodigoPaciente.setOpaque(false);
 
 		btnBuscarPaciente = new JButton("");
 		btnBuscarPaciente.setBounds(245, 11, 38, 29);
@@ -187,22 +193,29 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		fecha = Fecha.getFecha(cboDia, cboMes, cboAno);
 
 		btnRegistrarPago = new JButton("REGISTRAR PAGO");
-		btnRegistrarPago.setBounds(275, 54, 176, 40);
+		btnRegistrarPago.setBounds(277, 65, 176, 40);
 		panel.add(btnRegistrarPago);
 		btnRegistrarPago.addActionListener(this);
 		btnRegistrarPago.setBackground(Color.CYAN);
 		btnRegistrarPago.setForeground(Color.BLACK);
 		btnRegistrarPago.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		ds.setCurvasButton(btnRegistrarPago, "imagenes/aceptar.png");
-
-		btnVerFactura = new JButton("VER FACTURA");
-		btnVerFactura.setBounds(103, 54, 150, 40);
-		panel.add(btnVerFactura);
-		btnVerFactura.addActionListener(this);
-		btnVerFactura.setForeground(Color.BLACK);
-		btnVerFactura.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnVerFactura.setBackground(Color.GREEN);
-		ds.setCurvasButton(btnVerFactura, "imagenes/listado.png");
+		
+		lbliconPaciente = new JLabel("");
+		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Add_User_Male_25px.png")));
+		lbliconPaciente.setBounds(34, 19, 21, 21);
+		panel.add(lbliconPaciente);
+		
+		lblVerFactura = new JLabel("LISTAR FACTURA");
+		lblVerFactura.addMouseListener(this);
+		lblVerFactura.setInheritsPopupMenu(false);
+		lblVerFactura.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerFactura.setForeground(new Color(243, 124, 47));
+		lblVerFactura.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblVerFactura.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+		lblVerFactura.setBackground(new Color(1, 168, 25));
+		lblVerFactura.setBounds(74, 64, 193, 37);
+		panel.add(lblVerFactura);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -250,6 +263,15 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		lblPa.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblPa.setBounds(30, 0, 77, 39);
 		panel_1.add(lblPa);
+		
+				btnVerFactura = new JButton("VER FACTURA");
+				btnVerFactura.setBounds(619, 134, 150, 40);
+				getContentPane().add(btnVerFactura);
+				btnVerFactura.addActionListener(this);
+				btnVerFactura.setForeground(Color.BLACK);
+				btnVerFactura.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				btnVerFactura.setBackground(Color.GREEN);
+				ds.setCurvasButton(btnVerFactura, "imagenes/listado.png");
 		setLocationRelativeTo(this);
 	}
 
@@ -580,5 +602,45 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 
 	void imprimir(String dato) {
 		txtS.append(dato + "\n");
+	}
+	
+	////***** EventoClicked***///
+	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblVerFactura) {
+			mouseClickedLblVerFactura(arg0);
+		}
+	}
+	public void mouseEntered(MouseEvent arg0) {
+		lblVerFactura.setOpaque(true);
+		lblVerFactura.setBackground(new Color(243, 124, 47));
+		lblVerFactura.setForeground(new Color(255, 255, 255));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
+	}
+	public void mouseExited(MouseEvent arg0) {
+		lblVerFactura.setOpaque(false);
+		lblVerFactura.setForeground(new Color(243, 124, 47));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
+	public void mousePressed(MouseEvent arg0) {
+	}
+	public void mouseReleased(MouseEvent arg0) {
+	}
+	
+	
+	
+	
+	
+	
+	
+	//**Evento Mouse CLicked***///
+	
+	protected void mouseClickedLblVerFactura(MouseEvent arg0) {
+
+		if (leerCodigoPaciente() != -1) {
+			hora = Fecha.obtenerHoraActual();
+			verFactura();
+		}
+	
 	}
 }

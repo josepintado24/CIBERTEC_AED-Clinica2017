@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -27,6 +30,14 @@ import clases.Internamiento;
 import clases.Paciente;
 import libreria.Fecha;
 import libreria.Libreria;
+import javax.swing.JPanel;
+import java.awt.Cursor;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgReporteHospitalizacionesPorFecha extends JDialog implements ActionListener {
 
@@ -38,14 +49,18 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 	private JComboBox<String> cboMes;
 	private JComboBox<String> cboAño;
 	private JButton btnBuscar;
-
 	private DefaultTableModel dtm;
+	private int x;
+	private int y;
 
 	// DECLARACIÓN GLOBAL DE ARREGLOS
 	ArregloPaciente ap = new ArregloPaciente("pacientes.txt");
 	ArregloCamas ac = new ArregloCamas("camas.txt");
 	ArregloHospitalizacion ah = new ArregloHospitalizacion("hospitalizaciones.txt");
 	ArregloEmpleado ae = new ArregloEmpleado("empleados.txt");
+	private JPanel panel;
+	private JLabel label_1;
+	private JLabel lblR;
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -64,15 +79,16 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 	}
 
 	public DlgReporteHospitalizacionesPorFecha() {
+		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		getContentPane().setBackground(Color.WHITE);
 		setTitle("BUSCAR HOSPITALIZACIONES");
-		setBounds(100, 100, 1069, 490);
+		setBounds(100, 100, 1069, 515);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 62, 1044, 388);
+		scrollPane.setBounds(10, 116, 1044, 388);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -91,13 +107,13 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		label.setBounds(10, 18, 103, 14);
+		label.setBounds(10, 72, 103, 14);
 		getContentPane().add(label);
 		
 		cboDia = new JComboBox<String>();
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboDia.setBounds(123, 6, 59, 38);
+		cboDia.setBounds(123, 60, 59, 38);
 		Fecha.colocarItems(cboDia, 1, 31);
 		Fecha.colocarDiaActual(cboDia);
 		getContentPane().add(cboDia);
@@ -105,7 +121,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		cboMes = new JComboBox<String>();
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboMes.setBounds(183, 6, 116, 38);
+		cboMes.setBounds(183, 60, 116, 38);
 		Fecha.colocarMeses(cboMes);
 		Fecha.colocarMesActual(cboMes);
 		getContentPane().add(cboMes);
@@ -113,7 +129,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		cboAño = new JComboBox<String>();
 		cboAño.setForeground(Color.BLACK);
 		cboAño.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboAño.setBounds(300, 6, 83, 38);
+		cboAño.setBounds(300, 60, 83, 38);
 		Fecha.colocarItems(cboAño, 2000, Fecha.añoActual());
 		cboAño.setSelectedIndex(16);
 		getContentPane().add(cboAño);
@@ -122,8 +138,56 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		btnBuscar.addActionListener(this);
 		btnBuscar.setForeground(Color.BLACK);
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscar.setBounds(393, 6, 149, 38);
+		btnBuscar.setBounds(393, 60, 149, 38);
 		getContentPane().add(btnBuscar);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.setBounds(0, 0, 1069, 39);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		label_1 = new JLabel("");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);
+		  		}
+			}
+		});
+		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_1.setIcon(new ImageIcon(DlgReporteHospitalizacionesPorFecha.class.getResource("/image/icons8_Return_32px.png")));
+		label_1.setBounds(1030, 0, 39, 39);
+		panel.add(label_1);
+		
+		lblR = new JLabel("Reporte Hospital");
+		lblR.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblR.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblR.setBounds(43, 0, 134, 39);
+		panel.add(lblR);
 		
 		modeloTabla();
 		listar(0);
