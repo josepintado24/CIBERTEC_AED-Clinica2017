@@ -171,6 +171,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		panel.setLayout(null);
 		panel.setVisible(false);
 		
+		
+		
+		
 				lblCodigo = new JLabel("CODIGO");
 				lblCodigo.setBounds(25, 47, 71, 14);
 				panel.add(lblCodigo);
