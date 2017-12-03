@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,12 @@ import libreria.Libreria;
 import libreria.Validaciones;
 import java.awt.event.MouseListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
+
 public class DlgMedicamento extends JDialog implements ActionListener, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
@@ -58,6 +65,8 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	private JLabel lblMensaje;
 	public JButton btnGuardarMedicamentos;
 	private JTable jtblMedicamentos;
+	private int x;
+	private int y;
 
 	// Declaración global para modelo de tabla
 	private DefaultTableModel dtm;
@@ -84,6 +93,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	DiseñoObjetos ds = new DiseñoObjetos();
 	// Declaración global de libreria
 	Libreria lb = new Libreria();
+	private JPanel panel;
 
 	public static void main(String[] args) {
 		try {
@@ -106,11 +116,12 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	 * Create the dialog.
 	 */
 	public DlgMedicamento() {
+		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | MEDICAMENTOS");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1038, 487);
+		setBounds(100, 100, 1038, 515);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -121,35 +132,35 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblCodigo.setForeground(Color.BLACK);
 		lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigo.setFont(new Font("Arial", Font.BOLD, 13));
-		lblCodigo.setBounds(13, 59, 86, 14);
+		lblCodigo.setBounds(13, 116, 86, 14);
 		contentPane.add(lblCodigo);
 
 		lblNombre = new JLabel("NOMBRE");
 		lblNombre.setForeground(Color.BLACK);
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setFont(new Font("Arial", Font.BOLD, 13));
-		lblNombre.setBounds(0, 98, 99, 14);
+		lblNombre.setBounds(0, 155, 99, 14);
 		contentPane.add(lblNombre);
 
 		lblLaboratorio = new JLabel("LABORATORIO");
 		lblLaboratorio.setForeground(Color.BLACK);
 		lblLaboratorio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLaboratorio.setFont(new Font("Arial", Font.BOLD, 13));
-		lblLaboratorio.setBounds(0, 136, 99, 14);
+		lblLaboratorio.setBounds(0, 193, 99, 14);
 		contentPane.add(lblLaboratorio);
 
 		lblPrecio = new JLabel("PRECIO");
 		lblPrecio.setForeground(Color.BLACK);
 		lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPrecio.setFont(new Font("Arial", Font.BOLD, 13));
-		lblPrecio.setBounds(12, 176, 89, 14);
+		lblPrecio.setBounds(12, 233, 89, 14);
 		contentPane.add(lblPrecio);
 
 		lblStock = new JLabel("STOCK");
 		lblStock.setForeground(Color.BLACK);
 		lblStock.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStock.setFont(new Font("Arial", Font.BOLD, 13));
-		lblStock.setBounds(23, 216, 76, 14);
+		lblStock.setBounds(23, 273, 76, 14);
 		contentPane.add(lblStock);
 
 		txtNombre = new JTextField();
@@ -157,7 +168,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtNombre.setEditable(false);
 		txtNombre.setFont(new Font("Arial", Font.BOLD, 14));
 		txtNombre.setForeground(Color.BLACK);
-		txtNombre.setBounds(111, 91, 270, 29);
+		txtNombre.setBounds(111, 148, 270, 29);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 
@@ -166,7 +177,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtLaboratorio.setEditable(false);
 		txtLaboratorio.setFont(new Font("Arial", Font.BOLD, 14));
 		txtLaboratorio.setForeground(Color.BLACK);
-		txtLaboratorio.setBounds(111, 129, 270, 29);
+		txtLaboratorio.setBounds(111, 186, 270, 29);
 		contentPane.add(txtLaboratorio);
 		txtLaboratorio.setColumns(10);
 
@@ -175,7 +186,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtPrecio.setEditable(false);
 		txtPrecio.setFont(new Font("Arial", Font.BOLD, 14));
 		txtPrecio.setForeground(Color.BLACK);
-		txtPrecio.setBounds(111, 169, 76, 29);
+		txtPrecio.setBounds(111, 226, 76, 29);
 		contentPane.add(txtPrecio);
 		txtPrecio.setColumns(10);
 
@@ -184,12 +195,12 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtStock.setEditable(false);
 		txtStock.setFont(new Font("Arial", Font.BOLD, 14));
 		txtStock.setForeground(Color.BLACK);
-		txtStock.setBounds(111, 209, 76, 29);
+		txtStock.setBounds(111, 266, 76, 29);
 		contentPane.add(txtStock);
 		txtStock.setColumns(10);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(413, 219, -394, -54);
+		scrollPane.setBounds(413, 276, -394, -54);
 		contentPane.add(scrollPane);
 
 		txtCodigo = new JTextField();
@@ -198,7 +209,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtCodigo.setFont(new Font("Arial", Font.BOLD, 14));
 		txtCodigo.setForeground(Color.BLACK);
 		txtCodigo.setColumns(10);
-		txtCodigo.setBounds(111, 52, 126, 29);
+		txtCodigo.setBounds(111, 109, 126, 29);
 		contentPane.add(txtCodigo);
 
 		btnBuscar = new JButton("BUSCAR");
@@ -207,12 +218,12 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnBuscar.setEnabled(false);
 		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setBounds(271, 52, 110, 29);
+		btnBuscar.setBounds(271, 109, 110, 29);
 		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
 		contentPane.add(btnBuscar);
 
 		scpMedicamentos = new JScrollPane();
-		scpMedicamentos.setBounds(391, 11, 631, 436);
+		scpMedicamentos.setBounds(391, 68, 631, 436);
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -236,7 +247,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnAdicionar.setBackground(new Color(124, 252, 0));
-		btnAdicionar.setBounds(42, 260, 137, 39);
+		btnAdicionar.setBounds(42, 317, 137, 39);
 		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
 		contentPane.add(btnAdicionar);
 
@@ -245,7 +256,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnConsultar.setForeground(Color.BLACK);
 		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnConsultar.setBackground(Color.CYAN);
-		btnConsultar.setBounds(199, 260, 145, 39);
+		btnConsultar.setBounds(199, 317, 145, 39);
 		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
 		contentPane.add(btnConsultar);
 
@@ -254,7 +265,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnModificar.setForeground(Color.BLACK);
 		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnModificar.setBackground(new Color(0, 139, 139));
-		btnModificar.setBounds(199, 310, 145, 39);
+		btnModificar.setBounds(199, 367, 145, 39);
 		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
 		contentPane.add(btnModificar);
 
@@ -263,7 +274,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnEliminar.setBackground(new Color(127, 255, 212));
-		btnEliminar.setBounds(42, 310, 137, 39);
+		btnEliminar.setBounds(42, 367, 137, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		contentPane.add(btnEliminar);
 
@@ -273,7 +284,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnAceptar.setEnabled(false);
 		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setBounds(42, 360, 137, 39);
+		btnAceptar.setBounds(42, 417, 137, 39);
 		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
 		contentPane.add(btnAceptar);
 
@@ -283,7 +294,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnCancelar.setEnabled(false);
 		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setBounds(199, 360, 145, 39);
+		btnCancelar.setBounds(199, 417, 145, 39);
 		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
 		contentPane.add(btnCancelar);
 
@@ -293,7 +304,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(10, 11, 376, 29);
+		lblMensaje.setBounds(10, 68, 376, 29);
 		contentPane.add(lblMensaje);
 
 		btnGuardarMedicamentos = new JButton("GUARDAR MEDICAMENTOS");
@@ -301,9 +312,57 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		btnGuardarMedicamentos.setForeground(Color.BLACK);
 		btnGuardarMedicamentos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnGuardarMedicamentos.setBackground(new Color(0, 250, 154));
-		btnGuardarMedicamentos.setBounds(42, 408, 302, 39);
+		btnGuardarMedicamentos.setBounds(42, 465, 302, 39);
 		ds.setCurvasButton(btnGuardarMedicamentos, "imagenes/grabar.png");
 		contentPane.add(btnGuardarMedicamentos);
+		
+		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.setBounds(0, 0, 1038, 39);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);
+		  		}
+			}
+		});
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/image/icons8_Return_32px.png")));
+		label.setBounds(992, 0, 46, 39);
+		panel.add(label);
+		
+		JLabel lblMedicament = new JLabel("Medicamento");
+		lblMedicament.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblMedicament.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblMedicament.setBounds(34, 0, 107, 39);
+		panel.add(lblMedicament);
 
 		listado();
 		modeloTabla();
