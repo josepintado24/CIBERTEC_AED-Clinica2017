@@ -46,20 +46,12 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	private JLabel lblPrecioPorDia;
 	private JTextField txtPrecioxDia;
 	private JScrollPane scrollPane;
-	private JButton btnBuscar;
-	private JButton btnAdicionar;
-	private JButton btnConsultar;
-	private JButton btnModificar;
-	private JButton btnEliminar;
-	private JButton btnAceptar;
-	private JButton btnCancelar;
 	private JTextField txtNroCama;
 	private JLabel lblEstado;
 	private JComboBox<String> cboCategoria;
 	private JComboBox<String> cboEstado;
 	private JScrollPane scpMedicamentos;
 	private JLabel lblMensaje;
-	private JButton btnGrabarCamas;
 	private JTable jtblCamas;
 
 	private ButtonGroup bp;
@@ -94,6 +86,10 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	private JLabel lblConsultar;
 	private JLabel lblModificar;
 	private JLabel lblEliminar;
+	private JLabel lblBuscarCama;
+	private JLabel lblAgregarCama;
+	private JLabel lblCancelarCama;
+	private JLabel lblGrabarCama;
 
 	public static void main(String[] args) {
 		try {
@@ -117,7 +113,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		setResizable(false);
 		setTitle("MANTENIMIENTO | CAMAS");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1332, 788);
+		setBounds(100, 100, 1207, 714);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -128,45 +124,8 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		scrollPane.setBounds(413, 219, -394, -54);
 		contentPane.add(scrollPane);
 
-		btnAdicionar = new JButton("ADICIONAR");
-		btnAdicionar.addMouseListener(this);
-		btnAdicionar.setBounds(10, 29, 137, 39);
-		btnAdicionar.addActionListener(this);
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAdicionar.setBackground(new Color(124, 252, 0));
-		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
-		contentPane.add(btnAdicionar);
-
-		btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.setBounds(170, 29, 145, 39);
-		btnConsultar.addActionListener(this);
-		btnConsultar.setForeground(Color.BLACK);
-		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnConsultar.setBackground(Color.CYAN);
-		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
-		contentPane.add(btnConsultar);
-
-		btnModificar = new JButton("MODIFICAR");
-		btnModificar.setBounds(353, 29, 145, 39);
-		btnModificar.addActionListener(this);
-		btnModificar.setForeground(Color.BLACK);
-		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnModificar.setBackground(new Color(0, 139, 139));
-		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
-		contentPane.add(btnModificar);
-
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setBounds(522, 29, 137, 39);
-		btnEliminar.addActionListener(this);
-		btnEliminar.setForeground(Color.BLACK);
-		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBackground(new Color(127, 255, 212));
-		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
-		contentPane.add(btnEliminar);
-
 		scpMedicamentos = new JScrollPane();
-		scpMedicamentos.setBounds(42, 260, 722, 408);
+		scpMedicamentos.setBounds(41, 239, 722, 408);
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -184,7 +143,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		scpMedicamentos.setViewportView(jtblCamas);
 
 		lblMensaje = new JLabel("");
-		lblMensaje.setBounds(961, 29, 316, 29);
+		lblMensaje.setBounds(792, 40, 383, 29);
 		lblMensaje.setOpaque(true);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensaje.setForeground(Color.WHITE);
@@ -193,7 +152,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(lblMensaje);
 
 		rdbtnLibre = new JRadioButton("LIBRE");
-		rdbtnLibre.setBounds(676, 7, 70, 23);
+		rdbtnLibre.setBounds(243, 161, 70, 23);
 		rdbtnLibre.addActionListener(this);
 		rdbtnLibre.setSelected(true);
 		rdbtnLibre.setForeground(Color.BLACK);
@@ -202,7 +161,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnLibre);
 
 		rdbtnOcupado = new JRadioButton("OCUPADO");
-		rdbtnOcupado.setBounds(748, 7, 103, 23);
+		rdbtnOcupado.setBounds(315, 161, 103, 23);
 		rdbtnOcupado.addActionListener(this);
 		rdbtnOcupado.setForeground(Color.BLACK);
 		rdbtnOcupado.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
@@ -210,7 +169,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnOcupado);
 
 		rdbtnTodo = new JRadioButton("TODO");
-		rdbtnTodo.setBounds(853, 7, 70, 23);
+		rdbtnTodo.setBounds(420, 161, 70, 23);
 		rdbtnTodo.addActionListener(this);
 		rdbtnTodo.setForeground(Color.BLACK);
 		rdbtnTodo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
@@ -224,10 +183,10 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(793, 86, 471, 569);
+		panel.setBounds(792, 80, 383, 569);
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		panel.setVisible(false);
+		
 		
 				lblNroCama = new JLabel("NRO CAMA");
 				lblNroCama.setBounds(-27, 25, 118, 14);
@@ -267,17 +226,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 												txtPrecioxDia.setColumns(10);
 												txtPrecioxDia.setBorder(null);
 												txtPrecioxDia.setOpaque(false);
-												
-														btnBuscar = new JButton("BUSCAR");
-														btnBuscar.setBounds(351, 42, 110, 29);
-														panel.add(btnBuscar);
-														btnBuscar.setIcon(new ImageIcon(DlgCamas.class.getResource("/imagenes/buscar.png")));
-														btnBuscar.addActionListener(this);
-														btnBuscar.setForeground(Color.BLACK);
-														btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-														btnBuscar.setEnabled(false);
-														btnBuscar.setBackground(new Color(102, 205, 170));
-														ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
 														
 																txtNroCama = new JTextField();
 																txtNroCama.setBounds(55, 42, 86, 29);
@@ -303,35 +251,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																				cboEstado.setEnabled(false);
 																				cboEstado.setForeground(Color.BLACK);
 																				cboEstado.setFont(new Font("Arial", Font.BOLD, 12));
-																				
-																						btnAceptar = new JButton("ACEPTAR");
-																						btnAceptar.setBounds(10, 469, 137, 39);
-																						panel.add(btnAceptar);
-																						btnAceptar.addActionListener(this);
-																						btnAceptar.setForeground(Color.BLACK);
-																						btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																						btnAceptar.setEnabled(false);
-																						btnAceptar.setBackground(new Color(30, 144, 255));
-																						ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-																						
-																								btnCancelar = new JButton("CANCELAR");
-																								btnCancelar.setBounds(316, 469, 145, 39);
-																								panel.add(btnCancelar);
-																								btnCancelar.addActionListener(this);
-																								btnCancelar.setForeground(Color.BLACK);
-																								btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																								btnCancelar.setEnabled(false);
-																								btnCancelar.setBackground(new Color(0, 255, 255));
-																								ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-																								
-																										btnGrabarCamas = new JButton("GRABAR CAMAS");
-																										btnGrabarCamas.setBounds(10, 519, 290, 39);
-																										panel.add(btnGrabarCamas);
-																										btnGrabarCamas.addActionListener(this);
-																										btnGrabarCamas.setForeground(Color.BLACK);
-																										btnGrabarCamas.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-																										btnGrabarCamas.setBackground(new Color(0, 250, 154));
-																										ds.setCurvasButton(btnGrabarCamas, "imagenes/grabar.png");
 																										
 																										lblIconCodigoCama = new JLabel("");
 																										lblIconCodigoCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/codigo.png")));
@@ -344,21 +263,61 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										
 																										lblIconPrecioCama = new JLabel("");
 																										lblIconPrecioCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/iconCama.png")));
-																										lblIconPrecioCama.setBounds(24, 205, 32, 21);
+																										lblIconPrecioCama.setBounds(25, 197, 32, 29);
 																										panel.add(lblIconPrecioCama);
 																										
 																										separator_1 = new JSeparator();
 																										separator_1.setBounds(30, 224, 150, 2);
 																										panel.add(separator_1);
 																										
+																										lblBuscarCama = new JLabel("Buscar");
+																										lblBuscarCama.addMouseListener(this);
+																										lblBuscarCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/buscar.png")));
+																										lblBuscarCama.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblBuscarCama.setForeground(Color.BLACK);
+																										lblBuscarCama.setFont(new Font("Tahoma", Font.BOLD, 14));
+																										lblBuscarCama.setBackground(Color.BLACK);
+																										lblBuscarCama.setBounds(233, 25, 170, 39);
+																										panel.add(lblBuscarCama);
+																										
+																										lblAgregarCama = new JLabel("Agregar");
+																										lblAgregarCama.addMouseListener(this);
+																										lblAgregarCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/Agregar.png")));
+																										lblAgregarCama.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblAgregarCama.setForeground(Color.BLACK);
+																										lblAgregarCama.setFont(new Font("Tahoma", Font.BOLD, 14));
+																										lblAgregarCama.setBackground(Color.YELLOW);
+																										lblAgregarCama.setBounds(91, 392, 206, 39);
+																										panel.add(lblAgregarCama);
+																										
+																										lblCancelarCama = new JLabel("Cancelar");
+																										lblCancelarCama.addMouseListener(this);
+																										lblCancelarCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/regreso.png")));
+																										lblCancelarCama.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblCancelarCama.setForeground(Color.BLACK);
+																										lblCancelarCama.setFont(new Font("Tahoma", Font.BOLD, 14));
+																										lblCancelarCama.setBounds(91, 442, 206, 39);
+																										panel.add(lblCancelarCama);
+																										
+																										lblGrabarCama = new JLabel("Grabar");
+																										lblGrabarCama.addMouseListener(this);
+																										lblGrabarCama.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/save.png")));
+																										lblGrabarCama.setOpaque(true);
+																										lblGrabarCama.setHorizontalAlignment(SwingConstants.CENTER);
+																										lblGrabarCama.setForeground(Color.WHITE);
+																										lblGrabarCama.setFont(new Font("Dialog", Font.PLAIN, 18));
+																										lblGrabarCama.setBackground(new Color(231, 96, 90));
+																										lblGrabarCama.setBounds(91, 493, 206, 41);
+																										panel.add(lblGrabarCama);
+																										
 																										lblIngresar = new JLabel("INGRESAR");
-																										lblIngresar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/ingresarNaranja.png")));
+																										lblIngresar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/consultarNegro.png")));
 																										lblIngresar.addMouseListener(this);
 																										lblIngresar.setInheritsPopupMenu(false);
 																										lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
-																										lblIngresar.setForeground(new Color(243, 124, 47));
+																										lblIngresar.setForeground(new Color(10,20,26));
 																										lblIngresar.setFont(new Font("Dialog", Font.BOLD, 16));
-																										lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblIngresar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																										lblIngresar.setBackground(new Color(1, 168, 25));
 																										lblIngresar.setBounds(10, 93, 169, 37);
 																										contentPane.add(lblIngresar);
@@ -367,9 +326,9 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										lblConsultar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/consultarNaranja.png")));
 																										lblConsultar.addMouseListener(this);
 																										lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
-																										lblConsultar.setForeground(new Color(243, 124, 47));
+																										lblConsultar.setForeground(new Color(10,20,26));
 																										lblConsultar.setFont(new Font("Dialog", Font.BOLD, 16));
-																										lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																										lblConsultar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																										lblConsultar.setBackground(new Color(1, 168, 25));
 																										lblConsultar.setBounds(198, 94, 169, 36);
 																										contentPane.add(lblConsultar);
@@ -414,30 +373,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		if (arg0.getSource() == rdbtnLibre) {
 			actionPerformedRdbtnLibre(arg0);
 		}
-		if (arg0.getSource() == btnGrabarCamas) {
-			actionPerformedBtnGrabarCamas(arg0);
-		}
-		if (arg0.getSource() == btnBuscar) {
-			actionPerformedBtnBuscar(arg0);
-		}
-		if (arg0.getSource() == btnCancelar) {
-			actionPerformedBtnCancelar(arg0);
-		}
-		if (arg0.getSource() == btnAceptar) {
-			actionPerformedBtnAceptar(arg0);
-		}
-		if (arg0.getSource() == btnModificar) {
-			actionPerformedBtnModificar(arg0);
-		}
-		if (arg0.getSource() == btnEliminar) {
-			actionPerformedBtnEliminar(arg0);
-		}
-		if (arg0.getSource() == btnConsultar) {
-			actionPerformedBtnConsultar(arg0);
-		}
-		if (arg0.getSource() == btnAdicionar) {
-			actionPerformedBtnAdicionar(arg0);
-		}
 	}
 
 	protected void actionPerformedRdbtnLibre(ActionEvent arg0) {
@@ -450,84 +385,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 
 	protected void actionPerformedRdbtnTodo(ActionEvent arg0) {
 		listado();
-	}
-
-	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-		tipoOperacion = ADICIONAR;
-		lblMensaje.setText("Adicionando camas");
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-		txtNroCama.requestFocus();
-	}
-
-	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
-		tipoOperacion = CONSULTAR;
-		lblMensaje.setText("Consultando camas");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-		cboEstado.setEnabled(false);
-	}
-
-	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		tipoOperacion = MODIFICAR;
-		lblMensaje.setText("Modificando camas");
-		habilitarBusqueda(true);
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
-		tipoOperacion = ELIMINAR;
-		lblMensaje.setText("Eliminando camas");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-		cboEstado.setEnabled(false);
-	}
-
-	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
-		consultarCama();
-	}
-
-	protected void actionPerformedBtnAceptar(ActionEvent arg0) {
-		switch (tipoOperacion) {
-			case ADICIONAR:
-				adicionarCama();
-				break;
-			case CONSULTAR:
-				limpieza();
-				habilitarBusqueda(false);
-				habilitarOperaciones(true);
-				break;
-			case MODIFICAR:
-				modificarCama();
-				break;
-			case ELIMINAR:
-				eliminarCama();
-		}
-	}
-
-	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
-		if (tipoOperacion != ADICIONAR)
-			habilitarBusqueda(false);
-		lblMensaje.setText("");
-		habilitarEntradas(false);
-		habilitarOperaciones(true);
-	}
-
-	protected void actionPerformedBtnGrabarCamas(ActionEvent arg0) {
-		if (ac.existeArchivo()) {
-			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ac.getArchivo() + "\" ?");
-			if (ok == 0) {
-				ac.grabarCamas();
-				Libreria.mensajeInformacion(this, "\"" + ac.getArchivo() + "\" ha sido actualizado");
-			}
-			else
-				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ac.getArchivo() + "\"");
-		}
-		else {
-			ac.grabarCamas();
-			Libreria.confirmacion(this, "\"" + ac.getArchivo() + "\" ha sido creado");
-		}
 	}
 
 	public void keyPressed(KeyEvent arg0) {
@@ -750,7 +607,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 
 	// Métodos tipo void con parámetros
 	void habilitarBusqueda(boolean sino) {
-		btnBuscar.setEnabled(sino);
+		lblBuscarCama.setEnabled(sino);
 		txtNroCama.setEditable(sino);
 		if (sino)
 			txtNroCama.requestFocus();
@@ -765,12 +622,12 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	}
 
 	void habilitarOperaciones(boolean sino) {
-		btnAdicionar.setEnabled(sino);
-		btnConsultar.setEnabled(sino);
-		btnModificar.setEnabled(sino);
-		btnEliminar.setEnabled(sino);
-		btnAceptar.setEnabled(!sino);
-		btnCancelar.setEnabled(!sino);
+		lblIngresar.setVisible(sino);
+		lblConsultar.setVisible(sino);
+		lblModificar.setVisible(sino);
+		lblEliminar.setVisible(sino);
+		lblAgregarCama.setEnabled(!sino);
+		lblCancelarCama.setEnabled(!sino);
 	}
 
 	// Métodos que retornan valor sin parámetros
@@ -813,8 +670,20 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			return "EJECUTIVO";
 		}
 	}
-	//*********************CLICKED***********************
+	//*********************CLICKED***********************  mouseEnteredLblAgregarCama
 	public void mouseClicked(MouseEvent e) {
+		if (e.getSource() == lblGrabarCama){
+			mouseClickedLblGrabarCama(e);
+		}
+		if (e.getSource() == lblCancelarCama) {
+			mouseClickedLblCancelarCama(e);
+		}
+		if (e.getSource() == lblAgregarCama) {
+			mouseClickedLblAgregarCama(e);
+		}
+		if (e.getSource() == lblBuscarCama) {
+			mouseClickedLblBuscar(e);
+		}
 		if (e.getSource() == lblEliminar) {
 			mouseClickedLblEliminar(e);
 		}
@@ -829,8 +698,23 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		}
 	}
 	
-	//*****************ENTERED***************************
+	//*****************ENTERED***************************    mouseEnteredLblCancelarCama
 	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == lblGrabarCama) {
+			mouseEnteredLblGrabarCama(e);
+		}
+		if (e.getSource() == lblCancelarCama) {
+			mouseEnteredLblCancelarCama(e);
+		}
+		if (e.getSource() == lblAgregarCama) {
+			mouseEnteredLblAgregarCama(e);
+		}
+		if (e.getSource() == lblAgregarCama) {
+			mouseEnteredLblAgregarCama(e);
+		}
+		if (e.getSource() == lblBuscarCama) {
+			mouseEnteredLblBuscar(e);
+		}
 		if (e.getSource() == lblEliminar) {
 			mouseEnteredLblnEliminar(e);
 		}
@@ -848,6 +732,15 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 
 	//*********************EXITED*************************** 
 	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblCancelarCama) {
+			mouseExitedLblCancelarCama(e);
+		}
+		if (e.getSource() == lblAgregarCama) {
+			mouseExitedLblAgregarCama(e);
+		}
+		if (e.getSource() == lblBuscarCama) {
+			mouseExitedLblBuscar(e);
+		}
 		if (e.getSource() == lblEliminar) {
 			mouseExitedLblEliminar(e);
 		}
@@ -874,14 +767,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	protected void mouseEnteredBtnIngresar(MouseEvent e) {
 		lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarBlnco.png")));
 		lblIngresar.setOpaque(true);
-		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setBackground(new Color(10, 20, 26));
 		lblIngresar.setForeground(new Color(255,255,255));
 	}
 	
 	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
 		lblIngresar.setOpaque(false);
-		lblIngresar.setForeground(new Color(243, 124, 47));	
+		lblIngresar.setForeground(new Color(10, 20, 26));	
 	}
 	
 	
@@ -901,14 +794,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarBlnaco.png")));
 		lblConsultar.setOpaque(true);
-		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setBackground(new Color(10, 20, 26));
 		lblConsultar.setForeground(new Color(255,255,255));
 	}
 	
 	protected void mouseExitedLblConsultar(MouseEvent arg0) {
-		lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarNegro.png")));
 		lblConsultar.setOpaque(false);
-		lblConsultar.setForeground(new Color(243, 124, 47));	
+		lblConsultar.setForeground(new Color(10, 20, 26));	
 	}
 	
 	protected void mouseClickedLblConsultar(MouseEvent e) {
@@ -926,14 +819,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarBlanco.png")));
 		lblModificar.setOpaque(true);
-		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setBackground(new Color(10, 20, 26));
 		lblModificar.setForeground(new Color(255,255,255));
 	}
 	
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNaranja.png")));
 		lblModificar.setOpaque(false);
-		lblModificar.setForeground(new Color(243, 124, 47));	
+		lblModificar.setForeground(new Color(10, 20, 26));	
 	}
 	
 	protected void mouseClickedLblModificar(MouseEvent e) {
@@ -950,14 +843,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	protected void mouseEnteredLblnEliminar(MouseEvent e) {
 		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarBlnco.png")));
 		lblEliminar.setOpaque(true);
-		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setBackground(new Color(10, 20, 26));
 		lblEliminar.setForeground(new Color(255,255,255));
 	}
 	
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
-		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
 		lblEliminar.setOpaque(false);
-		lblEliminar.setForeground(new Color(243, 124, 47));	
+		lblEliminar.setForeground(new Color(10, 20, 26));	
 	}
 	
 	
@@ -969,5 +862,102 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		cboEstado.setEnabled(false);
 	}
 	
+	//***************************************************************************
+		//BUSCAR CAMA  MOUSE EVENT
+	protected void mouseEnteredLblBuscar(MouseEvent e){
+		lblBuscarCama.setOpaque(true);
+		lblBuscarCama.setBackground(new Color(30, 60, 79));
+		lblBuscarCama.setForeground(new Color(255, 255, 255));
+		lblBuscarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
+	}
 	
+	protected void mouseExitedLblBuscar(MouseEvent arg0) {
+		lblBuscarCama.setOpaque(false);
+		lblBuscarCama.setForeground(new Color(10, 20, 26));
+		lblBuscarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscar.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+	}
+	
+	private void mouseClickedLblBuscar(MouseEvent arg0){
+		consultarCama();
+	}
+	
+	//***************************************************************************
+	//AGREGAR CAMA  MOUSE EVENT
+	protected void mouseEnteredLblAgregarCama(MouseEvent e) {
+		lblAgregarCama.setOpaque(true);
+		lblAgregarCama.setBackground(new Color(30, 60, 79));
+		lblAgregarCama.setForeground(new Color(255, 255, 255));
+		lblAgregarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
+	}
+	
+	protected void mouseExitedLblAgregarCama(MouseEvent arg0) {
+		lblAgregarCama.setOpaque(false);
+		lblAgregarCama.setForeground(new Color(10, 20, 26));
+		lblAgregarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
+		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+	}
+	
+	private void mouseClickedLblAgregarCama(MouseEvent arg0){
+		switch (tipoOperacion) {
+		case ADICIONAR:
+			adicionarCama();
+			break;
+		case CONSULTAR:
+			limpieza();
+			habilitarBusqueda(false);
+			habilitarOperaciones(true);
+			break;
+		case MODIFICAR:
+			modificarCama();
+			break;
+		case ELIMINAR:
+			eliminarCama();
+		}	
+	}
+	//***************************************************************************
+	//CANCELAR CAMA  MOUSE EVENT	
+	protected void mouseEnteredLblCancelarCama(MouseEvent e) {
+		lblCancelarCama.setOpaque(true);
+		lblCancelarCama.setBackground(new Color(30, 60, 79));
+		lblCancelarCama.setForeground(new Color(255, 255, 255));
+		lblCancelarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
+	}
+	
+	protected void mouseExitedLblCancelarCama(MouseEvent arg0) {
+		lblCancelarCama.setOpaque(false);
+		lblCancelarCama.setForeground(new Color(10, 20, 26));
+		lblCancelarCama.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+	}
+	
+	private void mouseClickedLblCancelarCama(MouseEvent arg0){
+		if (tipoOperacion != ADICIONAR)
+			habilitarBusqueda(false);
+			lblMensaje.setText("");
+			habilitarEntradas(false);
+			habilitarOperaciones(true);
+	}
+	
+	//***************************************************************************
+	//GRABAR CAMA  MOUSE EVENT	
+	protected void mouseEnteredLblGrabarCama(MouseEvent e) {
+		
+	}
+	
+	private void mouseClickedLblGrabarCama(MouseEvent e){
+		if (ac.existeArchivo()) {
+			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ac.getArchivo() + "\" ?");
+			if (ok == 0) {
+				ac.grabarCamas();
+				Libreria.mensajeInformacion(this, "\"" + ac.getArchivo() + "\" ha sido actualizado");
+			}
+			else
+				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ac.getArchivo() + "\"");
+		}
+		else {
+			ac.grabarCamas();
+			Libreria.mensajeInformacion(this, "\"" + ac.getArchivo() + "\" ha sido creado");
+		}
+	}
 }
