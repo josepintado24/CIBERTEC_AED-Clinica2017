@@ -142,6 +142,7 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		getContentPane().add(btnBuscar);
 		
 		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {

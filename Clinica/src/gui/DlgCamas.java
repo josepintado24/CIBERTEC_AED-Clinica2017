@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -31,11 +34,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgCamas extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -91,6 +98,8 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	private JLabel lblCancelarCama;
 	private JLabel lblGrabarCama;
 	private JPanel panel_1;
+	private int x;
+	private int y;
 
 	public static void main(String[] args) {
 		try {
@@ -110,6 +119,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	}
 
 	public DlgCamas() {
+		setUndecorated(true);
 		setModal(true);
 		setResizable(false);
 		setTitle("MANTENIMIENTO | CAMAS");
@@ -123,11 +133,11 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(413, 219, -394, -54);
+		scrollPane.setBounds(413, 251, -394, -54);
 		contentPane.add(scrollPane);
 
 		scpMedicamentos = new JScrollPane();
-		scpMedicamentos.setBounds(41, 239, 722, 408);
+		scpMedicamentos.setBounds(41, 271, 722, 408);
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -145,7 +155,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		scpMedicamentos.setViewportView(jtblCamas);
 
 		rdbtnLibre = new JRadioButton("LIBRE");
-		rdbtnLibre.setBounds(243, 161, 70, 23);
+		rdbtnLibre.setBounds(243, 193, 70, 23);
 		rdbtnLibre.addActionListener(this);
 		rdbtnLibre.setSelected(true);
 		rdbtnLibre.setForeground(Color.BLACK);
@@ -154,7 +164,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnLibre);
 
 		rdbtnOcupado = new JRadioButton("OCUPADO");
-		rdbtnOcupado.setBounds(315, 161, 103, 23);
+		rdbtnOcupado.setBounds(315, 193, 103, 23);
 		rdbtnOcupado.addActionListener(this);
 		rdbtnOcupado.setForeground(Color.BLACK);
 		rdbtnOcupado.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
@@ -162,7 +172,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnOcupado);
 
 		rdbtnTodo = new JRadioButton("TODO");
-		rdbtnTodo.setBounds(420, 161, 70, 23);
+		rdbtnTodo.setBounds(420, 193, 70, 23);
 		rdbtnTodo.addActionListener(this);
 		rdbtnTodo.setForeground(Color.BLACK);
 		rdbtnTodo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
@@ -183,7 +193,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										lblIngresar.setFont(new Font("Dialog", Font.BOLD, 16));
 																										lblIngresar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																										lblIngresar.setBackground(new Color(1, 168, 25));
-																										lblIngresar.setBounds(10, 93, 169, 37);
+																										lblIngresar.setBounds(10, 125, 169, 37);
 																										contentPane.add(lblIngresar);
 																										
 																										lblConsultar = new JLabel("CONSULTAR");
@@ -194,7 +204,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										lblConsultar.setFont(new Font("Dialog", Font.BOLD, 16));
 																										lblConsultar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																										lblConsultar.setBackground(new Color(1, 168, 25));
-																										lblConsultar.setBounds(198, 94, 169, 36);
+																										lblConsultar.setBounds(198, 126, 169, 36);
 																										contentPane.add(lblConsultar);
 																										
 																										lblModificar = new JLabel("MODIFICAR");
@@ -205,7 +215,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										lblModificar.setFont(new Font("Dialog", Font.BOLD, 16));
 																										lblModificar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																										lblModificar.setBackground(new Color(1, 168, 25));
-																										lblModificar.setBounds(388, 94, 175, 36);
+																										lblModificar.setBounds(388, 126, 175, 36);
 																										contentPane.add(lblModificar);
 																										
 																										lblEliminar = new JLabel("ELIMINAR");
@@ -215,13 +225,13 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										lblEliminar.setForeground(new Color(10,20,26));
 																										lblEliminar.setFont(new Font("Dialog", Font.BOLD, 16));
 																										lblEliminar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
-																										lblEliminar.setBounds(583, 94, 183, 36);
+																										lblEliminar.setBounds(583, 126, 183, 36);
 																										contentPane.add(lblEliminar);
 																										
 																										panel_1 = new JPanel();
 																										panel_1.setForeground(Color.WHITE);
 																										panel_1.setBackground(new Color(255, 255, 255));
-																										panel_1.setBounds(776, 30, 404, 617);
+																										panel_1.setBounds(776, 62, 404, 617);
 																										contentPane.add(panel_1);
 																										panel_1.setLayout(null);
 																										
@@ -357,6 +367,53 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																												lblMensaje.setForeground(Color.WHITE);
 																																												lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 																																												lblMensaje.setBackground(Color.DARK_GRAY);
+																																												
+																																												JPanel panel = new JPanel();
+																																												panel.addMouseMotionListener(new MouseMotionAdapter() {
+																																													@Override
+																																													public void mouseDragged(MouseEvent arg0) {
+																																														Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+																																													    setLocation(ubicacion.x - x, ubicacion.y - y);
+																																													}
+																																												});
+																																												panel.addMouseListener(new MouseAdapter() {
+																																													@Override
+																																													public void mousePressed(MouseEvent e) {
+																																														x = e.getX();
+																																													    y = e.getY();
+																																													}
+																																												});
+																																												panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																												panel.setBounds(0, 0, 1199, 37);
+																																												contentPane.add(panel);
+																																												panel.setLayout(null);
+																																												
+																																												JLabel lblNewLabel = new JLabel("");
+																																												lblNewLabel.addMouseListener(new MouseAdapter() {
+																																													@Override
+																																													public void mouseClicked(MouseEvent arg0) {
+																																														Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+																																												  		int dialog = JOptionPane.YES_NO_OPTION;
+																																												 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+																																												 	
+																																												  		
+																																												  		if(result1 ==0){
+																																												  			dispose();
+																																												 			Principal frame = new Principal();
+																																												 			frame.setVisible(true);
+																																												  		}
+																																													}
+																																												});
+																																												lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																												lblNewLabel.setIcon(new ImageIcon(DlgCamas.class.getResource("/image/icons8_Return_32px.png")));
+																																												lblNewLabel.setBounds(1160, 0, 39, 37);
+																																												panel.add(lblNewLabel);
+																																												
+																																												JLabel lblCamas = new JLabel("Camas");
+																																												lblCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																												lblCamas.setFont(new Font("Decker", Font.PLAIN, 16));
+																																												lblCamas.setBounds(39, 0, 113, 37);
+																																												panel.add(lblCamas);
 																																												
 																																				cboEstado.addItem("LIBRE");
 																																				cboEstado.addItem("OCUPADO");
@@ -1039,6 +1096,4 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		lblEstado.setVisible(!sino);
 		cboEstado.setVisible(!sino);
 	}
-	
-
 }

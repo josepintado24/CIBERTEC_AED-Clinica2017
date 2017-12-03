@@ -18,12 +18,14 @@ import libreria.Libreria;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
 import java.awt.Point;
 
 import javax.swing.SwingConstants;
@@ -33,6 +35,12 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgServicios extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -57,6 +65,8 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	public JButton btnGuardarServicios;
 	private JScrollPane scrollPane;
 	private JTable jtblServicios;
+	private int x;
+	private int y;
 
 	// Declaración global para modelo de tabla
 	private DefaultTableModel dtm;
@@ -81,6 +91,9 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	public String codServicio = "";
 	public double precioServicio = 0.0;
 	public String nomServicio = "";
+	private JPanel panel;
+	private JLabel label;
+	private JLabel lblServicios;
 
 	public static void main(String[] args) {
 		try {
@@ -100,10 +113,11 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	}
 
 	public DlgServicios() {
+		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | SERVICIO");
-		setBounds(100, 100, 1111, 439);
+		setBounds(100, 100, 1111, 499);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setForeground(Color.BLACK);
 		contentPanel.setBackground(Color.WHITE);
@@ -115,7 +129,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblCodigo.setForeground(Color.BLACK);
 		lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigo.setBounds(10, 56, 89, 14);
+		lblCodigo.setBounds(10, 117, 89, 14);
 		contentPanel.add(lblCodigo);
 
 		txtCodigo = new JTextField();
@@ -123,7 +137,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		txtCodigo.addKeyListener(this);
 		txtCodigo.setForeground(Color.BLACK);
 		txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtCodigo.setBounds(109, 49, 96, 29);
+		txtCodigo.setBounds(109, 110, 96, 29);
 		contentPanel.add(txtCodigo);
 		txtCodigo.setColumns(10);
 
@@ -131,7 +145,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblDescripcion.setForeground(Color.BLACK);
 		lblDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblDescripcion.setBounds(10, 96, 89, 14);
+		lblDescripcion.setBounds(10, 157, 89, 14);
 		contentPanel.add(lblDescripcion);
 
 		txtDescripcion = new JTextField();
@@ -139,7 +153,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		txtDescripcion.addKeyListener(this);
 		txtDescripcion.setForeground(Color.BLACK);
 		txtDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtDescripcion.setBounds(109, 89, 252, 29);
+		txtDescripcion.setBounds(109, 150, 252, 29);
 		contentPanel.add(txtDescripcion);
 		txtDescripcion.setColumns(10);
 
@@ -147,7 +161,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblTipo.setForeground(Color.BLACK);
 		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblTipo.setBounds(10, 136, 88, 14);
+		lblTipo.setBounds(10, 197, 88, 14);
 		contentPanel.add(lblTipo);
 
 		cboTipo = new JComboBox<String>();
@@ -155,14 +169,14 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboTipo.addItem("ANÁLISIS CLÍNICOS");
 		cboTipo.addItem("INTERVENCIONES QUIRÚRJICAS");
-		cboTipo.setBounds(109, 129, 252, 29);
+		cboTipo.setBounds(109, 190, 252, 29);
 		contentPanel.add(cboTipo);
 
 		lblPrecio = new JLabel("PRECIO");
 		lblPrecio.setForeground(Color.BLACK);
 		lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblPrecio.setBounds(10, 176, 88, 14);
+		lblPrecio.setBounds(10, 237, 88, 14);
 		contentPanel.add(lblPrecio);
 
 		txtPrecio = new JTextField();
@@ -170,7 +184,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		txtPrecio.addKeyListener(this);
 		txtPrecio.setForeground(Color.BLACK);
 		txtPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtPrecio.setBounds(111, 169, 94, 29);
+		txtPrecio.setBounds(111, 230, 94, 29);
 		contentPanel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 
@@ -180,7 +194,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnAceptar.setEnabled(false);
 		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(36, 310, 146, 39);
+		btnAceptar.setBounds(36, 371, 146, 39);
 		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
 		contentPanel.add(btnAceptar);
 
@@ -190,7 +204,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnCancelar.setEnabled(false);
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(192, 310, 145, 39);
+		btnCancelar.setBounds(192, 371, 145, 39);
 		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
 		contentPanel.add(btnCancelar);
 
@@ -199,7 +213,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnEliminar.setBackground(new Color(127, 255, 212));
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(37, 260, 145, 39);
+		btnEliminar.setBounds(37, 321, 145, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		contentPanel.add(btnEliminar);
 
@@ -208,7 +222,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnConsultar.setBackground(Color.CYAN);
 		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnConsultar.addActionListener(this);
-		btnConsultar.setBounds(192, 209, 146, 40);
+		btnConsultar.setBounds(192, 270, 146, 40);
 		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
 		contentPanel.add(btnConsultar);
 
@@ -217,7 +231,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnModificar.setBackground(new Color(0, 139, 139));
 		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnModificar.addActionListener(this);
-		btnModificar.setBounds(191, 260, 146, 39);
+		btnModificar.setBounds(191, 321, 146, 39);
 		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
 		contentPanel.add(btnModificar);
 
@@ -226,7 +240,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnAdicionar.setBackground(new Color(124, 252, 0));
 		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnAdicionar.addActionListener(this);
-		btnAdicionar.setBounds(37, 210, 145, 39);
+		btnAdicionar.setBounds(37, 271, 145, 39);
 		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
 		contentPanel.add(btnAdicionar);
 
@@ -236,7 +250,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnBuscar.setEnabled(false);
 		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(225, 49, 136, 29);
+		btnBuscar.setBounds(225, 110, 136, 29);
 		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
 		contentPanel.add(btnBuscar);
 
@@ -246,7 +260,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(10, 9, 351, 29);
+		lblMensaje.setBounds(10, 70, 351, 29);
 		contentPanel.add(lblMensaje);
 
 		btnGuardarServicios = new JButton("GUARDAR SERVICIOS");
@@ -254,12 +268,12 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		btnGuardarServicios.setBackground(new Color(0, 250, 154));
 		btnGuardarServicios.addActionListener(this);
 		btnGuardarServicios.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnGuardarServicios.setBounds(36, 360, 302, 39);
+		btnGuardarServicios.setBounds(36, 421, 302, 39);
 		ds.setCurvasButton(btnGuardarServicios, "imagenes/grabar.png");
 		contentPanel.add(btnGuardarServicios);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(371, 9, 724, 390);
+		scrollPane.setBounds(371, 70, 724, 390);
 		contentPanel.add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -277,6 +291,53 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		jtblServicios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		jtblServicios.setRowHeight(25);
 		scrollPane.setViewportView(jtblServicios);
+		
+		panel = new JPanel();
+		panel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.setBounds(0, 0, 1111, 39);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);
+		  		}
+			}
+		});
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.setIcon(new ImageIcon(DlgServicios.class.getResource("/image/icons8_Return_32px.png")));
+		label.setBounds(1069, 0, 32, 39);
+		panel.add(label);
+		
+		lblServicios = new JLabel("Servicios");
+		lblServicios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblServicios.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblServicios.setBounds(29, 0, 130, 39);
+		panel.add(lblServicios);
 
 		listado();
 		modeloTabla();
