@@ -1183,6 +1183,14 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 	habilitarBotones(false);
 	lblCancelar.setVisible(true);
 	lblAgregar.setText("Ingresar");
+	visibleNombre(true);
+	visibleApellido(true);
+	visibleTurno(true);
+	visibleTipo(true);
+	visibleLogin(true);
+	visiblePassword(true);
+	lblGrabar.setVisible(true);
+	lblAgregar.setVisible(true);
 	
 }
 		
@@ -1205,6 +1213,7 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			habilitarBusqueda(false);
 			habilitarOperaciones(true);
 			lblMensaje.setText("");
+			 lblBuscar.setEnabled(true);
 			break;
 		case MODIFICAR:
 			modificarEmpleado();
@@ -1213,10 +1222,15 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			 lblCancelar.setEnabled(true);
 			 lblGrabar.setEnabled(true);
 			 txtNombres.requestFocus();
+			 lblBuscar.setEnabled(true);
 			
 			break;
 		case ELIMINAR:
 			eliminarEmpleado();
+			 lblBuscar.setEnabled(true);
+			 lblAgregar.setEnabled(true);
+			 lblCancelar.setEnabled(true);
+			 lblGrabar.setEnabled(true);
 			
 	}
 
