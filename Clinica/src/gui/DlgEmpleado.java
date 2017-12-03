@@ -429,6 +429,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						panel.add(lblCancelar);
 																																						
 																																						lblGrabar = new JLabel("Grabar");
+																																						lblGrabar.addMouseListener(this);
 																																						lblGrabar.setOpaque(true);
 																																						lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblGrabar.setForeground(Color.WHITE);
@@ -1089,6 +1090,9 @@ private void editableTrue(){
 		}
 	}
 	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblGrabar) {
+			mouseClickedLblGrabar(arg0);
+		}
 		if (arg0.getSource() == lblModificar) {
 			mouseClickedLblModificar(arg0);
 		}
@@ -1096,7 +1100,7 @@ private void editableTrue(){
 			mouseClickedLblIngresar(arg0);
 		}
 		if (arg0.getSource() == lblConsultar) {
-			//mouseClickedLblConsultar(arg0);
+			mouseClickedLblConsultar(arg0);
 		}
 		if (arg0.getSource() == lblAgregar) {
 			mouseClickedLblAgregar(arg0);
@@ -1105,7 +1109,7 @@ private void editableTrue(){
 			mouseClickedLblCancelar(arg0);
 		}
 		if (arg0.getSource() == lblGrabar) {
-			//mouseClickedLblGrabar(arg0);
+			mouseClickedLblGrabar(arg0);
 		}
 		if (arg0.getSource() == lblBuscar) {
 			mouseClickedLblBuscar(arg0);
@@ -1137,11 +1141,11 @@ private void editableTrue(){
 	}
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == lblModificar) {
-			//mouseExitedLblModificar(e);
+			mouseExitedLblModificar(e);
 		}
 		
 		if (e.getSource() == lblConsultar) {
-			//mouseExitedLblConsultar(e);
+			mouseExitedLblConsultar(e);
 		}
 		if (e.getSource() == lblIngresar) {
 			mouseExitedLblIngresar(e);
@@ -1211,6 +1215,12 @@ private void editableTrue(){
 	
 	
 	///Exited
+	protected void mouseExitedLblConsultar(MouseEvent arg0) {
+		lblConsultar.setOpaque(false);
+		lblConsultar.setForeground(new Color(243, 124, 47));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
 		lblEliminar.setOpaque(false);
@@ -1243,61 +1253,64 @@ private void editableTrue(){
 		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
 		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
+	protected void mouseExitedLblModificar(MouseEvent arg0) {
+		lblModificar.setOpaque(false);
+		lblModificar.setForeground(new Color(243, 124, 47));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		
+	}
 	
 	
 	
 	
 	
 	////CLICKed
-	protected void mouseClickedLblEliminar(MouseEvent arg0) {
-		tipoOperacion = ELIMINAR;
-		lblMensaje.setText("Eliminando Paciente");
+	protected void mouseClickedLblConsultar(MouseEvent arg0) {
+		tipoOperacion = CONSULTAR;
+		lblMensaje.setText("Consultando Empleado");
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
-		visibleApellido();
+		visibleCodigo();
 		visibleNombre();
+		visibleApellido();
 		visibleTipo();
 		visibleTurno();
 		visibleLogin();
-		visiblePassword();
-		lblAgregar.setVisible(false);
-		lblGrabar.setVisible(false);
-		lblAgregar.setText("Eliminar");
+		
+	}
+	protected void mouseClickedLblEliminar(MouseEvent arg0) {
+		tipoOperacion = ELIMINAR;
+		lblMensaje.setText("Eliminando Empleado");
+		habilitarBusqueda(true);
+		habilitarOperaciones(false);
+		panel.setVisible(true);
 	}
 	protected void mouseClickedLblModificar(MouseEvent arg0) {
 		tipoOperacion = MODIFICAR;
-		lblMensaje.setText("Modificando Paciente");
+		lblMensaje.setText("Modificando Empleado");
 		habilitarBusqueda(true);
 		habilitarEntradas(true);
 		habilitarOperaciones(false);
+		txtCodigo.requestFocus();
 		panel.setVisible(true);
-		novisibleCodigo();
-		visibleNombre();
-		visibleApellido();
-		lblGrabar.setVisible(true);
-		lblAgregar.setVisible(false);
-		lblGrabar.setVisible(false);
-		lblAgregar.setText("Modificar");
 	}
 	
 protected void mouseClickedLblIngresar(MouseEvent arg0) {
-		
-		panel.setVisible(true);
-		editableTrue();
-		tipoOperacion = ADICIONAR;
-		lblMensaje.setText("Adicionando Paciente");///verificar
-		txtCodigo.setText("" + ae.codigoCorrelativo());
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-		txtCodigo.setEditable(false);
-		txtNombres.requestFocus();
-		lblBuscar.setVisible(false);
-		lblGrabar.setVisible(true);
+	tipoOperacion = ADICIONAR;
+	lblMensaje.setText("Adicionando Empleado");
+	txtCodigo.setText("" + ae.codigoCorrelativo());
+	habilitarEntradas(true);
+	habilitarOperaciones(false);
+	txtCodigo.setEditable(false);
+	txtApellidos.requestFocus();
+	panel.setVisible(true);
+	lblBuscar.setVisible(false);
+}
 		
 		
-		
-	}
+	
 	protected void mouseClickedLblAgregar(MouseEvent arg0) {
 		switch (tipoOperacion) {
 		case ADICIONAR:
@@ -1332,5 +1345,8 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 	}
 	protected void mouseClickedLblBuscar(MouseEvent arg0) {
 		consultarEmpleado();	
+	}
+	protected void mouseClickedLblGrabar(MouseEvent arg0) {
+		
 	}
 }
