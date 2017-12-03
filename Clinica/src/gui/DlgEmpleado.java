@@ -1300,6 +1300,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
+		visibleNombre(false);
+		visibleApellido(false);
+		visibleTurno(false);
+		visibleTipo(false);
+		visibleLogin(false);
+		visiblePassword(false);
+		lblAgregar.setText("Eliminar");
 	
 	}
 	protected void mouseClickedLblConsultar(MouseEvent arg0) {
@@ -1325,6 +1332,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		habilitarOperaciones(false);
 		txtCodigo.requestFocus();
 		panel.setVisible(true);
+		visibleNombre(false);
+		visibleApellido(false);
+		visibleTurno(false);
+		visibleTipo(false);
+		visibleLogin(false);
+		visiblePassword(false);
+		lblAgregar.setText("Modificar");
 	}
 	
 protected void mouseClickedLblIngresar(MouseEvent arg0) {
@@ -1378,6 +1392,20 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 		consultarEmpleado();	
 	}
 	protected void mouseClickedLblGrabar(MouseEvent arg0) {
+		if (ae.existeArchivo()) {
+			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ae.getArchivo() + "\" ?");
+			if (ok == 0) {
+				ae.grabarEmpleados();
+				Libreria.mensajeInformacion(this, "\"" + ae.getArchivo() + "\" ha sido actualizado");
+			}
+			else
+				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ae.getArchivo() + "\"");
+		}
+		else {
+			ae.grabarEmpleados();
+			Libreria.mensajeInformacion(this, "\"" + ae.getArchivo() + "\" ha sido creado");
+		}
+	}
 		
 	}
-}
+
