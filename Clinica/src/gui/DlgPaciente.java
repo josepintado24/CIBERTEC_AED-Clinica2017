@@ -504,7 +504,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 																														
 																														JPanel panel_1 = new JPanel();
-																														panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+																														panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														panel_1.addMouseMotionListener(new MouseMotionAdapter() {
 																															@Override
 																															public void mouseDragged(MouseEvent arg0) {

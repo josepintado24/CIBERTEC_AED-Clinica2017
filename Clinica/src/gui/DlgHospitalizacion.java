@@ -421,6 +421,7 @@ public class DlgHospitalizacion extends JDialog implements ActionListener, KeyLi
 		listarCamas(cboNroCamas);
 		
 		panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
