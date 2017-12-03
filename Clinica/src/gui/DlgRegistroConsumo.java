@@ -163,10 +163,9 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		getContentPane().add(btnRegistrar);
 
 		panel = new JPanel();
-		panel.setBorder(UIManager.getBorder("ScrollPane.border"));
+		panel.setBorder(null);
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(10, 83, 728, 133);
-		panel.setBorder(BorderFactory.createLineBorder(Color.RED, 2, true));
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
