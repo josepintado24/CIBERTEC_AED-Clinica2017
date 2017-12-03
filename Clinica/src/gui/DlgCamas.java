@@ -540,6 +540,17 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				txtPrecioxDia.setText("" + x.getPrecioxDia());
 				cboCategoria.setSelectedIndex(x.getCategoria());
 				cboEstado.setSelectedIndex(x.getEstado());
+				visibleCategoria(false);
+				visibleEstado(false);
+				visiblePrecioxDia(false);
+				txtPrecioxDia.setEditable(false);
+				lblAgregarCama.setVisible(false);
+				lblGrabarCama.setVisible(false);
+				if (tipoOperacion!=CONSULTAR){
+					lblAgregarCama.setVisible(true);
+					lblGrabarCama.setVisible(true);
+				}
+				
 				
 			}
 			else {
@@ -889,6 +900,8 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		habilitarOperaciones(false);
 		cboEstado.setEnabled(false);
 		panel_1.setVisible(true);
+		lblAgregarCama.setVisible(false);
+		lblGrabarCama.setVisible(false);
 	}
 	
 	//***************************************************************************
@@ -913,16 +926,10 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		visibleCodigo(false);
 		txtNroCama.setEditable(true);
 		txtNroCama.requestFocus();
-		visibleCategoria(false);
-		visibleEstado(false);
-		visiblePrecioxDia(false);
-		txtPrecioxDia.setEditable(false);
-		lblAgregarCama.setVisible(true);
-		lblGrabarCama.setVisible(true);
-		if(tipoOperacion==CONSULTAR){
-			lblAgregarCama.setVisible(false);
-			lblGrabarCama.setVisible(false);
-		}
+		
+	
+			
+		
 		
 	}
 	
