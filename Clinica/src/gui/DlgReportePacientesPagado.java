@@ -2,11 +2,14 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -26,6 +29,14 @@ import libreria.Fecha;
 import libreria.Libreria;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import java.awt.Cursor;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgReportePacientesPagado extends JDialog implements ActionListener {
 
@@ -37,6 +48,8 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 	private JComboBox<String> cboMes;
 	private JComboBox<String> cboAño;
 	private JButton btnBuscar;
+	private int x;
+	private int y;
 
 	private DefaultTableModel dtm;
 
@@ -44,6 +57,9 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 	ArregloPaciente ap = new ArregloPaciente("pacientes.txt");
 	ArregloConsumo ac = new ArregloConsumo("consumos.txt");
 	ArregloHospitalizacion ah = new ArregloHospitalizacion("hospitalizaciones.txt");
+	private JPanel panel;
+	private JLabel label;
+	private JLabel lblReportPacientes;
 
 	public static void main(String[] args) {
 		try {
@@ -63,15 +79,16 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 	}
 
 	public DlgReportePacientesPagado() {
+		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		getContentPane().setBackground(Color.WHITE);
 		setTitle("BÚSQUEDA DE PAGO DE PACIENTES");
-		setBounds(100, 100, 688, 423);
+		setBounds(100, 100, 688, 487);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 62, 662, 324);
+		scrollPane.setBounds(10, 124, 668, 352);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -90,13 +107,13 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		lblFechaLlegada.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFechaLlegada.setForeground(Color.BLACK);
 		lblFechaLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblFechaLlegada.setBounds(10, 18, 103, 14);
+		lblFechaLlegada.setBounds(10, 80, 103, 14);
 		getContentPane().add(lblFechaLlegada);
 
 		cboDia = new JComboBox<String>();
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboDia.setBounds(123, 6, 59, 38);
+		cboDia.setBounds(123, 68, 59, 38);
 		Fecha.colocarItems(cboDia, 1, 31);
 		Fecha.colocarDiaActual(cboDia);
 		getContentPane().add(cboDia);
@@ -104,7 +121,7 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		cboMes = new JComboBox<String>();
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboMes.setBounds(183, 6, 116, 38);
+		cboMes.setBounds(183, 68, 116, 38);
 		Fecha.colocarMeses(cboMes);
 		Fecha.colocarMesActual(cboMes);
 		getContentPane().add(cboMes);
@@ -112,7 +129,7 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		cboAño = new JComboBox<String>();
 		cboAño.setForeground(Color.BLACK);
 		cboAño.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboAño.setBounds(300, 6, 83, 38);
+		cboAño.setBounds(300, 68, 83, 38);
 		Fecha.colocarItems(cboAño, 2000, Fecha.añoActual());
 		cboAño.setSelectedIndex(16);
 		getContentPane().add(cboAño);
@@ -121,8 +138,53 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		btnBuscar.addActionListener(this);
 		btnBuscar.setForeground(Color.BLACK);
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscar.setBounds(393, 6, 149, 38);
+		btnBuscar.setBounds(393, 68, 149, 38);
 		getContentPane().add(btnBuscar);
+		
+		panel = new JPanel();
+		panel.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel.setBounds(0, 0, 688, 39);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);
+		  		}
+			}
+		});
+		label.setIcon(new ImageIcon(DlgReportePacientesPagado.class.getResource("/image/icons8_Return_32px.png")));
+		label.setBounds(646, 0, 32, 39);
+		panel.add(label);
+		
+		lblReportPacientes = new JLabel("Report Pacientes");
+		lblReportPacientes.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblReportPacientes.setBounds(38, 0, 132, 39);
+		panel.add(lblReportPacientes);
 
 		modeloTabla();
 		listar(0);
