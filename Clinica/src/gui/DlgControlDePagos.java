@@ -2,15 +2,19 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -35,6 +39,12 @@ import libreria.DiseñoObjetos;
 import libreria.Fecha;
 import libreria.Libreria;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.Cursor;
+import javax.swing.border.LineBorder;
 
 public class DlgControlDePagos extends JDialog implements ActionListener {
 
@@ -49,6 +59,8 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 	private JComboBox<String> cboMes;
 	private JComboBox<String> cboAno;
 	private JButton btnVerFactura;
+	private int x;
+	private int y;
 
 	// VARIABLE GLOBAL PARA OBTENER LA FECHA ACTUAL
 	private int fecha;
@@ -94,33 +106,36 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 	}
 
 	public DlgControlDePagos() {
+		setUndecorated(true);
 		getContentPane().setBackground(Color.WHITE);
 		setModal(true);
 		setResizable(false);
 		setTitle("CONTROL DE PAGOS");
-		setBounds(100, 100, 601, 622);
+		setBounds(100, 100, 601, 658);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 127, 576, 456);
+		scrollPane.setBounds(15, 191, 576, 456);
 		getContentPane().add(scrollPane);
-		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
+		scrollPane.setBorder(null);
 
 		txtS = new JTextArea();
+		txtS.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		txtS.setEditable(false);
 		scrollPane.setViewportView(txtS);
 
 		panel = new JPanel();
-		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(10, 11, 575, 105);
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(15, 75, 575, 105);
 		getContentPane().add(panel);
 		panel.setLayout(null);
-		panel.setBorder(BorderFactory.createLineBorder(Color.red, 3, false));
+		panel.setBorder(new LineBorder(Color.WHITE, 0, true));
 
 		lblCdigoPaciente = new JLabel("C\u00D3DIGO PACIENTE ");
+		lblCdigoPaciente.setBackground(Color.BLACK);
 		lblCdigoPaciente.setBounds(0, 18, 129, 14);
 		panel.add(lblCdigoPaciente);
-		lblCdigoPaciente.setForeground(Color.WHITE);
+		lblCdigoPaciente.setForeground(Color.BLACK);
 		lblCdigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		lblCdigoPaciente.setHorizontalAlignment(SwingConstants.RIGHT);
 
@@ -188,6 +203,53 @@ public class DlgControlDePagos extends JDialog implements ActionListener {
 		btnVerFactura.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnVerFactura.setBackground(Color.GREEN);
 		ds.setCurvasButton(btnVerFactura, "imagenes/listado.png");
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel_1.setBackground(Color.WHITE);
+		panel_1.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				x = arg0.getX();
+			    y = arg0.getY();
+			}
+		});
+		panel_1.setBounds(0, 0, 601, 39);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);}
+			}
+		});
+		label.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/image/icons8_Return_32px.png")));
+		label.setBounds(558, 0, 33, 39);
+		panel_1.add(label);
+		
+		JLabel lblPa = new JLabel("Pagos");
+		lblPa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblPa.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblPa.setBounds(30, 0, 77, 39);
+		panel_1.add(lblPa);
 		setLocationRelativeTo(this);
 	}
 

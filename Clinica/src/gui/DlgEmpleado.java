@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -20,6 +21,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,11 +34,15 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgEmpleado extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -65,6 +72,8 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	private JTextField txtCodigo;
 	private JButton btnGuardar;
 	private JTable jtblEmpleados;
+	private int x;
+	private int y;
 
 	// Declaración global para modelo de tabla
 	private DefaultTableModel dtm;
@@ -104,6 +113,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	private JLabel lblCancelar;
 	private JLabel lblGrabar;
 	private JLabel lblBuscar;
+	private JPanel panel_1;
+	private JLabel label;
+	private JLabel lblEmpleado;
 
 	public static void main(String[] args) {
 		try {
@@ -123,6 +135,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	}
 
 	public DlgEmpleado() {
+		setUndecorated(true);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DlgEmpleado.class.getResource("/imagenes/mantenimiento.png")));
 		getContentPane().setBackground(Color.WHITE);
 		setResizable(false);
@@ -173,7 +186,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(1091, 11, 313, 29);
+		lblMensaje.setBounds(975, 70, 313, 29);
 		getContentPane().add(lblMensaje);
 
 		scrollPane = new JScrollPane();
@@ -197,34 +210,34 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(792, 70, 630, 847);
+		panel.setBounds(798, 110, 630, 807);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
 		
 				lblCodigo = new JLabel("CODIGO");
-				lblCodigo.setBounds(24, 49, 71, 14);
+				lblCodigo.setBounds(49, 48, 71, 14);
 				panel.add(lblCodigo);
 				lblCodigo.setForeground(Color.BLACK);
 				lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 				lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
 				
 						lblLogin = new JLabel("LOGIN");
-						lblLogin.setBounds(50, 280, 46, 14);
+						lblLogin.setBounds(75, 279, 46, 14);
 						panel.add(lblLogin);
 						lblLogin.setForeground(Color.BLACK);
 						lblLogin.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 						lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
 						
 								lblTurno = new JLabel("TURNO");
-								lblTurno.setBounds(50, 440, 65, 14);
+								lblTurno.setBounds(75, 439, 65, 14);
 								panel.add(lblTurno);
 								lblTurno.setForeground(Color.BLACK);
 								lblTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 								lblTurno.setHorizontalAlignment(SwingConstants.RIGHT);
 								
 										txtApellidos = new JTextField();
-										txtApellidos.setBounds(357, 166, 227, 29);
+										txtApellidos.setBounds(382, 165, 227, 29);
 										panel.add(txtApellidos);
 										txtApellidos.addKeyListener(this);
 										txtApellidos.setEditable(false);
@@ -235,7 +248,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 										txtApellidos.setOpaque(false);
 										
 												txtNombres = new JTextField();
-												txtNombres.setBounds(72, 168, 207, 26);
+												txtNombres.setBounds(97, 167, 207, 26);
 												panel.add(txtNombres);
 												txtNombres.addKeyListener(this);
 												txtNombres.setEditable(false);
@@ -246,14 +259,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 												txtNombres.setOpaque(false);
 												
 														cboTipo = new JComboBox<String>();
-														cboTipo.setBounds(134, 222, 154, 29);
+														cboTipo.setBounds(159, 221, 154, 29);
 														panel.add(cboTipo);
 														cboTipo.setEnabled(false);
 														cboTipo.setForeground(Color.BLACK);
 														cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 														
 																txtLogin = new JTextField();
-																txtLogin.setBounds(86, 310, 154, 29);
+																txtLogin.setBounds(111, 309, 154, 29);
 																panel.add(txtLogin);
 																txtLogin.addKeyListener(this);
 																txtLogin.setEditable(false);
@@ -265,7 +278,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																
 																
 																		txtPassword = new JTextField();
-																		txtPassword.setBounds(93, 381, 154, 29);
+																		txtPassword.setBounds(118, 380, 154, 29);
 																		panel.add(txtPassword);
 																		txtPassword.addKeyListener(this);
 																		txtPassword.setEditable(false);
@@ -277,14 +290,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																		
 																		
 																				cboTurno = new JComboBox<String>();
-																				cboTurno.setBounds(134, 433, 154, 29);
+																				cboTurno.setBounds(159, 432, 154, 29);
 																				panel.add(cboTurno);
 																				cboTurno.setEnabled(false);
 																				cboTurno.setForeground(Color.BLACK);
 																				cboTurno.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 																				
 																						txtCodigo = new JTextField();
-																						txtCodigo.setBounds(68, 83, 85, 21);
+																						txtCodigo.setBounds(93, 82, 85, 21);
 																						panel.add(txtCodigo);
 																						txtCodigo.setBackground(new Color(255, 255, 255));
 																						txtCodigo.addKeyListener(this);
@@ -296,7 +309,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																						txtCodigo.setOpaque(false);
 																						
 																								btnBuscar = new JButton("BUSCAR");
-																								btnBuscar.setBounds(188, 84, 110, 29);
+																								btnBuscar.setBounds(213, 83, 110, 29);
 																								panel.add(btnBuscar);
 																								btnBuscar.addActionListener(this);
 																								btnBuscar.setBackground(new Color(102, 205, 170));
@@ -306,35 +319,35 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																								ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
 																								
 																										lblApellidos = new JLabel("APELLIDOS");
-																										lblApellidos.setBounds(318, 134, 85, 14);
+																										lblApellidos.setBounds(343, 133, 85, 14);
 																										panel.add(lblApellidos);
 																										lblApellidos.setForeground(Color.BLACK);
 																										lblApellidos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 																										lblApellidos.setHorizontalAlignment(SwingConstants.RIGHT);
 																										
 																												lblNombres = new JLabel("NOMBRES");
-																												lblNombres.setBounds(40, 132, 73, 18);
+																												lblNombres.setBounds(65, 131, 73, 18);
 																												panel.add(lblNombres);
 																												lblNombres.setForeground(Color.BLACK);
 																												lblNombres.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 																												lblNombres.setHorizontalAlignment(SwingConstants.RIGHT);
 																												
 																														lblTipo = new JLabel("TIPO");
-																														lblTipo.setBounds(0, 229, 85, 14);
+																														lblTipo.setBounds(25, 228, 85, 14);
 																														panel.add(lblTipo);
 																														lblTipo.setForeground(Color.BLACK);
 																														lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 																														lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
 																														
 																																lblPassword = new JLabel("PASSWORD");
-																																lblPassword.setBounds(42, 358, 85, 14);
+																																lblPassword.setBounds(67, 357, 85, 14);
 																																panel.add(lblPassword);
 																																lblPassword.setForeground(Color.BLACK);
 																																lblPassword.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 																																lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
 																																
 																																		btnAceptar = new JButton("ACEPTAR");
-																																		btnAceptar.setBounds(89, 669, 137, 39);
+																																		btnAceptar.setBounds(114, 668, 137, 39);
 																																		panel.add(btnAceptar);
 																																		btnAceptar.addActionListener(this);
 																																		btnAceptar.setBackground(new Color(30, 144, 255));
@@ -344,7 +357,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
 																																		
 																																				btnCancelar = new JButton("CANCELAR");
-																																				btnCancelar.setBounds(395, 687, 145, 39);
+																																				btnCancelar.setBounds(420, 686, 145, 39);
 																																				panel.add(btnCancelar);
 																																				btnCancelar.addActionListener(this);
 																																				btnCancelar.setBackground(new Color(0, 255, 255));
@@ -354,7 +367,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																				ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
 																																				
 																																						btnGuardar = new JButton("GUARDAR EMPLEADOS");
-																																						btnGuardar.setBounds(188, 737, 303, 39);
+																																						btnGuardar.setBounds(213, 736, 303, 39);
 																																						panel.add(btnGuardar);
 																																						btnGuardar.addActionListener(this);
 																																						btnGuardar.setForeground(Color.BLACK);
@@ -364,48 +377,48 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						
 																																						lbliconCodigo = new JLabel("");
 																																						lbliconCodigo.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/codigo.png")));
-																																						lbliconCodigo.setBounds(34, 82, 24, 22);
+																																						lbliconCodigo.setBounds(59, 81, 24, 22);
 																																						panel.add(lbliconCodigo);
 																																						
 																																						sCodigo = new JSeparator();
 																																						sCodigo.setForeground(Color.BLACK);
-																																						sCodigo.setBounds(47, 106, 115, 2);
+																																						sCodigo.setBounds(72, 105, 115, 2);
 																																						panel.add(sCodigo);
 																																						
 																																						lbliconNombres = new JLabel("");
 																																						lbliconNombres.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/user30.png")));
-																																						lbliconNombres.setBounds(40, 167, 35, 27);
+																																						lbliconNombres.setBounds(65, 166, 35, 27);
 																																						panel.add(lbliconNombres);
 																																						
 																																						sNombres = new JSeparator();
-																																						sNombres.setBounds(40, 194, 239, 2);
+																																						sNombres.setBounds(65, 193, 239, 2);
 																																						panel.add(sNombres);
 																																						
 																																						lbliconApellidos = new JLabel("");
 																																						lbliconApellidos.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/user30.png")));
-																																						lbliconApellidos.setBounds(318, 166, 35, 27);
+																																						lbliconApellidos.setBounds(343, 165, 35, 27);
 																																						panel.add(lbliconApellidos);
 																																						
 																																						sApellidos = new JSeparator();
-																																						sApellidos.setBounds(318, 194, 277, 2);
+																																						sApellidos.setBounds(343, 193, 277, 2);
 																																						panel.add(sApellidos);
 																																						
 																																						lbliconLogin = new JLabel("");
 																																						lbliconLogin.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/user2-32.png")));
-																																						lbliconLogin.setBounds(53, 310, 35, 27);
+																																						lbliconLogin.setBounds(78, 309, 35, 27);
 																																						panel.add(lbliconLogin);
 																																						
 																																						sLogin = new JSeparator();
-																																						sLogin.setBounds(53, 338, 191, 2);
+																																						sLogin.setBounds(78, 337, 191, 2);
 																																						panel.add(sLogin);
 																																						
 																																						lbliconPassword = new JLabel("");
 																																						lbliconPassword.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/Key_32px.png")));
-																																						lbliconPassword.setBounds(55, 383, 35, 27);
+																																						lbliconPassword.setBounds(80, 382, 35, 27);
 																																						panel.add(lbliconPassword);
 																																						
 																																						sPassword = new JSeparator();
-																																						sPassword.setBounds(55, 410, 201, 2);
+																																						sPassword.setBounds(80, 409, 201, 2);
 																																						panel.add(sPassword);
 																																						
 																																						lblAgregar = new JLabel("Agregar");
@@ -416,7 +429,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblAgregar.setForeground(Color.BLACK);
 																																						lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																																						lblAgregar.setBackground(Color.YELLOW);
-																																						lblAgregar.setBounds(159, 490, 206, 39);
+																																						lblAgregar.setBounds(184, 489, 206, 39);
 																																						panel.add(lblAgregar);
 																																						
 																																						lblCancelar = new JLabel("Cancelar");
@@ -425,7 +438,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblCancelar.setForeground(Color.BLACK);
 																																						lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
-																																						lblCancelar.setBounds(159, 540, 206, 39);
+																																						lblCancelar.setBounds(184, 539, 206, 39);
 																																						panel.add(lblCancelar);
 																																						
 																																						lblGrabar = new JLabel("Grabar");
@@ -435,7 +448,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblGrabar.setForeground(Color.WHITE);
 																																						lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 																																						lblGrabar.setBackground(new Color(231, 96, 90));
-																																						lblGrabar.setBounds(188, 590, 206, 41);
+																																						lblGrabar.setBounds(213, 589, 206, 41);
 																																						panel.add(lblGrabar);
 																																						
 																																						lblBuscar = new JLabel("Buscar");
@@ -446,7 +459,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																																						lblBuscar.setBackground(Color.BLUE);
-																																						lblBuscar.setBounds(321, 72, 170, 39);
+																																						lblBuscar.setBounds(346, 71, 170, 39);
 																																						panel.add(lblBuscar);
 																																						
 																																						lblIngresar = new JLabel("INGRESAR");
@@ -491,6 +504,54 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						
 																																						lblEliminar.setBounds(588, 135, 183, 36);
 																																						getContentPane().add(lblEliminar);
+																																						
+																																						panel_1 = new JPanel();
+																																						panel_1.addMouseMotionListener(new MouseMotionAdapter() {
+																																							@Override
+																																							public void mouseDragged(MouseEvent e) {
+																																								Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+																																							    setLocation(ubicacion.x - x, ubicacion.y - y);
+																																							}
+																																						});
+																																						panel_1.addMouseListener(new MouseAdapter() {
+																																							@Override
+																																							public void mousePressed(MouseEvent e) {
+																																								x = e.getX();
+																																							    y = e.getY();
+																																							}
+																																						});
+																																						panel_1.setBackground(Color.WHITE);
+																																						panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																						panel_1.setBounds(0, 0, 1438, 39);
+																																						getContentPane().add(panel_1);
+																																						panel_1.setLayout(null);
+																																						
+																																						label = new JLabel("");
+																																						label.addMouseListener(new MouseAdapter() {
+																																							@Override
+																																							public void mouseClicked(MouseEvent e) {
+																																								Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+																																						  		int dialog = JOptionPane.YES_NO_OPTION;
+																																						 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+																																						 	
+																																						  		
+																																						  		if(result1 ==0){
+																																						  			dispose();
+																																						 			Principal frame = new Principal();
+																																						 			frame.setVisible(true);
+																																						  		}
+																																							}
+																																						});
+																																						label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																						label.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/icons8_Return_32px.png")));
+																																						label.setBounds(1395, 0, 43, 39);
+																																						panel_1.add(label);
+																																						
+																																						lblEmpleado = new JLabel("Empleado");
+																																						lblEmpleado.setFont(new Font("Decker", Font.PLAIN, 16));
+																																						lblEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																						lblEmpleado.setBounds(39, 0, 78, 39);
+																																						panel_1.add(lblEmpleado);
 																																						
 																				cboTurno.addItem("Noche");
 																				cboTurno.addItem("Día");
