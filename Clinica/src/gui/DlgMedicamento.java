@@ -166,10 +166,11 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		
 		lblIngresar = new JLabel("INGRESAR");
 		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setForeground(new Color(243, 124, 47));
 		lblIngresar.addMouseListener(this);
 		lblIngresar.setInheritsPopupMenu(false);
 		lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIngresar.setForeground(new Color(243, 124, 47));
+		
 		lblIngresar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 		lblIngresar.setBackground(new Color(1, 168, 25));
@@ -214,6 +215,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		panel.setBounds(761, 160, 409, 582);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		panel.setVisible(false);
 				
 						lblStock = new JLabel("STOCK");
 						lblStock.setBounds(23, 330, 76, 14);
@@ -264,10 +266,11 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														lblGrabar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/save.png")));
 																														lblGrabar.addMouseListener(this);
 																														lblGrabar.setOpaque(true);
+																														lblGrabar.setBackground(new Color(231, 96, 90));
 																														lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblGrabar.setForeground(Color.WHITE);
 																														lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
-																														lblGrabar.setBackground(new Color(231, 96, 90));
+																														
 																														lblGrabar.setBounds(117, 508, 206, 41);
 																														panel.add(lblGrabar);
 																														
@@ -446,17 +449,37 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == lblIngresar) {
+			mouseEnteredLblIngresar(e);
+		}
 	}
 
 	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblIngresar) {
+			mousemouseExitedLblIngresar(e);
+		}
 	}
-
+	//SALIDA LBL
+	private void mousemouseExitedLblIngresar(MouseEvent e){
+		lblIngresar.setOpaque(false);
+		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setForeground(new Color(243, 124, 47));
+	}
 	public void mousePressed(MouseEvent e) {
 	}
 
 	public void mouseReleased(MouseEvent e) {
 	}
-
+	//SOBRE EL LABEL
+	private void mouseEnteredLblIngresar(MouseEvent e){
+		lblIngresar.setOpaque(true);
+		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarBlnco.png")));
+		lblIngresar.setForeground(new Color(255, 255, 255));
+	}
+	
+	
 	protected void mouseClickedJtblMedicamentos(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			if (e.getClickCount() == 2) {
