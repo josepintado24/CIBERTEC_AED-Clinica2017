@@ -304,10 +304,10 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		label.setBounds(714, 0, 40, 39);
 		panel_1.add(label);
 		
-		lblRegitro = new JLabel("Registro");
+		lblRegitro = new JLabel("Registro Consumo");
 		lblRegitro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblRegitro.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblRegitro.setBounds(42, 0, 86, 39);
+		lblRegitro.setBounds(42, 0, 145, 39);
 		panel_1.add(lblRegitro);
 
 		setCodigoConsumo();
