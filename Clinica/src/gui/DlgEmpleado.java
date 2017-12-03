@@ -171,6 +171,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		panel.setLayout(null);
 		panel.setVisible(false);
 		
+		
+		
+		
 				lblCodigo = new JLabel("CODIGO");
 				lblCodigo.setBounds(25, 47, 71, 14);
 				panel.add(lblCodigo);
@@ -1190,6 +1193,11 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			adicionarEmpleado();
 			limpieza();
 			txtCodigo.setText("" + ae.codigoCorrelativo());
+			 habilitarEntradas(true);
+			 lblAgregar.setEnabled(true);
+			 lblCancelar.setEnabled(true);
+			 lblGrabar.setEnabled(true);
+			 txtNombres.requestFocus();
 			break;
 		case CONSULTAR:
 			limpieza();
