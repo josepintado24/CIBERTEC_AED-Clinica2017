@@ -448,6 +448,11 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lineTelefono.setBounds(56, 413, 170, 4);
 																														panel.add(lineTelefono);
 																														
+																														JLabel Codigo = new JLabel("");
+																														Codigo.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/codigo.png")));
+																														Codigo.setBounds(41, 37, 26, 36);
+																														panel.add(Codigo);
+																														
 																														lblIngresar = new JLabel("INGRESAR");
 																														lblIngresar.setInheritsPopupMenu(false);
 																														lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
