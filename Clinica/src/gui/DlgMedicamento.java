@@ -83,7 +83,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	DiseñoObjetos ds = new DiseñoObjetos();
 	// Declaración global de libreria
 	Libreria lb = new Libreria();
-<<<<<<< HEAD
+
 	private JLabel lblIngresar;
 	private JLabel lblConsultar;
 	private JLabel lblModificar;
@@ -686,6 +686,14 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 	public void mouseEntered(MouseEvent e) {
 	}
 
