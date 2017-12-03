@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,12 +35,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
 import javax.swing.ImageIcon;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import java.awt.Cursor;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionAdapter;
-
 public class DlgMedicamento extends JDialog implements ActionListener, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
@@ -55,8 +48,6 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	private JScrollPane scpMedicamentos;
 	private JLabel lblMensaje;
 	private JTable jtblMedicamentos;
-	private int x;
-	private int y;
 
 	// Declaración global para modelo de tabla
 	private DefaultTableModel dtm;
@@ -83,7 +74,6 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	DiseñoObjetos ds = new DiseñoObjetos();
 	// Declaración global de libreria
 	Libreria lb = new Libreria();
-
 	private JLabel lblIngresar;
 	private JLabel lblConsultar;
 	private JLabel lblModificar;
@@ -108,9 +98,6 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	private JTextField txtStock;
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
-=======
-	private JPanel panel;
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 
 	public static void main(String[] args) {
 		try {
@@ -133,128 +120,23 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	 * Create the dialog.
 	 */
 	public DlgMedicamento() {
-		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | MEDICAMENTOS");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-<<<<<<< HEAD
 		setBounds(100, 100, 1266, 785);
-=======
-		setBounds(100, 100, 1038, 515);
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-<<<<<<< HEAD
-=======
-		lblCodigo = new JLabel("CODIGO");
-		lblCodigo.setForeground(Color.BLACK);
-		lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCodigo.setFont(new Font("Arial", Font.BOLD, 13));
-		lblCodigo.setBounds(13, 116, 86, 14);
-		contentPane.add(lblCodigo);
-
-		lblNombre = new JLabel("NOMBRE");
-		lblNombre.setForeground(Color.BLACK);
-		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNombre.setFont(new Font("Arial", Font.BOLD, 13));
-		lblNombre.setBounds(0, 155, 99, 14);
-		contentPane.add(lblNombre);
-
-		lblLaboratorio = new JLabel("LABORATORIO");
-		lblLaboratorio.setForeground(Color.BLACK);
-		lblLaboratorio.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLaboratorio.setFont(new Font("Arial", Font.BOLD, 13));
-		lblLaboratorio.setBounds(0, 193, 99, 14);
-		contentPane.add(lblLaboratorio);
-
-		lblPrecio = new JLabel("PRECIO");
-		lblPrecio.setForeground(Color.BLACK);
-		lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPrecio.setFont(new Font("Arial", Font.BOLD, 13));
-		lblPrecio.setBounds(12, 233, 89, 14);
-		contentPane.add(lblPrecio);
-
-		lblStock = new JLabel("STOCK");
-		lblStock.setForeground(Color.BLACK);
-		lblStock.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStock.setFont(new Font("Arial", Font.BOLD, 13));
-		lblStock.setBounds(23, 273, 76, 14);
-		contentPane.add(lblStock);
-
-		txtNombre = new JTextField();
-		txtNombre.addKeyListener(this);
-		txtNombre.setEditable(false);
-		txtNombre.setFont(new Font("Arial", Font.BOLD, 14));
-		txtNombre.setForeground(Color.BLACK);
-		txtNombre.setBounds(111, 148, 270, 29);
-		contentPane.add(txtNombre);
-		txtNombre.setColumns(10);
-
-		txtLaboratorio = new JTextField();
-		txtLaboratorio.addKeyListener(this);
-		txtLaboratorio.setEditable(false);
-		txtLaboratorio.setFont(new Font("Arial", Font.BOLD, 14));
-		txtLaboratorio.setForeground(Color.BLACK);
-		txtLaboratorio.setBounds(111, 186, 270, 29);
-		contentPane.add(txtLaboratorio);
-		txtLaboratorio.setColumns(10);
-
-		txtPrecio = new JTextField();
-		txtPrecio.addKeyListener(this);
-		txtPrecio.setEditable(false);
-		txtPrecio.setFont(new Font("Arial", Font.BOLD, 14));
-		txtPrecio.setForeground(Color.BLACK);
-		txtPrecio.setBounds(111, 226, 76, 29);
-		contentPane.add(txtPrecio);
-		txtPrecio.setColumns(10);
-
-		txtStock = new JTextField();
-		txtStock.addKeyListener(this);
-		txtStock.setEditable(false);
-		txtStock.setFont(new Font("Arial", Font.BOLD, 14));
-		txtStock.setForeground(Color.BLACK);
-		txtStock.setBounds(111, 266, 76, 29);
-		contentPane.add(txtStock);
-		txtStock.setColumns(10);
-
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(413, 276, -394, -54);
+		scrollPane.setBounds(413, 219, -394, -54);
 		contentPane.add(scrollPane);
 
-<<<<<<< HEAD
-=======
-		txtCodigo = new JTextField();
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setEditable(false);
-		txtCodigo.setFont(new Font("Arial", Font.BOLD, 14));
-		txtCodigo.setForeground(Color.BLACK);
-		txtCodigo.setColumns(10);
-		txtCodigo.setBounds(111, 109, 126, 29);
-		contentPane.add(txtCodigo);
-
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.addActionListener(this);
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnBuscar.setEnabled(false);
-		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setBounds(271, 109, 110, 29);
-		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
-		contentPane.add(btnBuscar);
-
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		scpMedicamentos = new JScrollPane();
-<<<<<<< HEAD
 		scpMedicamentos.setBounds(21, 211, 631, 436);
-=======
-		scpMedicamentos.setBounds(391, 68, 631, 436);
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -273,78 +155,14 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		jtblMedicamentos.setRowHeight(25);
 		scpMedicamentos.setViewportView(jtblMedicamentos);
 
-<<<<<<< HEAD
-=======
-		btnAdicionar = new JButton("ADICIONAR");
-		btnAdicionar.addActionListener(this);
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAdicionar.setBackground(new Color(124, 252, 0));
-		btnAdicionar.setBounds(42, 317, 137, 39);
-		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
-		contentPane.add(btnAdicionar);
-
-		btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.addActionListener(this);
-		btnConsultar.setForeground(Color.BLACK);
-		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnConsultar.setBackground(Color.CYAN);
-		btnConsultar.setBounds(199, 317, 145, 39);
-		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
-		contentPane.add(btnConsultar);
-
-		btnModificar = new JButton("MODIFICAR");
-		btnModificar.addActionListener(this);
-		btnModificar.setForeground(Color.BLACK);
-		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnModificar.setBackground(new Color(0, 139, 139));
-		btnModificar.setBounds(199, 367, 145, 39);
-		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
-		contentPane.add(btnModificar);
-
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.addActionListener(this);
-		btnEliminar.setForeground(Color.BLACK);
-		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBackground(new Color(127, 255, 212));
-		btnEliminar.setBounds(42, 367, 137, 39);
-		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
-		contentPane.add(btnEliminar);
-
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.addActionListener(this);
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnAceptar.setEnabled(false);
-		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setBounds(42, 417, 137, 39);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		contentPane.add(btnAceptar);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.addActionListener(this);
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnCancelar.setEnabled(false);
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setBounds(199, 417, 145, 39);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		contentPane.add(btnCancelar);
-
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		lblMensaje = new JLabel("");
 		lblMensaje.setOpaque(true);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-<<<<<<< HEAD
 		lblMensaje.setBounds(736, 11, 376, 29);
-=======
-		lblMensaje.setBounds(10, 68, 376, 29);
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 		contentPane.add(lblMensaje);
-<<<<<<< HEAD
 		
 		lblIngresar = new JLabel("INGRESAR");
 		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
@@ -579,65 +397,6 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																														lblCancelar.setBounds(104, 458, 206, 39);
 																														panel.add(lblCancelar);
-=======
-
-		btnGuardarMedicamentos = new JButton("GUARDAR MEDICAMENTOS");
-		btnGuardarMedicamentos.addActionListener(this);
-		btnGuardarMedicamentos.setForeground(Color.BLACK);
-		btnGuardarMedicamentos.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnGuardarMedicamentos.setBackground(new Color(0, 250, 154));
-		btnGuardarMedicamentos.setBounds(42, 465, 302, 39);
-		ds.setCurvasButton(btnGuardarMedicamentos, "imagenes/grabar.png");
-		contentPane.add(btnGuardarMedicamentos);
-		
-		panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
-			    setLocation(ubicacion.x - x, ubicacion.y - y);
-			}
-		});
-		panel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				x = e.getX();
-			    y = e.getY();
-			}
-		});
-		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panel.setBounds(0, 0, 1038, 39);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel label = new JLabel("");
-		label.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
-		  		int dialog = JOptionPane.YES_NO_OPTION;
-		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
-		 	
-		  		
-		  		if(result1 ==0){
-		  			dispose();
-		 			Principal frame = new Principal();
-		 			frame.setVisible(true);
-		  		}
-			}
-		});
-		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/image/icons8_Return_32px.png")));
-		label.setBounds(992, 0, 46, 39);
-		panel.add(label);
-		
-		JLabel lblMedicament = new JLabel("Medicamento");
-		lblMedicament.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblMedicament.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblMedicament.setBounds(34, 0, 107, 39);
-		panel.add(lblMedicament);
->>>>>>> branch 'master' of https://github.com/josepintado24/ProyectClinica-Cibertec-II.git
 
 		listado();
 		modeloTabla();
@@ -686,14 +445,6 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	public void mouseEntered(MouseEvent e) {
 	}
 
