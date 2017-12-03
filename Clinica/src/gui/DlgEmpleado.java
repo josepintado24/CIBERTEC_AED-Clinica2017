@@ -759,13 +759,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 				if ((tipoOperacion != CONSULTAR)&&(tipoOperacion != ADICIONAR)){
 					lblAgregar.setVisible(true);
 					lblGrabar.setVisible(true);
+					
 				}
-				novisibleNombre();
-				novisibleApellido();
-				novisibleTurno();
-				novisibleTipo();
-				novisibleLogin();
-				novisiblePassword();
+				visibleNombre(true);
+				visibleApellido(true);
+				visibleLogin(true);
+				visiblePassword(true);
+				visibleTipo(true);
+				visibleTurno(true);
 				
 				txtNombres.setText(x.getNombres());
 				txtApellidos.setText(x.getApellidos());
@@ -894,7 +895,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	
 	//
 	
-private void editableTrue(){
+/*private void editableTrue(){
 		
 		txtCodigo.setEditable(true);
 		txtApellidos.setEditable(true);
@@ -920,92 +921,51 @@ private void editableTrue(){
 		txtPassword.setEditable(false);
 		cboTipo.setEditable(false);
 		cboTurno.setEditable(false);
-		}
+		}*/
 	
-	//metodos privados visible 
+	//metodos privados NO VISIBLEs 
 	
 		
-	private void visibleCodigo(){
-		txtCodigo.setVisible(false);
-		lblCodigo.setVisible(false);
-		sCodigo.setVisible(false);
-		lbliconCodigo.setVisible(false);
+	private void visibleCodigo(boolean sino){
+		txtCodigo.setVisible(sino);
+		lblCodigo.setVisible(sino);
+		sCodigo.setVisible(sino);
+		lbliconCodigo.setVisible(sino);
 	}
-	private void visibleNombre(){
-		txtNombres.setVisible(false);
-		lblNombres.setVisible(false);
-		sNombres.setVisible(false);
-		lbliconNombres.setVisible(false);
+	private void visibleNombre(boolean sino){
+		txtNombres.setVisible(sino);
+		lblNombres.setVisible(sino);
+		sNombres.setVisible(sino);
+		lbliconNombres.setVisible(sino);
 	}
-	private void visibleApellido(){
-		txtApellidos.setVisible(false);
-		lblApellidos.setVisible(false);
-		sApellidos.setVisible(false);
-		lbliconApellidos.setVisible(false);
+	private void visibleApellido(boolean sino){
+		txtApellidos.setVisible(sino);
+		lblApellidos.setVisible(sino);
+		sApellidos.setVisible(sino);
+		lbliconApellidos.setVisible(sino);
 	}
-	private void visibleTipo(){
-		cboTipo.setVisible(false);
-		lblTipo.setVisible(false);
+	private void visibleTipo(boolean sino){
+		cboTipo.setVisible(sino);
+		lblTipo.setVisible(sino);
 		}
-	private void visibleTurno(){
-		cboTurno.setVisible(false);
-		lblTurno.setVisible(false);
+	private void visibleTurno(boolean sino){
+		cboTurno.setVisible(sino);
+		lblTurno.setVisible(sino);
 		}
-	private void visibleLogin(){
-		txtLogin.setVisible(false);
-		lblLogin.setVisible(false);
-		sLogin.setVisible(false);
-		lbliconLogin.setVisible(false);
+	private void visibleLogin(boolean sino){
+		txtLogin.setVisible(sino);
+		lblLogin.setVisible(sino);
+		sLogin.setVisible(sino);
+		lbliconLogin.setVisible(sino);
 	}
 	
-	private void visiblePassword(){
-		txtPassword.setVisible(false);
-		lblPassword.setVisible(false);
-		sPassword.setVisible(false);
-		lbliconPassword.setVisible(false);
+	private void visiblePassword(boolean sino){
+		txtPassword.setVisible(sino);
+		lblPassword.setVisible(sino);
+		sPassword.setVisible(sino);
+		lbliconPassword.setVisible(sino);
 	}
 	
-	//metodos privados  no visible
-	
-	private void novisibleCodigo(){
-		txtCodigo.setVisible(false);
-		lblCodigo.setVisible(false);
-		sCodigo.setVisible(false);
-		lbliconCodigo.setVisible(false);
-	}
-	private void novisibleNombre(){
-		txtNombres.setVisible(false);
-		lblNombres.setVisible(false);
-		sNombres.setVisible(false);
-		lbliconNombres.setVisible(false);
-	}
-	private void novisibleApellido(){
-		txtApellidos.setVisible(false);
-		lblApellidos.setVisible(false);
-		sApellidos.setVisible(false);
-		lbliconApellidos.setVisible(false);
-	}
-	private void novisibleTipo(){
-		cboTipo.setVisible(false);
-		lblTipo.setVisible(false);
-		}
-	private void novisibleTurno(){
-		cboTurno.setVisible(false);
-		lblTurno.setVisible(false);
-		}
-	private void novisibleLogin(){
-		txtLogin.setVisible(false);
-		lblLogin.setVisible(false);
-		sLogin.setVisible(false);
-		lbliconLogin.setVisible(false);
-	}
-	
-	private void novisiblePassword(){
-		txtPassword.setVisible(false);
-		lblPassword.setVisible(false);
-		sPassword.setVisible(false);
-		lbliconPassword.setVisible(false);
-	}
 	
 	
 	
@@ -1287,6 +1247,12 @@ private void editableTrue(){
 		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		panel.setVisible(true);
+		visibleNombre(false);
+		visibleApellido(false);
+		visibleLogin(false);
+		visibleTipo(false);
+		visiblePassword(false);
+		visibleTurno(false);
 		lblAgregar.setVisible(false);
 		lblGrabar.setVisible(false);
 	}
