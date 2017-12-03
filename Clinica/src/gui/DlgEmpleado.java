@@ -1182,6 +1182,7 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 	lblBuscar.setVisible(false);
 	habilitarBotones(false);
 	lblCancelar.setVisible(true);
+	lblAgregar.setText("Ingresar");
 	
 }
 		
@@ -1207,6 +1208,11 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			break;
 		case MODIFICAR:
 			modificarEmpleado();
+			habilitarEntradas(true);
+			lblAgregar.setEnabled(true);
+			 lblCancelar.setEnabled(true);
+			 lblGrabar.setEnabled(true);
+			 txtNombres.requestFocus();
 			
 			break;
 		case ELIMINAR:
