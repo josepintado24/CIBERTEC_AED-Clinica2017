@@ -56,11 +56,9 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	private JButton btnBuscarPaciente;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
-	private JButton btnRegistrarPago;
 	private JComboBox<String> cboDia;
 	private JComboBox<String> cboMes;
 	private JComboBox<String> cboAno;
-	private JButton btnVerFactura;
 	private int x;
 	private int y;
 
@@ -91,6 +89,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	private JPanel panel;
 	private JLabel lbliconPaciente;
 	private JLabel lblVerFactura;
+	private JLabel lblRegistrar;
 
 	public static void main(String[] args) {
 		try {
@@ -115,7 +114,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		setModal(true);
 		setResizable(false);
 		setTitle("CONTROL DE PAGOS");
-		setBounds(100, 100, 801, 756);
+		setBounds(100, 100, 608, 756);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -191,15 +190,6 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		cboAno.addItem("" + Fecha.añoActual());
 
 		fecha = Fecha.getFecha(cboDia, cboMes, cboAno);
-
-		btnRegistrarPago = new JButton("REGISTRAR PAGO");
-		btnRegistrarPago.setBounds(277, 65, 176, 40);
-		panel.add(btnRegistrarPago);
-		btnRegistrarPago.addActionListener(this);
-		btnRegistrarPago.setBackground(Color.CYAN);
-		btnRegistrarPago.setForeground(Color.BLACK);
-		btnRegistrarPago.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		ds.setCurvasButton(btnRegistrarPago, "imagenes/aceptar.png");
 		
 		lbliconPaciente = new JLabel("");
 		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Add_User_Male_25px.png")));
@@ -207,6 +197,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(lbliconPaciente);
 		
 		lblVerFactura = new JLabel("LISTAR FACTURA");
+		lblVerFactura.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Purchase_Order_25px.png")));
 		lblVerFactura.addMouseListener(this);
 		lblVerFactura.setInheritsPopupMenu(false);
 		lblVerFactura.setHorizontalAlignment(SwingConstants.CENTER);
@@ -216,6 +207,18 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblVerFactura.setBackground(new Color(1, 168, 25));
 		lblVerFactura.setBounds(74, 64, 193, 37);
 		panel.add(lblVerFactura);
+		
+		lblRegistrar = new JLabel("REGISTRAR PAGO");
+		lblRegistrar.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Money_Bag_25px_1.png")));
+		lblRegistrar.addMouseListener(this);
+		lblRegistrar.setInheritsPopupMenu(false);
+		lblRegistrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRegistrar.setForeground(new Color(243, 124, 47));
+		lblRegistrar.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblRegistrar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+		lblRegistrar.setBackground(new Color(1, 168, 25));
+		lblRegistrar.setBounds(309, 64, 193, 37);
+		panel.add(lblRegistrar);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -263,25 +266,10 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblPa.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblPa.setBounds(30, 0, 77, 39);
 		panel_1.add(lblPa);
-		
-				btnVerFactura = new JButton("VER FACTURA");
-				btnVerFactura.setBounds(619, 134, 150, 40);
-				getContentPane().add(btnVerFactura);
-				btnVerFactura.addActionListener(this);
-				btnVerFactura.setForeground(Color.BLACK);
-				btnVerFactura.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-				btnVerFactura.setBackground(Color.GREEN);
-				ds.setCurvasButton(btnVerFactura, "imagenes/listado.png");
 		setLocationRelativeTo(this);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnVerFactura) {
-			actionPerformedBtnVerFactura(arg0);
-		}
-		if (arg0.getSource() == btnRegistrarPago) {
-			actionPerformedBtnRegistrarPago(arg0);
-		}
 		if (arg0.getSource() == btnBuscarPaciente) {
 			actionPerformedBtnBuscarPaciente(arg0);
 		}
@@ -308,26 +296,6 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		else {
 			txtCodigoPaciente.setText(hos.codigoPaciente);
 			txtS.setText("");
-		}
-	}
-
-	protected void actionPerformedBtnRegistrarPago(ActionEvent arg0) {
-		if (!txtS.getText().trim().equals("") && leerCodigoPaciente() != -1) {
-			int msj = Libreria.confirmacion(this, "¿DESEA GUARDAR EL REGISTRO DE FACTURA?");
-			if (msj == 0) {
-				guardarFactura();
-				nuevaFactura();
-			}
-			else {
-				Libreria.mensajeInformacion(this, "EL REGISTRO NO SE GUARDÓ");
-			}
-		}
-	}
-
-	protected void actionPerformedBtnVerFactura(ActionEvent arg0) {
-		if (leerCodigoPaciente() != -1) {
-			hora = Fecha.obtenerHoraActual();
-			verFactura();
 		}
 	}
 
@@ -606,22 +574,74 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	
 	////***** EventoClicked***///
 	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblRegistrar) {
+			mouseClickedLblRegistrar(arg0);
+		}
 		if (arg0.getSource() == lblVerFactura) {
 			mouseClickedLblVerFactura(arg0);
 		}
 	}
+	
+	
+	////****EventoEntered****////
 	public void mouseEntered(MouseEvent arg0) {
+		if (arg0.getSource() == lblVerFactura) {
+			mouseEnteredLblVerFactura(arg0);
+		}
+		if (arg0.getSource() == lblRegistrar) {
+			mouseEnteredLblRegistrar(arg0);
+		}
+		
+	}
+	
+	
+	////*****EventoExited****////
+	
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblVerFactura) {
+			mouseExitedLblVerFactura(e);
+		}
+		
+		if (e.getSource() == lblRegistrar) {
+			mouseExitedLblRegistrar(e);
+		}		
+	}
+		
+	//*** mouse entered *** /// 
+	public void mouseEnteredLblVerFactura(MouseEvent arg0) {
 		lblVerFactura.setOpaque(true);
 		lblVerFactura.setBackground(new Color(243, 124, 47));
 		lblVerFactura.setForeground(new Color(255, 255, 255));
-		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Bill_25px.png")));
+		
 	}
-	public void mouseExited(MouseEvent arg0) {
+	
+	public void mouseEnteredLblRegistrar(MouseEvent arg0) {
+		lblRegistrar.setOpaque(true);
+		lblRegistrar.setBackground(new Color(243, 124, 47));
+		lblRegistrar.setForeground(new Color(255, 255, 255));
+		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Money_Bag_25px.png")));
+		
+	}
+	
+	////****Mouse Exited****////
+		
+	
+	
+	public void mouseExitedLblVerFactura(MouseEvent arg0) {
 		lblVerFactura.setOpaque(false);
 		lblVerFactura.setForeground(new Color(243, 124, 47));
-		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Purchase_Order_25px.png")));
 		lblVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
+		//
+	public void mouseExitedLblRegistrar(MouseEvent arg0) {
+		lblRegistrar.setOpaque(false);
+		lblRegistrar.setForeground(new Color(243, 124, 47));
+		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Money_Bag_25px_1.png")));
+		lblRegistrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
+	
 	public void mousePressed(MouseEvent arg0) {
 	}
 	public void mouseReleased(MouseEvent arg0) {
@@ -642,5 +662,18 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 			verFactura();
 		}
 	
+	}
+	protected void mouseClickedLblRegistrar(MouseEvent arg0) {
+		if (!txtS.getText().trim().equals("") && leerCodigoPaciente() != -1) {
+			int msj = Libreria.confirmacion(this, "¿DESEA GUARDAR EL REGISTRO DE FACTURA?");
+			if (msj == 0) {
+				guardarFactura();
+				nuevaFactura();
+			}
+			else {
+				Libreria.mensajeInformacion(this, "EL REGISTRO NO SE GUARDÓ");
+			}
+		}
+		
 	}
 }
