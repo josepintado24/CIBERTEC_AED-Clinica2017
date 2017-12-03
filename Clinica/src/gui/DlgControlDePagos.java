@@ -192,12 +192,12 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		fecha = Fecha.getFecha(cboDia, cboMes, cboAno);
 		
 		lbliconPaciente = new JLabel("");
-		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Add_User_Male_25px.png")));
+		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/patient.png")));
 		lbliconPaciente.setBounds(34, 19, 21, 21);
 		panel.add(lbliconPaciente);
 		
 		lblVerFactura = new JLabel("LISTAR FACTURA");
-		lblVerFactura.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Purchase_Order_25px.png")));
+		lblVerFactura.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/bill_blanco.png")));
 		lblVerFactura.addMouseListener(this);
 		lblVerFactura.setInheritsPopupMenu(false);
 		lblVerFactura.setHorizontalAlignment(SwingConstants.CENTER);
@@ -209,7 +209,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(lblVerFactura);
 		
 		lblRegistrar = new JLabel("REGISTRAR PAGO");
-		lblRegistrar.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/icons8_Money_Bag_25px_1.png")));
+		lblRegistrar.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/money_blanco.png")));
 		lblRegistrar.addMouseListener(this);
 		lblRegistrar.setInheritsPopupMenu(false);
 		lblRegistrar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -612,7 +612,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblVerFactura.setOpaque(true);
 		lblVerFactura.setBackground(new Color(243, 124, 47));
 		lblVerFactura.setForeground(new Color(255, 255, 255));
-		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Bill_25px.png")));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/bill_color.png")));
 		
 	}
 	
@@ -620,7 +620,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblRegistrar.setOpaque(true);
 		lblRegistrar.setBackground(new Color(243, 124, 47));
 		lblRegistrar.setForeground(new Color(255, 255, 255));
-		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Money_Bag_25px.png")));
+		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_color.png")));
 		
 	}
 	
@@ -631,14 +631,14 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	public void mouseExitedLblVerFactura(MouseEvent arg0) {
 		lblVerFactura.setOpaque(false);
 		lblVerFactura.setForeground(new Color(243, 124, 47));
-		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Purchase_Order_25px.png")));
+		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/bill_blanco.png")));
 		lblVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 		//
 	public void mouseExitedLblRegistrar(MouseEvent arg0) {
 		lblRegistrar.setOpaque(false);
 		lblRegistrar.setForeground(new Color(243, 124, 47));
-		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/icons8_Money_Bag_25px_1.png")));
+		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_blanco.png")));
 		lblRegistrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	
