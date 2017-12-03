@@ -2,7 +2,12 @@ package gui;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Point;
+
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -25,10 +30,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 public class DlgRegistroConsumo extends JDialog implements ActionListener {
 
@@ -51,6 +62,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 	private JButton btnEliminar;
 	private JButton btnRegistrar;
 	private JPanel panel;
+	private int x;
+	private int y;
 
 	// Declaración global para modelo de tabla
 	private DefaultTableModel dtm;
@@ -66,6 +79,9 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 
 	// Declaración variable global para la suma total de la venta
 	private double total = 0.0;
+	private JPanel panel_1;
+	private JLabel label;
+	private JLabel lblRegitro;
 
 	public static void main(String[] args) {
 		try {
@@ -85,15 +101,16 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 	}
 
 	public DlgRegistroConsumo() {
+		setUndecorated(true);
 		setModal(true);
 		setResizable(false);
 		setTitle("Registro de Consumo");
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 754, 552);
+		setBounds(100, 100, 754, 598);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 149, 728, 309);
+		scrollPane.setBounds(10, 227, 728, 309);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -117,14 +134,14 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		txtTotal.setForeground(Color.RED);
 		txtTotal.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 18));
 		txtTotal.setColumns(10);
-		txtTotal.setBounds(619, 469, 119, 39);
+		txtTotal.setBounds(619, 547, 119, 39);
 		getContentPane().add(txtTotal);
 
 		lblTotal = new JLabel("TOTAL :");
 		lblTotal.setForeground(Color.BLACK);
 		lblTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotal.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblTotal.setBounds(462, 482, 147, 14);
+		lblTotal.setBounds(462, 560, 147, 14);
 		getContentPane().add(lblTotal);
 
 		btnEliminar = new JButton("ELIMINAR PRODUCTO DE LISTA");
@@ -132,7 +149,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnEliminar.setBackground(new Color(135, 206, 235));
-		btnEliminar.setBounds(60, 470, 263, 39);
+		btnEliminar.setBounds(60, 548, 263, 39);
 		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
 		getContentPane().add(btnEliminar);
 
@@ -141,14 +158,14 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		btnRegistrar.setForeground(Color.BLACK);
 		btnRegistrar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 		btnRegistrar.setBackground(new Color(0, 255, 127));
-		btnRegistrar.setBounds(358, 470, 147, 39);
+		btnRegistrar.setBounds(358, 548, 147, 39);
 		ds.setCurvasButton(btnRegistrar, "imagenes/aceptar.png");
 		getContentPane().add(btnRegistrar);
 
 		panel = new JPanel();
 		panel.setBorder(UIManager.getBorder("ScrollPane.border"));
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 5, 728, 133);
+		panel.setBounds(10, 83, 728, 133);
 		panel.setBorder(BorderFactory.createLineBorder(Color.RED, 2, true));
 		getContentPane().add(panel);
 		panel.setLayout(null);
@@ -244,6 +261,54 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		lblFecha.setForeground(Color.BLACK);
 		lblFecha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFecha.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+			    setLocation(ubicacion.x - x, ubicacion.y - y);
+			}
+		});
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x = e.getX();
+			    y = e.getY();
+			}
+		});
+		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel_1.setBounds(0, 0, 754, 39);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+		  		int dialog = JOptionPane.YES_NO_OPTION;
+		 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+		 	
+		  		
+		  		if(result1 ==0){
+		  			dispose();
+		 			Principal frame = new Principal();
+		 			frame.setVisible(true);
+		  		}
+			}
+		});
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/image/icons8_Return_32px.png")));
+		label.setBounds(714, 0, 40, 39);
+		panel_1.add(label);
+		
+		lblRegitro = new JLabel("Registro");
+		lblRegitro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblRegitro.setFont(new Font("Decker", Font.PLAIN, 16));
+		lblRegitro.setBounds(42, 0, 86, 39);
+		panel_1.add(lblRegitro);
 
 		setCodigoConsumo();
 		modeloTabla();
