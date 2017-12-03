@@ -1127,6 +1127,7 @@ private void editableTrue(){
 		txtNombres.requestFocus();
 		lblBuscar.setVisible(false);
 		lblGrabar.setVisible(true);
+		lblAgregar.setText("Agregar");
 		
 		
 		

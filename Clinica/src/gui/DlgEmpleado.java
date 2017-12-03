@@ -1190,6 +1190,11 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			adicionarEmpleado();
 			limpieza();
 			txtCodigo.setText("" + ae.codigoCorrelativo());
+			 habilitarEntradas(true);
+			 lblAgregar.setEnabled(true);
+			 lblCancelar.setEnabled(true);
+			 lblGrabar.setEnabled(true);
+			 txtNombres.requestFocus();
 			break;
 		case CONSULTAR:
 			limpieza();
