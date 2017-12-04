@@ -600,7 +600,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				visibleCategoria(false);
 				visibleEstado(false);
 				visiblePrecioxDia(false);
-				txtPrecioxDia.setEditable(false);
 				lblAgregarCama.setVisible(false);
 				lblGrabarCama.setVisible(false);
 				if (tipoOperacion!=CONSULTAR){
@@ -660,6 +659,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				txtNroCama.requestFocus();
 			}
 		}
+		txtNroCama.requestFocus();
 	}
 
 	void eliminarCama() {
@@ -712,6 +712,13 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		lblCancelarCama.setEnabled(!sino);
 	}
 
+	void habilitarBotones(boolean sino){
+		lblConsultar.setVisible(sino);
+		lblModificar.setVisible(sino);
+		lblEliminar.setVisible(sino);
+		lblIngresar.setVisible(sino);
+	}
+	
 	// Métodos que retornan valor sin parámetros
 	String[] getColumnas() {
 		String columnas[] = new String[] { "NRO CAMA", "CATEGORIA", "PRECIO POR DÍA", "ESTADO" };
@@ -870,6 +877,17 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		habilitarOperaciones(false);
 		txtNroCama.requestFocus();
 		panel_1.setVisible(true);
+		lblBuscarCama.setVisible(false);
+		habilitarBotones(false);
+		lblCancelarCama.setVisible(true);
+		lblAgregarCama.setText("Ingresar");
+		//visibleCodigo(true);
+		//visibleCategoria(true);
+		lblGrabarCama.setVisible(true);
+		lblAgregarCama.setVisible(true);
+		
+		
+		
 		
 	}
 	
@@ -931,7 +949,16 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		habilitarEntradas(true);
 		habilitarOperaciones(false);
 		panel_1.setVisible(true);
+		visibleCodigo(false);
+		visibleCategoria(true);
+		visibleEstado(true);
+		visiblePrecioxDia(true);
+		lblAgregarCama.setText("Modificar");
+		lblAgregarCama.setVisible(false);
+		lblGrabarCama.setVisible(false);
+		habilitarBotones(false);
 		
+		lblBuscarCama.setVisible(true);
 	}
 	
 	//***************************************************************************
@@ -957,6 +984,10 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		habilitarOperaciones(false);
 		cboEstado.setEnabled(false);
 		panel_1.setVisible(true);
+		visibleCategoria(true);
+		visiblePrecioxDia(true);
+		visibleEstado(true);
+		lblAgregarCama.setText("Eliminar");
 		lblAgregarCama.setVisible(false);
 		lblGrabarCama.setVisible(false);
 	}
@@ -1010,17 +1041,42 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		switch (tipoOperacion) {
 		case ADICIONAR:
 			adicionarCama();
+			limpieza();
+			txtNroCama.setText("");;
+			habilitarEntradas(true);
+			lblAgregarCama.setEnabled(true);
+			lblCancelarCama.setEnabled(true);
+			lblGrabarCama.setEnabled(true);
+			lblMensaje.setText("Modificando cama");
+			habilitarBotones(false);
+			txtNroCama.requestFocus();
 			break;
 		case CONSULTAR:
 			limpieza();
 			habilitarBusqueda(false);
 			habilitarOperaciones(true);
+			lblMensaje.setText("Consultando cama...");
+			lblBuscarCama.setVisible(true);
 			break;
 		case MODIFICAR:
 			modificarCama();
+			habilitarEntradas(true);
+			lblAgregarCama.setEnabled(true);
+			lblCancelarCama.setEnabled(true);
+			lblGrabarCama.setEnabled(true);
+			habilitarBotones(false);
+			lblBuscarCama.setEnabled(true);
+			txtNroCama.requestFocus();
 			break;
 		case ELIMINAR:
 			eliminarCama();
+			habilitarBotones(false);
+			lblBuscarCama.setEnabled(true);
+			lblAgregarCama.setEnabled(true);
+			lblCancelarCama.setEnabled(true);
+			lblGrabarCama.setEnabled(true);
+			txtNroCama.setEditable(true);
+			
 		}	
 	}
 	//***************************************************************************
