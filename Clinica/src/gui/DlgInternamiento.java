@@ -143,6 +143,8 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		setTitle("HOSPITALIZACIÓN DE PACIENTES");
 		setBounds(100, 100, 1343, 476);
 		getContentPane().setLayout(null);
+		
+		
 
 		lblCodigoDeHospitalizacion = new JLabel("C\u00D3DIGO HOSPITALIZACI\u00D3N");
 		lblCodigoDeHospitalizacion.setForeground(Color.BLACK);
