@@ -40,6 +40,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.LineBorder;
 
 public class DlgRegistroConsumo extends JDialog implements ActionListener {
 
@@ -110,6 +111,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		scrollPane.setBounds(10, 227, 728, 309);
 		getContentPane().add(scrollPane);
 
@@ -121,12 +123,14 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 				return false;
 			}
 		};
+		jtblConsumo.setBorder(null);
 		jtblConsumo.setFont(new Font("Arial", Font.BOLD, 14));
 		jtblConsumo.setForeground(Color.BLACK);
 		jtblConsumo.setRowHeight(25);
 		scrollPane.setViewportView(jtblConsumo);
 
 		txtTotal = new JTextField();
+		txtTotal.setBorder(new LineBorder(new Color(171, 173, 179), 1, true));
 		txtTotal.setText("S/.00.00");
 		txtTotal.setBackground(Color.WHITE);
 		txtTotal.setEditable(false);

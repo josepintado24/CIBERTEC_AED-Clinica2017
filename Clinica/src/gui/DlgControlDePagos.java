@@ -53,7 +53,6 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCdigoPaciente;
 	private JTextField txtCodigoPaciente;
-	private JButton btnBuscarPaciente;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
 	private JComboBox<String> cboDia;
@@ -137,9 +136,9 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(Color.WHITE, 0, true));
 
-		lblCdigoPaciente = new JLabel("CODIGO");
+		lblCdigoPaciente = new JLabel("CODIGO :");
 		lblCdigoPaciente.setBackground(Color.BLACK);
-		lblCdigoPaciente.setBounds(34, 11, 59, 14);
+		lblCdigoPaciente.setBounds(10, 11, 75, 14);
 		panel.add(lblCdigoPaciente);
 		lblCdigoPaciente.setForeground(Color.BLACK);
 		lblCdigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -157,16 +156,8 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		txtCodigoPaciente.setBorder(null);
 		txtCodigoPaciente.setOpaque(false);
 
-		btnBuscarPaciente = new JButton("...");
-		btnBuscarPaciente.setBounds(199, 36, 51, 29);
-		panel.add(btnBuscarPaciente);
-		btnBuscarPaciente.setBackground(Color.BLACK);
-		btnBuscarPaciente.addActionListener(this);
-		btnBuscarPaciente.setForeground(Color.WHITE);
-		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		ds.setCurvasButton(btnBuscarPaciente, "imagenes/buscar.png");
-
 		cboDia = new JComboBox<String>();
+		cboDia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboDia.setBounds(34, 133, 59, 29);
 		panel.add(cboDia);
 		cboDia.setForeground(Color.BLACK);
@@ -176,6 +167,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		Fecha.colocarDiaActual(cboDia);
 
 		cboMes = new JComboBox<String>();
+		cboMes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboMes.setBounds(94, 133, 116, 29);
 		panel.add(cboMes);
 		cboMes.setForeground(Color.BLACK);
@@ -185,6 +177,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		Fecha.colocarMesActual(cboMes);
 
 		cboAno = new JComboBox<String>();
+		cboAno.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboAno.setBounds(211, 133, 79, 29);
 		panel.add(cboAno);
 		cboAno.setForeground(Color.BLACK);
@@ -200,46 +193,86 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(lbliconPaciente);
 		
 		lblVerFactura = new JLabel("LISTAR FACTURA");
+		lblVerFactura.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVerFactura.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/bill_blanco.png")));
 		lblVerFactura.addMouseListener(this);
 		lblVerFactura.setInheritsPopupMenu(false);
 		lblVerFactura.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVerFactura.setForeground(new Color(243, 124, 47));
+		lblVerFactura.setForeground(Color.BLACK);
 		lblVerFactura.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblVerFactura.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+		lblVerFactura.setBorder(new LineBorder(Color.BLACK, 1, true));
 		lblVerFactura.setBackground(new Color(1, 168, 25));
-		lblVerFactura.setBounds(338, 112, 193, 37);
+		lblVerFactura.setBounds(372, 128, 193, 37);
 		panel.add(lblVerFactura);
 		
 		lblRegistrar = new JLabel("REGISTRAR PAGO");
+		lblRegistrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblRegistrar.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/money_blanco.png")));
 		lblRegistrar.addMouseListener(this);
 		lblRegistrar.setInheritsPopupMenu(false);
 		lblRegistrar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegistrar.setForeground(new Color(243, 124, 47));
+		lblRegistrar.setForeground(Color.BLACK);
 		lblRegistrar.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblRegistrar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+		lblRegistrar.setBorder(new LineBorder(Color.BLACK, 1, true));
 		lblRegistrar.setBackground(new Color(1, 168, 25));
-		lblRegistrar.setBounds(338, 45, 193, 37);
+		lblRegistrar.setBounds(372, 35, 193, 37);
 		panel.add(lblRegistrar);
 		
 		separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
-		separator.setBounds(54, 64, 184, 7);
+		separator.setBounds(45, 64, 193, 2);
 		panel.add(separator);
 		
-		lblDate = new JLabel("DATE");
+		lblDate = new JLabel("DATE :");
 		lblDate.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDate.setForeground(Color.BLACK);
 		lblDate.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		lblDate.setBackground(Color.BLACK);
-		lblDate.setBounds(15, 99, 59, 14);
+		lblDate.setBounds(29, 97, 45, 14);
 		panel.add(lblDate);
 		
 		separator_1 = new JSeparator();
 		separator_1.setForeground(Color.BLACK);
-		separator_1.setBounds(34, 160, 262, 2);
+		separator_1.setBounds(34, 160, 253, 2);
 		panel.add(separator_1);
+		
+		JButton btnIngresar = new JButton("");
+		btnIngresar.setContentAreaFilled(false);
+		btnIngresar.setBorderPainted(false);
+		btnIngresar.setRolloverIcon(new ImageIcon(DlgControlDePagos.class.getResource("/image/enter2.png")));
+		btnIngresar.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/image/enter.png")));
+		btnIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnIngresar.setBorder(new LineBorder(new Color(0, 0, 0), 0, true));
+		btnIngresar.setBackground(Color.WHITE);
+		btnIngresar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DlgInternamiento hos = new DlgInternamiento();
+				hos.setTitle("PACIENTES HOSPITALIZADOS");
+				hos.btnBuscarPaciente.setEnabled(false);
+				hos.rdbtnEconomico.setEnabled(false);
+				hos.rdbtnEjecutivo.setEnabled(false);
+				hos.cboNroCamas.setEnabled(false);
+				hos.btnAceptar.setEnabled(false);
+				hos.btnCancelar.setEnabled(false);
+				hos.btnGrabarHospitalizacion.setEnabled(false);
+				hos.rdbtnFiltrarPagado.setEnabled(false);
+				hos.rdbtnFiltrarTodo.setEnabled(false);
+				hos.setVisible(true);
+
+				if (hos.codigoPaciente.equals("")) {
+					txtS.setText("");
+					txtCodigoPaciente.setText("");
+				}
+				else {
+					txtCodigoPaciente.setText(hos.codigoPaciente);
+					txtS.setText("");
+				}
+
+			}
+		});
+		btnIngresar.setBounds(214, 42, 24, 23);
+		panel.add(btnIngresar);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -291,33 +324,6 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnBuscarPaciente) {
-			actionPerformedBtnBuscarPaciente(arg0);
-		}
-	}
-
-	protected void actionPerformedBtnBuscarPaciente(ActionEvent arg0) {
-		DlgInternamiento hos = new DlgInternamiento();
-		hos.setTitle("PACIENTES HOSPITALIZADOS");
-		hos.btnBuscarPaciente.setEnabled(false);
-		hos.rdbtnEconomico.setEnabled(false);
-		hos.rdbtnEjecutivo.setEnabled(false);
-		hos.cboNroCamas.setEnabled(false);
-		hos.btnAceptar.setEnabled(false);
-		hos.btnCancelar.setEnabled(false);
-		hos.btnGrabarHospitalizacion.setEnabled(false);
-		hos.rdbtnFiltrarPagado.setEnabled(false);
-		hos.rdbtnFiltrarTodo.setEnabled(false);
-		hos.setVisible(true);
-
-		if (hos.codigoPaciente.equals("")) {
-			txtS.setText("");
-			txtCodigoPaciente.setText("");
-		}
-		else {
-			txtCodigoPaciente.setText(hos.codigoPaciente);
-			txtS.setText("");
-		}
 	}
 
 	void guardarFactura() {
@@ -631,7 +637,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	//*** mouse entered *** /// 
 	public void mouseEnteredLblVerFactura(MouseEvent arg0) {
 		lblVerFactura.setOpaque(true);
-		lblVerFactura.setBackground(new Color(243, 124, 47));
+		lblVerFactura.setBackground(new Color(0, 139, 173));
 		lblVerFactura.setForeground(new Color(255, 255, 255));
 		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/bill_color.png")));
 		
@@ -639,7 +645,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	
 	public void mouseEnteredLblRegistrar(MouseEvent arg0) {
 		lblRegistrar.setOpaque(true);
-		lblRegistrar.setBackground(new Color(243, 124, 47));
+		lblRegistrar.setBackground(new Color(0, 139, 173));
 		lblRegistrar.setForeground(new Color(255, 255, 255));
 		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_color.png")));
 		
@@ -651,16 +657,16 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	
 	public void mouseExitedLblVerFactura(MouseEvent arg0) {
 		lblVerFactura.setOpaque(false);
-		lblVerFactura.setForeground(new Color(243, 124, 47));
+		lblVerFactura.setForeground(new Color(0, 0, 1));
 		lblVerFactura.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/bill_blanco.png")));
-		lblVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblVerFactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 		//
 	public void mouseExitedLblRegistrar(MouseEvent arg0) {
 		lblRegistrar.setOpaque(false);
-		lblRegistrar.setForeground(new Color(243, 124, 47));
+		lblRegistrar.setForeground(new Color(0, 0, 1));
 		lblRegistrar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_blanco.png")));
-		lblRegistrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblRegistrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 	
 	public void mousePressed(MouseEvent arg0) {
