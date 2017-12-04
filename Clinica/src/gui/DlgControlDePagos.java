@@ -116,7 +116,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		setModal(true);
 		setResizable(false);
 		setTitle("CONTROL DE PAGOS");
-		setBounds(100, 100, 608, 756);
+		setBounds(100, 100, 601, 756);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
