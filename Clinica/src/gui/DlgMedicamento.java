@@ -289,6 +289,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(lineCodigo);
 																														
 																														txtCodigo = new JTextField();
+																														txtCodigo.addKeyListener(this);
 																														txtCodigo.setOpaque(false);
 																														txtCodigo.setHorizontalAlignment(SwingConstants.LEFT);
 																														txtCodigo.setForeground(Color.BLACK);
@@ -339,6 +340,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(iconLaboratorio);
 																														
 																														txtLaboratorio = new JTextField();
+																														txtLaboratorio.addKeyListener(this);
 																														txtLaboratorio.setOpaque(false);
 																														txtLaboratorio.setHorizontalAlignment(SwingConstants.LEFT);
 																														txtLaboratorio.setForeground(Color.BLACK);
@@ -361,6 +363,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(iconPrecio);
 																														
 																														txtPrecio = new JTextField();
+																														txtPrecio.addKeyListener(this);
 																														txtPrecio.setOpaque(false);
 																														txtPrecio.setHorizontalAlignment(SwingConstants.LEFT);
 																														txtPrecio.setForeground(Color.BLACK);
@@ -383,6 +386,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(iconStock);
 																														
 																														txtStock = new JTextField();
+																														txtStock.addKeyListener(this);
 																														txtStock.setOpaque(false);
 																														txtStock.setHorizontalAlignment(SwingConstants.LEFT);
 																														txtStock.setForeground(Color.BLACK);
@@ -429,7 +433,48 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	}
 
 	public void keyTyped(KeyEvent arg0) {
+		if (arg0.getSource() == txtStock) {
+			keyTypedTxtStock(arg0);
+		}
+		if (arg0.getSource() == txtPrecio) {
+			keyTypedTxtPrecio(arg0);
+		}
+		if (arg0.getSource() == txtLaboratorio) {
+			keyTypedTxtLaboratorio(arg0);
+		}
+		if (arg0.getSource() == txtNombre) {
+			keyTypedTxtNombre(arg0);
+		}
+		if (arg0.getSource() == txtCodigo) {
+			keyTypedTxtCodigo(arg0);
+		}
 	}
+	
+	protected void keyTypedTxtCodigo(KeyEvent e) {
+		Validaciones.soloNumero(e, txtCodigo, 6);
+
+		char t = e.getKeyChar();
+		if (t == KeyEvent.VK_ENTER) {
+			consultarMedicamento();
+		}
+	}
+
+	protected void keyTypedTxtNombre(KeyEvent e) {
+		Validaciones.soloLetras(e, txtNombre, 20);
+	}
+
+	protected void keyTypedTxtLaboratorio(KeyEvent e) {
+		Validaciones.soloLetras(e, txtLaboratorio, 20);
+	}
+
+	protected void keyTypedTxtPrecio(KeyEvent e) {
+		Validaciones.soloNumero(e, txtPrecio, 9);
+	}
+
+	protected void keyTypedTxtStock(KeyEvent e) {
+		Validaciones.soloNumero(e, txtStock, 8);
+	}
+
 
 	public void mouseClicked(MouseEvent arg0) {
 		if (arg0.getSource() == lblBuscar) {
@@ -720,8 +765,8 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 					leerStock());
 			am.adicionar(nuevo);
 			listado();
-			habilitarEntradas(false);
-			habilitarOperaciones(true);
+			habilitarEntradas(true);
+			
 		}
 	}
 
