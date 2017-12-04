@@ -224,6 +224,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(lblRegistrar);
 		
 		separator = new JSeparator();
+		separator.setForeground(Color.BLACK);
 		separator.setBounds(54, 64, 184, 7);
 		panel.add(separator);
 		
@@ -236,6 +237,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(lblDate);
 		
 		separator_1 = new JSeparator();
+		separator_1.setForeground(Color.BLACK);
 		separator_1.setBounds(34, 160, 262, 2);
 		panel.add(separator_1);
 		

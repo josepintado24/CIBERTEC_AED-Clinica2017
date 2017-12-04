@@ -205,6 +205,11 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblEstado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		lblEstado.setBounds(79, 315, 170, 14);
 		getContentPane().add(lblEstado);
+		
+		separator_1 = new JSeparator();
+		separator_1.setForeground(Color.BLACK);
+		separator_1.setBounds(156, 180, 164, 2);
+		getContentPane().add(separator_1);
 
 		txtCodigopac = new JTextField();
 		txtCodigopac.setForeground(Color.BLACK);
@@ -287,6 +292,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		rdbtnEconomico.addActionListener(this);
 		
 		separator_3 = new JSeparator();
+		separator_3.setForeground(Color.BLACK);
 		separator_3.setBounds(154, 364, 216, 2);
 		getContentPane().add(separator_3);
 		rdbtnEconomico.setSelected(true);
@@ -562,30 +568,32 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(label_10);
 		
 		separator = new JSeparator();
+		separator.setForeground(Color.BLACK);
 		separator.setBounds(156, 102, 164, 2);
 		getContentPane().add(separator);
 		
-		separator_1 = new JSeparator();
-		separator_1.setBounds(156, 180, 164, 2);
-		getContentPane().add(separator_1);
-		
 		separator_2 = new JSeparator();
+		separator_2.setForeground(Color.BLACK);
 		separator_2.setBounds(154, 265, 110, 2);
 		getContentPane().add(separator_2);
 		
 		separator_4 = new JSeparator();
+		separator_4.setForeground(Color.BLACK);
 		separator_4.setBounds(447, 104, 164, 2);
 		getContentPane().add(separator_4);
 		
 		separator_5 = new JSeparator();
+		separator_5.setForeground(Color.BLACK);
 		separator_5.setBounds(439, 182, 216, 2);
 		getContentPane().add(separator_5);
 		
 		separator_6 = new JSeparator();
+		separator_6.setForeground(Color.BLACK);
 		separator_6.setBounds(451, 265, 277, 2);
 		getContentPane().add(separator_6);
 		
 		separator_7 = new JSeparator();
+		separator_7.setForeground(Color.BLACK);
 		separator_7.setBounds(25, 459, 875, 7);
 		getContentPane().add(separator_7);
 	}
