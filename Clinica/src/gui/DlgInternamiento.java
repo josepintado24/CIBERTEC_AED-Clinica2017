@@ -134,6 +134,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 	private JSeparator separator_4;
 	private JSeparator separator_5;
 	private JSeparator separator_6;
+	private JSeparator separator_7;
 
 	public static void main(String[] args) {
 		try {
@@ -226,26 +227,6 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		txtCodigoemple.setBorder(null);
 		txtCodigoemple.setOpaque(false);
 
-
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(751, 364, 149, 38);
-		btnAceptar.setBackground(Color.CYAN);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		getContentPane().add(btnAceptar);
-		btnAceptar.setVisible(false);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(751, 413, 149, 38);
-		btnCancelar.setBackground(new Color(124, 252, 0));
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		getContentPane().add(btnCancelar);
-
 		txtCodigohos = new JTextField();
 		txtCodigohos.setForeground(Color.BLACK);
 		txtCodigohos.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -257,7 +238,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		txtCodigohos.setOpaque(false);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 532, 883, 324);
+		scrollPane.setBounds(10, 532, 883, 335);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -382,21 +363,13 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		bp2.add(rdbtnPagado);
 
 		btnBuscarPaciente = new JButton("...");
+		btnBuscarPaciente.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/buscarBlnco.png")));
 		btnBuscarPaciente.addActionListener(this);
 		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnBuscarPaciente.setForeground(Color.BLACK);
-		btnBuscarPaciente.setBackground(new Color(127, 255, 212));
+		btnBuscarPaciente.setBackground(Color.DARK_GRAY);
 		btnBuscarPaciente.setBounds(628, 75, 62, 29);
 		getContentPane().add(btnBuscarPaciente);
-
-		btnGrabarHospitalizacion = new JButton("GRABAR HOSPITALIZACI\u00D3N");
-		btnGrabarHospitalizacion.addActionListener(this);
-		btnGrabarHospitalizacion.setForeground(Color.BLACK);
-		btnGrabarHospitalizacion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnGrabarHospitalizacion.setBounds(602, 483, 277, 38);
-		btnGrabarHospitalizacion.setBackground(new Color(0, 250, 154));
-		ds.setCurvasButton(btnGrabarHospitalizacion, "imagenes/grabar.png");
-		getContentPane().add(btnGrabarHospitalizacion);
 
 		pnlFiltrar = new JPanel();
 		pnlFiltrar.setBorder(null);
@@ -494,7 +467,39 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		panel.add(lblHospitalizacin);
 		
 		lblAgregar = new JLabel("Agregar");
+		lblAgregar.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/Agregar.png")));
 		lblAgregar.addMouseListener(this);
+		
+		
+				btnAceptar = new JButton("ACEPTAR");
+				btnAceptar.setForeground(Color.BLACK);
+				btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				btnAceptar.addActionListener(this);
+				btnAceptar.setBounds(586, 699, 149, 38);
+				btnAceptar.setBackground(Color.CYAN);
+				ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
+				getContentPane().add(btnAceptar);
+				btnAceptar.setVisible(false);
+		
+				btnCancelar = new JButton("CANCELAR");
+				btnCancelar.setForeground(Color.BLACK);
+				btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				btnCancelar.addActionListener(this);
+				btnCancelar.setBounds(586, 748, 149, 38);
+				btnCancelar.setBackground(new Color(124, 252, 0));
+				ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
+				getContentPane().add(btnCancelar);
+				btnCancelar.setVisible(false);
+		
+				btnGrabarHospitalizacion = new JButton("GRABAR HOSPITALIZACI\u00D3N");
+				btnGrabarHospitalizacion.setVisible(false);
+				btnGrabarHospitalizacion.addActionListener(this);
+				btnGrabarHospitalizacion.setForeground(Color.BLACK);
+				btnGrabarHospitalizacion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				btnGrabarHospitalizacion.setBounds(437, 818, 277, 38);
+				btnGrabarHospitalizacion.setBackground(new Color(0, 250, 154));
+				ds.setCurvasButton(btnGrabarHospitalizacion, "imagenes/grabar.png");
+				getContentPane().add(btnGrabarHospitalizacion);
 		lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAgregar.setForeground(Color.BLACK);
 		lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -503,6 +508,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(lblAgregar);
 		
 		lblCancelar = new JLabel("Cancelar");
+		lblCancelar.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/regreso.png")));
 		lblCancelar.addMouseListener(this);
 		lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCancelar.setForeground(Color.BLACK);
@@ -578,6 +584,10 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		separator_6 = new JSeparator();
 		separator_6.setBounds(451, 265, 277, 2);
 		getContentPane().add(separator_6);
+		
+		separator_7 = new JSeparator();
+		separator_7.setBounds(25, 459, 875, 7);
+		getContentPane().add(separator_7);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
@@ -903,8 +913,48 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		}
 	}
 	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == lblGrabar) {
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseEnteredCancelar(e);
+		}
+		if (e.getSource() == lblAgregar) {
+			mouseEnteredlblAgregar(e);
+		}
+	}
+	protected void mouseEnteredlblAgregar(MouseEvent e) {
+		lblAgregar.setOpaque(true);
+		lblAgregar.setBackground(new Color(30, 60, 79));
+		lblAgregar.setForeground(new Color(255, 255, 255));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
+	}
+	protected void mouseEnteredCancelar(MouseEvent e) {
+		lblCancelar.setOpaque(true);
+		lblCancelar.setBackground(new Color(30, 60, 79));
+		lblCancelar.setForeground(new Color(255, 255, 255));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
 	}
 	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
+	}
+	protected void mouseExitedLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(false);
+		lblCancelar.setForeground(new Color(10, 20, 26));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
+	protected void mouseExitedLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(false);
+		lblAgregar.setForeground(new Color(10, 20, 26));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
+		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
 	}
 	public void mousePressed(MouseEvent e) {
 	}
