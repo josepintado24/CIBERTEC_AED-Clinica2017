@@ -46,8 +46,10 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.JSeparator;
+import java.awt.event.MouseListener;
 
-public class DlgInternamiento extends JDialog implements ActionListener, KeyListener, ItemListener {
+public class DlgInternamiento extends JDialog implements ActionListener, KeyListener, ItemListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigoDeHospitalizacion;
@@ -73,8 +75,6 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 	public JRadioButton rdbtnPagado;
 	public JTable jtblHospitalizacion;
 	public JButton btnBuscarPaciente;
-	private JLabel lblBordeCategoria;
-	private JLabel lblBordeEstado;
 	public JButton btnGrabarHospitalizacion;
 	private JPanel pnlFiltrar;
 	public JRadioButton rdbtnFiltrarAlojado;
@@ -117,6 +117,23 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 	private JPanel panel;
 	private JLabel label;
 	private JLabel lblHospitalizacin;
+	private JLabel lblAgregar;
+	private JLabel lblCancelar;
+	private JLabel lblGrabar;
+	private JLabel label_4;
+	private JLabel label_5;
+	private JLabel label_6;
+	private JLabel label_7;
+	private JLabel label_8;
+	private JLabel label_9;
+	private JLabel label_10;
+	private JSeparator separator;
+	private JSeparator separator_1;
+	private JSeparator separator_2;
+	private JSeparator separator_3;
+	private JSeparator separator_4;
+	private JSeparator separator_5;
+	private JSeparator separator_6;
 
 	public static void main(String[] args) {
 		try {
@@ -141,7 +158,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		setResizable(false);
 		setModal(true);
 		setTitle("HOSPITALIZACIÓN DE PACIENTES");
-		setBounds(100, 100, 1343, 476);
+		setBounds(100, 100, 910, 878);
 		getContentPane().setLayout(null);
 		
 		
@@ -150,75 +167,81 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblCodigoDeHospitalizacion.setForeground(Color.BLACK);
 		lblCodigoDeHospitalizacion.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCodigoDeHospitalizacion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigoDeHospitalizacion.setBounds(10, 101, 170, 14);
+		lblCodigoDeHospitalizacion.setBounds(79, 50, 170, 14);
 		getContentPane().add(lblCodigoDeHospitalizacion);
 
 		lblCodigoDePaciente = new JLabel("C\u00D3DIGO PACIENTE");
 		lblCodigoDePaciente.setForeground(Color.BLACK);
 		lblCodigoDePaciente.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCodigoDePaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigoDePaciente.setBounds(10, 141, 170, 14);
+		lblCodigoDePaciente.setBounds(406, 50, 170, 14);
 		getContentPane().add(lblCodigoDePaciente);
 
 		lblCodigoDeEmpleado = new JLabel("C\u00D3DIGO EMPLEADO");
 		lblCodigoDeEmpleado.setForeground(Color.BLACK);
 		lblCodigoDeEmpleado.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCodigoDeEmpleado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigoDeEmpleado.setBounds(10, 177, 170, 14);
+		lblCodigoDeEmpleado.setBounds(79, 130, 170, 14);
 		getContentPane().add(lblCodigoDeEmpleado);
 
 		lblNumeroDeCama = new JLabel("NRO CAMA");
 		lblNumeroDeCama.setForeground(Color.BLACK);
 		lblNumeroDeCama.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNumeroDeCama.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblNumeroDeCama.setBounds(10, 259, 170, 14);
+		lblNumeroDeCama.setBounds(79, 214, 170, 14);
 		getContentPane().add(lblNumeroDeCama);
 
 		lblFechaDeLlegada = new JLabel("FECHA LLEGADA");
 		lblFechaDeLlegada.setForeground(Color.BLACK);
 		lblFechaDeLlegada.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFechaDeLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblFechaDeLlegada.setBounds(10, 299, 170, 14);
+		lblFechaDeLlegada.setBounds(406, 214, 170, 14);
 		getContentPane().add(lblFechaDeLlegada);
 
 		lblEstado = new JLabel("ESTADO");
 		lblEstado.setForeground(Color.BLACK);
 		lblEstado.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEstado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblEstado.setBounds(10, 339, 170, 14);
+		lblEstado.setBounds(79, 315, 170, 14);
 		getContentPane().add(lblEstado);
 
 		txtCodigopac = new JTextField();
 		txtCodigopac.setForeground(Color.BLACK);
 		txtCodigopac.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		txtCodigopac.setEditable(false);
-		txtCodigopac.setBounds(190, 134, 119, 29);
+		txtCodigopac.setBounds(473, 75, 119, 29);
 		getContentPane().add(txtCodigopac);
 		txtCodigopac.setColumns(10);
+		txtCodigopac.setBorder(null);
+		txtCodigopac.setOpaque(false);
 
 		txtCodigoemple = new JTextField();
 		txtCodigoemple.setForeground(Color.BLACK);
 		txtCodigoemple.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		txtCodigoemple.setEditable(false);
-		txtCodigoemple.setBounds(190, 170, 119, 29);
+		txtCodigoemple.setBounds(190, 155, 119, 29);
 		getContentPane().add(txtCodigoemple);
 		txtCodigoemple.setColumns(10);
 		txtCodigoemple.setText(""+DlgLogin.codigoEmpleado);
+		txtCodigoemple.setBorder(null);
+		txtCodigoemple.setOpaque(false);
+
 
 		btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.setForeground(Color.BLACK);
 		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(58, 378, 149, 38);
+		btnAceptar.setBounds(751, 364, 149, 38);
 		btnAceptar.setBackground(Color.CYAN);
 		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
 		getContentPane().add(btnAceptar);
+		btnAceptar.setVisible(false);
 
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setForeground(Color.BLACK);
 		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(217, 378, 149, 38);
+		btnCancelar.setBounds(751, 413, 149, 38);
 		btnCancelar.setBackground(new Color(124, 252, 0));
 		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
 		getContentPane().add(btnCancelar);
@@ -227,12 +250,14 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		txtCodigohos.setForeground(Color.BLACK);
 		txtCodigohos.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		txtCodigohos.setEditable(false);
-		txtCodigohos.setBounds(190, 94, 119, 29);
+		txtCodigohos.setBounds(190, 75, 119, 29);
 		getContentPane().add(txtCodigohos);
 		txtCodigohos.setColumns(10);
+		txtCodigohos.setBorder(null);
+		txtCodigohos.setOpaque(false);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(449, 141, 883, 324);
+		scrollPane.setBounds(10, 532, 883, 324);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -270,16 +295,23 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		cboNroCamas = new JComboBox<Integer>();
 		cboNroCamas.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboNroCamas.setForeground(Color.BLACK);
-		cboNroCamas.setBounds(190, 252, 59, 29);
+		cboNroCamas.setBounds(190, 236, 59, 29);
 		getContentPane().add(cboNroCamas);
+		cboNroCamas.setBorder(null);
+		cboNroCamas.setOpaque(false);
+		
 
 		rdbtnEconomico = new JRadioButton("Econ\u00F3mico");
 		rdbtnEconomico.setBackground(Color.WHITE);
 		rdbtnEconomico.addActionListener(this);
+		
+		separator_3 = new JSeparator();
+		separator_3.setBounds(154, 364, 216, 2);
+		getContentPane().add(separator_3);
 		rdbtnEconomico.setSelected(true);
 		rdbtnEconomico.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		rdbtnEconomico.setForeground(Color.BLACK);
-		rdbtnEconomico.setBounds(195, 213, 98, 23);
+		rdbtnEconomico.setBounds(478, 158, 98, 23);
 		getContentPane().add(rdbtnEconomico);
 
 		rdbtnEjecutivo = new JRadioButton("Ejecutivo");
@@ -287,13 +319,8 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		rdbtnEjecutivo.addActionListener(this);
 		rdbtnEjecutivo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		rdbtnEjecutivo.setForeground(Color.BLACK);
-		rdbtnEjecutivo.setBounds(295, 213, 89, 23);
+		rdbtnEjecutivo.setBounds(578, 158, 89, 23);
 		getContentPane().add(rdbtnEjecutivo);
-
-		lblBordeCategoria = new JLabel("");
-		lblBordeCategoria.setBounds(190, 210, 206, 29);
-		lblBordeCategoria.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
-		getContentPane().add(lblBordeCategoria);
 
 		bp = new ButtonGroup();
 		bp.add(rdbtnEconomico);
@@ -303,14 +330,14 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblCategoraCama.setForeground(Color.BLACK);
 		lblCategoraCama.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCategoraCama.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCategoraCama.setBounds(10, 217, 170, 14);
+		lblCategoraCama.setBounds(406, 130, 170, 14);
 		getContentPane().add(lblCategoraCama);
 
 		cboDiaLlegada = new JComboBox<String>();
 		cboDiaLlegada.setEnabled(false);
 		cboDiaLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboDiaLlegada.setForeground(Color.BLACK);
-		cboDiaLlegada.setBounds(190, 292, 59, 29);
+		cboDiaLlegada.setBounds(479, 236, 59, 29);
 		Fecha.colocarItems(cboDiaLlegada, 1, 31);
 		Fecha.colocarDiaActual(cboDiaLlegada);
 		getContentPane().add(cboDiaLlegada);
@@ -319,7 +346,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		cboMesLlegada.setEnabled(false);
 		cboMesLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboMesLlegada.setForeground(Color.BLACK);
-		cboMesLlegada.setBounds(250, 292, 116, 29);
+		cboMesLlegada.setBounds(539, 236, 116, 29);
 		Fecha.colocarMeses(cboMesLlegada);
 		Fecha.colocarMesActual(cboMesLlegada);
 		getContentPane().add(cboMesLlegada);
@@ -328,7 +355,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		cboAnoLlegada.setEnabled(false);
 		cboAnoLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboAnoLlegada.setForeground(Color.BLACK);
-		cboAnoLlegada.setBounds(367, 292, 72, 29);
+		cboAnoLlegada.setBounds(656, 236, 72, 29);
 		cboAnoLlegada.addItem("" + Fecha.añoActual());
 		getContentPane().add(cboAnoLlegada);
 
@@ -338,7 +365,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		rdbtnAlojado.setForeground(Color.BLACK);
 		rdbtnAlojado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		rdbtnAlojado.setBackground(Color.WHITE);
-		rdbtnAlojado.setBounds(195, 335, 98, 23);
+		rdbtnAlojado.setBounds(195, 343, 98, 23);
 		getContentPane().add(rdbtnAlojado);
 
 		rdbtnPagado = new JRadioButton("Pagado");
@@ -346,7 +373,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		rdbtnPagado.setForeground(Color.BLACK);
 		rdbtnPagado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		rdbtnPagado.setBackground(Color.WHITE);
-		rdbtnPagado.setBounds(295, 335, 89, 23);
+		rdbtnPagado.setBounds(295, 343, 89, 23);
 		getContentPane().add(rdbtnPagado);
 		this.setLocationRelativeTo(this);
 
@@ -354,24 +381,19 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		bp2.add(rdbtnAlojado);
 		bp2.add(rdbtnPagado);
 
-		lblBordeEstado = new JLabel("");
-		lblBordeEstado.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
-		lblBordeEstado.setBounds(190, 332, 206, 29);
-		getContentPane().add(lblBordeEstado);
-
 		btnBuscarPaciente = new JButton("...");
 		btnBuscarPaciente.addActionListener(this);
 		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnBuscarPaciente.setForeground(Color.BLACK);
 		btnBuscarPaciente.setBackground(new Color(127, 255, 212));
-		btnBuscarPaciente.setBounds(313, 134, 62, 29);
+		btnBuscarPaciente.setBounds(628, 75, 62, 29);
 		getContentPane().add(btnBuscarPaciente);
 
 		btnGrabarHospitalizacion = new JButton("GRABAR HOSPITALIZACI\u00D3N");
 		btnGrabarHospitalizacion.addActionListener(this);
 		btnGrabarHospitalizacion.setForeground(Color.BLACK);
 		btnGrabarHospitalizacion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnGrabarHospitalizacion.setBounds(58, 427, 308, 38);
+		btnGrabarHospitalizacion.setBounds(602, 483, 277, 38);
 		btnGrabarHospitalizacion.setBackground(new Color(0, 250, 154));
 		ds.setCurvasButton(btnGrabarHospitalizacion, "imagenes/grabar.png");
 		getContentPane().add(btnGrabarHospitalizacion);
@@ -379,7 +401,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		pnlFiltrar = new JPanel();
 		pnlFiltrar.setBorder(null);
 		pnlFiltrar.setBackground(Color.WHITE);
-		pnlFiltrar.setBounds(760, 101, 259, 29);
+		pnlFiltrar.setBounds(322, 490, 259, 29);
 		getContentPane().add(pnlFiltrar);
 		pnlFiltrar.setLayout(null);
 
@@ -414,7 +436,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		bp3.add(rdbtnFiltrarTodo);
 
 		lblBorderFiltro = new JLabel("");
-		lblBorderFiltro.setBounds(756, 94, 274, 38);
+		lblBorderFiltro.setBounds(318, 483, 274, 38);
 		getContentPane().add(lblBorderFiltro);
 		lblBorderFiltro.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
 
@@ -462,7 +484,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		});
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/icons8_Return_32px.png")));
-		label.setBounds(1301, 0, 32, 39);
+		label.setBounds(874, 0, 32, 39);
 		panel.add(label);
 		
 		lblHospitalizacin = new JLabel("Internamiento");
@@ -470,6 +492,92 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblHospitalizacin.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblHospitalizacin.setBounds(34, 0, 122, 39);
 		panel.add(lblHospitalizacin);
+		
+		lblAgregar = new JLabel("Agregar");
+		lblAgregar.addMouseListener(this);
+		lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAgregar.setForeground(Color.BLACK);
+		lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAgregar.setBackground(Color.YELLOW);
+		lblAgregar.setBounds(473, 290, 206, 39);
+		getContentPane().add(lblAgregar);
+		
+		lblCancelar = new JLabel("Cancelar");
+		lblCancelar.addMouseListener(this);
+		lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCancelar.setForeground(Color.BLACK);
+		lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblCancelar.setBounds(478, 353, 206, 39);
+		getContentPane().add(lblCancelar);
+		
+		lblGrabar = new JLabel("Grabar");
+		lblGrabar.addMouseListener(this);
+		lblGrabar.setOpaque(true);
+		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGrabar.setForeground(Color.WHITE);
+		lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
+		lblGrabar.setBackground(new Color(231, 96, 90));
+		lblGrabar.setBounds(478, 404, 206, 41);
+		getContentPane().add(lblGrabar);
+		
+		label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/codigo.png")));
+		label_4.setBounds(154, 68, 26, 36);
+		getContentPane().add(label_4);
+		
+		label_5 = new JLabel("");
+		label_5.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/user30.png")));
+		label_5.setBounds(154, 148, 26, 36);
+		getContentPane().add(label_5);
+		
+		label_6 = new JLabel("");
+		label_6.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/camaNegro.png")));
+		label_6.setBounds(154, 229, 37, 36);
+		getContentPane().add(label_6);
+		
+		label_7 = new JLabel("");
+		label_7.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/estadoOF-ON.png")));
+		label_7.setBounds(154, 330, 35, 36);
+		getContentPane().add(label_7);
+		
+		label_8 = new JLabel("");
+		label_8.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/codigo.png")));
+		label_8.setBounds(437, 68, 26, 36);
+		getContentPane().add(label_8);
+		
+		label_9 = new JLabel("");
+		label_9.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/estadoOF-ON.png")));
+		label_9.setBounds(437, 148, 35, 36);
+		getContentPane().add(label_9);
+		
+		label_10 = new JLabel("");
+		label_10.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/calendario.png")));
+		label_10.setBounds(443, 229, 26, 36);
+		getContentPane().add(label_10);
+		
+		separator = new JSeparator();
+		separator.setBounds(156, 102, 164, 2);
+		getContentPane().add(separator);
+		
+		separator_1 = new JSeparator();
+		separator_1.setBounds(156, 180, 164, 2);
+		getContentPane().add(separator_1);
+		
+		separator_2 = new JSeparator();
+		separator_2.setBounds(154, 265, 110, 2);
+		getContentPane().add(separator_2);
+		
+		separator_4 = new JSeparator();
+		separator_4.setBounds(447, 104, 164, 2);
+		getContentPane().add(separator_4);
+		
+		separator_5 = new JSeparator();
+		separator_5.setBounds(439, 182, 216, 2);
+		getContentPane().add(separator_5);
+		
+		separator_6 = new JSeparator();
+		separator_6.setBounds(451, 265, 277, 2);
+		getContentPane().add(separator_6);
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
@@ -782,5 +890,33 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 	
 	int leerCodigo() {
 		return Libreria.leerEntero(txtCodigopac);
+	}
+	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblGrabar) {
+			mouseClickedLabel_3(arg0);
+		}
+		if (arg0.getSource() == lblCancelar) {
+			mouseClickedLabel_2(arg0);
+		}
+		if (arg0.getSource() == lblAgregar) {
+			mouseClickedLabel_1(arg0);
+		}
+	}
+	public void mouseEntered(MouseEvent e) {
+	}
+	public void mouseExited(MouseEvent e) {
+	}
+	public void mousePressed(MouseEvent e) {
+	}
+	public void mouseReleased(MouseEvent e) {
+	}
+	protected void mouseClickedLabel_1(MouseEvent arg0) {
+		adicionarHospitalizacion();
+	}
+	protected void mouseClickedLabel_2(MouseEvent arg0) {
+		dispose();
+	}
+	protected void mouseClickedLabel_3(MouseEvent arg0) {
+		
 	}
 }
