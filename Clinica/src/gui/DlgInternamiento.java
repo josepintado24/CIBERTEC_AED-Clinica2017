@@ -465,7 +465,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		label.setBounds(1301, 0, 32, 39);
 		panel.add(label);
 		
-		lblHospitalizacin = new JLabel("Hospitalizaci\u00F3n");
+		lblHospitalizacin = new JLabel("Internamiento");
 		lblHospitalizacin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblHospitalizacin.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblHospitalizacin.setBounds(34, 0, 122, 39);
