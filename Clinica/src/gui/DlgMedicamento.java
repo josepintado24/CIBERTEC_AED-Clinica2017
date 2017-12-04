@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -9,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
+
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -165,6 +166,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		contentPane.add(lblMensaje);
 		
 		lblIngresar = new JLabel("INGRESAR");
+		lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
 		lblIngresar.setForeground(new Color(243, 124, 47));
 		lblIngresar.addMouseListener(this);
@@ -178,6 +180,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		contentPane.add(lblIngresar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
+		lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblConsultar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/consultarNaranja.png")));
 		lblConsultar.addMouseListener(this);
 		lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -189,6 +192,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		contentPane.add(lblConsultar);
 		
 		lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblModificar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/modificarNaranja.png")));
 		lblModificar.addMouseListener(this);
 		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -200,6 +204,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		contentPane.add(lblModificar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
+		lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblEliminar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/eliminarNaranja.png")));
 		lblEliminar.addMouseListener(this);
 		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -209,6 +214,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblEliminar.setBackground(Color.RED);
 		lblEliminar.setBounds(589, 80, 183, 36);
 		contentPane.add(lblEliminar);
+		
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
@@ -246,13 +252,14 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																lblNombre.setFont(new Font("Arial", Font.BOLD, 13));
 																				
 																						lblCodigo = new JLabel("CODIGO");
-																						lblCodigo.setBounds(8, 22, 86, 14);
+																						lblCodigo.setBounds(10, 26, 86, 14);
 																						panel.add(lblCodigo);
 																						lblCodigo.setForeground(Color.BLACK);
 																						lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
 																						lblCodigo.setFont(new Font("Arial", Font.BOLD, 13));
 																														
 																														lblBuscar = new JLabel("Buscar");
+																														lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														lblBuscar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/buscar.png")));
 																														lblBuscar.addMouseListener(this);
 																														lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -263,6 +270,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(lblBuscar);
 																														
 																														lblGrabar = new JLabel("Grabar");
+																														lblGrabar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														lblGrabar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/save.png")));
 																														lblGrabar.addMouseListener(this);
 																														lblGrabar.setOpaque(true);
@@ -271,13 +279,13 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														lblGrabar.setForeground(Color.WHITE);
 																														lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 																														
-																														lblGrabar.setBounds(117, 508, 206, 41);
+																														lblGrabar.setBounds(104, 508, 206, 41);
 																														panel.add(lblGrabar);
 																														
 																														lineCodigo = new JSeparator();
 																														lineCodigo.setForeground(Color.BLACK);
 																														lineCodigo.setBackground(Color.BLACK);
-																														lineCodigo.setBounds(71, 65, 186, 4);
+																														lineCodigo.setBounds(57, 76, 186, 4);
 																														panel.add(lineCodigo);
 																														
 																														txtCodigo = new JTextField();
@@ -288,15 +296,16 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														txtCodigo.setEditable(false);
 																														txtCodigo.setColumns(10);
 																														txtCodigo.setBorder(null);
-																														txtCodigo.setBounds(104, 40, 176, 29);
+																														txtCodigo.setBounds(90, 51, 155, 29);
 																														panel.add(txtCodigo);
 																														
 																														iconCodigo = new JLabel("");
 																														iconCodigo.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/codigo.png")));
-																														iconCodigo.setBounds(71, 36, 26, 36);
+																														iconCodigo.setBounds(57, 47, 26, 36);
 																														panel.add(iconCodigo);
 																														
 																														txtNombre = new JTextField();
+																														txtNombre.addKeyListener(this);
 																														txtNombre.setOpaque(false);
 																														txtNombre.setHorizontalAlignment(SwingConstants.LEFT);
 																														txtNombre.setForeground(Color.BLACK);
@@ -304,29 +313,29 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														txtNombre.setEditable(false);
 																														txtNombre.setColumns(10);
 																														txtNombre.setBorder(null);
-																														txtNombre.setBounds(126, 108, 257, 29);
+																														txtNombre.setBounds(91, 120, 238, 29);
 																														panel.add(txtNombre);
 																														
 																														iconNombre = new JLabel("");
 																														iconNombre.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/user30.png")));
-																														iconNombre.setBounds(80, 110, 35, 27);
+																														iconNombre.setBounds(57, 120, 35, 27);
 																														panel.add(iconNombre);
 																														
 																														lineNombre = new JSeparator();
 																														lineNombre.setForeground(Color.BLACK);
 																														lineNombre.setBackground(Color.BLACK);
-																														lineNombre.setBounds(80, 140, 186, 4);
+																														lineNombre.setBounds(57, 150, 272, 4);
 																														panel.add(lineNombre);
 																														
 																														lineLaboratorio = new JSeparator();
 																														lineLaboratorio.setForeground(Color.BLACK);
 																														lineLaboratorio.setBackground(Color.BLACK);
-																														lineLaboratorio.setBounds(67, 228, 206, 2);
+																														lineLaboratorio.setBounds(57, 226, 216, 4);
 																														panel.add(lineLaboratorio);
 																														
 																														iconLaboratorio = new JLabel("");
-																														iconLaboratorio.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/Agregar.png")));
-																														iconLaboratorio.setBounds(66, 196, 35, 29);
+																														iconLaboratorio.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/laboratory.png")));
+																														iconLaboratorio.setBounds(57, 196, 34, 29);
 																														panel.add(iconLaboratorio);
 																														
 																														txtLaboratorio = new JTextField();
@@ -337,7 +346,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														txtLaboratorio.setEditable(false);
 																														txtLaboratorio.setColumns(10);
 																														txtLaboratorio.setBorder(null);
-																														txtLaboratorio.setBounds(103, 196, 198, 29);
+																														txtLaboratorio.setBounds(90, 196, 186, 29);
 																														panel.add(txtLaboratorio);
 																														
 																														linePrecio = new JSeparator();
@@ -347,6 +356,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(linePrecio);
 																														
 																														iconPrecio = new JLabel("");
+																														iconPrecio.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/price-tag.png")));
 																														iconPrecio.setBounds(64, 284, 35, 29);
 																														panel.add(iconPrecio);
 																														
@@ -358,16 +368,17 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														txtPrecio.setEditable(false);
 																														txtPrecio.setColumns(10);
 																														txtPrecio.setBorder(null);
-																														txtPrecio.setBounds(92, 284, 99, 29);
+																														txtPrecio.setBounds(92, 284, 125, 29);
 																														panel.add(txtPrecio);
 																														
 																														lineStock = new JSeparator();
 																														lineStock.setForeground(Color.BLACK);
 																														lineStock.setBackground(Color.BLACK);
-																														lineStock.setBounds(71, 394, 133, 4);
+																														lineStock.setBounds(71, 394, 109, 4);
 																														panel.add(lineStock);
 																														
 																														iconStock = new JLabel("");
+																														iconStock.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/stock.png")));
 																														iconStock.setBounds(71, 365, 35, 29);
 																														panel.add(iconStock);
 																														
@@ -383,6 +394,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(txtStock);
 																														
 																														lblAgregar = new JLabel("Agregar");
+																														lblAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														lblAgregar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/Agregar.png")));
 																														lblAgregar.addMouseListener(this);
 																														lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -393,6 +405,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																														panel.add(lblAgregar);
 																														
 																														lblCancelar = new JLabel("Cancelar");
+																														lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														lblCancelar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/regreso.png")));
 																														lblCancelar.addMouseListener(this);
 																														lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -449,37 +462,164 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	}
 
 	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == getContentPane()) {
+			mouseEnteredThisContentPane(e);
+		}
+		if (e.getSource() == lblGrabar) {
+			mouseEnteredLabel_2(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseEnteredCancelar(e);
+		}
+		if (e.getSource() == lblAgregar) {
+			mouseEnteredlblAgregar(e);
+		}
+		if (e.getSource() == lblBuscar) {
+			mouseEnteredLblBuscar(e);
+		}
+		if (e.getSource() == lblEliminar) {
+			mouseEnteredLblEliminar(e);
+		}
+		if (e.getSource() == lblModificar) {
+			mouseEnteredLblModificar(e);
+		}
+		if (e.getSource() == lblConsultar) {
+			mouseEnteredLblConsultar(e);
+		}
 		if (e.getSource() == lblIngresar) {
 			mouseEnteredLblIngresar(e);
 		}
 	}
-
 	public void mouseExited(MouseEvent e) {
-		if (e.getSource() == lblIngresar) {
-			mousemouseExitedLblIngresar(e);
+		if (e.getSource() == lblModificar) {
+			mouseExitedLblModificar(e);
 		}
+		
+		if (e.getSource() == lblConsultar) {
+			mouseExitedLblConsultar(e);
+		}
+		if (e.getSource() == lblIngresar) {
+			mouseExitedLblIngresar(e);
+		}
+		if (e.getSource() == lblEliminar) {
+			mouseExitedLblEliminar(e);
+		}
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
+		if (e.getSource() == lblBuscar) {
+			mouseExitedLblBuscar(e);
+		}
+		
+		
 	}
-	//SALIDA LBL
-	private void mousemouseExitedLblIngresar(MouseEvent e){
+	///SALIR
+	protected void mouseExitedLblBuscar(MouseEvent arg0) {
+		lblBuscar.setOpaque(false);
+		lblBuscar.setForeground(new Color(10, 20, 26));
+		lblBuscar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/buscar.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
+	protected void mouseExitedLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(false);
+		lblCancelar.setForeground(new Color(10, 20, 26));
+		lblCancelar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/regreso.png")));
+		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
+	protected void mouseExitedLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(false);
+		lblAgregar.setForeground(new Color(10, 20, 26));
+		lblAgregar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/Agregar.png")));
+		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		
+	}
+	protected void mouseExitedLblModificar(MouseEvent arg0) {
+		lblModificar.setOpaque(false);
+		lblModificar.setForeground(new Color(243, 124, 47));
+		lblModificar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		
+	}
+	protected void mouseExitedLblConsultar(MouseEvent arg0) {
+		lblConsultar.setOpaque(false);
+		lblConsultar.setForeground(new Color(243, 124, 47));
+		lblConsultar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
+	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(false);
-		lblIngresar.setBackground(new Color(243, 124, 47));
-		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
 		lblIngresar.setForeground(new Color(243, 124, 47));
+		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
+	protected void mouseExitedLblEliminar(MouseEvent arg0) {
+		lblEliminar.setOpaque(false);
+		lblEliminar.setForeground(new Color(243, 124, 47));
+		lblEliminar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/eliminarNaranja.png")));
+		lblEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+	}
+	
+	
+	
 	public void mousePressed(MouseEvent e) {
 	}
-
 	public void mouseReleased(MouseEvent e) {
 	}
-	//SOBRE EL LABEL
-	private void mouseEnteredLblIngresar(MouseEvent e){
+	
+	protected void mouseEnteredLblIngresar(MouseEvent e) {
 		lblIngresar.setOpaque(true);
 		lblIngresar.setBackground(new Color(243, 124, 47));
-		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarBlnco.png")));
 		lblIngresar.setForeground(new Color(255, 255, 255));
+		lblIngresar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/ingresarBlnco.png")));
 	}
-	
-	
+	protected void mouseEnteredLblConsultar(MouseEvent e) {
+		lblConsultar.setOpaque(true);
+		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setForeground(new Color(255, 255, 255));
+		lblConsultar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/consultarBlnaco.png")));
+	}
+	protected void mouseEnteredLblModificar(MouseEvent e) {
+		
+		lblModificar.setOpaque(true);
+		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setForeground(new Color(255, 255, 255));
+		lblModificar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/modificarBlanco.png")));
+	}
+	protected void mouseEnteredLblEliminar(MouseEvent e) {
+		lblEliminar.setOpaque(true);
+		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(255, 255, 255));
+		lblEliminar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/eliminarBlnco.png")));
+	}
+	protected void mouseEnteredLblBuscar(MouseEvent e) {
+		lblBuscar.setOpaque(true);
+		lblBuscar.setBackground(new Color(30, 60, 79));
+		lblBuscar.setForeground(new Color(255, 255, 255));
+		lblBuscar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/BuscarBlnco.png")));
+	}
+	protected void mouseEnteredlblAgregar(MouseEvent e) {
+		lblAgregar.setOpaque(true);
+		lblAgregar.setBackground(new Color(30, 60, 79));
+		lblAgregar.setForeground(new Color(255, 255, 255));
+		lblAgregar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/AgregarBlanco.png")));
+	}
+	protected void mouseEnteredCancelar(MouseEvent e) {
+		lblCancelar.setOpaque(true);
+		lblCancelar.setBackground(new Color(30, 60, 79));
+		lblCancelar.setForeground(new Color(255, 255, 255));
+		lblCancelar.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/iconBotones/regresoNegro.png")));
+	}
+	protected void mouseEnteredLabel_2(MouseEvent e) {
+	}
+	protected void mouseEnteredThisContentPane(MouseEvent e) {
+	}
+
+
 	protected void mouseClickedJtblMedicamentos(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON1) {
 			if (e.getClickCount() == 2) {
@@ -760,6 +900,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		txtNombre.requestFocus();
 		lblBuscar.setVisible(false);
 		lblGrabar.setVisible(true);
+		lblGrabar.setText("Grabar");
 	}
 private void editableTrue(){
 		
