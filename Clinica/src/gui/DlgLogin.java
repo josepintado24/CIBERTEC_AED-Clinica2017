@@ -79,7 +79,7 @@ public class DlgLogin extends JDialog implements ActionListener {
 		getContentPane().setBackground(Color.WHITE);
 		setModal(true);
 		setResizable(false);
-		setTitle("---=Bienvenido=---");
+		//setTitle("---=Bienvenido=---");
 		setBounds(100, 100, 308, 568);
 		getContentPane().setLayout(null);
 		

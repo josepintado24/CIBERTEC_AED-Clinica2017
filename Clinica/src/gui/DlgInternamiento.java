@@ -47,7 +47,7 @@ import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseMotionAdapter;
 
-public class DlgHospitalizacion extends JDialog implements ActionListener, KeyListener, ItemListener {
+public class DlgInternamiento extends JDialog implements ActionListener, KeyListener, ItemListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigoDeHospitalizacion;
@@ -126,7 +126,7 @@ public class DlgHospitalizacion extends JDialog implements ActionListener, KeyLi
 			e.printStackTrace();
 		}
 		try {
-			DlgHospitalizacion dialog = new DlgHospitalizacion();
+			DlgInternamiento dialog = new DlgInternamiento();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		}
@@ -135,7 +135,7 @@ public class DlgHospitalizacion extends JDialog implements ActionListener, KeyLi
 		}
 	}
 
-	public DlgHospitalizacion() {
+	public DlgInternamiento() {
 		setUndecorated(true);
 		getContentPane().setBackground(Color.WHITE);
 		setResizable(false);
@@ -459,7 +459,7 @@ public class DlgHospitalizacion extends JDialog implements ActionListener, KeyLi
 			}
 		});
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label.setIcon(new ImageIcon(DlgHospitalizacion.class.getResource("/image/icons8_Return_32px.png")));
+		label.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/icons8_Return_32px.png")));
 		label.setBounds(1301, 0, 32, 39);
 		panel.add(label);
 		

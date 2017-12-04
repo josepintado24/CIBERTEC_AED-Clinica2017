@@ -740,7 +740,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 			}
 		
 		if(e.getSource()== label_5){
-			DlgHospitalizacion jFrame= new DlgHospitalizacion();
+			DlgInternamiento jFrame= new DlgInternamiento();
 			this.setVisible(false);
 			jFrame.setVisible(true);
 			jFrame.setLocationRelativeTo(null);

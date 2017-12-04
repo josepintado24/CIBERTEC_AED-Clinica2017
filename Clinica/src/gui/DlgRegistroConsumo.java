@@ -334,7 +334,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 	}
 
 	protected void actionPerformedBtnBuscarPaciente(ActionEvent arg0) {
-		DlgHospitalizacion hos = new DlgHospitalizacion();
+		DlgInternamiento hos = new DlgInternamiento();
 		hos.setTitle("PACIENTES HOSPITALIZADOS");
 		hos.btnBuscarPaciente.setEnabled(false);
 		hos.rdbtnEconomico.setEnabled(false);
