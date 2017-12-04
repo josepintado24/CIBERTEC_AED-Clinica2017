@@ -517,7 +517,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblGrabar.setForeground(Color.WHITE);
 		lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblGrabar.setBackground(new Color(231, 96, 90));
-		lblGrabar.setBounds(478, 404, 206, 41);
+		lblGrabar.setBounds(473, 413, 206, 41);
 		getContentPane().add(lblGrabar);
 		
 		label_4 = new JLabel("");
