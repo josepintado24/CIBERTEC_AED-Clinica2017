@@ -90,6 +90,9 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	private JLabel lbliconPaciente;
 	private JLabel lblVerFactura;
 	private JLabel lblRegistrar;
+	private JSeparator separator;
+	private JLabel lblDate;
+	private JSeparator separator_1;
 
 	public static void main(String[] args) {
 		try {
@@ -118,7 +121,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(15, 191, 576, 456);
+		scrollPane.setBounds(14, 289, 576, 456);
 		getContentPane().add(scrollPane);
 		scrollPane.setBorder(null);
 
@@ -129,21 +132,21 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(15, 75, 575, 105);
+		panel.setBounds(15, 75, 575, 203);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(Color.WHITE, 0, true));
 
 		lblCdigoPaciente = new JLabel("CODIGO");
 		lblCdigoPaciente.setBackground(Color.BLACK);
-		lblCdigoPaciente.setBounds(57, 26, 59, 14);
+		lblCdigoPaciente.setBounds(34, 11, 59, 14);
 		panel.add(lblCdigoPaciente);
 		lblCdigoPaciente.setForeground(Color.BLACK);
 		lblCdigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		lblCdigoPaciente.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		txtCodigoPaciente = new JTextField();
-		txtCodigoPaciente.setBounds(126, 19, 105, 21);
+		txtCodigoPaciente.setBounds(84, 44, 105, 21);
 		panel.add(txtCodigoPaciente);
 		txtCodigoPaciente.setBackground(Color.WHITE);
 		txtCodigoPaciente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -154,17 +157,17 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		txtCodigoPaciente.setBorder(null);
 		txtCodigoPaciente.setOpaque(false);
 
-		btnBuscarPaciente = new JButton("");
-		btnBuscarPaciente.setBounds(245, 11, 38, 29);
+		btnBuscarPaciente = new JButton("...");
+		btnBuscarPaciente.setBounds(199, 36, 51, 29);
 		panel.add(btnBuscarPaciente);
-		btnBuscarPaciente.setBackground(new Color(102, 205, 170));
+		btnBuscarPaciente.setBackground(Color.BLACK);
 		btnBuscarPaciente.addActionListener(this);
-		btnBuscarPaciente.setForeground(Color.BLACK);
+		btnBuscarPaciente.setForeground(Color.WHITE);
 		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		ds.setCurvasButton(btnBuscarPaciente, "imagenes/buscar.png");
 
 		cboDia = new JComboBox<String>();
-		cboDia.setBounds(309, 11, 59, 29);
+		cboDia.setBounds(34, 133, 59, 29);
 		panel.add(cboDia);
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -173,7 +176,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		Fecha.colocarDiaActual(cboDia);
 
 		cboMes = new JComboBox<String>();
-		cboMes.setBounds(369, 11, 116, 29);
+		cboMes.setBounds(94, 133, 116, 29);
 		panel.add(cboMes);
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -182,7 +185,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		Fecha.colocarMesActual(cboMes);
 
 		cboAno = new JComboBox<String>();
-		cboAno.setBounds(486, 11, 79, 29);
+		cboAno.setBounds(211, 133, 79, 29);
 		panel.add(cboAno);
 		cboAno.setForeground(Color.BLACK);
 		cboAno.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -192,8 +195,8 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		fecha = Fecha.getFecha(cboDia, cboMes, cboAno);
 		
 		lbliconPaciente = new JLabel("");
-		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/patient.png")));
-		lbliconPaciente.setBounds(34, 19, 21, 21);
+		lbliconPaciente.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/iconBotones/user30.png")));
+		lbliconPaciente.setBounds(44, 36, 30, 29);
 		panel.add(lbliconPaciente);
 		
 		lblVerFactura = new JLabel("LISTAR FACTURA");
@@ -205,7 +208,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblVerFactura.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblVerFactura.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 		lblVerFactura.setBackground(new Color(1, 168, 25));
-		lblVerFactura.setBounds(74, 64, 193, 37);
+		lblVerFactura.setBounds(338, 112, 193, 37);
 		panel.add(lblVerFactura);
 		
 		lblRegistrar = new JLabel("REGISTRAR PAGO");
@@ -217,8 +220,24 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		lblRegistrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblRegistrar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
 		lblRegistrar.setBackground(new Color(1, 168, 25));
-		lblRegistrar.setBounds(309, 64, 193, 37);
+		lblRegistrar.setBounds(338, 45, 193, 37);
 		panel.add(lblRegistrar);
+		
+		separator = new JSeparator();
+		separator.setBounds(54, 64, 184, 7);
+		panel.add(separator);
+		
+		lblDate = new JLabel("DATE");
+		lblDate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDate.setForeground(Color.BLACK);
+		lblDate.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+		lblDate.setBackground(Color.BLACK);
+		lblDate.setBounds(15, 99, 59, 14);
+		panel.add(lblDate);
+		
+		separator_1 = new JSeparator();
+		separator_1.setBounds(34, 160, 262, 2);
+		panel.add(separator_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -237,7 +256,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 			    y = arg0.getY();
 			}
 		});
-		panel_1.setBounds(0, 0, 601, 39);
+		panel_1.setBounds(0, 0, 608, 39);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -353,10 +372,10 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 
 	void verFactura() {
 		txtS.setText("");
-		imprimir(String.format("%85s", "HOSPITAL DE LA SOLIDARIDAD"));
-		imprimir(String.format("%85s", "RUC" + String.format("%11d", 1040501050)));
-		imprimir(String.format("%90s", "Av. Angamos Este 734 · (01) 2431120"));
-		imprimir(String.format("%85s", "BOLETA ELECTRÓNICA"));
+		imprimir(String.format("%85s", "\tHOSPITAL"));
+		imprimir(String.format("%85s", "\tRUC" + String.format("%11d", 1040501050)));
+		imprimir(String.format("%90s", "\tAv. Los MAngos · (01) 05050500"));
+		imprimir(String.format("%85s", "\tBOLETA DIGITAL"));
 		imprimir("\t                 ----------------------------------------------------------------");
 		imprimir("\t                 ----------------------------------------------------------------");
 		imprimir(String.format("%65s", "FECHA EMISIÓN\t:\t" + Fecha.dd_mm_aaaa(fecha)));

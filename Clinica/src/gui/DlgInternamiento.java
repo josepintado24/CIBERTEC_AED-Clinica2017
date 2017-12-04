@@ -967,6 +967,20 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		dispose();
 	}
 	protected void mouseClickedLabel_3(MouseEvent arg0) {
-		
+		if (ah.existeArchivo()) {
+			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + ah.getArchivo() + "\" ?");
+			if (ok == 0) {
+				ah.grabarHospitalizacion();
+				ac.grabarCamas();
+				Libreria.mensajeInformacion(this, "\"" + ah.getArchivo() + "\" ha sido actualizado");
+			}
+			else
+				Libreria.mensajeInformacion(this, "No se actualizó  \"" + ah.getArchivo() + "\"");
+		}
+		else {
+			ah.grabarHospitalizacion();
+			ac.grabarCamas();
+			Libreria.mensajeInformacion(this, "\"" + ah.getArchivo() + "\" ha sido creado");
+		}
 	}
 }
