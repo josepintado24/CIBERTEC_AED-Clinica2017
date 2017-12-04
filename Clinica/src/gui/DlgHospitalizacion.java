@@ -201,6 +201,7 @@ public class DlgHospitalizacion extends JDialog implements ActionListener, KeyLi
 		txtCodigoemple.setBounds(190, 170, 119, 29);
 		getContentPane().add(txtCodigoemple);
 		txtCodigoemple.setColumns(10);
+		txtCodigoemple.setText(""+DlgLogin.codigoEmpleado);
 
 		btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.setForeground(Color.BLACK);

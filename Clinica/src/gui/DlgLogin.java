@@ -48,7 +48,7 @@ public class DlgLogin extends JDialog implements ActionListener {
 	// Declaración global libreria ArregloEmpleado
 	ArregloEmpleado ae = new ArregloEmpleado("empleados.txt");
 	// Variable global de empleado que inicio sesión
-	public int codigoEmpleado = -1;
+	public static int codigoEmpleado = -1;
 	public int tipoEmpleado;
 
 	public static void main(String[] args) {
