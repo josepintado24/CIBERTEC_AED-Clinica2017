@@ -58,9 +58,6 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	private JTextField txtCodigoPaciente;
 	private JLabel lblCodigoPaciente;
 	private JTable jtblConsumo;
-	private JButton btnBuscarPaciente;
-	private JButton btnSeleccionarMedicamento;
-	private JButton btnSeleccionarServicio;
 	private JButton btnEliminar;
 	private JButton btnRegistrar;
 	private JPanel panel;
@@ -113,12 +110,12 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		setResizable(false);
 		setTitle("Registro de Consumo");
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 1046, 728);
+		setBounds(100, 100, 755, 728);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		scrollPane.setBounds(10, 508, 728, 28);
+		scrollPane.setBounds(10, 312, 728, 224);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -175,26 +172,26 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		panel = new JPanel();
 		panel.setBorder(null);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 50, 981, 438);
+		panel.setBounds(10, 50, 728, 251);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
 		lblCodigoConsumo = new JLabel("CODIGO CONSUMO :");
-		lblCodigoConsumo.setBounds(10, 18, 124, 14);
+		lblCodigoConsumo.setBounds(10, 11, 153, 21);
 		panel.add(lblCodigoConsumo);
 		lblCodigoConsumo.setForeground(Color.BLACK);
 		lblCodigoConsumo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigoConsumo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 
 		lblCodigoPaciente = new JLabel("CODIGO PACIENTE :");
-		lblCodigoPaciente.setBounds(10, 58, 124, 14);
+		lblCodigoPaciente.setBounds(10, 87, 153, 19);
 		panel.add(lblCodigoPaciente);
 		lblCodigoPaciente.setForeground(Color.BLACK);
 		lblCodigoPaciente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCodigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 
 		txtCodigoConsumo = new JTextField();
-		txtCodigoConsumo.setBounds(144, 11, 119, 29);
+		txtCodigoConsumo.setBounds(99, 43, 119, 29);
 		panel.add(txtCodigoConsumo);
 		txtCodigoConsumo.setBackground(Color.WHITE);
 		txtCodigoConsumo.setForeground(Color.BLACK);
@@ -203,7 +200,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		txtCodigoConsumo.setColumns(10);
 
 		txtCodigoPaciente = new JTextField();
-		txtCodigoPaciente.setBounds(144, 51, 119, 29);
+		txtCodigoPaciente.setBounds(99, 127, 119, 29);
 		panel.add(txtCodigoPaciente);
 		txtCodigoPaciente.setBackground(Color.WHITE);
 		txtCodigoPaciente.setForeground(Color.BLACK);
@@ -211,35 +208,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		txtCodigoPaciente.setEditable(false);
 		txtCodigoPaciente.setColumns(10);
 
-		btnBuscarPaciente = new JButton("");
-		btnBuscarPaciente.setBounds(273, 51, 47, 29);
-		panel.add(btnBuscarPaciente);
-		btnBuscarPaciente.addActionListener(this);
-		btnBuscarPaciente.setForeground(Color.BLACK);
-		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		ds.setCurvasButton(btnBuscarPaciente, "imagenes/buscar.png");
-		btnBuscarPaciente.setBackground(new Color(144, 238, 144));
-
-		btnSeleccionarServicio = new JButton("Seleccionar Servicio");
-		btnSeleccionarServicio.addActionListener(this);
-		btnSeleccionarServicio.setBounds(364, 260, 195, 29);
-		panel.add(btnSeleccionarServicio);
-		btnSeleccionarServicio.setForeground(Color.BLACK);
-		btnSeleccionarServicio.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnSeleccionarServicio.setBackground(new Color(0, 128, 0));
-		ds.setCurvasButton(btnSeleccionarServicio, "imagenes/servicios.png");
-
-		btnSeleccionarMedicamento = new JButton("Seleccionar Medicamento");
-		btnSeleccionarMedicamento.setBounds(35, 260, 231, 29);
-		panel.add(btnSeleccionarMedicamento);
-		btnSeleccionarMedicamento.addActionListener(this);
-		btnSeleccionarMedicamento.setForeground(Color.BLACK);
-		btnSeleccionarMedicamento.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnSeleccionarMedicamento.setBackground(new Color(0, 255, 255));
-		ds.setCurvasButton(btnSeleccionarMedicamento, "imagenes/medicamentos.png");
-
 		cboAno = new JComboBox<String>();
-		cboAno.setBounds(633, 11, 85, 29);
+		cboAno.setBounds(591, 30, 85, 29);
 		panel.add(cboAno);
 		cboAno.setForeground(Color.BLACK);
 		cboAno.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -247,7 +217,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		Fecha.colocarItems(cboAno, Fecha.añoActual(), 2000);
 
 		cboMes = new JComboBox<String>();
-		cboMes.setBounds(516, 11, 107, 29);
+		cboMes.setBounds(474, 30, 107, 29);
 		panel.add(cboMes);
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -256,7 +226,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		Fecha.colocarMesActual(cboMes);
 
 		cboDia = new JComboBox<String>();
-		cboDia.setBounds(456, 11, 50, 29);
+		cboDia.setBounds(414, 30, 50, 29);
 		panel.add(cboDia);
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -265,7 +235,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		Fecha.colocarDiaActual(cboDia);
 
 		lblFecha = new JLabel("FECHA :");
-		lblFecha.setBounds(362, 18, 84, 14);
+		lblFecha.setBounds(342, 11, 84, 14);
 		panel.add(lblFecha);
 		lblFecha.setForeground(Color.BLACK);
 		lblFecha.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -279,7 +249,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblSeleccionarMedicamento.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblSeleccionarMedicamento.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblSeleccionarMedicamento.setBackground(new Color(1, 168, 25));
-		lblSeleccionarMedicamento.setBounds(10, 300, 296, 36);
+		lblSeleccionarMedicamento.setBounds(10, 194, 296, 36);
 		panel.add(lblSeleccionarMedicamento);
 		
 		lblSeleccionarServicio = new JLabel("SELECCIONAR SERVICIO");
@@ -289,10 +259,10 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblSeleccionarServicio.setForeground(new Color(10, 20, 26));
 		lblSeleccionarServicio.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblSeleccionarServicio.setBorder(new LineBorder(new Color(10,20,26), 1, true));
-		lblSeleccionarServicio.setBounds(316, 300, 258, 36);
+		lblSeleccionarServicio.setBounds(316, 194, 258, 36);
 		panel.add(lblSeleccionarServicio);
 		
-		lblnext = new JLabel("");
+		lblnext = new JLabel("...");
 		lblnext.addMouseListener(this);
 		lblnext.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/nextventana.png")));
 		lblnext.setHorizontalAlignment(SwingConstants.CENTER);
@@ -300,7 +270,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblnext.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblnext.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblnext.setBackground(new Color(1, 168, 25));
-		lblnext.setBounds(273, 91, 73, 36);
+		lblnext.setBounds(228, 127, 59, 29);
 		panel.add(lblnext);
 		
 		panel_1 = new JPanel();
@@ -381,115 +351,11 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnSeleccionarServicio) {
-			actionPerformedBtnSeleccionarServicio(arg0);
-		}
 		if (arg0.getSource() == btnRegistrar) {
 			actionPerformedBtnRegistrar(arg0);
 		}
 		if (arg0.getSource() == btnEliminar) {
 			actionPerformedBtnEliminar(arg0);
-		}
-		if (arg0.getSource() == btnSeleccionarMedicamento) {
-			actionPerformedBtnSeleccionarMedicamento(arg0);
-		}
-		if (arg0.getSource() == btnBuscarPaciente) {
-			actionPerformedBtnBuscarPaciente(arg0);
-		}
-	}
-
-	protected void actionPerformedBtnBuscarPaciente(ActionEvent arg0) {
-		DlgInternamiento hos = new DlgInternamiento();
-		hos.setTitle("PACIENTES HOSPITALIZADOS");
-		hos.btnBuscarPaciente.setEnabled(false);
-		hos.rdbtnEconomico.setEnabled(false);
-		hos.rdbtnEjecutivo.setEnabled(false);
-		hos.cboNroCamas.setEnabled(false);
-		hos.btnAceptar.setEnabled(false);
-		hos.btnCancelar.setEnabled(false);
-		hos.btnGrabarHospitalizacion.setEnabled(false);
-		hos.rdbtnFiltrarPagado.setEnabled(false);
-		hos.rdbtnFiltrarTodo.setEnabled(false);
-		hos.setVisible(true);
-		txtCodigoPaciente.setText(hos.codigoPaciente);
-	}
-
-	protected void actionPerformedBtnSeleccionarServicio(ActionEvent arg0) {
-		DlgServicios ser = new DlgServicios();
-		/*ser.lblIngresar.setEnabled(false);
-		ser.btnConsultar.setEnabled(false);
-		ser.btnEliminar.setEnabled(false);
-		ser.btnModificar.setEnabled(false);
-		ser.btnGuardarServicios.setEnabled(false);*/
-		setVisible(true);
-		if (!ser.codServicio.equals("") && ser.precioServicio > 0) {
-			if (jtblConsumo.getRowCount() == 0) {
-				dtm.addRow(new Object[] { ser.codServicio, ser.nomServicio, 1,
-						Libreria.formatoDecimales(ser.precioServicio),
-						Libreria.formato2Decimales(ser.precioServicio) });
-				total += ser.precioServicio;
-				txtTotal.setText(Libreria.formatoSoles(total));
-			}
-			else {
-				int c = 0;
-				for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
-					if (ser.codServicio.equals(jtblConsumo.getValueAt(i, 0).toString())) {
-						c++;
-						break;
-					}
-				}
-
-				if (c == 0) {
-					dtm.addRow(new Object[] { ser.codServicio, ser.nomServicio, 1,
-							Libreria.formatoDecimales(ser.precioServicio),
-							Libreria.formato2Decimales(ser.precioServicio) });
-					total += ser.precioServicio;
-					txtTotal.setText(Libreria.formatoSoles(total));
-				}
-				else {
-					Libreria.mensajeInformacion(this, "El SERVICIO ya fue agregado a la lista.");
-				}
-			}
-		}
-	}
-
-	protected void actionPerformedBtnSeleccionarMedicamento(ActionEvent arg0) {
-		DlgMedicamento med = new DlgMedicamento();
-		/*med.lblAr.setEnabled(false);
-		med.btnConsultar.setEnabled(false);
-		med.btnEliminar.setEnabled(false);
-		med.btnModificar.setEnabled(false);
-		med.btnGuardarMedicamentos.setEnabled(false);*/
-		med.setVisible(true);
-
-		if (!med.nombreProducto.equals("") && med.precioProducto > 0 && med.cantidadVender > 0) {
-			if (jtblConsumo.getRowCount() == 0) {
-				double subtotal = med.precioProducto * med.cantidadVender;
-				dtm.addRow(new Object[] { med.codigoProducto, med.nombreProducto, med.cantidadVender,
-						med.precioProducto, Libreria.formato2Decimales(subtotal) });
-				total += subtotal;
-				txtTotal.setText(Libreria.formatoSoles(total));
-			}
-			else {
-				int c = 0;
-				for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
-					if (med.codigoProducto.equals(jtblConsumo.getValueAt(i, 0).toString())) {
-						c++;
-						break;
-					}
-				}
-
-				if (c == 0) {
-					double subtotal = med.precioProducto * med.cantidadVender;
-					dtm.addRow(new Object[] { med.codigoProducto, med.nombreProducto, med.cantidadVender,
-							med.precioProducto, Libreria.formato2Decimales(subtotal) });
-					total += subtotal;
-					txtTotal.setText(Libreria.formatoSoles(total));
-				}
-				else {
-					Libreria.mensajeInformacion(this, "El PRODUCTO ya fue agregado a la lista.");
-				}
-			}
 		}
 	}
 
@@ -618,7 +484,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == lblnext) {
-			mouseClickedLblSeleccionarServicio(e);
+			 mouseClickedlblNext(e);
 		}
 		if (e.getSource() == lblSeleccionarServicio) {
 			mouseClickedLblSeleccionarServicio(e);
@@ -820,10 +686,27 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblSeleccionarServicio.setOpaque(false);
 		lblSeleccionarServicio.setForeground(new Color(10, 20, 26));
 	}
-	
+	protected void mouseClickedlblNext(MouseEvent e) {
+		DlgInternamiento hos = new DlgInternamiento();
+		hos.setTitle("PACIENTES HOSPITALIZADOS");
+		hos.btnBuscarPaciente.setEnabled(false);
+		hos.rdbtnEconomico.setEnabled(false);
+		hos.rdbtnEjecutivo.setEnabled(false);
+		hos.cboNroCamas.setEnabled(false);
+		hos.btnAceptar.setEnabled(false);
+		hos.btnCancelar.setEnabled(false);
+		hos.btnGrabarHospitalizacion.setEnabled(false);
+		hos.rdbtnFiltrarPagado.setEnabled(false);
+		hos.rdbtnFiltrarTodo.setEnabled(false);
+		hos.setVisible(true);
+		txtCodigoPaciente.setText(hos.codigoPaciente);
+
+		
+	}
 	protected void mouseClickedLblSeleccionarServicio(MouseEvent e) {
+
 		DlgServicios ser = new DlgServicios();
-		/*ser.btnAdicionar.setEnabled(false);
+		/*ser.lblIngresar.setEnabled(false);
 		ser.btnConsultar.setEnabled(false);
 		ser.btnEliminar.setEnabled(false);
 		ser.btnModificar.setEnabled(false);
@@ -891,6 +774,4 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		hos.setVisible(true);
 		txtCodigoPaciente.setText(hos.codigoPaciente);
 	}
-	
-
 }
