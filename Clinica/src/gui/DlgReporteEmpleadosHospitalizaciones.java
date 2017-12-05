@@ -29,6 +29,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.LineBorder;
 
 public class DlgReporteEmpleadosHospitalizaciones extends JDialog {
 
@@ -73,6 +74,7 @@ public class DlgReporteEmpleadosHospitalizaciones extends JDialog {
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
+		scrollPane.setBorder(new LineBorder(Color.BLACK, 1, true));
 		scrollPane.setBounds(10, 50, 806, 550);
 		getContentPane().add(scrollPane);
 
@@ -85,6 +87,7 @@ public class DlgReporteEmpleadosHospitalizaciones extends JDialog {
 			}
 
 		};
+		jtblEmpleados.setBorder(null);
 		jtblEmpleados.setFont(new Font("Arial", Font.BOLD, 14));
 		jtblEmpleados.setForeground(Color.BLACK);
 		jtblEmpleados.setRowHeight(25);
