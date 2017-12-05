@@ -454,54 +454,52 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														panel.add(Codigo);
 																														
 																														lblIngresar = new JLabel("INGRESAR");
-																														lblIngresar.setInheritsPopupMenu(false);
 																														lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																														lblIngresar.setForeground(new Color(243, 124, 47));
-																														lblIngresar.setIcon(null);
+																														lblIngresar.setForeground(new Color(10,20,26));
+																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
 																														lblIngresar.addMouseListener(this);
-																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
 																														lblIngresar.setBackground(new Color(1, 168, 25));
 																														lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblIngresar.setBounds(12, 67, 169, 37);
 																														getContentPane().add(lblIngresar);
-																														lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																														lblIngresar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																														
 																														lblConsultar = new JLabel("CONSULTAR");
 																														lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																														lblConsultar.setForeground(new Color(243, 124, 47));
+																														lblConsultar.setForeground(new Color(10,20,26));
 																														lblConsultar.addMouseListener(this);
-																														lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNaranja.png")));
+																														lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
 																														lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblConsultar.setBackground(new Color(1, 168, 25));
 																														lblConsultar.setBounds(200, 68, 169, 36);
 																														getContentPane().add(lblConsultar);
-																														lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																														lblConsultar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																														
 																														lblModificar = new JLabel("MODIFICAR");
 																														lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																														lblModificar.setForeground(new Color(243, 124, 47));
+																														lblModificar.setForeground(new Color(10,20,26));
 																														lblModificar.addMouseListener(this);
-																														lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
+																														lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
 																														lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblModificar.setBackground(new Color(1, 168, 25));
 																														lblModificar.setBounds(390, 68, 175, 36);
 																														getContentPane().add(lblModificar);
-																														lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																														lblModificar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																														
 																														lblEliminar = new JLabel("ELIMINAR");
 																														lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																														lblEliminar.setForeground(new Color(243, 124, 47));
+																														lblEliminar.setForeground(new Color(10,20,26));
 																														lblEliminar.addMouseListener(this);
-																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNaranja.png")));
+																														lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNegro.png")));
 																														lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 																														lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																														lblEliminar.setBackground(Color.RED);
 																														lblEliminar.setBounds(585, 68, 183, 36);
 																														getContentPane().add(lblEliminar);
-																														lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																														lblEliminar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																														
 																														JPanel panel_1 = new JPanel();
 																														panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -715,7 +713,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			txtDni.requestFocus();
 		}
 		else {
-			Paciente nuevo = new Paciente(leerCodigo(), leerNombres(), leerApellidos(), leerTelefono(), leerDni());
+			Paciente nuevo = new Paciente(leerCodigo(), leerApellidos(), leerNombres(), leerTelefono(), leerDni());
 			ap.adicionar(nuevo);
 			listado();
 			habilitarEntradas(true);
@@ -1212,6 +1210,7 @@ private void editableTrue(){
 		lblBuscar.setOpaque(false);
 		lblBuscar.setForeground(new Color(10, 20, 26));
 		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscar.png")));
+		
 		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
 		
 	}
@@ -1226,33 +1225,37 @@ private void editableTrue(){
 		lblAgregar.setOpaque(false);
 		lblAgregar.setForeground(new Color(10, 20, 26));
 		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
-		//lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		lblAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 		
 	}
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
 		lblModificar.setForeground(new Color(243, 124, 47));
 		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
-		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
+		lblModificar.setForeground(new Color(10, 20, 26));
 		
 	}
 	protected void mouseExitedLblConsultar(MouseEvent arg0) {
 		lblConsultar.setOpaque(false);
 		lblConsultar.setForeground(new Color(243, 124, 47));
 		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
-		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
+		lblConsultar.setForeground(new Color(10, 20, 26));
 	}
 	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(false);
 		lblIngresar.setForeground(new Color(243, 124, 47));
 		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
-		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
+		lblIngresar.setForeground(new Color(10, 20, 26));
 	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setOpaque(false);
 		lblEliminar.setForeground(new Color(243, 124, 47));
 		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNegro.png")));
-		lblEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
+		lblEliminar.setForeground(new Color(10, 20, 26));
 	}
 	
 	
@@ -1263,16 +1266,18 @@ private void editableTrue(){
 	}
 	
 	protected void mouseEnteredLblIngresar(MouseEvent e) {
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 		lblIngresar.setOpaque(true);
 		lblIngresar.setBackground(new Color(10, 20, 26));
 		lblIngresar.setForeground(new Color(255, 255, 255));
-		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setOpaque(true);
 		lblConsultar.setBackground(new Color(10, 20, 26));
 		lblConsultar.setForeground(new Color(255, 255, 255));
-		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		
@@ -1280,18 +1285,21 @@ private void editableTrue(){
 		lblModificar.setBackground(new Color(10, 20, 26));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarBlanco.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent e) {
 		lblEliminar.setOpaque(true);
 		lblEliminar.setBackground(new Color(10, 20, 26));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarBlnco.png")));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 	}
 	protected void mouseEnteredLblBuscar(MouseEvent e) {
 		lblBuscar.setOpaque(true);
 		lblBuscar.setBackground(new Color(30, 60, 79));
 		lblBuscar.setForeground(new Color(255, 255, 255));
 		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
+		
 	}
 	protected void mouseEnteredlblAgregar(MouseEvent e) {
 		lblAgregar.setOpaque(true);
@@ -1304,6 +1312,7 @@ private void editableTrue(){
 		lblCancelar.setBackground(new Color(30, 60, 79));
 		lblCancelar.setForeground(new Color(255, 255, 255));
 		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+		
 	}
 	protected void mouseEnteredLabel_2(MouseEvent e) {
 	}
