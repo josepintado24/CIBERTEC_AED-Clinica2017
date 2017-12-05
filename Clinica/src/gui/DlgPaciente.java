@@ -457,7 +457,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblIngresar.setInheritsPopupMenu(false);
 																														lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														lblIngresar.setForeground(new Color(243, 124, 47));
-																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+																														lblIngresar.setIcon(null);
 																														lblIngresar.addMouseListener(this);
 																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
 																														lblIngresar.setBackground(new Color(1, 168, 25));
@@ -719,6 +719,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			ap.adicionar(nuevo);
 			listado();
 			habilitarEntradas(true);
+			limpieza();
 		}
 	}
 
@@ -1068,7 +1069,7 @@ private void editableTrue(){
 		switch (tipoOperacion) {
 		case ADICIONAR:
 			adicionarPaciente();
-			limpieza();
+			
 			txtCodigo.setText("" + ap.codigoCorrelativo());
 			break;
 		case CONSULTAR:
@@ -1231,26 +1232,26 @@ private void editableTrue(){
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
 		lblModificar.setForeground(new Color(243, 124, 47));
-		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
 		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 		
 	}
 	protected void mouseExitedLblConsultar(MouseEvent arg0) {
 		lblConsultar.setOpaque(false);
 		lblConsultar.setForeground(new Color(243, 124, 47));
-		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
 		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(false);
 		lblIngresar.setForeground(new Color(243, 124, 47));
-		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
 		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setOpaque(false);
 		lblEliminar.setForeground(new Color(243, 124, 47));
-		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNaranja.png")));
+		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNegro.png")));
 		lblEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	
@@ -1263,26 +1264,26 @@ private void editableTrue(){
 	
 	protected void mouseEnteredLblIngresar(MouseEvent e) {
 		lblIngresar.setOpaque(true);
-		lblIngresar.setBackground(new Color(243, 124, 47));
+		lblIngresar.setBackground(new Color(10, 20, 26));
 		lblIngresar.setForeground(new Color(255, 255, 255));
 		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setOpaque(true);
-		lblConsultar.setBackground(new Color(243, 124, 47));
+		lblConsultar.setBackground(new Color(10, 20, 26));
 		lblConsultar.setForeground(new Color(255, 255, 255));
-		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		
 		lblModificar.setOpaque(true);
-		lblModificar.setBackground(new Color(243, 124, 47));
+		lblModificar.setBackground(new Color(10, 20, 26));
 		lblModificar.setForeground(new Color(255, 255, 255));
 		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarBlanco.png")));
 	}
 	protected void mouseEnteredLblEliminar(MouseEvent e) {
 		lblEliminar.setOpaque(true);
-		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setBackground(new Color(10, 20, 26));
 		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarBlnco.png")));
 	}
@@ -1302,7 +1303,7 @@ private void editableTrue(){
 		lblCancelar.setOpaque(true);
 		lblCancelar.setBackground(new Color(30, 60, 79));
 		lblCancelar.setForeground(new Color(255, 255, 255));
-		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
 	}
 	protected void mouseEnteredLabel_2(MouseEvent e) {
 	}

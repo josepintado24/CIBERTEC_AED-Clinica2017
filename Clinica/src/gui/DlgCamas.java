@@ -185,6 +185,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		bp.add(rdbtnTodo);
 																										
 																										lblIngresar = new JLabel("INGRESAR");
+																										lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																										lblIngresar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/ingresarNegro.png")));
 																										lblIngresar.addMouseListener(this);
 																										lblIngresar.setInheritsPopupMenu(false);
@@ -197,6 +198,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										contentPane.add(lblIngresar);
 																										
 																										lblConsultar = new JLabel("CONSULTAR");
+																										lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																										lblConsultar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/consultarNegro.png")));
 																										lblConsultar.addMouseListener(this);
 																										lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -208,6 +210,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										contentPane.add(lblConsultar);
 																										
 																										lblModificar = new JLabel("MODIFICAR");
+																										lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																										lblModificar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/modificarNegro.png")));
 																										lblModificar.addMouseListener(this);
 																										lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -219,6 +222,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																										contentPane.add(lblModificar);
 																										
 																										lblEliminar = new JLabel("ELIMINAR");
+																										lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																										lblEliminar.addMouseListener(this);
 																										lblEliminar.setIcon(new ImageIcon(DlgCamas.class.getResource("/iconBotones/modificarNegro.png")));
 																										lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -297,6 +301,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																				panel_1.add(SepPrecioxDia);
 																																				
 																																				lblAgregarCama = new JLabel("Agregar");
+																																				lblAgregarCama.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																				lblAgregarCama.setBounds(92, 445, 206, 39);
 																																				panel_1.add(lblAgregarCama);
 																																				lblAgregarCama.addMouseListener(this);
@@ -307,6 +312,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																				lblAgregarCama.setBackground(Color.YELLOW);
 																																				
 																																				lblCancelarCama = new JLabel("Cancelar");
+																																				lblCancelarCama.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																				lblCancelarCama.setBounds(92, 495, 206, 39);
 																																				panel_1.add(lblCancelarCama);
 																																				lblCancelarCama.addMouseListener(this);
@@ -316,6 +322,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																				lblCancelarCama.setFont(new Font("Tahoma", Font.BOLD, 14));
 																																				
 																																				lblGrabarCama = new JLabel("Grabar");
+																																				lblGrabarCama.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																				lblGrabarCama.setBounds(92, 546, 206, 41);
 																																				panel_1.add(lblGrabarCama);
 																																				lblGrabarCama.addMouseListener(this);
@@ -350,6 +357,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																										lblNroCama.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 																																										
 																																										lblBuscarCama = new JLabel("Buscar");
+																																										lblBuscarCama.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																										lblBuscarCama.setBounds(233, 71, 170, 39);
 																																										panel_1.add(lblBuscarCama);
 																																										lblBuscarCama.addMouseListener(this);
@@ -574,7 +582,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			else {
 				Camas nuevo = new Camas(leerNroCama(), leerCategoria(), leerPrecioxDia(), leerEstado());
 				ac.adicionar(nuevo);
-				lblMensaje.setText("");
+				lblMensaje.setText("Modificando Cama");
 				actualizarTabla();
 				habilitarEntradas(false);
 				habilitarOperaciones(true);
@@ -882,7 +890,9 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		lblCancelarCama.setVisible(true);
 		lblAgregarCama.setText("Ingresar");
 		//visibleCodigo(true);
-		//visibleCategoria(true);
+		visibleCategoria(false);
+		visiblePrecioxDia(false);
+		visibleEstado(false);
 		lblGrabarCama.setVisible(true);
 		lblAgregarCama.setVisible(true);
 		
@@ -1042,13 +1052,13 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		case ADICIONAR:
 			adicionarCama();
 			limpieza();
-			txtNroCama.setText("");;
+			txtNroCama.setText("");
 			habilitarEntradas(true);
 			lblAgregarCama.setEnabled(true);
 			lblCancelarCama.setEnabled(true);
 			lblGrabarCama.setEnabled(true);
-			lblMensaje.setText("Modificando cama");
 			habilitarBotones(false);
+			lblMensaje.setText("Modificando cama");
 			txtNroCama.requestFocus();
 			break;
 		case CONSULTAR:
@@ -1134,6 +1144,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		lblIconCodigoCama.setVisible(!sino);
 		txtNroCama.setVisible(!sino);
 		SepNroCama.setVisible(!sino);
+		
 	}
 	
 	void visibleCategoria(boolean sino){

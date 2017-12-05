@@ -47,6 +47,8 @@ import java.awt.Cursor;
 import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
 import java.awt.event.MouseListener;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.MatteBorder;
 
 public class DlgControlDePagos extends JDialog implements ActionListener, MouseListener {
 
@@ -111,6 +113,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	}
 
 	public DlgControlDePagos() {
+		setBackground(Color.LIGHT_GRAY);
 		setUndecorated(true);
 		getContentPane().setBackground(Color.WHITE);
 		setModal(true);
@@ -275,6 +278,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		panel.add(btnIngresar);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
 		panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel_1.setBackground(Color.WHITE);
 		panel_1.addMouseMotionListener(new MouseMotionAdapter() {
@@ -291,7 +295,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 			    y = arg0.getY();
 			}
 		});
-		panel_1.setBounds(0, 0, 608, 39);
+		panel_1.setBounds(0, 0, 601, 39);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		

@@ -372,10 +372,11 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		btnBuscarPaciente.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/buscarBlnco.png")));
 		btnBuscarPaciente.addActionListener(this);
 		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscarPaciente.setForeground(Color.BLACK);
+		btnBuscarPaciente.setForeground(Color.WHITE);
 		btnBuscarPaciente.setBackground(Color.DARK_GRAY);
 		btnBuscarPaciente.setBounds(628, 75, 62, 29);
 		getContentPane().add(btnBuscarPaciente);
+		btnBuscarPaciente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
 		pnlFiltrar = new JPanel();
 		pnlFiltrar.setBorder(null);
@@ -522,7 +523,10 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblCancelar.setBounds(478, 353, 206, 39);
 		getContentPane().add(lblCancelar);
 		
+		
 		lblGrabar = new JLabel("Grabar");
+		lblGrabar.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/save.png")));
+		lblGrabar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblGrabar.addMouseListener(this);
 		lblGrabar.setOpaque(true);
 		lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -935,12 +939,14 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblAgregar.setBackground(new Color(30, 60, 79));
 		lblAgregar.setForeground(new Color(255, 255, 255));
 		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
+		lblAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 	protected void mouseEnteredCancelar(MouseEvent e) {
 		lblCancelar.setOpaque(true);
 		lblCancelar.setBackground(new Color(30, 60, 79));
 		lblCancelar.setForeground(new Color(255, 255, 255));
 		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
+		lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == lblAgregar) {

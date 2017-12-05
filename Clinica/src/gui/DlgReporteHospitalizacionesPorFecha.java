@@ -38,17 +38,19 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseListener;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
-public class DlgReporteHospitalizacionesPorFecha extends JDialog implements ActionListener {
+public class DlgReporteHospitalizacionesPorFecha extends JDialog implements ActionListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPane;
 	private JTable jtblHospitalizaciones;
-	private JLabel label;
+	private JLabel lblFechaLlegada;
 	private JComboBox<String> cboDia;
 	private JComboBox<String> cboMes;
 	private JComboBox<String> cboAño;
-	private JButton btnBuscar;
 	private DefaultTableModel dtm;
 	private int x;
 	private int y;
@@ -61,6 +63,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 	private JPanel panel;
 	private JLabel label_1;
 	private JLabel lblR;
+	private JButton btnBuscar;
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -103,17 +106,17 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		jtblHospitalizaciones.setFont(new Font("Arial", Font.BOLD, 14));
 		scrollPane.setViewportView(jtblHospitalizaciones);
 		
-		label = new JLabel("FECHA LLEGADA");
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Color.BLACK);
-		label.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		label.setBounds(10, 72, 103, 14);
-		getContentPane().add(label);
+		lblFechaLlegada = new JLabel("FECHA LLEGADA :");
+		lblFechaLlegada.setHorizontalAlignment(SwingConstants.LEFT);
+		lblFechaLlegada.setForeground(Color.BLACK);
+		lblFechaLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+		lblFechaLlegada.setBounds(10, 50, 149, 36);
+		getContentPane().add(lblFechaLlegada);
 		
 		cboDia = new JComboBox<String>();
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboDia.setBounds(123, 60, 59, 38);
+		cboDia.setBounds(199, 50, 59, 38);
 		Fecha.colocarItems(cboDia, 1, 31);
 		Fecha.colocarDiaActual(cboDia);
 		getContentPane().add(cboDia);
@@ -121,7 +124,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		cboMes = new JComboBox<String>();
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboMes.setBounds(183, 60, 116, 38);
+		cboMes.setBounds(259, 50, 116, 38);
 		Fecha.colocarMeses(cboMes);
 		Fecha.colocarMesActual(cboMes);
 		getContentPane().add(cboMes);
@@ -129,19 +132,13 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		cboAño = new JComboBox<String>();
 		cboAño.setForeground(Color.BLACK);
 		cboAño.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboAño.setBounds(300, 60, 83, 38);
+		cboAño.setBounds(376, 50, 83, 38);
 		Fecha.colocarItems(cboAño, 2000, Fecha.añoActual());
 		cboAño.setSelectedIndex(16);
 		getContentPane().add(cboAño);
 		
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.addActionListener(this);
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscar.setBounds(393, 60, 149, 38);
-		getContentPane().add(btnBuscar);
-		
 		panel = new JPanel();
+		panel.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
 		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
@@ -184,10 +181,20 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		panel.add(label_1);
 		
 		lblR = new JLabel("Reporte Hospital");
+		lblR.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(192, 192, 192)));
 		lblR.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblR.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblR.setBounds(43, 0, 134, 39);
 		panel.add(lblR);
+		
+		btnBuscar = new JButton("Buscar");
+		btnBuscar.setContentAreaFilled(false);
+		btnBuscar.addMouseListener(this);
+		btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btnBuscar.addActionListener(this);
+		btnBuscar.setBounds(490, 50, 155, 36);
+		getContentPane().add(btnBuscar);
 		
 		modeloTabla();
 		listar(0);
@@ -199,9 +206,6 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		if (arg0.getSource() == btnBuscar) {
 			actionPerformedBtnBuscar(arg0);
 		}
-	}
-	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
-		listar(Fecha.getFecha(cboDia, cboMes, cboAño));
 	}
 
 	// MÉTODOS VOID CON PARÁMETROS
@@ -265,5 +269,41 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		String columnas[] = new String[] { "CÓDIGO", "NOMBRES PACIENTE", "APELLIDOS PACIENTE", "NOMBRE EMPLEADO",
 				"APELLIDO EMPLEADO", "NRO CAMA", "FECHA LLEGADA", "HORA LLEGADA" };
 		return columnas;
+	}
+	public void mouseClicked(MouseEvent arg0) {
+	}
+	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == btnBuscar) {
+			mouseEnteredBtnBuscar(e);
+		}
+	}
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == btnBuscar) {
+			mouseExitedBtnBuscar(e);
+		}
+		btnBuscar.setOpaque(false);
+		btnBuscar.setForeground(new Color(0, 0, 1));
+		
+		
+	}
+	public void mousePressed(MouseEvent e) {
+	}
+	public void mouseReleased(MouseEvent e) {
+	}
+	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
+		listar(Fecha.getFecha(cboDia, cboMes, cboAño));
+	}
+	protected void mouseEnteredBtnBuscar(MouseEvent e) {
+		btnBuscar.setOpaque(true);
+		btnBuscar.setBackground(new Color(0, 139, 173));
+		btnBuscar.setForeground(new Color(255, 255, 255));
+		btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_color.png")));
+		
+	}
+	protected void mouseExitedBtnBuscar(MouseEvent e) {
+		btnBuscar.setOpaque(false);
+		btnBuscar.setForeground(new Color(0, 0, 1));
+		btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_blanco.png")));
+		btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 }
