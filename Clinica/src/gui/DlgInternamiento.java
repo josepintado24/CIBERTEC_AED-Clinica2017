@@ -168,7 +168,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblCodigoDeHospitalizacion.setForeground(Color.BLACK);
 		lblCodigoDeHospitalizacion.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCodigoDeHospitalizacion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigoDeHospitalizacion.setBounds(79, 50, 170, 14);
+		lblCodigoDeHospitalizacion.setBounds(79, 50, 197, 14);
 		getContentPane().add(lblCodigoDeHospitalizacion);
 
 		lblCodigoDePaciente = new JLabel("C\u00D3DIGO PACIENTE");
@@ -369,12 +369,16 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		bp2.add(rdbtnPagado);
 
 		btnBuscarPaciente = new JButton("...");
-		btnBuscarPaciente.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/buscarBlnco.png")));
+		btnBuscarPaciente.setContentAreaFilled(false);
+		btnBuscarPaciente.setBorderPainted(false);
+		btnBuscarPaciente.setRolloverIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/buscarA.png")));
+		btnBuscarPaciente.setBorder(null);
+		btnBuscarPaciente.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/buscar.png")));
 		btnBuscarPaciente.addActionListener(this);
 		btnBuscarPaciente.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		btnBuscarPaciente.setForeground(Color.WHITE);
-		btnBuscarPaciente.setBackground(Color.DARK_GRAY);
-		btnBuscarPaciente.setBounds(628, 75, 62, 29);
+		btnBuscarPaciente.setBackground(Color.WHITE);
+		btnBuscarPaciente.setBounds(590, 75, 41, 29);
 		getContentPane().add(btnBuscarPaciente);
 		btnBuscarPaciente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 

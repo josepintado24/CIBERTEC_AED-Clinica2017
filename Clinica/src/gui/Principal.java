@@ -62,7 +62,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	private JLabel lblCalculadora;
 	private JLabel lblMusica;
 	private JLabel label_9;
-	private JLabel label_10;
 
 	/**
 	 * Launch the application.
@@ -136,6 +135,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	 private JLabel lblAtenciones;
 	 private JLabel lblPacientesDeAlta;
 	 private JLabel atras2;
+	 private JButton button;
 	 
 	public Principal() {
 		setResizable(false);
@@ -594,15 +594,8 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_9.addMouseListener(this);
 		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_9.setIcon(new ImageIcon(Principal.class.getResource("/image/Minimize_Window_32px.png")));
-		label_9.setBounds(706, 11, 32, 21);
+		label_9.setBounds(706, 0, 32, 39);
 		panel_2.add(label_9);
-		
-		label_10 = new JLabel("");
-		label_10.addMouseListener(this);
-		label_10.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_10.setIcon(new ImageIcon(Principal.class.getResource("/image/X_32px.png")));
-		label_10.setBounds(739, 11, 32, 21);
-		panel_2.add(label_10);
 		
 		JLabel lblPrincipal = new JLabel("Principal");
 		lblPrincipal.setFont(new Font("Decker", Font.PLAIN, 16));
@@ -613,6 +606,30 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 		label_11.setIcon(new ImageIcon(Principal.class.getResource("/image/hospital.png")));
 		label_11.setBounds(10, 11, 21, 21);
 		panel_2.add(label_11);
+		
+		button = new JButton("");
+		button.setFocusPainted(false);
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button.setContentAreaFilled(false);
+		button.setBorderPainted(false);
+		button.setForeground(Color.WHITE);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+				int dialog = JOptionPane.YES_NO_OPTION;
+				int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana Principal?","Exit",dialog,dialog,m);
+				
+				if(result ==0){
+					System.exit(0);
+				}
+			}
+		});
+		button.setBorder(null);
+		button.setBackground(Color.WHITE);
+		button.setRolloverIcon(new ImageIcon(Principal.class.getResource("/image/X2_32px.png")));
+		button.setIcon(new ImageIcon(Principal.class.getResource("/image/X_32px.png")));
+		button.setBounds(736, 0, 32, 37);
+		panel_2.add(button);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -644,10 +661,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 			mouseClickedLblInternet(e);
 			lblInternet.setVisible(false);
 		}
-		}
-		
-		if (e.getSource() == label_10) {
-			mouseClickedLabel_10(e);
 		}
 		if (e.getSource() == label_9) {
 			mouseClickedLabel_9(e);
@@ -776,15 +789,6 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	}
 	protected void mouseClickedLabel_9(MouseEvent e) {
 		this.setState(Principal.ICONIFIED);
-	}
-	protected void mouseClickedLabel_10(MouseEvent e) {
-		Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
-		int dialog = JOptionPane.YES_NO_OPTION;
-		int result =JOptionPane.showConfirmDialog(null, "¿Desea Salir de la ventana Principal?","Exit",dialog,dialog,m);
-		
-		if(result ==0){
-			System.exit(0);
-		}
 	}
 	public void mouseDragged(MouseEvent arg0) {
 	}

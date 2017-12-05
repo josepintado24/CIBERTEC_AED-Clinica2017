@@ -43,6 +43,7 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.MatteBorder;
 
 public class DlgEmpleado extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -139,10 +140,10 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblMensaje = new JLabel("");
 		lblMensaje.setOpaque(true);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMensaje.setForeground(Color.WHITE);
+		lblMensaje.setForeground(Color.BLACK);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(839, 85, 313, 29);
+		lblMensaje.setBackground(Color.WHITE);
+		lblMensaje.setBounds(860, 70, 313, 29);
 		getContentPane().add(lblMensaje);
 
 		scrollPane = new JScrollPane();
@@ -393,7 +394,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblIngresar.setForeground(new Color(0, 0, 0));
 																																						lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																																						lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblIngresar.setBorder(new LineBorder(new Color(0, 0, 1), 1, true));
 																																						lblIngresar.setBackground(new Color(1, 168, 25));
 																																						lblIngresar.setBounds(25, 70, 158, 37);
 																																						getContentPane().add(lblIngresar);
@@ -406,7 +407,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblConsultar.setForeground(new Color(0, 0, 0));
 																																						lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																																						lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblConsultar.setBorder(new LineBorder(new Color(0, 0, 1), 1, true));
 																																						lblConsultar.setBackground(new Color(1, 168, 25));
 																																						lblConsultar.setBounds(193, 70, 169, 37);
 																																						getContentPane().add(lblConsultar);
@@ -418,7 +419,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblModificar.setForeground(new Color(0, 0, 0));
 																																						lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																																						lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																						lblModificar.setBorder(new LineBorder(new Color(0, 0, 1), 1, true));
 																																						lblModificar.setBackground(Color.WHITE);
 																																						lblModificar.setBounds(372, 71, 175, 36);
 																																						getContentPane().add(lblModificar);
@@ -430,11 +431,12 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																	lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 																																	lblEliminar.setForeground(new Color(0, 0, 0));
 																																	lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																																	lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																																	lblEliminar.setBorder(new LineBorder(new Color(0, 0, 1), 1, true));
 																																	lblEliminar.setBounds(557, 70, 183, 36);
 																																	getContentPane().add(lblEliminar);
 																																						
 																																						panel_1 = new JPanel();
+																																						panel_1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.LIGHT_GRAY));
 																																						panel_1.addMouseMotionListener(new MouseMotionAdapter() {
 																																							@Override
 																																							public void mouseDragged(MouseEvent e) {
@@ -481,6 +483,11 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblEmpleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						lblEmpleado.setBounds(39, 0, 78, 39);
 																																						panel_1.add(lblEmpleado);
+																																						
+																																						JLabel label_1 = new JLabel("");
+																																						label_1.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/employee.png")));
+																																						label_1.setBounds(10, 0, 25, 39);
+																																						panel_1.add(label_1);
 																																						
 																				cboTurno.addItem("Noche");
 																				cboTurno.addItem("Día");
@@ -1071,7 +1078,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblConsultar.setOpaque(false);
 		lblConsultar.setForeground(new Color(10, 20, 26));
 		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
-		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
 		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNegro.png")));
@@ -1104,13 +1111,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblIngresar.setOpaque(false);
 		lblIngresar.setForeground(new Color(10, 20, 26));
 		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
-		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
 		lblModificar.setForeground(new Color(10, 20, 26));
 		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
-		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
+		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 		
 	}
 	
@@ -1267,6 +1274,5 @@ protected void mouseClickedLblIngresar(MouseEvent arg0) {
 			Libreria.mensajeInformacion(this, "\"" + ae.getArchivo() + "\" ha sido creado");
 		}
 	}
-		
 	}
 
