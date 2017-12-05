@@ -22,7 +22,8 @@ import clases.DetalleAtencion;
 import clases.Medicamentos;
 import libreria.DiseñoObjetos;
 import libreria.Fecha;
-import libreria.Libreria;
+import libreria.Libreria; 
+import gui.DlgServicios;
 
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -41,8 +42,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseListener;
 
-public class DlgRegistroConsumo extends JDialog implements ActionListener {
+public class DlgRegistroConsumo extends JDialog implements ActionListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblCodigoConsumo;
@@ -83,6 +85,11 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 	private JPanel panel_1;
 	private JLabel label;
 	private JLabel lblRegitro;
+	private JLabel lblEliminarProductoDe;
+	private JLabel lblRegistrar;
+	private JLabel lblSeleccionarMedicamento;
+	private JLabel lblSeleccionarServicio;
+	private JLabel lblnext;
 
 	public static void main(String[] args) {
 		try {
@@ -107,12 +114,12 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		setResizable(false);
 		setTitle("Registro de Consumo");
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 754, 598);
+		setBounds(100, 100, 1046, 728);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		scrollPane.setBounds(10, 227, 728, 309);
+		scrollPane.setBounds(10, 508, 728, 28);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -169,7 +176,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		panel = new JPanel();
 		panel.setBorder(null);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 83, 728, 133);
+		panel.setBounds(10, 50, 981, 438);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -216,7 +223,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 
 		btnSeleccionarServicio = new JButton("Seleccionar Servicio");
 		btnSeleccionarServicio.addActionListener(this);
-		btnSeleccionarServicio.setBounds(251, 91, 195, 29);
+		btnSeleccionarServicio.setBounds(364, 260, 195, 29);
 		panel.add(btnSeleccionarServicio);
 		btnSeleccionarServicio.setForeground(Color.BLACK);
 		btnSeleccionarServicio.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
@@ -224,7 +231,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		ds.setCurvasButton(btnSeleccionarServicio, "imagenes/servicios.png");
 
 		btnSeleccionarMedicamento = new JButton("Seleccionar Medicamento");
-		btnSeleccionarMedicamento.setBounds(10, 91, 231, 29);
+		btnSeleccionarMedicamento.setBounds(35, 260, 231, 29);
 		panel.add(btnSeleccionarMedicamento);
 		btnSeleccionarMedicamento.addActionListener(this);
 		btnSeleccionarMedicamento.setForeground(Color.BLACK);
@@ -264,6 +271,38 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		lblFecha.setForeground(Color.BLACK);
 		lblFecha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFecha.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
+		
+		lblSeleccionarMedicamento = new JLabel("SELECCIONAR MEDICAMENTO");
+		lblSeleccionarMedicamento.addMouseListener(this);
+		lblSeleccionarMedicamento.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/medicamento.png")));
+		lblSeleccionarMedicamento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSeleccionarMedicamento.setForeground(new Color(10, 20, 26));
+		lblSeleccionarMedicamento.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblSeleccionarMedicamento.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblSeleccionarMedicamento.setBackground(new Color(1, 168, 25));
+		lblSeleccionarMedicamento.setBounds(10, 300, 296, 36);
+		panel.add(lblSeleccionarMedicamento);
+		
+		lblSeleccionarServicio = new JLabel("SELECCIONAR SERVICIO");
+		lblSeleccionarServicio.addMouseListener(this);
+		lblSeleccionarServicio.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/atencion_servicios.png")));
+		lblSeleccionarServicio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSeleccionarServicio.setForeground(new Color(10, 20, 26));
+		lblSeleccionarServicio.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblSeleccionarServicio.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblSeleccionarServicio.setBounds(316, 300, 258, 36);
+		panel.add(lblSeleccionarServicio);
+		
+		lblnext = new JLabel("");
+		lblnext.addMouseListener(this);
+		lblnext.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/nextventana.png")));
+		lblnext.setHorizontalAlignment(SwingConstants.CENTER);
+		lblnext.setForeground(new Color(10, 20, 26));
+		lblnext.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblnext.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblnext.setBackground(new Color(1, 168, 25));
+		lblnext.setBounds(273, 91, 73, 36);
+		panel.add(lblnext);
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
@@ -312,6 +351,29 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		lblRegitro.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblRegitro.setBounds(42, 0, 145, 39);
 		panel_1.add(lblRegitro);
+		
+		lblEliminarProductoDe = new JLabel("ELIMINAR PRODUCTO DE LISTA");
+		lblEliminarProductoDe.addMouseListener(this);
+		lblEliminarProductoDe.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/eliminarNegro.png")));
+		lblEliminarProductoDe.setInheritsPopupMenu(false);
+		lblEliminarProductoDe.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEliminarProductoDe.setForeground(new Color(10, 20, 26));
+		lblEliminarProductoDe.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblEliminarProductoDe.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblEliminarProductoDe.setBackground(new Color(1, 168, 25));
+		lblEliminarProductoDe.setBounds(23, 598, 300, 37);
+		getContentPane().add(lblEliminarProductoDe);
+		
+		lblRegistrar = new JLabel("REGISTRAR");
+		lblRegistrar.addMouseListener(this);
+		lblRegistrar.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/Agregar.png")));
+		lblRegistrar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRegistrar.setForeground(new Color(10, 20, 26));
+		lblRegistrar.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblRegistrar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblRegistrar.setBackground(new Color(1, 168, 25));
+		lblRegistrar.setBounds(345, 598, 169, 36);
+		getContentPane().add(lblRegistrar);
 
 		setCodigoConsumo();
 		modeloTabla();
@@ -360,7 +422,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		ser.btnEliminar.setEnabled(false);
 		ser.btnModificar.setEnabled(false);
 		ser.btnGuardarServicios.setEnabled(false);
-		ser.setVisible(true);
+		setVisible(true);
 		if (!ser.codServicio.equals("") && ser.precioServicio > 0) {
 			if (jtblConsumo.getRowCount() == 0) {
 				dtm.addRow(new Object[] { ser.codServicio, ser.nomServicio, 1,
@@ -544,4 +606,292 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 	int leerCodPaciente() {
 		return Libreria.leerEntero(txtCodigoPaciente);
 	}
+	
+	
+	//*****************************************************************
+
+	public void mouseReleased(MouseEvent e) {
+	}
+	public void mousePressed(MouseEvent e) {
+	}
+
+	//***********************************************************
+	
+	public void mouseClicked(MouseEvent e) {
+		if (e.getSource() == lblnext) {
+			mouseClickedLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarServicio) {
+			mouseClickedLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarMedicamento) {
+			mouseClickedLblSeleccionarMedicamento(e);
+		}
+		if (e.getSource() == lblRegistrar) {
+			mouseClickedLblRegistrar(e);
+		}
+		if (e.getSource() == lblEliminarProductoDe) {
+			mouseClickedLblEliminarProductoDe(e);
+		}
+	}
+	
+	public void mouseEntered(MouseEvent e) {
+		if (e.getSource() == lblnext) {
+			mouseEnteredLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarServicio) {
+			mouseEnteredLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarMedicamento) {
+			mouseEnteredLblSeleccionarMedicamento(e);
+		}
+		if (e.getSource() == lblRegistrar) {
+			mouseEnteredLblRegistrar(e);
+		}
+		if (e.getSource() == lblEliminarProductoDe) {
+			mouseEnteredLblEliminarProductoDe(e);
+		}
+	}
+	
+	public void mouseExited(MouseEvent e) {
+		if (e.getSource() == lblnext) {
+			mouseExitedLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarServicio) {
+			mouseExitedLblSeleccionarServicio(e);
+		}
+		if (e.getSource() == lblSeleccionarMedicamento) {
+			mouseExitedLblSeleccionarMedicamento(e);
+		}
+		if (e.getSource() == lblRegistrar) {
+			mouseExitedLblRegistrar(e);
+		}
+		if (e.getSource() == lblEliminarProductoDe) {
+			mouseExitedLblEliminarProductoDe(e);
+		}
+	}
+
+	//******************************************************
+	//Boton Eliminar Producto de Lista
+	
+	protected void mouseEnteredLblEliminarProductoDe(MouseEvent e) {
+		lblEliminarProductoDe.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarBlnco.png")));
+		lblEliminarProductoDe.setOpaque(true);
+		lblEliminarProductoDe.setBackground(new Color(10, 20, 26));
+		lblEliminarProductoDe.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblEliminarProductoDe(MouseEvent e) {
+		lblEliminarProductoDe.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNegro.png")));
+		lblEliminarProductoDe.setOpaque(false);
+		lblEliminarProductoDe.setForeground(new Color(10, 20, 26));
+	}
+	
+	public void mouseClickedLblEliminarProductoDe(MouseEvent e) {
+		eliminarProductoDeLista();
+	}
+	
+	//*************************************************************
+	//Boton Registar LABEL
+	
+	protected void mouseEnteredLblRegistrar(MouseEvent e) {
+		lblRegistrar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/AgregarBlanco.png")));
+		lblRegistrar.setOpaque(true);
+		lblRegistrar.setBackground(new Color(10, 20, 26));
+		lblRegistrar.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblRegistrar(MouseEvent e) {
+		lblRegistrar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/Agregar.png")));
+		lblRegistrar.setOpaque(false);
+		lblRegistrar.setForeground(new Color(10, 20, 26));
+	}
+	
+	protected void mouseClickedLblRegistrar(MouseEvent e) {
+		if (leerCodConsumo() == -1) {
+			Libreria.mensajeInformacion(this, "EL CAMPO CÓDIGO DE CONSUMO NO PUEDE ESTAR VACÍO");
+		}
+		else if (leerCodPaciente() == -1) {
+			Libreria.mensajeInformacion(this, "DEBE SELECCIONAR EL CÓDIGO DEL PACIENTE");
+		}
+		else {
+			if (jtblConsumo.getRowCount() != 0) {
+				int msj = Libreria.confirmacion(this, "¿Desea registrar el detalle de consumo?");
+
+				if (msj == 0) {
+					ac.adicionar(new Atencion(leerCodConsumo(), leerCodPaciente(), Fecha.getFecha(cboDia, cboMes, cboAno), 0,
+							total));
+					ac.grabarConsumo();
+
+					int codProducto = 0, cantidad = 0;
+					double precioUnitario = 0.0, subtotal = 0.0;
+
+					for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
+						codProducto = Integer.parseInt(jtblConsumo.getValueAt(i, 0).toString());
+						cantidad = Integer.parseInt(jtblConsumo.getValueAt(i, 2).toString());
+						precioUnitario = Double.parseDouble(jtblConsumo.getValueAt(i, 3).toString());
+						subtotal = cantidad * precioUnitario;
+						adet.adicionar(
+								new DetalleAtencion(leerCodConsumo(), codProducto, cantidad, precioUnitario, subtotal));
+					}
+
+					for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
+						Medicamentos med;
+						for (int j = 0; j < am.tamaño(); j++) {
+							med = am.obtener(j);
+							if (med.getCodMedicamento() == Integer.parseInt(jtblConsumo.getValueAt(i, 0).toString())){
+								med.restarStock(Integer.parseInt(jtblConsumo.getValueAt(i, 2).toString()));
+							}
+						}
+					}
+					am.grabarMedicamentos();
+					adet.grabarDetalleConsumo();
+					nuevoRegistroConsumo();
+				}
+			}
+		}
+	}
+	
+	//**********************************************************************************************
+	//Boton Seleccionar Medicamento
+	protected void mouseEnteredLblSeleccionarMedicamento(MouseEvent e) {
+		lblSeleccionarMedicamento.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/medicamentoBlanco.png")));
+		lblSeleccionarMedicamento.setOpaque(true);
+		lblSeleccionarMedicamento.setBackground(new Color(10, 20, 26));
+		lblSeleccionarMedicamento.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblSeleccionarMedicamento(MouseEvent e) {
+		lblSeleccionarMedicamento.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/medicamento.png")));
+		lblSeleccionarMedicamento.setOpaque(false);
+		lblSeleccionarMedicamento.setForeground(new Color(10, 20, 26));
+	}
+	
+	protected void mouseClickedLblSeleccionarMedicamento(MouseEvent e) {
+		DlgMedicamento med = new DlgMedicamento();
+		/*med.lblAr.setEnabled(false);
+		med.btnConsultar.setEnabled(false);
+		med.btnEliminar.setEnabled(false);
+		med.btnModificar.setEnabled(false);
+		med.btnGuardarMedicamentos.setEnabled(false);*/
+		med.setVisible(true);
+
+		if (!med.nombreProducto.equals("") && med.precioProducto > 0 && med.cantidadVender > 0) {
+			if (jtblConsumo.getRowCount() == 0) {
+				double subtotal = med.precioProducto * med.cantidadVender;
+				dtm.addRow(new Object[] { med.codigoProducto, med.nombreProducto, med.cantidadVender,
+						med.precioProducto, Libreria.formato2Decimales(subtotal) });
+				total += subtotal;
+				txtTotal.setText(Libreria.formatoSoles(total));
+			}
+			else {
+				int c = 0;
+				for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
+					if (med.codigoProducto.equals(jtblConsumo.getValueAt(i, 0).toString())) {
+						c++;
+						break;
+					}
+				}
+
+				if (c == 0) {
+					double subtotal = med.precioProducto * med.cantidadVender;
+					dtm.addRow(new Object[] { med.codigoProducto, med.nombreProducto, med.cantidadVender,
+							med.precioProducto, Libreria.formato2Decimales(subtotal) });
+					total += subtotal;
+					txtTotal.setText(Libreria.formatoSoles(total));
+				}
+				else {
+					Libreria.mensajeInformacion(this, "El PRODUCTO ya fue agregado a la lista.");
+				}
+			}
+		}
+	}
+	
+	//*******************************************************************************************************
+	//BOTON SELECIONAR SERVICIO
+	protected void mouseEnteredLblSeleccionarServicio(MouseEvent e) {
+		lblSeleccionarServicio.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/atencion_serviciosBlanco.png")));
+		lblSeleccionarServicio.setOpaque(true);
+		lblSeleccionarServicio.setBackground(new Color(10, 20, 26));
+		lblSeleccionarServicio.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExitedLblSeleccionarServicio(MouseEvent e) {
+		lblSeleccionarServicio.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/atencion_servicios.png")));
+		lblSeleccionarServicio.setOpaque(false);
+		lblSeleccionarServicio.setForeground(new Color(10, 20, 26));
+	}
+	
+	protected void mouseClickedLblSeleccionarServicio(MouseEvent e) {
+		DlgServicios ser = new DlgServicios();
+		ser.btnAdicionar.setEnabled(false);
+		ser.btnConsultar.setEnabled(false);
+		ser.btnEliminar.setEnabled(false);
+		ser.btnModificar.setEnabled(false);
+		ser.btnGuardarServicios.setEnabled(false);
+		ser.setVisible(true);
+		if (!ser.codServicio.equals("") && ser.precioServicio > 0) {
+			if (jtblConsumo.getRowCount() == 0) {
+				dtm.addRow(new Object[] { ser.codServicio, ser.nomServicio, 1,
+						Libreria.formatoDecimales(ser.precioServicio),
+						Libreria.formato2Decimales(ser.precioServicio) });
+				total += ser.precioServicio;
+				txtTotal.setText(Libreria.formatoSoles(total));
+			}
+			else {
+				int c = 0;
+				for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
+					if (ser.codServicio.equals(jtblConsumo.getValueAt(i, 0).toString())) {
+						c++;
+						break;
+					}
+				}
+
+				if (c == 0) {
+					dtm.addRow(new Object[] { ser.codServicio, ser.nomServicio, 1,
+							Libreria.formatoDecimales(ser.precioServicio),
+							Libreria.formato2Decimales(ser.precioServicio) });
+					total += ser.precioServicio;
+					txtTotal.setText(Libreria.formatoSoles(total));
+				}
+				else {
+					Libreria.mensajeInformacion(this, "El SERVICIO ya fue agregado a la lista.");
+				}
+			}
+		}
+	} 
+	
+	
+	//********************************************************************************
+	//BOTON PARA LLAMAR A PACIENTE
+	protected void mouseEnteredLblnext(MouseEvent e) {
+		lblnext.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/nextventanaBlanco.png")));
+		lblnext.setOpaque(true);
+		lblnext.setBackground(new Color(10, 20, 26));
+		lblnext.setForeground(new Color(255,255,255));
+	}
+	
+	protected void mouseExiteddLblnext(MouseEvent e) {
+		lblnext.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/nextventana.png")));
+		lblnext.setOpaque(false);
+		lblnext.setForeground(new Color(10, 20, 26));
+	}
+	
+	protected void mouseClickedLblnext(MouseEvent e) {
+		DlgInternamiento hos = new DlgInternamiento();
+		hos.setTitle("PACIENTES HOSPITALIZADOS");
+		hos.btnBuscarPaciente.setEnabled(false);
+		hos.rdbtnEconomico.setEnabled(false);
+		hos.rdbtnEjecutivo.setEnabled(false);
+		hos.cboNroCamas.setEnabled(false);
+		hos.btnAceptar.setEnabled(false);
+		hos.btnCancelar.setEnabled(false);
+		hos.btnGrabarHospitalizacion.setEnabled(false);
+		hos.rdbtnFiltrarPagado.setEnabled(false);
+		hos.rdbtnFiltrarTodo.setEnabled(false);
+		hos.setVisible(true);
+		txtCodigoPaciente.setText(hos.codigoPaciente);
+	}
+	
+
 }
