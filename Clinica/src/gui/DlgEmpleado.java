@@ -346,9 +346,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblAgregar.addMouseListener(this);
 																																						lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																																						lblAgregar.setForeground(Color.BLACK);
+																																						lblAgregar.setForeground(new Color(0, 0, 0));
 																																						lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
-																																						lblAgregar.setBackground(Color.YELLOW);
+																																						lblAgregar.setBackground(new Color(255, 255, 0));
 																																						lblAgregar.setBounds(145, 439, 175, 39);
 																																						panel.add(lblAgregar);
 																																						
@@ -592,15 +592,16 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	}
 
 	void adicionarEmpleado() {
-		if (leerApellidos().equals("")) {
+		if (leerNombres().equals("")) {
+			Libreria.mensajeAdvertencia(this, "No ingresó su NOMBRE");
+			txtNombres.requestFocus();
+		}
+		else if (leerApellidos().equals("")) {
 			Libreria.mensajeAdvertencia(this, "No ingresó su APELLIDO");
 			txtApellidos.setText("");
 			txtApellidos.requestFocus();
 		}
-		else if (leerNombres().equals("")) {
-			Libreria.mensajeAdvertencia(this, "No ingresó su NOMBRE");
-			txtNombres.requestFocus();
-		}
+
 		else if (leerLogin().equals("")) {
 			Libreria.mensajeAdvertencia(this, "No ingresó su LOGIN");
 			txtLogin.setText("");
@@ -617,7 +618,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 			txtLogin.requestFocus();
 		}
 		else {
-			Empleado nuevo = new Empleado(leerCodigo(), leerApellidos(), leerNombres(), leerTipo(), leerLogin(),
+			Empleado nuevo = new Empleado(leerCodigo(),leerNombres(), leerApellidos(),leerTipo(), leerLogin(),
 					leerPassword(), leerTurno());
 			ae.adicionar(nuevo);
 			listado();
@@ -985,6 +986,12 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		if (arg0.getSource() == lblIngresar) {
 			mouseEnteredLblIngresar(arg0);
 		}
+		if (arg0.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(arg0);
+		}
+		if (arg0.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(arg0);
+		}
 	}
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == lblModificar) {
@@ -1056,9 +1063,9 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
 	}
 	protected void mouseEnteredlblAgregar(MouseEvent e) {
+		lblEliminar.setBackground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(255, 255, 255));
 		lblAgregar.setOpaque(true);
-		lblAgregar.setBackground(new Color(30, 60, 79));
-		lblAgregar.setForeground(new Color(255, 255, 255));
 		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
 	}
 	protected void mouseEnteredCancelar(MouseEvent e) {
@@ -1090,10 +1097,11 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		
 	}
 	protected void mouseExitedLblCancelar(MouseEvent arg0) {
-		lblCancelar.setOpaque(false);
-		lblCancelar.setForeground(new Color(10, 20, 26));
+	
 		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
 		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
+		lblEliminar.setOpaque(false);
+		lblEliminar.setForeground(new Color(243, 124, 47));
 		
 	}
 	protected void mouseExitedLblAgregar(MouseEvent arg0) {

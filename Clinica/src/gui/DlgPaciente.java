@@ -715,7 +715,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			txtDni.requestFocus();
 		}
 		else {
-			Paciente nuevo = new Paciente(leerCodigo(), leerApellidos(), leerNombres(), leerTelefono(), leerDni());
+			Paciente nuevo = new Paciente(leerCodigo(), leerNombres(), leerApellidos(),leerDni(),leerTelefono());
 			ap.adicionar(nuevo);
 			listado();
 			habilitarEntradas(true);
