@@ -719,6 +719,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 			ap.adicionar(nuevo);
 			listado();
 			habilitarEntradas(true);
+			limpieza();
 		}
 	}
 
@@ -1068,7 +1069,7 @@ private void editableTrue(){
 		switch (tipoOperacion) {
 		case ADICIONAR:
 			adicionarPaciente();
-			limpieza();
+			
 			txtCodigo.setText("" + ap.codigoCorrelativo());
 			break;
 		case CONSULTAR:
