@@ -58,8 +58,6 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	private JTextField txtCodigoPaciente;
 	private JLabel lblCodigoPaciente;
 	private JTable jtblConsumo;
-	private JButton btnEliminar;
-	private JButton btnRegistrar;
 	private JPanel panel;
 	private int x;
 	private int y;
@@ -110,7 +108,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		setResizable(false);
 		setTitle("Registro de Consumo");
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 755, 728);
+		setBounds(100, 100, 753, 728);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -148,26 +146,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblTotal.setForeground(Color.BLACK);
 		lblTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotal.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		lblTotal.setBounds(462, 560, 147, 14);
+		lblTotal.setBounds(527, 560, 82, 14);
 		getContentPane().add(lblTotal);
-
-		btnEliminar = new JButton("ELIMINAR PRODUCTO DE LISTA");
-		btnEliminar.addActionListener(this);
-		btnEliminar.setForeground(Color.BLACK);
-		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnEliminar.setBackground(new Color(135, 206, 235));
-		btnEliminar.setBounds(60, 548, 263, 39);
-		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
-		getContentPane().add(btnEliminar);
-
-		btnRegistrar = new JButton("REGISTRAR");
-		btnRegistrar.addActionListener(this);
-		btnRegistrar.setForeground(Color.BLACK);
-		btnRegistrar.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		btnRegistrar.setBackground(new Color(0, 255, 127));
-		btnRegistrar.setBounds(358, 548, 147, 39);
-		ds.setCurvasButton(btnRegistrar, "imagenes/aceptar.png");
-		getContentPane().add(btnRegistrar);
 
 		panel = new JPanel();
 		panel.setBorder(null);
@@ -264,7 +244,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		
 		lblnext = new JLabel("...");
 		lblnext.addMouseListener(this);
-		lblnext.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/nextventana.png")));
+		lblnext.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/siguienteNEgro.png")));
 		lblnext.setHorizontalAlignment(SwingConstants.CENTER);
 		lblnext.setForeground(new Color(10, 20, 26));
 		lblnext.setFont(new Font("Dialog", Font.BOLD, 16));
@@ -330,7 +310,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblEliminarProductoDe.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblEliminarProductoDe.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblEliminarProductoDe.setBackground(new Color(1, 168, 25));
-		lblEliminarProductoDe.setBounds(23, 598, 300, 37);
+		lblEliminarProductoDe.setBounds(20, 547, 300, 37);
 		getContentPane().add(lblEliminarProductoDe);
 		
 		lblRegistrar = new JLabel("REGISTRAR");
@@ -341,7 +321,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblRegistrar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblRegistrar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblRegistrar.setBackground(new Color(1, 168, 25));
-		lblRegistrar.setBounds(345, 598, 169, 36);
+		lblRegistrar.setBounds(343, 547, 169, 36);
 		getContentPane().add(lblRegistrar);
 
 		setCodigoConsumo();
@@ -351,61 +331,6 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnRegistrar) {
-			actionPerformedBtnRegistrar(arg0);
-		}
-		if (arg0.getSource() == btnEliminar) {
-			actionPerformedBtnEliminar(arg0);
-		}
-	}
-
-	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
-		eliminarProductoDeLista();
-	}
-
-	protected void actionPerformedBtnRegistrar(ActionEvent arg0) {
-		if (leerCodConsumo() == -1) {
-			Libreria.mensajeInformacion(this, "EL CAMPO CÓDIGO DE CONSUMO NO PUEDE ESTAR VACÍO");
-		}
-		else if (leerCodPaciente() == -1) {
-			Libreria.mensajeInformacion(this, "DEBE SELECCIONAR EL CÓDIGO DEL PACIENTE");
-		}
-		else {
-			if (jtblConsumo.getRowCount() != 0) {
-				int msj = Libreria.confirmacion(this, "¿Desea registrar el detalle de consumo?");
-
-				if (msj == 0) {
-					ac.adicionar(new Atencion(leerCodConsumo(), leerCodPaciente(), Fecha.getFecha(cboDia, cboMes, cboAno), 0,
-							total));
-					ac.grabarConsumo();
-
-					int codProducto = 0, cantidad = 0;
-					double precioUnitario = 0.0, subtotal = 0.0;
-
-					for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
-						codProducto = Integer.parseInt(jtblConsumo.getValueAt(i, 0).toString());
-						cantidad = Integer.parseInt(jtblConsumo.getValueAt(i, 2).toString());
-						precioUnitario = Double.parseDouble(jtblConsumo.getValueAt(i, 3).toString());
-						subtotal = cantidad * precioUnitario;
-						adet.adicionar(
-								new DetalleAtencion(leerCodConsumo(), codProducto, cantidad, precioUnitario, subtotal));
-					}
-
-					for (int i = 0; i < jtblConsumo.getRowCount(); i++) {
-						Medicamentos med;
-						for (int j = 0; j < am.tamaño(); j++) {
-							med = am.obtener(j);
-							if (med.getCodMedicamento() == Integer.parseInt(jtblConsumo.getValueAt(i, 0).toString())){
-								med.restarStock(Integer.parseInt(jtblConsumo.getValueAt(i, 2).toString()));
-							}
-						}
-					}
-					am.grabarMedicamentos();
-					adet.grabarDetalleConsumo();
-					nuevoRegistroConsumo();
-				}
-			}
-		}
 	}
 
 	// Métodos void sin parámetros
@@ -502,7 +427,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	
 	public void mouseEntered(MouseEvent e) {
 		if (e.getSource() == lblnext) {
-			mouseEnteredLblSeleccionarServicio(e);
+			mouseEnteredLblNext(e);
 		}
 		if (e.getSource() == lblSeleccionarServicio) {
 			mouseEnteredLblSeleccionarServicio(e);
@@ -520,7 +445,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == lblnext) {
-			mouseExitedLblSeleccionarServicio(e);
+			mouseExitedLblNext(e);
 		}
 		if (e.getSource() == lblSeleccionarServicio) {
 			mouseExitedLblSeleccionarServicio(e);
@@ -674,6 +599,13 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	
 	//*******************************************************************************************************
 	//BOTON SELECIONAR SERVICIO
+	
+	protected void mouseEnteredLblNext(MouseEvent e) {
+		lblnext.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/siguienteBlanco.png")));
+		lblnext.setOpaque(true);
+		lblnext.setBackground(new Color(10, 20, 26));
+		lblnext.setForeground(new Color(255,255,255));
+	}
 	protected void mouseEnteredLblSeleccionarServicio(MouseEvent e) {
 		lblSeleccionarServicio.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/atencion_serviciosBlanco.png")));
 		lblSeleccionarServicio.setOpaque(true);
@@ -681,6 +613,11 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblSeleccionarServicio.setForeground(new Color(255,255,255));
 	}
 	
+	protected void mouseExitedLblNext(MouseEvent e) {
+		lblnext.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/siguienteNegro.png")));
+		lblnext.setOpaque(false);
+		lblnext.setForeground(new Color(10, 20, 26));
+	}
 	protected void mouseExitedLblSeleccionarServicio(MouseEvent e) {
 		lblSeleccionarServicio.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/atencion_servicios.png")));
 		lblSeleccionarServicio.setOpaque(false);
