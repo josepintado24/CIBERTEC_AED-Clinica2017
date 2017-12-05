@@ -157,6 +157,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		scpMedicamentos.setViewportView(jtblCamas);
 
 		rdbtnLibre = new JRadioButton("LIBRE");
+		rdbtnLibre.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnLibre.setBounds(243, 130, 70, 23);
 		rdbtnLibre.addActionListener(this);
 		rdbtnLibre.setSelected(true);
@@ -166,6 +167,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnLibre);
 
 		rdbtnOcupado = new JRadioButton("OCUPADO");
+		rdbtnOcupado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnOcupado.setBounds(315, 130, 103, 23);
 		rdbtnOcupado.addActionListener(this);
 		rdbtnOcupado.setForeground(Color.BLACK);
@@ -174,6 +176,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		contentPane.add(rdbtnOcupado);
 
 		rdbtnTodo = new JRadioButton("TODO");
+		rdbtnTodo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnTodo.setBounds(420, 130, 70, 23);
 		rdbtnTodo.addActionListener(this);
 		rdbtnTodo.setForeground(Color.BLACK);
@@ -271,6 +274,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																txtNroCama.setOpaque(false);
 																																
 																																		cboCategoria = new JComboBox<String>();
+																																		cboCategoria.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																		cboCategoria.setBounds(92, 183, 161, 29);
 																																		panel_1.add(cboCategoria);
 																																		cboCategoria.setEnabled(false);
@@ -278,6 +282,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 																																		cboCategoria.setFont(new Font("Arial", Font.BOLD, 12));
 																																		
 																																				cboEstado = new JComboBox<String>();
+																																				cboEstado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																				cboEstado.setBounds(92, 342, 161, 29);
 																																				panel_1.add(cboEstado);
 																																				cboEstado.setEnabled(false);

@@ -502,7 +502,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 				int result =JOptionPane.showConfirmDialog(null, "¿Desea salir de la ventana?","Exit",dialog,dialog,m);
 				
 				if(result ==0){
-					System.exit(0);
+					dispose();
 				}
 			}
 		});
