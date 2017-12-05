@@ -38,7 +38,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.MatteBorder;
-import javax.swing.border.LineBorder;
 
 public class DlgReportePacientesPagado extends JDialog implements ActionListener {
 
@@ -141,7 +140,6 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		getContentPane().add(cboAño);
 
 		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		btnBuscar.setContentAreaFilled(false);
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override

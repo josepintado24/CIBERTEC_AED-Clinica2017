@@ -43,6 +43,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JSeparator;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 public class DlgServicios extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -103,6 +104,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
 	private JLabel lblGrabar;
+	private JLabel label_1;
 
 	public static void main(String[] args) {
 		try {
@@ -126,7 +128,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | SERVICIO");
-		setBounds(100, 100, 1166, 585);
+		setBounds(100, 100, 1152, 526);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setForeground(new Color(255, 255, 255));
 		contentPanel.setBackground(Color.WHITE);
@@ -137,14 +139,14 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblMensaje = new JLabel("");
 		lblMensaje.setOpaque(true);
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMensaje.setForeground(Color.WHITE);
+		lblMensaje.setForeground(Color.BLACK);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(36, 70, 351, 29);
+		lblMensaje.setBackground(Color.WHITE);
+		lblMensaje.setBounds(26, 70, 361, 29);
 		contentPanel.add(lblMensaje);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(411, 123, 724, 390);
+		scrollPane.setBounds(411, 98, 724, 415);
 		contentPanel.add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -164,6 +166,8 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		scrollPane.setViewportView(jtblServicios);
 		
 		panel = new JPanel();
+		panel.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
+		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
@@ -179,7 +183,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 			}
 		});
 		panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		panel.setBounds(0, 0, 1111, 39);
+		panel.setBounds(0, 0, 1152, 39);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -202,25 +206,30 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		});
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setIcon(new ImageIcon(DlgServicios.class.getResource("/image/icons8_Return_32px.png")));
-		label.setBounds(1069, 0, 32, 39);
+		label.setBounds(1110, 0, 32, 39);
 		panel.add(label);
 		
 		lblServicios = new JLabel("Servicios");
 		lblServicios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblServicios.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblServicios.setBounds(29, 0, 130, 39);
+		lblServicios.setBounds(38, 0, 130, 39);
 		panel.add(lblServicios);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgServicios.class.getResource("/image/salesman.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel.add(label_1);
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
 		panel_1.setForeground(new Color(255, 255, 255));
-		panel_1.setBounds(10, 110, 391, 403);
+		panel_1.setBounds(10, 50, 391, 463);
 		contentPanel.add(panel_1);
-		panel_1.setLayout(null);
 		panel_1.setVisible(false);
+				panel_1.setLayout(null);
 		
 				txtPrecio = new JTextField();
-				txtPrecio.setBounds(129, 157, 94, 20);
+				txtPrecio.setBounds(124, 242, 94, 20);
 				panel_1.add(txtPrecio);
 				txtPrecio.setEditable(false);
 				txtPrecio.addKeyListener(this);
@@ -231,27 +240,28 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 				txtPrecio.setOpaque(false);
 				
 						lblPrecio = new JLabel("PRECIO");
-						lblPrecio.setBounds(0, 163, 88, 14);
+						lblPrecio.setBounds(-5, 248, 88, 14);
 						panel_1.add(lblPrecio);
 						lblPrecio.setForeground(Color.BLACK);
 						lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 						lblPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 						
 								cboTipo = new JComboBox<String>();
-								cboTipo.setBounds(98, 108, 252, 29);
+								cboTipo.setBounds(100, 190, 252, 29);
 								panel_1.add(cboTipo);
 								cboTipo.setForeground(Color.BLACK);
 								cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 								
 										lblTipo = new JLabel("TIPO");
-										lblTipo.setBounds(0, 115, 88, 14);
+										lblTipo.setInheritsPopupMenu(false);
+										lblTipo.setBounds(-5, 197, 68, 14);
 										panel_1.add(lblTipo);
 										lblTipo.setForeground(Color.BLACK);
 										lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
 										lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 										
 												txtDescripcion = new JTextField();
-												txtDescripcion.setBounds(129, 78, 252, 19);
+												txtDescripcion.setBounds(124, 143, 252, 19);
 												panel_1.add(txtDescripcion);
 												txtDescripcion.setEditable(false);
 												txtDescripcion.addKeyListener(this);
@@ -261,22 +271,23 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 												txtDescripcion.setBorder(null);
 												txtDescripcion.setOpaque(false);
 												
-														lblDescripcion = new JLabel("DESCRIPCI\u00D3N");
-														lblDescripcion.setBounds(0, 83, 89, 14);
+														lblDescripcion = new JLabel("DESCRIP");
+														lblDescripcion.setInheritsPopupMenu(false);
+														lblDescripcion.setBounds(10, 151, 81, 14);
 														panel_1.add(lblDescripcion);
 														lblDescripcion.setForeground(Color.BLACK);
 														lblDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
 														lblDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 														
 																lblCodigo = new JLabel("C\u00D3DIGO");
-																lblCodigo.setBounds(10, 43, 68, 14);
+																lblCodigo.setBounds(17, 98, 68, 14);
 																panel_1.add(lblCodigo);
 																lblCodigo.setForeground(Color.BLACK);
 																lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
 																lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 																
 																		txtCodigo = new JTextField();
-																		txtCodigo.setBounds(124, 28, 99, 29);
+																		txtCodigo.setBounds(119, 85, 99, 29);
 																		panel_1.add(txtCodigo);
 																		txtCodigo.setEditable(false);
 																		txtCodigo.addKeyListener(this);
@@ -287,33 +298,34 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																		txtCodigo.setOpaque(false);
 																				
 																				lbliconCodigo = new JLabel("");
+																				lbliconCodigo.setBounds(96, 92, 24, 22);
 																				lbliconCodigo.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/codigo.png")));
-																				lbliconCodigo.setBounds(101, 35, 24, 22);
 																				panel_1.add(lbliconCodigo);
 																				
 																				sCodigo = new JSeparator();
-																				sCodigo.setBounds(107, 58, 121, 2);
+																				sCodigo.setBounds(102, 115, 121, 2);
 																				panel_1.add(sCodigo);
 																				
 																				lbliconDescripcion = new JLabel("");
+																				lbliconDescripcion.setBounds(96, 141, 24, 22);
 																				lbliconDescripcion.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/description.png")));
-																				lbliconDescripcion.setBounds(101, 76, 24, 22);
 																				panel_1.add(lbliconDescripcion);
 																				
 																				sDescripcion = new JSeparator();
-																				sDescripcion.setBounds(102, 98, 284, 2);
+																				sDescripcion.setBounds(97, 163, 284, 2);
 																				panel_1.add(sDescripcion);
 																				
 																				lbliconPrecio = new JLabel("");
+																				lbliconPrecio.setBounds(93, 230, 24, 33);
 																				lbliconPrecio.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/price-tag.png")));
-																				lbliconPrecio.setBounds(98, 156, 24, 22);
 																				panel_1.add(lbliconPrecio);
 																				
 																				sPrecio = new JSeparator();
-																				sPrecio.setBounds(98, 177, 130, 2);
+																				sPrecio.setBounds(93, 262, 130, 2);
 																				panel_1.add(sPrecio);
 																				
 																				lblBuscar = new JLabel("Buscar");
+																				lblBuscar.setBounds(228, 80, 136, 39);
 																				lblBuscar.addMouseListener(this);
 																				lblBuscar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/buscar.png")));
 																				lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -321,10 +333,10 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblBuscar.setForeground(Color.BLACK);
 																				lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																				lblBuscar.setBackground(Color.BLUE);
-																				lblBuscar.setBounds(233, 23, 136, 39);
 																				panel_1.add(lblBuscar);
 																				
 																				lblAgregar = new JLabel("Agregar");
+																				lblAgregar.setBounds(98, 275, 195, 39);
 																				lblAgregar.addMouseListener(this);
 																				lblAgregar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/Agregar.png")));
 																				lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -332,20 +344,20 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblAgregar.setForeground(Color.BLACK);
 																				lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																				lblAgregar.setBackground(new Color(1, 168, 25));
-																				lblAgregar.setBounds(98, 240, 175, 39);
 																				panel_1.add(lblAgregar);
 																				
 																				lblCancelar = new JLabel("Cancelar");
+																				lblCancelar.setBounds(98, 325, 195, 39);
 																				lblCancelar.addMouseListener(this);
 																				lblCancelar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/regreso.png")));
 																				lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 																				lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																				lblCancelar.setForeground(Color.BLACK);
 																				lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
-																				lblCancelar.setBounds(98, 290, 191, 39);
 																				panel_1.add(lblCancelar);
 																				
 																				lblGrabar = new JLabel("Grabar");
+																				lblGrabar.setBounds(98, 375, 195, 41);
 																				lblGrabar.addMouseListener(this);
 																				lblGrabar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/save.png")));
 																				lblGrabar.setOpaque(true);
@@ -354,7 +366,6 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblGrabar.setForeground(Color.WHITE);
 																				lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 																				lblGrabar.setBackground(new Color(231, 96, 90));
-																				lblGrabar.setBounds(98, 340, 184, 41);
 																				panel_1.add(lblGrabar);
 																				
 																				lblIngresar = new JLabel("INGRESAR");
@@ -365,9 +376,9 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																				lblIngresar.setForeground(Color.BLACK);
 																				lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																				lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblIngresar.setBorder(new LineBorder(Color.BLACK, 1, true));
 																				lblIngresar.setBackground(new Color(1, 168, 25));
-																				lblIngresar.setBounds(411, 70, 158, 37);
+																				lblIngresar.setBounds(411, 50, 158, 37);
 																				contentPanel.add(lblIngresar);
 																				
 																				lblConsultar = new JLabel("CONSULTAR");
@@ -378,9 +389,9 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																				lblConsultar.setForeground(Color.BLACK);
 																				lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																				lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblConsultar.setBorder(new LineBorder(Color.DARK_GRAY, 1, true));
 																				lblConsultar.setBackground(new Color(1, 168, 25));
-																				lblConsultar.setBounds(579, 70, 169, 37);
+																				lblConsultar.setBounds(579, 50, 169, 37);
 																				contentPanel.add(lblConsultar);
 																				
 																				lblModificar = new JLabel("MODIFICAR");
@@ -390,9 +401,9 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																				lblModificar.setForeground(Color.BLACK);
 																				lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																				lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblModificar.setBorder(new LineBorder(Color.BLACK, 1, true));
 																				lblModificar.setBackground(Color.WHITE);
-																				lblModificar.setBounds(758, 70, 175, 36);
+																				lblModificar.setBounds(758, 50, 175, 36);
 																				contentPanel.add(lblModificar);
 																				
 																				lblEliminar = new JLabel("ELIMINAR");
@@ -402,8 +413,8 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 																				lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																				lblEliminar.setForeground(Color.BLACK);
 																				lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
-																				lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
-																				lblEliminar.setBounds(952, 70, 183, 36);
+																				lblEliminar.setBorder(new LineBorder(Color.BLACK, 1, true));
+																				lblEliminar.setBounds(952, 50, 183, 36);
 																				contentPanel.add(lblEliminar);
 								cboTipo.addItem("ANÁLISIS CLÍNICOS");
 								cboTipo.addItem("INTERVENCIONES QUIRÚRJICAS");
