@@ -135,6 +135,7 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		getContentPane().add(cboAño);
 
 		btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setIcon(new ImageIcon(DlgReportePacientesPagado.class.getResource("/iconBotones/buscar.png")));
 		btnBuscar.addActionListener(this);
 		btnBuscar.setForeground(Color.BLACK);
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
