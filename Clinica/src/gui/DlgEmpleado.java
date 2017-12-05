@@ -134,7 +134,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | EMPLEADOS");
-		setBounds(100, 100, 1266, 742);
+		setBounds(100, 100, 1114, 742);
 		getContentPane().setLayout(null);
 
 		lblMensaje = new JLabel("");
@@ -143,7 +143,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		lblMensaje.setForeground(Color.BLACK);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.WHITE);
-		lblMensaje.setBounds(860, 70, 313, 29);
+		lblMensaje.setBounds(779, 70, 313, 29);
 		getContentPane().add(lblMensaje);
 
 		scrollPane = new JScrollPane();
@@ -167,7 +167,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(765, 125, 466, 594);
+		panel.setBounds(765, 125, 338, 594);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -350,7 +350,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblAgregar.setForeground(new Color(0, 0, 0));
 																																						lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																																						lblAgregar.setBackground(new Color(1, 168, 25));
-																																						lblAgregar.setBounds(145, 439, 175, 39);
+																																						lblAgregar.setBounds(87, 442, 188, 39);
 																																						panel.add(lblAgregar);
 																																						
 																																						lblCancelar = new JLabel("Cancelar");
@@ -360,7 +360,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 																																						lblCancelar.setForeground(Color.BLACK);
 																																						lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
-																																						lblCancelar.setBounds(138, 479, 191, 39);
+																																						lblCancelar.setBounds(87, 492, 188, 39);
 																																						panel.add(lblCancelar);
 																																						
 																																						lblGrabar = new JLabel("Grabar");
@@ -372,7 +372,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblGrabar.setForeground(Color.WHITE);
 																																						lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 																																						lblGrabar.setBackground(new Color(231, 96, 90));
-																																						lblGrabar.setBounds(145, 529, 184, 41);
+																																						lblGrabar.setBounds(87, 542, 188, 41);
 																																						panel.add(lblGrabar);
 																																						
 																																						lblBuscar = new JLabel("Buscar");
@@ -453,7 +453,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						});
 																																						panel_1.setBackground(Color.WHITE);
 																																						panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																																						panel_1.setBounds(0, 0, 1438, 39);
+																																						panel_1.setBounds(0, 0, 1114, 39);
 																																						getContentPane().add(panel_1);
 																																						panel_1.setLayout(null);
 																																						
@@ -475,7 +475,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						});
 																																						label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						label.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/icons8_Return_32px.png")));
-																																						label.setBounds(1223, 0, 43, 39);
+																																						label.setBounds(1071, 0, 43, 39);
 																																						panel_1.add(label);
 																																						
 																																						lblEmpleado = new JLabel("Empleado");
