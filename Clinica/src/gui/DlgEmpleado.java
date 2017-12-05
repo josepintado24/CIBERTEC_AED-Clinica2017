@@ -376,6 +376,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						panel.add(lblGrabar);
 																																						
 																																						lblBuscar = new JLabel("Buscar");
+																																						lblBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 																																						lblBuscar.addMouseListener(this);
 																																						lblBuscar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/buscar.png")));
 																																						lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);

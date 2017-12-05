@@ -37,6 +37,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.LineBorder;
 
 public class DlgReportePacientesPagado extends JDialog implements ActionListener {
 
@@ -60,6 +62,7 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 	private JPanel panel;
 	private JLabel label;
 	private JLabel lblReportPacientes;
+	private JLabel label_1;
 
 	public static void main(String[] args) {
 		try {
@@ -107,42 +110,64 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		lblFechaLlegada.setHorizontalAlignment(SwingConstants.LEFT);
 		lblFechaLlegada.setForeground(Color.BLACK);
 		lblFechaLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblFechaLlegada.setBounds(10, 80, 103, 14);
+		lblFechaLlegada.setBounds(10, 80, 149, 14);
 		getContentPane().add(lblFechaLlegada);
 
 		cboDia = new JComboBox<String>();
+		cboDia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboDia.setBounds(123, 68, 59, 38);
+		cboDia.setBounds(169, 68, 59, 38);
 		Fecha.colocarItems(cboDia, 1, 31);
 		Fecha.colocarDiaActual(cboDia);
 		getContentPane().add(cboDia);
 
 		cboMes = new JComboBox<String>();
+		cboMes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboMes.setBounds(183, 68, 116, 38);
+		cboMes.setBounds(229, 68, 116, 38);
 		Fecha.colocarMeses(cboMes);
 		Fecha.colocarMesActual(cboMes);
 		getContentPane().add(cboMes);
 
 		cboAño = new JComboBox<String>();
+		cboAño.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboAño.setForeground(Color.BLACK);
 		cboAño.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboAño.setBounds(300, 68, 83, 38);
+		cboAño.setBounds(346, 68, 83, 38);
 		Fecha.colocarItems(cboAño, 2000, Fecha.añoActual());
 		cboAño.setSelectedIndex(16);
 		getContentPane().add(cboAño);
 
 		btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		btnBuscar.setContentAreaFilled(false);
+		btnBuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnBuscar.setOpaque(false);
+				btnBuscar.setForeground(new Color(10, 20, 26));
+				btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscar.png")));
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnBuscar.setOpaque(true);
+				btnBuscar.setBackground(new Color(30, 60, 79));
+				btnBuscar.setForeground(new Color(255, 255, 255));
+				btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
+			}
+		});
+		btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnBuscar.setIcon(new ImageIcon(DlgReportePacientesPagado.class.getResource("/iconBotones/buscar.png")));
 		btnBuscar.addActionListener(this);
 		btnBuscar.setForeground(Color.BLACK);
 		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscar.setBounds(393, 68, 149, 38);
+		btnBuscar.setBounds(439, 68, 149, 38);
 		getContentPane().add(btnBuscar);
 		
 		panel = new JPanel();
+		panel.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
 		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
@@ -187,6 +212,11 @@ public class DlgReportePacientesPagado extends JDialog implements ActionListener
 		lblReportPacientes.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblReportPacientes.setBounds(38, 0, 132, 39);
 		panel.add(lblReportPacientes);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgReportePacientesPagado.class.getResource("/image/chart.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel.add(label_1);
 
 		modeloTabla();
 		listar(0);
