@@ -610,6 +610,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				visiblePrecioxDia(false);
 				lblAgregarCama.setVisible(false);
 				lblGrabarCama.setVisible(false);
+				
 				if (tipoOperacion!=CONSULTAR){
 					lblAgregarCama.setVisible(true);
 					lblGrabarCama.setVisible(true);
@@ -623,10 +624,13 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				lblMensaje.setText("");
 				txtNroCama.setText("");
 				txtNroCama.requestFocus();
+				switch(tipoOperacion){
+				case 0: lblMensaje.setText("Adiciondo cama");break;
+				case 1: lblMensaje.setText("Modificando cama");break;
+				case 2: lblMensaje.setText("Eliminando cama");break;
+				case 3: lblMensaje.setText("Consultando cama");break;
+				}
 				
-				//visibleCategoria(true);
-				//visibleEstado(true);
-				//visiblePrecioxDia(true);
 				lblCategoria.setVisible(false);
 			}
 		}
@@ -649,10 +653,11 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 				else if (leerPrecioxDia() < 0.0) {
 					Libreria.mensajeAdvertencia(this, "No ingresó el PRECIO POR DÍA");
 					txtPrecioxDia.setText("");
+					lblMensaje.setText("Modificando camas");
 					txtPrecioxDia.requestFocus();
 				}
 				else {
-					lblMensaje.setText("");
+					lblMensaje.setText("Modificando camas");;
 					x.setCategoria(leerCategoria());
 					x.setPrecioxDia(leerPrecioxDia());
 					x.setEstado(leerEstado());
@@ -922,17 +927,18 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 	protected void mouseClickedLblConsultar(MouseEvent e) {
 		tipoOperacion = CONSULTAR;
 		lblMensaje.setText("Consultando camas");
-		habilitarBusqueda(true);
 		habilitarOperaciones(false);
 		cboEstado.setEnabled(false);
 		panel_1.setVisible(true);
-		txtNroCama.requestFocus();
 		visibleCodigo(false);
 		visibleCategoria(true);
 		visibleEstado(true);
 		visiblePrecioxDia(true);
 		lblAgregarCama.setVisible(false);
 		lblGrabarCama.setVisible(false);
+		lblBuscarCama.setEnabled(true);
+		txtNroCama.setEditable(true);
+		txtNroCama.requestFocus();
 	}
 	
 	
@@ -1024,11 +1030,6 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		visibleCodigo(false);
 		txtNroCama.setEditable(true);
 		txtNroCama.requestFocus();
-		
-	
-			
-		
-		
 	}
 	
 	//***************************************************************************
@@ -1058,14 +1059,14 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			lblCancelarCama.setEnabled(true);
 			lblGrabarCama.setEnabled(true);
 			habilitarBotones(false);
-			lblMensaje.setText("Modificando cama");
+			lblMensaje.setText("Adicionando cama");
 			txtNroCama.requestFocus();
 			break;
 		case CONSULTAR:
 			limpieza();
 			habilitarBusqueda(false);
 			habilitarOperaciones(true);
-			lblMensaje.setText("Consultando cama...");
+			lblMensaje.setText("Consultando cama");
 			lblBuscarCama.setVisible(true);
 			break;
 		case MODIFICAR:
@@ -1076,7 +1077,9 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			lblGrabarCama.setEnabled(true);
 			habilitarBotones(false);
 			lblBuscarCama.setEnabled(true);
+			lblMensaje.setText("Modificando cama");
 			txtNroCama.requestFocus();
+			
 			break;
 		case ELIMINAR:
 			eliminarCama();
@@ -1085,6 +1088,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			lblAgregarCama.setEnabled(true);
 			lblCancelarCama.setEnabled(true);
 			lblGrabarCama.setEnabled(true);
+			lblMensaje.setText("Eliminando cama");
 			txtNroCama.setEditable(true);
 			
 		}	
