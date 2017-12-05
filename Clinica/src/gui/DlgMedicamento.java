@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +35,11 @@ import libreria.Validaciones;
 import java.awt.event.MouseListener;
 import javax.swing.border.LineBorder;
 import javax.swing.JSeparator;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.MatteBorder;
 
 public class DlgMedicamento extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -99,6 +104,10 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	private JTextField txtStock;
 	private JLabel lblAgregar;
 	private JLabel lblCancelar;
+	private JLabel label;
+	private JLabel label_1;
+	private int x;
+	private int y;
 
 	public static void main(String[] args) {
 		try {
@@ -121,11 +130,12 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 	 * Create the dialog.
 	 */
 	public DlgMedicamento() {
+		setUndecorated(true);
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | MEDICAMENTOS");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1266, 785);
+		setBounds(100, 100, 1189, 785);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -133,11 +143,11 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		contentPane.setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(413, 219, -394, -54);
+		scrollPane.setBounds(413, 251, -394, -54);
 		contentPane.add(scrollPane);
 
 		scpMedicamentos = new JScrollPane();
-		scpMedicamentos.setBounds(21, 211, 631, 436);
+		scpMedicamentos.setBounds(10, 136, 742, 638);
 		contentPane.add(scpMedicamentos);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -166,7 +176,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblIngresar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblIngresar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblIngresar.setBackground(new Color(1, 168, 25));
-		lblIngresar.setBounds(16, 79, 169, 37);
+		lblIngresar.setBounds(10, 67, 169, 37);
 		contentPane.add(lblIngresar);
 		
 		lblConsultar = new JLabel("CONSULTAR");
@@ -178,7 +188,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblConsultar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblConsultar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblConsultar.setBackground(new Color(1, 168, 25));
-		lblConsultar.setBounds(204, 80, 169, 36);
+		lblConsultar.setBounds(198, 68, 169, 36);
 		contentPane.add(lblConsultar);
 		
 		lblModificar = new JLabel("MODIFICAR");
@@ -190,7 +200,7 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblModificar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblModificar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblModificar.setBackground(new Color(1, 168, 25));
-		lblModificar.setBounds(394, 80, 175, 36);
+		lblModificar.setBounds(388, 68, 175, 36);
 		contentPane.add(lblModificar);
 		
 		lblEliminar = new JLabel("ELIMINAR");
@@ -202,13 +212,13 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 		lblEliminar.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblEliminar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 		lblEliminar.setBackground(Color.RED);
-		lblEliminar.setBounds(589, 80, 183, 36);
+		lblEliminar.setBounds(583, 68, 169, 36);
 		contentPane.add(lblEliminar);
 		
 		
 		panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(761, 35, 409, 707);
+		panel.setBounds(761, 67, 409, 707);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		panel.setVisible(false);
@@ -413,9 +423,63 @@ public class DlgMedicamento extends JDialog implements ActionListener, KeyListen
 																																panel.add(lblMensaje);
 																																lblMensaje.setOpaque(true);
 																																lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-																																lblMensaje.setForeground(Color.WHITE);
+																																lblMensaje.setForeground(Color.BLACK);
 																																lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
-																																lblMensaje.setBackground(Color.DARK_GRAY);
+																																lblMensaje.setBackground(Color.WHITE);
+																																
+																																JPanel panel_1 = new JPanel();
+																																panel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
+																																panel_1.setBackground(Color.WHITE);
+																																panel_1.addMouseMotionListener(new MouseMotionAdapter() {
+																																	@Override
+																																	public void mouseDragged(MouseEvent arg0) {
+																																		Point ubicacion = MouseInfo.getPointerInfo().getLocation();
+																																	    setLocation(ubicacion.x - x, ubicacion.y - y);
+																																	}
+																																});
+																																panel_1.addMouseListener(new MouseAdapter() {
+																																	@Override
+																																	public void mousePressed(MouseEvent e) {
+																																		x = e.getX();
+																																	    y = e.getY();
+																																	}
+																																});
+																																panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																panel_1.setBounds(0, 0, 1189, 39);
+																																contentPane.add(panel_1);
+																																panel_1.setLayout(null);
+																																
+																																JLabel lblMedicamentos = new JLabel("Medicamentos");
+																																lblMedicamentos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																lblMedicamentos.setFont(new Font("Decker", Font.PLAIN, 16));
+																																lblMedicamentos.setBounds(41, 0, 134, 39);
+																																panel_1.add(lblMedicamentos);
+																																
+																																label = new JLabel("");
+																																label.addMouseListener(new MouseAdapter() {
+																																	@Override
+																																	public void mouseClicked(MouseEvent e) {
+																																		Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+																																  		int dialog = JOptionPane.YES_NO_OPTION;
+																																 		int result1 =JOptionPane.showConfirmDialog(null, "¿Desea Volver a la Ventana Principal?","Abvertencia",dialog,dialog,m);
+																																 	
+																																  		
+																																  		if(result1 ==0){
+																																  			dispose();
+																																 			Principal frame = new Principal();
+																																 			frame.setVisible(true);}
+																																	}
+																																});
+																																label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																label.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/image/icons8_Return_32px.png")));
+																																label.setBounds(1146, 0, 33, 39);
+																																panel_1.add(label);
+																																
+																																label_1 = new JLabel("");
+																																label_1.setIcon(new ImageIcon(DlgMedicamento.class.getResource("/image/first-aid-kit.png")));
+																																label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																																label_1.setBounds(10, 0, 25, 39);
+																																panel_1.add(label_1);
 
 		listado();
 		modeloTabla();
