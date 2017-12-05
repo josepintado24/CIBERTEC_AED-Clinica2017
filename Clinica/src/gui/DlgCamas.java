@@ -1052,7 +1052,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		case ADICIONAR:
 			adicionarCama();
 			limpieza();
-			txtNroCama.setText("");;
+			txtNroCama.setText("");
 			habilitarEntradas(true);
 			lblAgregarCama.setEnabled(true);
 			lblCancelarCama.setEnabled(true);
@@ -1144,6 +1144,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 		lblIconCodigoCama.setVisible(!sino);
 		txtNroCama.setVisible(!sino);
 		SepNroCama.setVisible(!sino);
+		
 	}
 	
 	void visibleCategoria(boolean sino){
