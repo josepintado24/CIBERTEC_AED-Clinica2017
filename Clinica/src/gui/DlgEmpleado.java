@@ -386,7 +386,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						panel.add(lblBuscar);
 																																						
 																																						lblIngresar = new JLabel("INGRESAR");
-																																						lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
+																																						lblIngresar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNegro.png")));
 																																						lblIngresar.addMouseListener(this);
 																																						lblIngresar.setInheritsPopupMenu(false);
 																																						lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -399,7 +399,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						getContentPane().add(lblIngresar);
 																																						
 																																						lblConsultar = new JLabel("CONSULTAR");
-																																						lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/ingresarNaranja.png")));
+																																						lblConsultar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/consultarNegro.png")));
 																																						lblConsultar.addMouseListener(this);
 																																						lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						lblConsultar.setInheritsPopupMenu(false);
@@ -412,7 +412,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						getContentPane().add(lblConsultar);
 																																						
 																																						lblModificar = new JLabel("MODIFICAR");
-																																						lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNaranja.png")));
+																																						lblModificar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/modificarNegro.png")));
 																																						lblModificar.addMouseListener(this);
 																																						lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -424,7 +424,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						getContentPane().add(lblModificar);
 																																						
 																																	lblEliminar = new JLabel("ELIMINAR");
-																																	lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
+																																	lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNegro.png")));
 																																	lblEliminar.addMouseListener(this);
 																																	lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																	lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1081,14 +1081,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	///Exited
 	protected void mouseExitedLblConsultar(MouseEvent arg0) {
 		lblConsultar.setOpaque(false);
-		lblConsultar.setForeground(new Color(243, 124, 47));
-		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNaranja.png")));
+		lblConsultar.setForeground(new Color(10, 20, 26));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
 		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	protected void mouseExitedLblEliminar(MouseEvent arg0) {
-		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNaranja.png")));
+		lblEliminar.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/iconBotones/eliminarNegro.png")));
 		lblEliminar.setOpaque(false);
-		lblEliminar.setForeground(new Color(243, 124, 47));
+		lblEliminar.setForeground(new Color(10, 20, 26));
 	}
 	protected void mouseExitedLblBuscar(MouseEvent arg0) {
 		lblBuscar.setOpaque(false);
@@ -1114,14 +1114,14 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	}
 	protected void mouseExitedLblIngresar(MouseEvent arg0) {
 		lblIngresar.setOpaque(false);
-		lblIngresar.setForeground(new Color(243, 124, 47));
-		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNaranja.png")));
+		lblIngresar.setForeground(new Color(10, 20, 26));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
 		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 	}
 	protected void mouseExitedLblModificar(MouseEvent arg0) {
 		lblModificar.setOpaque(false);
-		lblModificar.setForeground(new Color(243, 124, 47));
-		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNaranja.png")));
+		lblModificar.setForeground(new Color(10, 20, 26));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
 		lblModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 124, 47)));
 		
 	}
