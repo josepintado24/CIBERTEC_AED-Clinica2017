@@ -582,7 +582,7 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			else {
 				Camas nuevo = new Camas(leerNroCama(), leerCategoria(), leerPrecioxDia(), leerEstado());
 				ac.adicionar(nuevo);
-				lblMensaje.setText("");
+				lblMensaje.setText("Modificando Cama");
 				actualizarTabla();
 				habilitarEntradas(false);
 				habilitarOperaciones(true);
@@ -1057,8 +1057,8 @@ public class DlgCamas extends JDialog implements ActionListener, KeyListener, Mo
 			lblAgregarCama.setEnabled(true);
 			lblCancelarCama.setEnabled(true);
 			lblGrabarCama.setEnabled(true);
-			lblMensaje.setText("Modificando cama");
 			habilitarBotones(false);
+			lblMensaje.setText("Modificando cama");
 			txtNroCama.requestFocus();
 			break;
 		case CONSULTAR:
