@@ -64,6 +64,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 	private JLabel label_1;
 	private JLabel lblR;
 	private JButton btnBuscar;
+	private JLabel label;
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -114,6 +115,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		getContentPane().add(lblFechaLlegada);
 		
 		cboDia = new JComboBox<String>();
+		cboDia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboDia.setForeground(Color.BLACK);
 		cboDia.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboDia.setBounds(199, 50, 59, 38);
@@ -122,6 +124,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		getContentPane().add(cboDia);
 		
 		cboMes = new JComboBox<String>();
+		cboMes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboMes.setForeground(Color.BLACK);
 		cboMes.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboMes.setBounds(259, 50, 116, 38);
@@ -130,6 +133,7 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		getContentPane().add(cboMes);
 		
 		cboAño = new JComboBox<String>();
+		cboAño.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboAño.setForeground(Color.BLACK);
 		cboAño.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboAño.setBounds(376, 50, 83, 38);
@@ -184,8 +188,13 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		lblR.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(192, 192, 192)));
 		lblR.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblR.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblR.setBounds(43, 0, 134, 39);
+		lblR.setBounds(36, 0, 134, 39);
 		panel.add(lblR);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(DlgReporteHospitalizacionesPorFecha.class.getResource("/image/analytics2.png")));
+		label.setBounds(8, 0, 25, 39);
+		panel.add(label);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setRolloverIcon(new ImageIcon(DlgReporteHospitalizacionesPorFecha.class.getResource("/iconBotones/buscarBlnco.png")));

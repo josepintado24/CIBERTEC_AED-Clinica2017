@@ -138,6 +138,11 @@ public class DlgReportePacientesAdmitidos extends JDialog {
 		lblReportePacientes.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblReportePacientes.setBounds(38, 0, 146, 39);
 		panel.add(lblReportePacientes);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgReportePacientesAdmitidos.class.getResource("/image/sale-report.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel.add(label_1);
 
 		formatoTabla();
 		listadoPacientes();

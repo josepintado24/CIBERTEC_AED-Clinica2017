@@ -141,6 +141,11 @@ public class DlgReporteEmpleadosHospitalizaciones extends JDialog {
 		lblReporteEmpleados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblReporteEmpleados.setBounds(39, 0, 192, 39);
 		panel.add(lblReporteEmpleados);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgReporteEmpleadosHospitalizaciones.class.getResource("/image/analytics.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel.add(label_1);
 
 		formatoTabla();
 		listadoPacientes();
