@@ -188,10 +188,12 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		panel.add(lblR);
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setRolloverIcon(new ImageIcon(DlgReporteHospitalizacionesPorFecha.class.getResource("/iconBotones/buscarBlnco.png")));
+		btnBuscar.setIcon(new ImageIcon(DlgReporteHospitalizacionesPorFecha.class.getResource("/iconBotones/buscar.png")));
 		btnBuscar.setContentAreaFilled(false);
 		btnBuscar.addMouseListener(this);
 		btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btnBuscar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		btnBuscar.addActionListener(this);
 		btnBuscar.setBounds(490, 50, 155, 36);
 		getContentPane().add(btnBuscar);
@@ -297,13 +299,13 @@ public class DlgReporteHospitalizacionesPorFecha extends JDialog implements Acti
 		btnBuscar.setOpaque(true);
 		btnBuscar.setBackground(new Color(0, 139, 173));
 		btnBuscar.setForeground(new Color(255, 255, 255));
-		btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_color.png")));
+		
 		
 	}
 	protected void mouseExitedBtnBuscar(MouseEvent e) {
 		btnBuscar.setOpaque(false);
 		btnBuscar.setForeground(new Color(0, 0, 1));
-		btnBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/money_blanco.png")));
+		
 		btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 1)));
 	}
 }
