@@ -23,7 +23,6 @@ import clases.Medicamentos;
 import libreria.DiseñoObjetos;
 import libreria.Fecha;
 import libreria.Libreria; 
-import gui.DlgServicios;
 
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -417,11 +416,11 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 
 	protected void actionPerformedBtnSeleccionarServicio(ActionEvent arg0) {
 		DlgServicios ser = new DlgServicios();
-		ser.btnAdicionar.setEnabled(false);
+		ser.lblIngresar.setEnabled(false);
 		ser.btnConsultar.setEnabled(false);
 		ser.btnEliminar.setEnabled(false);
 		ser.btnModificar.setEnabled(false);
-		ser.btnGuardarServicios.setEnabled(false);
+		ser.btnGuardarServicios.setEnabled(false);*/
 		setVisible(true);
 		if (!ser.codServicio.equals("") && ser.precioServicio > 0) {
 			if (jtblConsumo.getRowCount() == 0) {
