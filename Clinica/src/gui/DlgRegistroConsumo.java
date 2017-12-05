@@ -398,8 +398,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener {
 		med.btnConsultar.setEnabled(false);
 		med.btnEliminar.setEnabled(false);
 		med.btnModificar.setEnabled(false);
-		med.btnGuardarMedicamentos.setEnabled(false);
-		med.setVisible(true);*/
+		med.btnGuardarMedicamentos.setEnabled(false);*/
+		med.setVisible(true);
 
 		if (!med.nombreProducto.equals("") && med.precioProducto > 0 && med.cantidadVender > 0) {
 			if (jtblConsumo.getRowCount() == 0) {
