@@ -110,9 +110,24 @@ public class DlgLogin extends JDialog implements ActionListener {
 				txtUsuario.setColumns(10);
 		
 				btnIngresar = new JButton("INGRESAR");
-				btnIngresar.setBorderPainted(false);
+				btnIngresar.setContentAreaFilled(false);
+				btnIngresar.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseEntered(MouseEvent arg0) {
+						btnIngresar.setOpaque(true);
+						btnIngresar.setBackground(new Color(30, 60, 79));
+						btnIngresar.setForeground(new Color(255, 255, 255));
+						btnIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					}
+					@Override
+					public void mouseExited(MouseEvent e) {
+						btnIngresar.setOpaque(false);
+						btnIngresar.setForeground(new Color(10, 20, 26));
+						
+					}
+				});
 				btnIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				btnIngresar.setBorder(new LineBorder(Color.BLACK, 1, true));
+				btnIngresar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 				btnIngresar.setBounds(102, 417, 122, 41);
 				getContentPane().add(btnIngresar);
 				btnIngresar.addActionListener(this);
@@ -130,7 +145,21 @@ public class DlgLogin extends JDialog implements ActionListener {
 				passwordField.setForeground(Color.BLACK);
 		
 				btnCancelar = new JButton("CANCELAR");
-				btnCancelar.setBorderPainted(false);
+				btnCancelar.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						btnCancelar.setOpaque(true);
+						btnCancelar.setBackground(new Color(255, 1, 7));
+						btnCancelar.setForeground(new Color(255, 255, 255));
+						btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+					}
+					@Override
+					public void mouseExited(MouseEvent e) {
+						btnCancelar.setOpaque(false);
+						btnCancelar.setForeground(new Color(10, 20, 26));
+					}
+				});
+				btnCancelar.setContentAreaFilled(false);
 				btnCancelar.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 				btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				btnCancelar.setBounds(102, 489, 122, 41);
