@@ -89,7 +89,7 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 	
 	public void OpenInternet(){
 		try{
-			Desktop.getDesktop().browse(URI.create("file:///C:/Users/josep/Desktop/clinica2/ProyectClinica-Cibertec-II/Clinica/src/Manual/index.html"));
+			Desktop.getDesktop().browse(URI.create("http://configs.mipropia.com/"));
 			
 		}
 		catch(Exception e){
