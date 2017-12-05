@@ -147,7 +147,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		getContentPane().add(lblMensaje);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 125, 722, 566);
+		scrollPane.setBounds(18, 126, 722, 593);
 		getContentPane().add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -334,8 +334,8 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						panel.add(sLogin);
 																																						
 																																						lbliconPassword = new JLabel("");
-																																						lbliconPassword.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/Key_32px.png")));
-																																						lbliconPassword.setBounds(35, 350, 35, 27);
+																																						lbliconPassword.setIcon(new ImageIcon(DlgEmpleado.class.getResource("/image/icons8_Key_2_30px.png")));
+																																						lbliconPassword.setBounds(35, 348, 35, 29);
 																																						panel.add(lbliconPassword);
 																																						
 																																						sPassword = new JSeparator();
@@ -383,7 +383,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																																						lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 																																						lblBuscar.setBackground(Color.BLUE);
-																																						lblBuscar.setBounds(150, 25, 170, 39);
+																																						lblBuscar.setBounds(182, 27, 138, 39);
 																																						panel.add(lblBuscar);
 																																						
 																																						lblIngresar = new JLabel("INGRESAR");
@@ -396,7 +396,7 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 																																						lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
 																																						lblIngresar.setBorder(new LineBorder(new Color(0, 0, 1), 1, true));
 																																						lblIngresar.setBackground(new Color(1, 168, 25));
-																																						lblIngresar.setBounds(25, 70, 158, 37);
+																																						lblIngresar.setBounds(18, 70, 165, 37);
 																																						getContentPane().add(lblIngresar);
 																																						
 																																						lblConsultar = new JLabel("CONSULTAR");
@@ -988,6 +988,13 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 		if (arg0.getSource() == lblCancelar) {
 			mouseEnteredCancelar(arg0);
 		}
+		if(arg0.getSource()== lblBuscar){
+			lblBuscar.setOpaque(true);
+			lblBuscar.setBackground(new Color(30, 60, 79));
+			lblBuscar.setForeground(new Color(255, 255, 255));
+			lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/BuscarBlnco.png")));
+		}
+		
 	}
 	public void mouseExited(MouseEvent e) {
 		if (e.getSource() == lblModificar) {

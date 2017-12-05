@@ -94,6 +94,7 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 	private JSeparator separator;
 	private JLabel lblDate;
 	private JSeparator separator_1;
+	private JLabel label_1;
 
 	public static void main(String[] args) {
 		try {
@@ -322,8 +323,13 @@ public class DlgControlDePagos extends JDialog implements ActionListener, MouseL
 		JLabel lblPa = new JLabel("Pagos");
 		lblPa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblPa.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblPa.setBounds(30, 0, 77, 39);
+		lblPa.setBounds(37, 0, 77, 39);
 		panel_1.add(lblPa);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgControlDePagos.class.getResource("/image/healthcare.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel_1.add(label_1);
 		setLocationRelativeTo(this);
 	}
 

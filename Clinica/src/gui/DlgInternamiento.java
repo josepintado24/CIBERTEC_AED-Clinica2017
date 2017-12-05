@@ -48,6 +48,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.JSeparator;
 import java.awt.event.MouseListener;
+import javax.swing.border.MatteBorder;
 
 public class DlgInternamiento extends JDialog implements ActionListener, KeyListener, ItemListener, MouseListener {
 
@@ -135,6 +136,8 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 	private JSeparator separator_5;
 	private JSeparator separator_6;
 	private JSeparator separator_7;
+	private JButton button;
+	private JLabel label_1;
 
 	public static void main(String[] args) {
 		try {
@@ -279,6 +282,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		});
 
 		cboNroCamas = new JComboBox<Integer>();
+		cboNroCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboNroCamas.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboNroCamas.setForeground(Color.BLACK);
 		cboNroCamas.setBounds(190, 236, 59, 29);
@@ -288,6 +292,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		
 
 		rdbtnEconomico = new JRadioButton("Econ\u00F3mico");
+		rdbtnEconomico.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnEconomico.setBackground(Color.WHITE);
 		rdbtnEconomico.addActionListener(this);
 		
@@ -302,6 +307,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(rdbtnEconomico);
 
 		rdbtnEjecutivo = new JRadioButton("Ejecutivo");
+		rdbtnEjecutivo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnEjecutivo.setBackground(Color.WHITE);
 		rdbtnEjecutivo.addActionListener(this);
 		rdbtnEjecutivo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -321,6 +327,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(lblCategoraCama);
 
 		cboDiaLlegada = new JComboBox<String>();
+		cboDiaLlegada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboDiaLlegada.setEnabled(false);
 		cboDiaLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboDiaLlegada.setForeground(Color.BLACK);
@@ -330,6 +337,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(cboDiaLlegada);
 
 		cboMesLlegada = new JComboBox<String>();
+		cboMesLlegada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboMesLlegada.setEnabled(false);
 		cboMesLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboMesLlegada.setForeground(Color.BLACK);
@@ -339,6 +347,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(cboMesLlegada);
 
 		cboAnoLlegada = new JComboBox<String>();
+		cboAnoLlegada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cboAnoLlegada.setEnabled(false);
 		cboAnoLlegada.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
 		cboAnoLlegada.setForeground(Color.BLACK);
@@ -347,6 +356,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(cboAnoLlegada);
 
 		rdbtnAlojado = new JRadioButton("Alojado");
+		rdbtnAlojado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnAlojado.setEnabled(false);
 		rdbtnAlojado.setSelected(true);
 		rdbtnAlojado.setForeground(Color.BLACK);
@@ -356,6 +366,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		getContentPane().add(rdbtnAlojado);
 
 		rdbtnPagado = new JRadioButton("Pagado");
+		rdbtnPagado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnPagado.setEnabled(false);
 		rdbtnPagado.setForeground(Color.BLACK);
 		rdbtnPagado.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
@@ -385,33 +396,36 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		pnlFiltrar = new JPanel();
 		pnlFiltrar.setBorder(null);
 		pnlFiltrar.setBackground(Color.WHITE);
-		pnlFiltrar.setBounds(322, 490, 259, 29);
+		pnlFiltrar.setBounds(322, 490, 277, 29);
 		getContentPane().add(pnlFiltrar);
 		pnlFiltrar.setLayout(null);
 
 		rdbtnFiltrarAlojado = new JRadioButton("ALOJADO");
+		rdbtnFiltrarAlojado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnFiltrarAlojado.addActionListener(this);
 		rdbtnFiltrarAlojado.setSelected(true);
 		rdbtnFiltrarAlojado.setBackground(Color.WHITE);
 		rdbtnFiltrarAlojado.setForeground(Color.BLACK);
 		rdbtnFiltrarAlojado.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		rdbtnFiltrarAlojado.setBounds(6, 0, 90, 23);
+		rdbtnFiltrarAlojado.setBounds(6, 0, 95, 23);
 		pnlFiltrar.add(rdbtnFiltrarAlojado);
 
 		rdbtnFiltrarPagado = new JRadioButton("PAGADO");
+		rdbtnFiltrarPagado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnFiltrarPagado.addActionListener(this);
 		rdbtnFiltrarPagado.setBackground(Color.WHITE);
 		rdbtnFiltrarPagado.setForeground(Color.BLACK);
 		rdbtnFiltrarPagado.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		rdbtnFiltrarPagado.setBounds(98, 0, 90, 23);
+		rdbtnFiltrarPagado.setBounds(103, 0, 85, 23);
 		pnlFiltrar.add(rdbtnFiltrarPagado);
 
 		rdbtnFiltrarTodo = new JRadioButton("TODO");
+		rdbtnFiltrarTodo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rdbtnFiltrarTodo.addActionListener(this);
 		rdbtnFiltrarTodo.setBackground(Color.WHITE);
 		rdbtnFiltrarTodo.setForeground(Color.BLACK);
 		rdbtnFiltrarTodo.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
-		rdbtnFiltrarTodo.setBounds(190, 0, 78, 23);
+		rdbtnFiltrarTodo.setBounds(203, 0, 65, 23);
 		pnlFiltrar.add(rdbtnFiltrarTodo);
 
 		bp3 = new ButtonGroup();
@@ -420,7 +434,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		bp3.add(rdbtnFiltrarTodo);
 
 		lblBorderFiltro = new JLabel("");
-		lblBorderFiltro.setBounds(318, 483, 274, 38);
+		lblBorderFiltro.setBounds(307, 483, 304, 38);
 		getContentPane().add(lblBorderFiltro);
 		lblBorderFiltro.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
 
@@ -430,6 +444,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		listarCamas(cboNroCamas);
 		
 		panel = new JPanel();
+		panel.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
 		panel.setBackground(Color.WHITE);
 		panel.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
@@ -468,14 +483,42 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		});
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/icons8_Return_32px.png")));
-		label.setBounds(874, 0, 32, 39);
+		label.setBounds(837, 0, 32, 39);
 		panel.add(label);
 		
 		lblHospitalizacin = new JLabel("Internamiento");
 		lblHospitalizacin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblHospitalizacin.setFont(new Font("Decker", Font.PLAIN, 16));
-		lblHospitalizacin.setBounds(34, 0, 122, 39);
+		lblHospitalizacin.setBounds(38, 0, 122, 39);
 		panel.add(lblHospitalizacin);
+		
+		button = new JButton("");
+		button.setRolloverIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/X2_32px.png")));
+		button.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/X_32px.png")));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+				int dialog = JOptionPane.YES_NO_OPTION;
+				int result =JOptionPane.showConfirmDialog(null, "¿Desea salir de la ventana?","Exit",dialog,dialog,m);
+				
+				if(result ==0){
+					System.exit(0);
+				}
+			}
+		});
+		button.setForeground(Color.WHITE);
+		button.setFocusPainted(false);
+		button.setContentAreaFilled(false);
+		button.setBorderPainted(false);
+		button.setBorder(null);
+		button.setBackground(Color.WHITE);
+		button.setBounds(873, 0, 32, 37);
+		panel.add(button);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/image/fracture.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel.add(label_1);
 		
 		lblAgregar = new JLabel("Agregar");
 		lblAgregar.setIcon(new ImageIcon(DlgInternamiento.class.getResource("/iconBotones/Agregar.png")));
@@ -537,7 +580,7 @@ public class DlgInternamiento extends JDialog implements ActionListener, KeyList
 		lblGrabar.setForeground(Color.WHITE);
 		lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
 		lblGrabar.setBackground(new Color(231, 96, 90));
-		lblGrabar.setBounds(473, 413, 206, 41);
+		lblGrabar.setBounds(478, 403, 206, 41);
 		getContentPane().add(lblGrabar);
 		
 		label_4 = new JLabel("");

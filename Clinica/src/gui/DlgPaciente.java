@@ -48,6 +48,7 @@ import java.awt.Cursor;
 import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.border.MatteBorder;
 
 public class DlgPaciente extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -117,6 +118,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 	private JSeparator lineTelefono;
 	private int x;
 	private int y;
+	private JButton button;
 
 	public static void main(String[] args) {
 		try {
@@ -455,7 +457,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														
 																														lblIngresar = new JLabel("INGRESAR");
 																														lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-																														lblIngresar.setForeground(new Color(10,20,26));
+																														lblIngresar.setForeground(Color.BLACK);
 																														lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
 																														lblIngresar.addMouseListener(this);
 																														lblIngresar.setBackground(new Color(1, 168, 25));
@@ -502,6 +504,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														lblEliminar.setBorder(new LineBorder(new Color(10,20,26), 1, true));
 																														
 																														JPanel panel_1 = new JPanel();
+																														panel_1.setBorder(new MatteBorder(0, 0, 1, 0, (Color) Color.LIGHT_GRAY));
 																														panel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 																														panel_1.addMouseMotionListener(new MouseMotionAdapter() {
 																															@Override
@@ -540,7 +543,7 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																															}
 																														});
 																														lblNewLabel.setIcon(new ImageIcon(DlgPaciente.class.getResource("/image/icons8_Return_32px.png")));
-																														lblNewLabel.setBounds(1185, 0, 32, 34);
+																														lblNewLabel.setBounds(1153, 0, 32, 34);
 																														panel_1.add(lblNewLabel);
 																														
 																														JLabel lblPaciente = new JLabel("Paciente");
@@ -554,6 +557,29 @@ public class DlgPaciente extends JDialog implements ActionListener, KeyListener,
 																														label.setIcon(new ImageIcon(DlgPaciente.class.getResource("/image/paciente2.png")));
 																														label.setBounds(10, 0, 40, 34);
 																														panel_1.add(label);
+																														
+																														button = new JButton("");
+																														button.addActionListener(new ActionListener() {
+																															public void actionPerformed(ActionEvent e) {
+																																Icon m = new ImageIcon(getClass().getResource("/image/ADVERTENCIA.png"));
+																																int dialog = JOptionPane.YES_NO_OPTION;
+																																int result =JOptionPane.showConfirmDialog(null, "¿Desea salir de la ventana?","Exit",dialog,dialog,m);
+																																
+																																if(result ==0){
+																																	System.exit(0);
+																																}
+																															}
+																														});
+																														button.setRolloverIcon(new ImageIcon(DlgPaciente.class.getResource("/image/X2_32px.png")));
+																														button.setIcon(new ImageIcon(DlgPaciente.class.getResource("/image/X_32px.png")));
+																														button.setForeground(Color.WHITE);
+																														button.setFocusPainted(false);
+																														button.setContentAreaFilled(false);
+																														button.setBorderPainted(false);
+																														button.setBorder(null);
+																														button.setBackground(Color.WHITE);
+																														button.setBounds(1187, 0, 40, 37);
+																														panel_1.add(button);
 						setFocusTraversalPolicy(new FocusTraversalOnArray(
 								new Component[] { txtCodigo, txtNombres, txtApellidos, txtTelefono, txtDni }));
 
@@ -1218,7 +1244,6 @@ private void editableTrue(){
 		lblCancelar.setOpaque(false);
 		lblCancelar.setForeground(new Color(10, 20, 26));
 		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
-		//lblCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(30, 60, 79)));
 		
 	}
 	protected void mouseExitedLblAgregar(MouseEvent arg0) {
@@ -1270,14 +1295,14 @@ private void editableTrue(){
 		lblIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 		lblIngresar.setOpaque(true);
 		lblIngresar.setBackground(new Color(10, 20, 26));
-		//lblIngresar.setForeground(new Color(255, 255, 255));
+		lblIngresar.setForeground(new Color(255, 255, 255));
 	}
 	protected void mouseEnteredLblConsultar(MouseEvent e) {
 		lblConsultar.setOpaque(true);
 		lblConsultar.setBackground(new Color(10, 20, 26));
 		lblConsultar.setForeground(new Color(255, 255, 255));
 		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
-		//lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
+		lblConsultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(10, 20, 26)));
 	}
 	protected void mouseEnteredLblModificar(MouseEvent e) {
 		
@@ -1311,7 +1336,8 @@ private void editableTrue(){
 		lblCancelar.setOpaque(true);
 		lblCancelar.setBackground(new Color(30, 60, 79));
 		lblCancelar.setForeground(new Color(255, 255, 255));
-		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
+		lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 	}
 	protected void mouseEnteredLabel_2(MouseEvent e) {
