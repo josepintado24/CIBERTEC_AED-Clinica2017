@@ -335,10 +335,10 @@ public class Principal extends JFrame implements MouseListener, ActionListener, 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(e.getSource()== lblCama){
-					DlgCamas jFrame= new DlgCamas();
+					DlgCamas me= new DlgCamas();
 					setVisible(false);
-					jFrame.setVisible(true);
-					jFrame.setLocationRelativeTo(null);
+					me.setVisible(true);
+					me.setLocationRelativeTo(null);
 					
 				}
 			}

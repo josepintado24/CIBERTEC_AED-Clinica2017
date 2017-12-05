@@ -42,6 +42,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.LineBorder;
 import java.awt.event.MouseListener;
+import javax.swing.JSeparator;
 
 public class DlgRegistroConsumo extends JDialog implements ActionListener, MouseListener {
 
@@ -84,6 +85,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 	private JLabel lblSeleccionarMedicamento;
 	private JLabel lblSeleccionarServicio;
 	private JLabel lblnext;
+	private JLabel label_1;
+	private JLabel label_2;
 
 	public static void main(String[] args) {
 		try {
@@ -108,7 +111,7 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		setResizable(false);
 		setTitle("Registro de Consumo");
 		getContentPane().setBackground(Color.WHITE);
-		setBounds(100, 100, 753, 728);
+		setBounds(100, 100, 753, 598);
 		getContentPane().setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -171,7 +174,8 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblCodigoPaciente.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 14));
 
 		txtCodigoConsumo = new JTextField();
-		txtCodigoConsumo.setBounds(99, 43, 119, 29);
+		txtCodigoConsumo.setBorder(null);
+		txtCodigoConsumo.setBounds(99, 51, 119, 21);
 		panel.add(txtCodigoConsumo);
 		txtCodigoConsumo.setBackground(Color.WHITE);
 		txtCodigoConsumo.setForeground(Color.BLACK);
@@ -248,10 +252,19 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblnext.setHorizontalAlignment(SwingConstants.CENTER);
 		lblnext.setForeground(new Color(10, 20, 26));
 		lblnext.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblnext.setBorder(new LineBorder(new Color(10,20,26), 1, true));
+		lblnext.setBorder(null);
 		lblnext.setBackground(new Color(1, 168, 25));
 		lblnext.setBounds(228, 127, 59, 29);
 		panel.add(lblnext);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(65, 74, 119, 2);
+		panel.add(separator);
+		
+		label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/iconBotones/codigo.png")));
+		label_2.setBounds(61, 43, 28, 27);
+		panel.add(label_2);
 		
 		panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
@@ -300,6 +313,11 @@ public class DlgRegistroConsumo extends JDialog implements ActionListener, Mouse
 		lblRegitro.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblRegitro.setBounds(42, 0, 145, 39);
 		panel_1.add(lblRegitro);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(DlgRegistroConsumo.class.getResource("/image/registration.png")));
+		label_1.setBounds(10, 0, 25, 39);
+		panel_1.add(label_1);
 		
 		lblEliminarProductoDe = new JLabel("ELIMINAR PRODUCTO DE LISTA");
 		lblEliminarProductoDe.addMouseListener(this);
