@@ -1,5 +1,7 @@
 package clases;
 
+
+
 public class Atencion {
 	private int codConsumo, codPaciente, fechaConsumo, estado;
 	private double totalPago;
