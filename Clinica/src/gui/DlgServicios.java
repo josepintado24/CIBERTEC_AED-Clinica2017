@@ -41,6 +41,8 @@ import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
+import javax.swing.JSeparator;
+import javax.swing.border.LineBorder;
 
 public class DlgServicios extends JDialog implements ActionListener, KeyListener, MouseListener {
 
@@ -54,15 +56,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	private JComboBox<String> cboTipo;
 	private JLabel lblPrecio;
 	private JTextField txtPrecio;
-	private JButton btnAceptar;
-	private JButton btnCancelar;
-	public JButton btnEliminar;
-	public JButton btnConsultar;
-	public JButton btnModificar;
-	public JButton btnAdicionar;
-	private JButton btnBuscar;
 	private JLabel lblMensaje;
-	public JButton btnGuardarServicios;
 	private JScrollPane scrollPane;
 	private JTable jtblServicios;
 	private int x;
@@ -94,6 +88,21 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	private JPanel panel;
 	private JLabel label;
 	private JLabel lblServicios;
+	private JPanel panel_1;
+	private JLabel lbliconCodigo;
+	private JSeparator sCodigo;
+	private JLabel lbliconDescripcion;
+	private JSeparator sDescripcion;
+	private JLabel lbliconPrecio;
+	private JSeparator sPrecio;
+	private JLabel lblIngresar;
+	private JLabel lblConsultar;
+	private JLabel lblModificar;
+	private JLabel lblEliminar;
+	private JLabel lblBuscar;
+	private JLabel lblAgregar;
+	private JLabel lblCancelar;
+	private JLabel lblGrabar;
 
 	public static void main(String[] args) {
 		try {
@@ -117,142 +126,13 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		setResizable(false);
 		setModal(true);
 		setTitle("MANTENIMIENTO | SERVICIO");
-		setBounds(100, 100, 1111, 499);
+		setBounds(100, 100, 1166, 585);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setForeground(Color.BLACK);
+		contentPanel.setForeground(new Color(255, 255, 255));
 		contentPanel.setBackground(Color.WHITE);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-
-		lblCodigo = new JLabel("C\u00D3DIGO");
-		lblCodigo.setForeground(Color.BLACK);
-		lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblCodigo.setBounds(10, 117, 89, 14);
-		contentPanel.add(lblCodigo);
-
-		txtCodigo = new JTextField();
-		txtCodigo.setEditable(false);
-		txtCodigo.addKeyListener(this);
-		txtCodigo.setForeground(Color.BLACK);
-		txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtCodigo.setBounds(109, 110, 96, 29);
-		contentPanel.add(txtCodigo);
-		txtCodigo.setColumns(10);
-
-		lblDescripcion = new JLabel("DESCRIPCI\u00D3N");
-		lblDescripcion.setForeground(Color.BLACK);
-		lblDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblDescripcion.setBounds(10, 157, 89, 14);
-		contentPanel.add(lblDescripcion);
-
-		txtDescripcion = new JTextField();
-		txtDescripcion.setEditable(false);
-		txtDescripcion.addKeyListener(this);
-		txtDescripcion.setForeground(Color.BLACK);
-		txtDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtDescripcion.setBounds(109, 150, 252, 29);
-		contentPanel.add(txtDescripcion);
-		txtDescripcion.setColumns(10);
-
-		lblTipo = new JLabel("TIPO");
-		lblTipo.setForeground(Color.BLACK);
-		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblTipo.setBounds(10, 197, 88, 14);
-		contentPanel.add(lblTipo);
-
-		cboTipo = new JComboBox<String>();
-		cboTipo.setForeground(Color.BLACK);
-		cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		cboTipo.addItem("ANÁLISIS CLÍNICOS");
-		cboTipo.addItem("INTERVENCIONES QUIRÚRJICAS");
-		cboTipo.setBounds(109, 190, 252, 29);
-		contentPanel.add(cboTipo);
-
-		lblPrecio = new JLabel("PRECIO");
-		lblPrecio.setForeground(Color.BLACK);
-		lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		lblPrecio.setBounds(10, 237, 88, 14);
-		contentPanel.add(lblPrecio);
-
-		txtPrecio = new JTextField();
-		txtPrecio.setEditable(false);
-		txtPrecio.addKeyListener(this);
-		txtPrecio.setForeground(Color.BLACK);
-		txtPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		txtPrecio.setBounds(111, 230, 94, 29);
-		contentPanel.add(txtPrecio);
-		txtPrecio.setColumns(10);
-
-		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setBackground(new Color(30, 144, 255));
-		btnAceptar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnAceptar.setEnabled(false);
-		btnAceptar.addActionListener(this);
-		btnAceptar.setBounds(36, 371, 146, 39);
-		ds.setCurvasButton(btnAceptar, "imagenes/aceptar.png");
-		contentPanel.add(btnAceptar);
-
-		btnCancelar = new JButton("CANCELAR");
-		btnCancelar.setForeground(Color.BLACK);
-		btnCancelar.setBackground(new Color(0, 255, 255));
-		btnCancelar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnCancelar.setEnabled(false);
-		btnCancelar.addActionListener(this);
-		btnCancelar.setBounds(192, 371, 145, 39);
-		ds.setCurvasButton(btnCancelar, "imagenes/eliminar.png");
-		contentPanel.add(btnCancelar);
-
-		btnEliminar = new JButton("ELIMINAR");
-		btnEliminar.setForeground(Color.BLACK);
-		btnEliminar.setBackground(new Color(127, 255, 212));
-		btnEliminar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(37, 321, 145, 39);
-		ds.setCurvasButton(btnEliminar, "imagenes/eliminar.png");
-		contentPanel.add(btnEliminar);
-
-		btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.setForeground(Color.BLACK);
-		btnConsultar.setBackground(Color.CYAN);
-		btnConsultar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnConsultar.addActionListener(this);
-		btnConsultar.setBounds(192, 270, 146, 40);
-		ds.setCurvasButton(btnConsultar, "imagenes/consultar.png");
-		contentPanel.add(btnConsultar);
-
-		btnModificar = new JButton("MODIFICAR");
-		btnModificar.setForeground(Color.BLACK);
-		btnModificar.setBackground(new Color(0, 139, 139));
-		btnModificar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnModificar.addActionListener(this);
-		btnModificar.setBounds(191, 321, 146, 39);
-		ds.setCurvasButton(btnModificar, "imagenes/modificar.png");
-		contentPanel.add(btnModificar);
-
-		btnAdicionar = new JButton("ADICIONAR");
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setBackground(new Color(124, 252, 0));
-		btnAdicionar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnAdicionar.addActionListener(this);
-		btnAdicionar.setBounds(37, 271, 145, 39);
-		ds.setCurvasButton(btnAdicionar, "imagenes/adicionar.png");
-		contentPanel.add(btnAdicionar);
-
-		btnBuscar = new JButton("BUSCAR");
-		btnBuscar.setForeground(Color.BLACK);
-		btnBuscar.setBackground(new Color(102, 205, 170));
-		btnBuscar.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnBuscar.setEnabled(false);
-		btnBuscar.addActionListener(this);
-		btnBuscar.setBounds(225, 110, 136, 29);
-		ds.setCurvasButton(btnBuscar, "imagenes/buscar.png");
-		contentPanel.add(btnBuscar);
 
 		lblMensaje = new JLabel("");
 		lblMensaje.setOpaque(true);
@@ -260,20 +140,11 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblMensaje.setForeground(Color.WHITE);
 		lblMensaje.setFont(new Font("Source Sans Pro Semibold", Font.BOLD, 18));
 		lblMensaje.setBackground(Color.DARK_GRAY);
-		lblMensaje.setBounds(10, 70, 351, 29);
+		lblMensaje.setBounds(36, 70, 351, 29);
 		contentPanel.add(lblMensaje);
 
-		btnGuardarServicios = new JButton("GUARDAR SERVICIOS");
-		btnGuardarServicios.setForeground(Color.BLACK);
-		btnGuardarServicios.setBackground(new Color(0, 250, 154));
-		btnGuardarServicios.addActionListener(this);
-		btnGuardarServicios.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
-		btnGuardarServicios.setBounds(36, 421, 302, 39);
-		ds.setCurvasButton(btnGuardarServicios, "imagenes/grabar.png");
-		contentPanel.add(btnGuardarServicios);
-
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(371, 70, 724, 390);
+		scrollPane.setBounds(411, 123, 724, 390);
 		contentPanel.add(scrollPane);
 
 		dtm = new DefaultTableModel(null, getColumnas());
@@ -312,6 +183,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
+		
 		label = new JLabel("");
 		label.addMouseListener(new MouseAdapter() {
 			@Override
@@ -338,6 +210,203 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		lblServicios.setFont(new Font("Decker", Font.PLAIN, 16));
 		lblServicios.setBounds(29, 0, 130, 39);
 		panel.add(lblServicios);
+		
+		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setForeground(new Color(255, 255, 255));
+		panel_1.setBounds(10, 110, 391, 403);
+		contentPanel.add(panel_1);
+		panel_1.setLayout(null);
+		panel_1.setVisible(false);
+		
+				txtPrecio = new JTextField();
+				txtPrecio.setBounds(129, 157, 94, 20);
+				panel_1.add(txtPrecio);
+				txtPrecio.setEditable(false);
+				txtPrecio.addKeyListener(this);
+				txtPrecio.setForeground(Color.BLACK);
+				txtPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+				txtPrecio.setColumns(10);
+				txtPrecio.setBorder(null);
+				txtPrecio.setOpaque(false);
+				
+						lblPrecio = new JLabel("PRECIO");
+						lblPrecio.setBounds(0, 163, 88, 14);
+						panel_1.add(lblPrecio);
+						lblPrecio.setForeground(Color.BLACK);
+						lblPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
+						lblPrecio.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+						
+								cboTipo = new JComboBox<String>();
+								cboTipo.setBounds(98, 108, 252, 29);
+								panel_1.add(cboTipo);
+								cboTipo.setForeground(Color.BLACK);
+								cboTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+								
+										lblTipo = new JLabel("TIPO");
+										lblTipo.setBounds(0, 115, 88, 14);
+										panel_1.add(lblTipo);
+										lblTipo.setForeground(Color.BLACK);
+										lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
+										lblTipo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+										
+												txtDescripcion = new JTextField();
+												txtDescripcion.setBounds(129, 78, 252, 19);
+												panel_1.add(txtDescripcion);
+												txtDescripcion.setEditable(false);
+												txtDescripcion.addKeyListener(this);
+												txtDescripcion.setForeground(Color.BLACK);
+												txtDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+												txtDescripcion.setColumns(10);
+												txtDescripcion.setBorder(null);
+												txtDescripcion.setOpaque(false);
+												
+														lblDescripcion = new JLabel("DESCRIPCI\u00D3N");
+														lblDescripcion.setBounds(0, 83, 89, 14);
+														panel_1.add(lblDescripcion);
+														lblDescripcion.setForeground(Color.BLACK);
+														lblDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
+														lblDescripcion.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+														
+																lblCodigo = new JLabel("C\u00D3DIGO");
+																lblCodigo.setBounds(10, 43, 68, 14);
+																panel_1.add(lblCodigo);
+																lblCodigo.setForeground(Color.BLACK);
+																lblCodigo.setHorizontalAlignment(SwingConstants.RIGHT);
+																lblCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+																
+																		txtCodigo = new JTextField();
+																		txtCodigo.setBounds(124, 28, 99, 29);
+																		panel_1.add(txtCodigo);
+																		txtCodigo.setEditable(false);
+																		txtCodigo.addKeyListener(this);
+																		txtCodigo.setForeground(Color.BLACK);
+																		txtCodigo.setFont(new Font("Source Sans Pro Semibold", Font.PLAIN, 14));
+																		txtCodigo.setColumns(10);
+																		txtCodigo.setBorder(null);
+																		txtCodigo.setOpaque(false);
+																				
+																				lbliconCodigo = new JLabel("");
+																				lbliconCodigo.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/codigo.png")));
+																				lbliconCodigo.setBounds(101, 35, 24, 22);
+																				panel_1.add(lbliconCodigo);
+																				
+																				sCodigo = new JSeparator();
+																				sCodigo.setBounds(107, 58, 121, 2);
+																				panel_1.add(sCodigo);
+																				
+																				lbliconDescripcion = new JLabel("");
+																				lbliconDescripcion.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/description.png")));
+																				lbliconDescripcion.setBounds(101, 76, 24, 22);
+																				panel_1.add(lbliconDescripcion);
+																				
+																				sDescripcion = new JSeparator();
+																				sDescripcion.setBounds(102, 98, 284, 2);
+																				panel_1.add(sDescripcion);
+																				
+																				lbliconPrecio = new JLabel("");
+																				lbliconPrecio.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/price-tag.png")));
+																				lbliconPrecio.setBounds(98, 156, 24, 22);
+																				panel_1.add(lbliconPrecio);
+																				
+																				sPrecio = new JSeparator();
+																				sPrecio.setBounds(98, 177, 130, 2);
+																				panel_1.add(sPrecio);
+																				
+																				lblBuscar = new JLabel("Buscar");
+																				lblBuscar.addMouseListener(this);
+																				lblBuscar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/buscar.png")));
+																				lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblBuscar.setForeground(Color.BLACK);
+																				lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 14));
+																				lblBuscar.setBackground(Color.BLUE);
+																				lblBuscar.setBounds(233, 23, 136, 39);
+																				panel_1.add(lblBuscar);
+																				
+																				lblAgregar = new JLabel("Agregar");
+																				lblAgregar.addMouseListener(this);
+																				lblAgregar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/Agregar.png")));
+																				lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblAgregar.setForeground(Color.BLACK);
+																				lblAgregar.setFont(new Font("Tahoma", Font.BOLD, 14));
+																				lblAgregar.setBackground(new Color(1, 168, 25));
+																				lblAgregar.setBounds(98, 240, 175, 39);
+																				panel_1.add(lblAgregar);
+																				
+																				lblCancelar = new JLabel("Cancelar");
+																				lblCancelar.addMouseListener(this);
+																				lblCancelar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/regreso.png")));
+																				lblCancelar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblCancelar.setForeground(Color.BLACK);
+																				lblCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
+																				lblCancelar.setBounds(98, 290, 191, 39);
+																				panel_1.add(lblCancelar);
+																				
+																				lblGrabar = new JLabel("Grabar");
+																				lblGrabar.addMouseListener(this);
+																				lblGrabar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/save.png")));
+																				lblGrabar.setOpaque(true);
+																				lblGrabar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblGrabar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblGrabar.setForeground(Color.WHITE);
+																				lblGrabar.setFont(new Font("Dialog", Font.PLAIN, 18));
+																				lblGrabar.setBackground(new Color(231, 96, 90));
+																				lblGrabar.setBounds(98, 340, 184, 41);
+																				panel_1.add(lblGrabar);
+																				
+																				lblIngresar = new JLabel("INGRESAR");
+																				lblIngresar.addMouseListener(this);
+																				lblIngresar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/ingresarNegro.png")));
+																				lblIngresar.setInheritsPopupMenu(false);
+																				lblIngresar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblIngresar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblIngresar.setForeground(Color.BLACK);
+																				lblIngresar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																				lblIngresar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblIngresar.setBackground(new Color(1, 168, 25));
+																				lblIngresar.setBounds(411, 70, 158, 37);
+																				contentPanel.add(lblIngresar);
+																				
+																				lblConsultar = new JLabel("CONSULTAR");
+																				lblConsultar.addMouseListener(this);
+																				lblConsultar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/consultarNegro.png")));
+																				lblConsultar.setInheritsPopupMenu(false);
+																				lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblConsultar.setForeground(Color.BLACK);
+																				lblConsultar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																				lblConsultar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblConsultar.setBackground(new Color(1, 168, 25));
+																				lblConsultar.setBounds(579, 70, 169, 37);
+																				contentPanel.add(lblConsultar);
+																				
+																				lblModificar = new JLabel("MODIFICAR");
+																				lblModificar.addMouseListener(this);
+																				lblModificar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/modificarNegro.png")));
+																				lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblModificar.setForeground(Color.BLACK);
+																				lblModificar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																				lblModificar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblModificar.setBackground(Color.WHITE);
+																				lblModificar.setBounds(758, 70, 175, 36);
+																				contentPanel.add(lblModificar);
+																				
+																				lblEliminar = new JLabel("ELIMINAR");
+																				lblEliminar.addMouseListener(this);
+																				lblEliminar.setIcon(new ImageIcon(DlgServicios.class.getResource("/iconBotones/eliminarNegro.png")));
+																				lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
+																				lblEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+																				lblEliminar.setForeground(Color.BLACK);
+																				lblEliminar.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 16));
+																				lblEliminar.setBorder(new LineBorder(new Color(243, 124, 47), 1, true));
+																				lblEliminar.setBounds(952, 70, 183, 36);
+																				contentPanel.add(lblEliminar);
+								cboTipo.addItem("ANÁLISIS CLÍNICOS");
+								cboTipo.addItem("INTERVENCIONES QUIRÚRJICAS");
 
 		listado();
 		modeloTabla();
@@ -346,112 +415,6 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == btnGuardarServicios) {
-			actionPerformedBtnGuardarServicios(arg0);
-		}
-		if (arg0.getSource() == btnBuscar) {
-			actionPerformedBtnBuscar(arg0);
-		}
-		if (arg0.getSource() == btnAdicionar) {
-			actionPerformedBtnAdicionar(arg0);
-		}
-		if (arg0.getSource() == btnEliminar) {
-			actionPerformedBtnEliminar(arg0);
-		}
-		if (arg0.getSource() == btnModificar) {
-			actionPerformedBtnModificar(arg0);
-		}
-		if (arg0.getSource() == btnCancelar) {
-			actionPerformedBtnCancelar(arg0);
-		}
-		if (arg0.getSource() == btnConsultar) {
-			actionPerformedBtnConsultar(arg0);
-		}
-		if (arg0.getSource() == btnAceptar) {
-			actionPerformedBtnAceptar(arg0);
-		}
-	}
-
-	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-		tipoOperacion = ADICIONAR;
-		lblMensaje.setText("Adicionando Servicio");
-		txtCodigo.setText("" + as.codigoCorrelativo());
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-		txtCodigo.setEditable(false);
-		txtDescripcion.requestFocus();
-	}
-
-	protected void actionPerformedBtnConsultar(ActionEvent arg0) {
-		tipoOperacion = CONSULTAR;
-		lblMensaje.setText("Consultando Servicio");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnModificar(ActionEvent arg0) {
-		tipoOperacion = MODIFICAR;
-		lblMensaje.setText("Modificando Servicio");
-		habilitarBusqueda(true);
-		habilitarEntradas(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnEliminar(ActionEvent arg0) {
-		tipoOperacion = ELIMINAR;
-		lblMensaje.setText("Eliminando Servicio");
-		habilitarBusqueda(true);
-		habilitarOperaciones(false);
-	}
-
-	protected void actionPerformedBtnBuscar(ActionEvent arg0) {
-		consultarServicio();
-	}
-
-	protected void actionPerformedBtnAceptar(ActionEvent arg0) {
-		switch (tipoOperacion) {
-			case ADICIONAR:
-				adicionarEmpleado();
-				lblMensaje.setText("");
-				break;
-			case CONSULTAR:
-				limpieza();
-				habilitarBusqueda(false);
-				habilitarOperaciones(true);
-				lblMensaje.setText("");
-				break;
-			case MODIFICAR:
-				modificarServicio();
-				lblMensaje.setText("");
-				break;
-			case ELIMINAR:
-				eliminarEmpleado();
-				lblMensaje.setText("");
-		}
-	}
-
-	protected void actionPerformedBtnCancelar(ActionEvent arg0) {
-		if (tipoOperacion != ADICIONAR)
-			habilitarBusqueda(false);
-		lblMensaje.setText("");
-		habilitarEntradas(false);
-		habilitarOperaciones(true);
-	}
-
-	protected void actionPerformedBtnGuardarServicios(ActionEvent arg0) {
-		if (as.existeArchivo()) {
-			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + as.getArchivo() + "\" ?");
-			if (ok == 0) {
-				as.grabarServicios();
-				Libreria.mensajeInformacion(this, "\"" + as.getArchivo() + "\" ha sido actualizado");
-			}
-			else
-				Libreria.mensajeInformacion(this, "No se actualizó  \"" + as.getArchivo() + "\"");
-		}
-		else {
-			as.grabarServicios();
-			Libreria.mensajeInformacion(this, "\"" + as.getArchivo() + "\" ha sido creado");
-		}
 	}
 
 	public void keyPressed(KeyEvent arg0) {
@@ -487,19 +450,139 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	protected void keyTypedTxtPrecio(KeyEvent e) {
 		Validaciones.numeroReal(txtPrecio, e, 5);
 	}
-
+//***Evento Clicked***//
+	
 	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == lblGrabar) {
+			mouseClickedLblGrabar(arg0);
+		}
 		if (arg0.getSource() == jtblServicios) {
 			mouseClickedJtblServicios(arg0);
 		}
-	}
-
+		if (arg0.getSource() == lblIngresar) {
+			mouseClickedLblIngresar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			mouseClickedLblConsultar(arg0);
+		}
+		if (arg0.getSource() == lblModificar) {
+			mouseClickedLblModificar(arg0);
+		}
+		if (arg0.getSource() == lblEliminar) {
+			mouseClickedLblEliminar(arg0);
+		}
+		if (arg0.getSource() == lblBuscar) {
+			mouseClickedLblBuscar(arg0);
+		}
+		if (arg0.getSource() == lblAgregar) {
+			mouseClickedLblAgregar(arg0);
+		}
+		if (arg0.getSource() == lblCancelar) {
+			mouseClickedLblCancelar(arg0);
+		}
+		
+		
+		
+		}
+	
+	//***Evento Exited***///
+	public void mouseExited(MouseEvent e) {
+			
+		if (e.getSource() == lblConsultar) {
+			mouseExitedLblConsultar(e);
+		}
+		if (e.getSource() == lblIngresar) {
+			mouseExitedLblIngresar(e);
+		}
+		if (e.getSource() == lblModificar) {
+			mouseExitedLblModificar(e);
+		}
+		if (e.getSource() == lblEliminar) {
+			mouseExitedLblEliminar(e);
+		}
+		if (e.getSource() == lblBuscar) {
+			mouseExitedLblBuscar(e);
+		}
+		if (e.getSource() == lblAgregar) {
+			mouseExitedLblAgregar(e);
+		}
+		if (e.getSource() == lblCancelar) {
+			mouseExitedLblCancelar(e);
+		}
+		
+		}
+	
+	
+	
+	
+////******////
+	
 	public void mouseEntered(MouseEvent arg0) {
+		if (arg0.getSource() == lblCancelar) {
+			mouseEnteredLblCancelar(arg0);
+		}
+		if (arg0.getSource() == lblAgregar) {
+			mouseEnteredLblAgregar(arg0);
+		}
+		if (arg0.getSource() == lblBuscar) {
+			mouseEnteredLblBuscar(arg0);
+		}
+		if (arg0.getSource() == lblEliminar) {
+			mouseEnteredLblEliminar(arg0);
+		}
+		if (arg0.getSource() == lblModificar) {
+			mouseEnteredLblModificar(arg0);
+		}
+		if (arg0.getSource() == lblConsultar) {
+			mouseEnteredLblConsultar(arg0);
+		}
+		if (arg0.getSource() == lblIngresar) {
+			mouseEnteredLblIngresar(arg0);
+		}
+	}
+//***Mouse Exited**//
+	
+	public void mouseExitedLblIngresar(MouseEvent e) {
+		lblIngresar.setOpaque(false);
+		lblIngresar.setForeground(new Color(10, 20, 26));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarNegro.png")));
 	}
 
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExitedLblConsultar(MouseEvent e) {
+			lblConsultar.setOpaque(false);
+			lblConsultar.setForeground(new Color(10, 20, 26));
+			lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarNegro.png")));
 	}
-
+	public void mouseExitedLblModificar(MouseEvent e) {
+		lblModificar.setOpaque(false);
+		lblModificar.setForeground(new Color(10, 20, 26));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarNegro.png")));
+	}
+	
+	public void mouseExitedLblEliminar(MouseEvent e) {
+		lblEliminar.setOpaque(false);
+		lblEliminar.setForeground(new Color(10, 20, 26));
+		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarNegro.png")));
+	}
+	public void mouseExitedLblBuscar(MouseEvent e) {
+		lblBuscar.setOpaque(false);
+		lblBuscar.setForeground(new Color(10, 20, 26));
+		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscar.png")));
+	}
+	public void mouseExitedLblAgregar(MouseEvent e) {
+		lblAgregar.setOpaque(false);
+		lblAgregar.setForeground(new Color(10, 20, 26));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/Agregar.png")));
+	}
+	public void mouseExitedLblCancelar(MouseEvent e) {
+		lblCancelar.setOpaque(false);
+		lblCancelar.setForeground(new Color(10, 20, 26));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regreso.png")));
+	}
+	
+	
+	
+/////////
 	public void mousePressed(MouseEvent arg0) {
 	}
 
@@ -520,7 +603,35 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 			}
 		}
 	}
-
+//***///
+	void habilitarBotones(boolean sino){
+		lblConsultar.setVisible(sino);
+		lblModificar.setVisible(sino);
+		lblEliminar.setVisible(sino);
+		lblIngresar.setVisible(sino);
+	}
+	
+	//*****///
+	void visibleDescripcion(boolean sino){
+		lblDescripcion.setVisible(sino);
+		txtDescripcion.setVisible(sino);
+		sDescripcion.setVisible(sino);
+		lbliconDescripcion.setVisible(sino);
+	}
+	void visiblePrecio(boolean sino){
+		lblPrecio.setVisible(sino);
+		txtPrecio.setVisible(sino);
+		sPrecio.setVisible(sino);
+		lbliconPrecio.setVisible(sino);
+	}
+	void visibleTipo(boolean sino){
+		lblTipo.setVisible(sino);
+		cboTipo.setVisible(sino);
+		
+	}
+	
+	
+	
 	// Métodos tipo void sin parámetros
 	void limpieza() {
 		txtCodigo.setText("");
@@ -595,6 +706,16 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		else {
 			Servicio x = as.buscar(leerCodigo());
 			if (x != null) {
+				if ((tipoOperacion != CONSULTAR)&&(tipoOperacion != ADICIONAR)){
+					lblAgregar.setVisible(true);
+					lblGrabar.setVisible(true);
+					
+				}
+				visibleDescripcion(true);
+				visibleTipo(true);
+				visiblePrecio(true);
+								
+			
 				txtDescripcion.setText(x.getDescripcion());
 				cboTipo.setSelectedIndex(x.getTipo());
 				txtPrecio.setText("" + x.getPrecio());
@@ -671,7 +792,7 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 
 	// Métodos tipo void con parámetros
 	void habilitarBusqueda(boolean sino) {
-		btnBuscar.setEnabled(sino);
+		lblBuscar.setEnabled(sino);
 		txtCodigo.setEditable(sino);
 		if (sino)
 			txtCodigo.requestFocus();
@@ -686,12 +807,12 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 	}
 
 	void habilitarOperaciones(boolean sino) {
-		btnAdicionar.setEnabled(sino);
-		btnConsultar.setEnabled(sino);
-		btnModificar.setEnabled(sino);
-		btnEliminar.setEnabled(sino);
-		btnAceptar.setEnabled(!sino);
-		btnCancelar.setEnabled(!sino);
+		lblIngresar.setEnabled(sino);
+		lblConsultar.setEnabled(sino);
+		lblModificar.setEnabled(sino);
+		lblEliminar.setEnabled(sino);
+		lblAgregar.setEnabled(!sino);
+		lblCancelar.setEnabled(!sino);
 	}
 
 	// Métodos que retornan valor sin parámetros
@@ -719,5 +840,190 @@ public class DlgServicios extends JDialog implements ActionListener, KeyListener
 		else {
 			return "INTERVENCIONES QUIRÚRJICAS";
 		}
+	}
+	
+	///****Mouse Entered****///
+	
+	protected void mouseEnteredLblIngresar(MouseEvent arg0) {
+		lblIngresar.setOpaque(true);
+		lblIngresar.setBackground(new Color(30, 60, 79));
+		lblIngresar.setForeground(new Color(255, 255, 255));
+		lblIngresar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/ingresarBlnco.png")));
+	}
+	protected void mouseEnteredLblConsultar(MouseEvent arg0) {
+		lblConsultar.setOpaque(true);
+		lblConsultar.setBackground(new Color(30, 60, 79));
+		lblConsultar.setForeground(new Color(255, 255, 255));
+		lblConsultar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/consultarBlnaco.png")));
+	}
+	protected void mouseEnteredLblModificar(MouseEvent arg0) {
+		lblModificar.setOpaque(true);
+		lblModificar.setBackground(new Color(30, 60, 79));
+		lblModificar.setForeground(new Color(255, 255, 255));
+		lblModificar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/modificarBlanco.png")));
+	}
+	protected void mouseEnteredLblEliminar(MouseEvent arg0) {
+		lblEliminar.setOpaque(true);
+		lblEliminar.setBackground(new Color(30, 60, 79));
+		lblEliminar.setForeground(new Color(255, 255, 255));
+		lblEliminar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/eliminarBlnco.png")));
+	}
+	protected void mouseEnteredLblBuscar(MouseEvent arg0) {
+		lblBuscar.setOpaque(true);
+		lblBuscar.setBackground(new Color(30, 60, 79));
+		lblBuscar.setForeground(new Color(255, 255, 255));
+		lblBuscar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/buscarBlnco.png")));
+	}
+	protected void mouseEnteredLblAgregar(MouseEvent arg0) {
+		lblAgregar.setOpaque(true);
+		lblAgregar.setBackground(new Color(30, 60, 79));
+		lblAgregar.setForeground(new Color(255, 255, 255));
+		lblAgregar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/AgregarBlanco.png")));
+	}
+	protected void mouseEnteredLblCancelar(MouseEvent arg0) {
+		lblCancelar.setOpaque(true);
+		lblCancelar.setBackground(new Color(30, 60, 79));
+		lblCancelar.setForeground(new Color(255, 255, 255));
+		lblCancelar.setIcon(new ImageIcon(DlgPaciente.class.getResource("/iconBotones/regresoNegro.png")));
+	}
+
+
+//Mouse Clicked//
+protected void mouseClickedLblIngresar(MouseEvent arg0) {
+	tipoOperacion = ADICIONAR;
+	lblMensaje.setText("Adicionando Servicio");
+	txtCodigo.setText("" + as.codigoCorrelativo());
+	habilitarEntradas(true);
+	habilitarOperaciones(false);
+	txtCodigo.setEditable(false);
+	txtDescripcion.requestFocus();
+	panel_1.setVisible(true);
+	lblBuscar.setVisible(false);
+	habilitarBotones(false);
+	visiblePrecio(true);
+	visibleDescripcion(true);
+	visibleTipo(true);	
+	lblBuscar.setVisible(false);
+	lblCancelar.setVisible(true);
+	lblAgregar.setText("Ingresar");
+	lblGrabar.setVisible(true);
+	lblAgregar.setVisible(true);
+	
+}
+
+protected void mouseClickedLblConsultar(MouseEvent arg0) {
+	tipoOperacion = CONSULTAR;
+	lblMensaje.setText("Consultando Servicio");
+	habilitarBusqueda(true);
+	habilitarOperaciones(false);
+	panel_1.setVisible(true);
+	habilitarBotones(false);
+	visiblePrecio(false);
+	visibleDescripcion(false);
+	visibleTipo(false);	
+	lblBuscar.setVisible(true);
+	lblAgregar.setVisible(false);
+	lblGrabar.setVisible(false);
+}
+
+protected void mouseClickedLblModificar(MouseEvent arg0) {
+	tipoOperacion = MODIFICAR;
+	lblMensaje.setText("Modificando Servicio");
+	habilitarBusqueda(true);
+	habilitarEntradas(true);
+	habilitarOperaciones(false);
+	panel_1.setVisible(true);
+	habilitarBotones(false);
+	visiblePrecio(false);
+	visibleDescripcion(false);
+	visibleTipo(false);
+	lblBuscar.setVisible(true);
+	lblAgregar.setText("Modificar");
+}
+
+protected void mouseClickedLblEliminar(MouseEvent arg0) {
+	tipoOperacion = ELIMINAR;
+	lblMensaje.setText("Eliminando Servicio");
+	habilitarBusqueda(true);
+	habilitarOperaciones(false);
+	panel_1.setVisible(true);
+	habilitarBotones(false);
+	visiblePrecio(false);
+	visibleDescripcion(false);
+	visibleTipo(false);
+	lblBuscar.setVisible(true);
+	lblAgregar.setText("Eliminar");
+	}
+
+protected void mouseClickedLblBuscar(MouseEvent arg0) {
+	consultarServicio();
+}
+protected void mouseClickedLblAgregar(MouseEvent arg0) {
+	switch (tipoOperacion) {
+	case ADICIONAR:
+		adicionarEmpleado();
+		txtCodigo.setText("" + as.codigoCorrelativo());
+		habilitarEntradas(true);
+		//lblMensaje.setText("");
+		lblAgregar.setEnabled(true);
+		lblCancelar.setEnabled(true);
+		lblGrabar.setEnabled(true);
+		break;
+	case CONSULTAR:
+		limpieza();
+		habilitarBusqueda(false);
+		habilitarOperaciones(true);
+		lblMensaje.setText("");
+		lblBuscar.setEnabled(true);
+		break;
+	case MODIFICAR:
+		 modificarServicio();
+		 habilitarEntradas(true);
+		//lblMensaje.setText("");
+		 lblAgregar.setEnabled(true);
+		 lblCancelar.setEnabled(true);
+		 lblGrabar.setEnabled(true);
+		 lblBuscar.setEnabled(true);
+		 visibleTipo(false);
+		 visibleDescripcion(false);
+		 visiblePrecio(false);
+		break;
+	case ELIMINAR:
+		eliminarEmpleado();
+		//lblMensaje.setText("");
+		lblBuscar.setEnabled(true);
+		lblAgregar.setEnabled(true);
+		lblCancelar.setEnabled(true);
+		lblGrabar.setEnabled(true);
+		visibleTipo(false);
+		visibleDescripcion(false);
+		visiblePrecio(false);
+		
+	}
+}
+protected void mouseClickedLblCancelar(MouseEvent arg0) {
+	panel_1.setVisible(false);
+	if (tipoOperacion != ADICIONAR)
+		habilitarBusqueda(false);
+	lblMensaje.setText("");
+	habilitarEntradas(false);
+	habilitarOperaciones(true);
+	habilitarBotones(true);
+}
+
+	protected void mouseClickedLblGrabar(MouseEvent arg0) {
+		if (as.existeArchivo()) {
+			int ok = Libreria.confirmacion(this, "¿ Desea actualizar \"" + as.getArchivo() + "\" ?");
+			if (ok == 0) {
+				as.grabarServicios();
+				Libreria.mensajeInformacion(this, "\"" + as.getArchivo() + "\" ha sido actualizado");
+			}
+			else
+				Libreria.mensajeInformacion(this, "No se actualizó  \"" + as.getArchivo() + "\"");
+		}
+		else {
+			as.grabarServicios();
+			Libreria.mensajeInformacion(this, "\"" + as.getArchivo() + "\" ha sido creado");
+		}		
 	}
 }

@@ -859,18 +859,6 @@ public class DlgEmpleado extends JDialog implements ActionListener, KeyListener,
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// Métodos que retornan valor sin parámetros
 	String[] getColumnas() {
 		String columnas[] = new String[] { "CÓDIGO", "APELLIDOS", "NOMBRES", "TIPO", "LOGIN", "PASSWORD", "TURNO" };
