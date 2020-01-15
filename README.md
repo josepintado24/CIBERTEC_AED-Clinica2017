@@ -14,7 +14,7 @@
 
 <h1>Datos del Proyecto</h1>
 
-**Nombre Proyecto:** Ventas de Maletas
+**Nombre Proyecto:** Internamiento Hospital
 
 **Lenguaje de Programación:** Java 8
 
